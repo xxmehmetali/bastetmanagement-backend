@@ -7,6 +7,7 @@ import lombok.Setter;
 import org.hibernate.annotations.Type;
 
 import javax.persistence.*;
+import java.util.List;
 import java.util.UUID;
 
 @Entity
@@ -20,19 +21,21 @@ public class Project {
     @Id
     @Column(name="id")
     @Type(type="org.hibernate.type.UUIDCharType")
-    private UUID uuid = UUID.randomUUID();
+    private UUID id = UUID.randomUUID();
 
     @Column(name = "occupation")
     private String occupation;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne
     @JoinColumn(name = "corporation")
     private Corporation corporation;
+
+
 
     @Override
     public String toString() {
         return "Project{" +
-                "uuid=" + uuid +
+                "uuid=" + id +
                 ", occupation='" + occupation + '\'' +
                 ", corporation=" + corporation +
                 '}';

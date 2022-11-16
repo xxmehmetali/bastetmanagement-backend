@@ -15,7 +15,7 @@ public class AssesmentStatus {
     @Id
     @Column(name="id")
     @Type(type="org.hibernate.type.UUIDCharType")
-    private UUID uuid = UUID.randomUUID();
+    private UUID id = UUID.randomUUID();
 
     @Column(name = "code")
     private String code;

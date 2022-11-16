@@ -18,21 +18,21 @@ public class Dayoff {
     @Id
     @Column(name="id")
     @Type(type="org.hibernate.type.UUIDCharType")
-    private UUID uuid = UUID.randomUUID();
+    private UUID id = UUID.randomUUID();
 
-    @Column(name = "beginDate")
+    @Column(name = "begindate")
     private Date beginDate;
 
-    @Column(name = "endDate")
+    @Column(name = "enddate")
     private Date endDate;
 
-    @Column(name = "isPaid")
+    @Column(name = "ispaid")
     private Boolean isPaid;
 
     @Column(name = "reason")
     private String reason;
 
-    @Column(name = "employeeId")
+    @Column(name = "employeeid")
     private long employeeId;
 
     //NOT FINISHED
