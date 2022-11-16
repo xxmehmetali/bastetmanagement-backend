@@ -1,6 +1,8 @@
 package com.bastet.bastetmanagement.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonIgnoreType;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -16,27 +18,28 @@ import java.util.UUID;
 //@Data
 @AllArgsConstructor
 @NoArgsConstructor
-@JsonIgnoreProperties({"hibernateLazyInitializer","handler","projects"})
+//@JsonIgnoreProperties({"hibernateLazyInitializer","handler","projects"})
 @Getter
 @Setter
 public class Corporation {
     @Id
     @Column(name="id")
     @Type(type="org.hibernate.type.UUIDCharType")
-    private UUID uuid = UUID.randomUUID();
+    private UUID id = UUID.randomUUID();
 
     private String name;
     private String description;
     private String taxNumber;
     private String foundationDate;
 
-    @OneToMany(mappedBy = "corporation", fetch = FetchType.LAZY)
-     private List<Project> projects;
+    @OneToMany(mappedBy = "corporation")
+    @JsonIgnore
+    private List<Project> projects;
 
     @Override
     public String toString() {
         return "Corporation{" +
-                "uuid=" + uuid +
+                "uuid=" + id +
                 ", name='" + name + '\'' +
                 ", description='" + description + '\'' +
                 ", taxNumber='" + taxNumber + '\'' +

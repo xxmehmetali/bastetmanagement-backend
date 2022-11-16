@@ -18,7 +18,7 @@ public class Applicant {
     @Id
     @Column(name="id")
     @Type(type="org.hibernate.type.UUIDCharType")
-    private UUID uuid = UUID.randomUUID();
+    private UUID id = UUID.randomUUID();
 
     @Column(name = "name")
     private String name;
@@ -29,10 +29,10 @@ public class Applicant {
     @Column(name = "address")
     private String address;
 
-    @Column(name = "phoneNumber")
+    @Column(name = "phonenumber")
     private String phoneNumber;
 
-    @Column(name = "nationalId")
+    @Column(name = "nationalid")
     private String nationalId;
 
     //bak

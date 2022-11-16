@@ -17,7 +17,7 @@ public class Context {
     @Id
     @Column(name="id")
     @Type(type="org.hibernate.type.UUIDCharType")
-    private UUID uuid = UUID.randomUUID();
+    private UUID id = UUID.randomUUID();
 
     @Column(name = "name")
     private String name;
@@ -26,7 +26,6 @@ public class Context {
     private String description;
 
     //NOT FINISHED "FK IMPL"
-    @Column(name = "project")
-    private String project;
+
 
 }
