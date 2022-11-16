@@ -1,28 +1,37 @@
 package com.bastet.bastetmanagement.models;
 
 import lombok.AllArgsConstructor;
-import lombok.Data;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 import javax.persistence.*;
 import java.util.UUID;
 
 @Entity
 @Table(name = "Projects")
-@Data
+//@Data
 @AllArgsConstructor
 @NoArgsConstructor
 public class Project {
     @Id
     @Column(name="id")
-    private UUID uuid = UUID.randomUUID();
+    @Getter private UUID uuid = UUID.randomUUID();
 
     @Column(name = "occupation")
-    private String occupation;
+    @Getter @Setter private String occupation;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "corporation")
-    private Corporation corporation;
+    @Getter @Setter private Corporation corporation;
 
-    //NOT FINISHED
+    @Override
+    public String toString() {
+        return "Project{" +
+                "uuid=" + uuid +
+                ", occupation='" + occupation + '\'' +
+                ", corporation=" + corporation +
+                '}';
+    }
+//NOT FINISHED
 }
