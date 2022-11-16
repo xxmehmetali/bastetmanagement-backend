@@ -1,20 +1,25 @@
 package com.bastet.bastetmanagement.models;
 
 import lombok.AllArgsConstructor;
-import lombok.Data;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
+import org.hibernate.annotations.Type;
 
 import javax.persistence.*;
 import java.util.UUID;
 
 @Entity
 @Table(name = "Projects")
-@Data
+//@Data
 @AllArgsConstructor
 @NoArgsConstructor
+@Getter
+@Setter
 public class Project {
     @Id
     @Column(name="id")
+    @Type(type="org.hibernate.type.UUIDCharType")
     private UUID uuid = UUID.randomUUID();
 
     @Column(name = "occupation")
@@ -24,5 +29,13 @@ public class Project {
     @JoinColumn(name = "corporation")
     private Corporation corporation;
 
-    //NOT FINISHED
+    @Override
+    public String toString() {
+        return "Project{" +
+                "uuid=" + uuid +
+                ", occupation='" + occupation + '\'' +
+                ", corporation=" + corporation +
+                '}';
+    }
+//NOT FINISHED
 }
