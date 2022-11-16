@@ -5,6 +5,7 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.hibernate.annotations.Type;
 
 import javax.persistence.*;
 import java.util.List;
@@ -16,18 +17,21 @@ import java.util.UUID;
 @AllArgsConstructor
 @NoArgsConstructor
 @JsonIgnoreProperties({"hibernateLazyInitializer","handler","projects"})
+@Getter
+@Setter
 public class Corporation {
     @Id
     @Column(name="id")
-    @Getter private UUID uuid = UUID.randomUUID();
+    @Type(type="org.hibernate.type.UUIDCharType")
+    private UUID uuid = UUID.randomUUID();
 
-    @Getter @Setter private String name;
-    @Getter @Setter private String description;
-    @Getter @Setter private String taxNumber;
-    @Getter @Setter private String foundationDate;
+    private String name;
+    private String description;
+    private String taxNumber;
+    private String foundationDate;
 
     @OneToMany(mappedBy = "corporation", fetch = FetchType.LAZY)
-    @Getter @Setter private List<Project> projects;
+     private List<Project> projects;
 
     @Override
     public String toString() {

@@ -4,6 +4,7 @@ import com.bastet.bastetmanagement.core.enums.Genders;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.hibernate.annotations.Type;
 import org.hibernate.type.CurrencyType;
 
 import javax.persistence.*;
@@ -18,6 +19,7 @@ import java.util.UUID;
 public class Employee {
     @Id
     @Column(name="id")
+    @Type(type="org.hibernate.type.UUIDCharType")
     private UUID uuid = UUID.randomUUID();
 
     @Column(name = "name")

@@ -4,6 +4,7 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.hibernate.annotations.Type;
 
 import javax.persistence.*;
 import java.util.UUID;
@@ -13,17 +14,20 @@ import java.util.UUID;
 //@Data
 @AllArgsConstructor
 @NoArgsConstructor
+@Getter
+@Setter
 public class Project {
     @Id
     @Column(name="id")
-    @Getter private UUID uuid = UUID.randomUUID();
+    @Type(type="org.hibernate.type.UUIDCharType")
+    private UUID uuid = UUID.randomUUID();
 
     @Column(name = "occupation")
-    @Getter @Setter private String occupation;
+    private String occupation;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "corporation")
-    @Getter @Setter private Corporation corporation;
+    private Corporation corporation;
 
     @Override
     public String toString() {
