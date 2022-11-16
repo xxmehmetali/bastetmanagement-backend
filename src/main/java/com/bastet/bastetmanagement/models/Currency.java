@@ -5,16 +5,17 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.util.UUID;
 
 @Data
 @Entity
 @AllArgsConstructor
 @NoArgsConstructor
-@Table(name = "TrainingSessions")
+@Table(name = "Currency")
 public class Currency {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
+    @Column(name="id")
+    private UUID uuid = UUID.randomUUID();
 
     @Column(name = "currencyName ")
     private String currencyName ;

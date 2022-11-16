@@ -12,17 +12,23 @@ import java.util.UUID;
 @Entity
 @AllArgsConstructor
 @NoArgsConstructor
-@Table(name = "TrainingSessions")
-public class TrainingSession {
+@Table(name = "Meetings")
+public class Meeting {
     @Id
     @Column(name="id")
     private UUID uuid = UUID.randomUUID();
 
-    @Column(name = "name")
-    private String name;
+    @Column(name = "meetingOwner")
+    private long meetingOwner;
 
-    @Column(name = "description")
-    private String description;
+    @Column(name = "attendants")
+    private long attendants;
+
+    @Column(name = "meetingPlatform")
+    private long meetingPlatform;
+
+    @Column(name = "meetingUrl")
+    private long meetingUrl;
 
     @Column(name = "beginHour")
     private Date beginHour;
@@ -31,14 +37,4 @@ public class TrainingSession {
     private Date endHour;
 
     //NOT FINISHED
-
-    @Column(name = "educator")
-    private long educator;
-
-    @Column(name = "attendants")
-    private long attendants;
-
-    @Column(name = "platform")
-    private long platform;
-
 }

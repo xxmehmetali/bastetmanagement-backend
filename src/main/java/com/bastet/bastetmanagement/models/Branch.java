@@ -15,8 +15,8 @@ import java.util.UUID;
 public class Branch {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
+    @Column(name="id")
+    private UUID uuid = UUID.randomUUID();
 
     @Column(name = "name")
     private String name;

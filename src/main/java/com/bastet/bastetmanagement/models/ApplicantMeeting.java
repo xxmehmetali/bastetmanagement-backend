@@ -1,20 +1,24 @@
 package com.bastet.bastetmanagement.models;
 
-import lombok.*;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import java.util.UUID;
 
-@Entity
-@Table
 @Data
+@Entity
 @AllArgsConstructor
 @NoArgsConstructor
-public class AssesmentStatus {
+@Table(name = "ApplicantMeetings")
+public class ApplicantMeeting {
     @Id
     @Column(name="id")
     private UUID uuid = UUID.randomUUID();
 
     @Column(name = "code")
     private String code;
+
+
 }
