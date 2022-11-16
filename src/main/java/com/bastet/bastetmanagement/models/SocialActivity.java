@@ -6,6 +6,7 @@ import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import java.util.Date;
+import java.util.UUID;
 
 @Entity
 @Table(name = "SocialActivities")
@@ -14,8 +15,8 @@ import java.util.Date;
 @NoArgsConstructor
 public class SocialActivity {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
+    @Column(name="id")
+    private UUID uuid = UUID.randomUUID();
 
     @Column(name = "name")
     private String name;

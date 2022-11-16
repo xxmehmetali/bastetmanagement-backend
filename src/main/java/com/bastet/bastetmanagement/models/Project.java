@@ -5,6 +5,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.util.UUID;
 
 @Entity
 @Table(name = "Projects")
@@ -13,14 +14,15 @@ import javax.persistence.*;
 @NoArgsConstructor
 public class Project {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
+    @Column(name="id")
+    private UUID uuid = UUID.randomUUID();
 
     @Column(name = "occupation")
     private String occupation;
 
-    @Column(name = "corporation")
-    private long corporation;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "corporation")
+    private Corporation corporation;
 
     //NOT FINISHED
 }

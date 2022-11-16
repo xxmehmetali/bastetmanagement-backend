@@ -6,6 +6,7 @@ import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import java.util.Date;
+import java.util.UUID;
 
 @Data
 @Entity
@@ -14,8 +15,8 @@ import java.util.Date;
 @Table(name = "Dayoffs")
 public class Dayoff {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
+    @Column(name="id")
+    private UUID uuid = UUID.randomUUID();
 
     @Column(name = "beginDate")
     private Date beginDate;

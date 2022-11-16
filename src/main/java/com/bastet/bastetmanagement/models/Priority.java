@@ -3,16 +3,17 @@ package com.bastet.bastetmanagement.models;
 import lombok.*;
 
 import javax.persistence.*;
+import java.util.UUID;
 
 @Entity
-@Table
+@Table(name="Priorities")
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
 public class Priority {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
+    @Column(name="id")
+    private UUID uuid = UUID.randomUUID();
 
     @Column(name = "code")
     private String code;
