@@ -5,18 +5,17 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.hibernate.annotations.Type;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
+import java.util.List;
 import java.util.UUID;
 
 @Entity
-@Table(name = "SocialActivityType")
-@Data
+@Table(name = "SocialActivityTypes")
+@Getter
+@Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class SocialActivitiyType {
+public class SocialActivityType {
     @Id
     @Column(name="id")
     @Type(type="org.hibernate.type.UUIDCharType")

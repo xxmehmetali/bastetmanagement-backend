@@ -1,9 +1,11 @@
 package com.bastet.bastetmanagement.models;
 
 import lombok.*;
+import org.hibernate.annotations.Fetch;
 import org.hibernate.annotations.Type;
 
 import javax.persistence.*;
+import java.util.List;
 import java.util.UUID;
 
 @Entity
@@ -22,4 +24,9 @@ public class ExpenseType {
 
     @Column(name = "description")
     private String description;
+
+    @OneToMany(fetch = FetchType.LAZY ,mappedBy = "expenseType")
+    private List<Expense> expenses;
+
+
 }

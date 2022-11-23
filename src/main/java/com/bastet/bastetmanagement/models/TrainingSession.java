@@ -39,12 +39,12 @@ public class TrainingSession {
     @JoinColumn(name = "educator")
     private Employee educator;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToMany(fetch = FetchType.LAZY)
     @JoinColumn(name = "attendants")
     private List<Employee> attendants;
 
-
-    @Column(name = "platform")
-    private long platform;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "platform")
+    private MeetingPlatform platform;
 
 }

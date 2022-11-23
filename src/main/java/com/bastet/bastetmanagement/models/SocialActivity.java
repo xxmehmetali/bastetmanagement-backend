@@ -34,7 +34,7 @@ public class SocialActivity {
     private String place;
 
     @OneToOne
-    @JoinColumn(name = "expense ")
+    @JoinColumn(name = "expense")
     private Expense expense ;
 
     @ManyToMany(cascade = CascadeType.ALL, mappedBy = "socialActivities", fetch = FetchType.LAZY)

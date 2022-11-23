@@ -26,7 +26,4 @@ public class Currency {
 
     @Column(name = "currencySymbol")
     private String currencySymbol ;
-
-    @OneToMany(mappedBy = "expenseCurrencyType", fetch = FetchType.LAZY)
-    private List<Expense> expenses;
 }

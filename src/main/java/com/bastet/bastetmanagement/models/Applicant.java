@@ -1,6 +1,7 @@
 package com.bastet.bastetmanagement.models;
 
 import com.bastet.bastetmanagement.core.enums.Genders;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -37,6 +38,7 @@ public class Applicant {
 
     //bak
     @Column(name = "gender")
+    @Enumerated(EnumType.STRING)
     private Genders gender;
 
     @JoinColumn(name = "CV")
@@ -56,8 +58,8 @@ public class Applicant {
     @Column(name = "technicalReview")
     private long technicalReview;
 
-    @Column(name = "meeting ")
-    private long meeting ;
-
-    //NOT FINISHED
+    @OneToOne()
+   // @JoinColumn(name = "applicantMeeting")
+    @JsonIgnore
+    private ApplicantMeeting applicantMeeting ;
 }

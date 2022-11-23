@@ -22,5 +22,7 @@ public class ApplicantMeeting {
     @Column(name = "code")
     private String code;
 
-
+    @OneToOne()
+    @JoinColumn(name="applicant")
+    private Applicant applicant;
 }
