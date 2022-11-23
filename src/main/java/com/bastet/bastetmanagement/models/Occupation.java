@@ -9,7 +9,8 @@ import java.util.UUID;
 
 @Entity
 @Table(name="Occupations")
-@Data
+@Getter
+@Setter
 @AllArgsConstructor
 @NoArgsConstructor
 public class Occupation {

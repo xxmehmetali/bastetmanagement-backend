@@ -8,7 +8,8 @@ import java.util.UUID;
 
 @Entity
 @Table(name="Priorities")
-@Data
+@Getter
+@Setter
 @AllArgsConstructor
 @NoArgsConstructor
 public class Priority {

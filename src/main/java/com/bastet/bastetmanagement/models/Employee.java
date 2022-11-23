@@ -3,9 +3,7 @@ package com.bastet.bastetmanagement.models;
 import com.bastet.bastetmanagement.core.enums.Genders;
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 import org.hibernate.annotations.Fetch;
 import org.hibernate.annotations.Type;
 import org.hibernate.type.CurrencyType;
@@ -13,7 +11,8 @@ import org.hibernate.type.CurrencyType;
 import javax.persistence.*;
 import java.util.*;
 
-@Data
+@Getter
+@Setter
 @Entity
 @AllArgsConstructor
 @NoArgsConstructor

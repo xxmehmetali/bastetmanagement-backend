@@ -2,9 +2,7 @@ package com.bastet.bastetmanagement.models;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 import org.hibernate.annotations.Type;
 
 import javax.persistence.*;
@@ -12,7 +10,8 @@ import java.util.*;
 
 @Entity
 @Table(name = "SocialActivities")
-@Data
+@Getter
+@Setter
 @AllArgsConstructor
 @NoArgsConstructor
 public class SocialActivity {
@@ -42,6 +41,6 @@ public class SocialActivity {
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "socialActivityType")
-    private SocialActivitiyType socialActivitiyType;
+    private SocialActivityType socialActivitiyType;
     //NOT FINISHED
 }

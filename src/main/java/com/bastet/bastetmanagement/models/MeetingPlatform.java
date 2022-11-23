@@ -9,7 +9,8 @@ import java.util.UUID;
 
 @Entity
 @Table(name="MeetingPlatforms")
-@Data
+@Getter
+@Setter
 @AllArgsConstructor
 @NoArgsConstructor
 public class MeetingPlatform {
