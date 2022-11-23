@@ -32,8 +32,8 @@ public class Corporation {
     private String taxNumber;
     private String foundationDate;
 
-    @OneToMany(mappedBy = "corporation")
     @JsonIgnore
+    @OneToMany(mappedBy = "corporation", fetch = FetchType.LAZY)
     private List<Project> projects;
 
     @Override

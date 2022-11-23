@@ -1,5 +1,7 @@
 package com.bastet.bastetmanagement.models;
 
+import com.bastet.bastetmanagement.core.enums.Priorities;
+import com.bastet.bastetmanagement.core.enums.TaskStatuses;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -37,15 +39,26 @@ import java.util.UUID;
 
         //KEY RELATIONS
         @Column(name = "taskStatus")
-        private int taskStatus;
+        @Enumerated(EnumType.STRING)
+        private TaskStatuses taskStatus;
+
         @Column(name = "priority")
-        private int priority;
-        @Column(name = "assignedFrom")
-        private int assignedFrom;
-        @Column(name = "assignedTo")
-        private int assignedTo;
-        @Column(name = "reviewer")
-        private int reviewer;
-        @Column(name = "context")
-        private int context;
+        @Enumerated(EnumType.STRING)
+        private Priorities priority;
+
+        @JoinColumn(name = "assignedFrom")
+        @OneToOne
+        private Employee assignedFrom;
+
+        @JoinColumn(name = "assignedTo")
+        @OneToOne
+        private Employee assignedTo;
+
+        @JoinColumn(name = "reviewer")
+        @OneToOne
+        private Employee reviewer;
+
+        @JoinColumn(name = "context")
+        @ManyToOne
+        private Context context;
     }

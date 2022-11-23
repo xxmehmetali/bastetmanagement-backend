@@ -4,6 +4,7 @@ import lombok.*;
 import org.hibernate.annotations.Type;
 
 import javax.persistence.*;
+import java.util.List;
 import java.util.UUID;
 
 @Entity
@@ -25,4 +26,7 @@ public class MeetingPlatform {
 
     @Column(name = "baseUrl")
     private String baseUrl;
+
+    @OneToMany(mappedBy = "meetingPlatform", fetch = FetchType.LAZY)
+    private List<Meeting> meetings;
 }

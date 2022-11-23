@@ -25,8 +25,9 @@ public class Department {
     @Column(name = "description")
     private String description;
 
-    @Column(name = "departmentResponsible")
-    private long departmentResponsible;
+    @JoinColumn(name = "departmentResponsible")
+    @OneToOne
+    private Employee departmentResponsible;
 
     //NOT FINISHED
 }

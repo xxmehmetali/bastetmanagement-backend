@@ -26,8 +26,9 @@ public class Meeting {
     @Column(name = "attendants")
     private long attendants;
 
-    @Column(name = "meetingPlatform")
-    private long meetingPlatform;
+    @JoinColumn(name = "meetingPlatform")
+    @ManyToOne
+    private MeetingPlatform meetingPlatform;
 
     @Column(name = "meetingUrl")
     private long meetingUrl;

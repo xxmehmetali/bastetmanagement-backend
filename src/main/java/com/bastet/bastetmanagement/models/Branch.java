@@ -6,6 +6,7 @@ import lombok.NoArgsConstructor;
 import org.hibernate.annotations.Type;
 
 import javax.persistence.*;
+import java.util.List;
 import java.util.UUID;
 
 @Data
@@ -32,5 +33,7 @@ public class Branch {
     @Column(name = "address")
     private String address;
 
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "branch")
+    private List<Employee> employees;
 
 }

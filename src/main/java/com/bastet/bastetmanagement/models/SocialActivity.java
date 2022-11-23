@@ -1,13 +1,14 @@
 package com.bastet.bastetmanagement.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.hibernate.annotations.Type;
 
 import javax.persistence.*;
-import java.util.Date;
-import java.util.UUID;
+import java.util.*;
 
 @Entity
 @Table(name = "SocialActivities")
@@ -35,8 +36,8 @@ public class SocialActivity {
     @Column(name = "expense ")
     private long expense ;
 
-    @Column(name = "attendants ")
-    private long attendants ;
+    @ManyToMany(cascade = CascadeType.ALL, mappedBy = "socialActivities", fetch = FetchType.LAZY)
+    private List<Employee> employees = new ArrayList<>();
 
     //NOT FINISHED
 }

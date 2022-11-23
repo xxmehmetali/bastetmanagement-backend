@@ -5,7 +5,9 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.hibernate.annotations.Type;
 
+
 import javax.persistence.*;
+import java.util.List;
 import java.util.UUID;
 
 @Data
@@ -19,9 +21,12 @@ public class Currency {
     @Type(type="org.hibernate.type.UUIDCharType")
     private UUID id = UUID.randomUUID();
 
-    @Column(name = "currencyName")
-    private String currencyName;
+    @Column(name = "currencyName ")
+    private String currencyName ;
 
     @Column(name = "currencySymbol")
-    private String currencySymbol;
+    private String currencySymbol ;
+
+    @OneToMany(mappedBy = "expenseCurrencyType", fetch = FetchType.LAZY)
+    private List<Expense> expenses;
 }

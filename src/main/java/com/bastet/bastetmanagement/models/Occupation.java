@@ -4,6 +4,7 @@ import lombok.*;
 import org.hibernate.annotations.Type;
 
 import javax.persistence.*;
+import java.util.List;
 import java.util.UUID;
 
 @Entity
@@ -22,5 +23,8 @@ public class Occupation {
 
     @Column(name = "detail")
     private String detail;
+
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "occupation")
+    private List<Employee> employees;
 
 }

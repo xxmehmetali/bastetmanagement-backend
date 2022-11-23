@@ -1,6 +1,8 @@
 package com.bastet.bastetmanagement.models;
 
 import com.bastet.bastetmanagement.core.enums.Genders;
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -8,8 +10,7 @@ import org.hibernate.annotations.Type;
 import org.hibernate.type.CurrencyType;
 
 import javax.persistence.*;
-import java.util.Date;
-import java.util.UUID;
+import java.util.*;
 
 @Data
 @Entity
@@ -41,7 +42,8 @@ public class Employee {
     private Genders gender;
 
     @Column(name = "occupation")
-    private Genders occupation;
+    @ManyToOne
+    private Occupation occupation;
 
     @Column(name = "salaryAmount")
     private int salaryAmount;
@@ -55,11 +57,16 @@ public class Employee {
     @Column(name = "endDate")
     private Date endDate;
 
-    @Column(name = "branch")
-    private long branch;
+    @JoinColumn(name = "branch")
+    @ManyToOne
+    private Branch branch;
 
     @Column(name = "department")
     private long department;
+
+    @ManyToMany(cascade = CascadeType.ALL)
+    @JsonIgnore
+    private List<SocialActivity> socialActivities = new ArrayList<>();
 
     //NOT FINISHED
 }
