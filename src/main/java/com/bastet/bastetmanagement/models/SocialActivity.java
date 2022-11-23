@@ -33,11 +33,15 @@ public class SocialActivity {
     @Column(name = "place")
     private String place;
 
-    @Column(name = "expense ")
-    private long expense ;
+    @OneToOne
+    @JoinColumn(name = "expense ")
+    private Expense expense ;
 
     @ManyToMany(cascade = CascadeType.ALL, mappedBy = "socialActivities", fetch = FetchType.LAZY)
     private List<Employee> employees = new ArrayList<>();
 
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "socialActivityType")
+    private SocialActivitiyType socialActivitiyType;
     //NOT FINISHED
 }

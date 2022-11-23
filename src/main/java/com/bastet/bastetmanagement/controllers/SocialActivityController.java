@@ -17,7 +17,6 @@ public class SocialActivityController {
 
     @Autowired
     private SocialActivityDao socialActivityDao;
-
     @Autowired
     private EmployeeDao employeeDao;
 

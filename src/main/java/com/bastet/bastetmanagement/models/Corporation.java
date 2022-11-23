@@ -35,7 +35,6 @@ public class Corporation {
     @JsonIgnore
     @OneToMany(mappedBy = "corporation", fetch = FetchType.LAZY)
     private List<Project> projects;
-
     @Override
     public String toString() {
         return "Corporation{" +

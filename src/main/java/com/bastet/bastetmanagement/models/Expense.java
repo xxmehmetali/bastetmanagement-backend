@@ -33,16 +33,18 @@ public class Expense {
     @Column(name = "expenseAmount")
     private Double expenseAmount;
 
+    @ManyToOne(fetch = FetchType.LAZY, cascade= CascadeType.ALL)
     @JoinColumn(name = "expenseCurrencyType")
-    @ManyToOne
     private Currency expenseCurrencyType;
 
     @Column(name = "vaucherNo")
     private Double vaucherNo;
 
-    @Column(name = "expenseType")
-    private String expenseType;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "expenseType")
+    private ExpenseType expenseType;
 
     @Column(name = "spentDateTime")
     private String spentDateTime;
+
 }
