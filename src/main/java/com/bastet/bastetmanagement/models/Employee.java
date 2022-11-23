@@ -6,6 +6,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.hibernate.annotations.Fetch;
 import org.hibernate.annotations.Type;
 import org.hibernate.type.CurrencyType;
 
@@ -68,5 +69,12 @@ public class Employee {
     @JsonIgnore
     private List<SocialActivity> socialActivities = new ArrayList<>();
 
+    @JsonIgnore
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "spendedBy")
+    private List<Expense> expenses;
+
+    @JsonIgnore
+    @OneToMany(fetch = FetchType.LAZY)
+    private List<Dayoff> dayoffs;
     //NOT FINISHED
 }

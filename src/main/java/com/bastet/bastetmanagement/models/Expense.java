@@ -1,14 +1,19 @@
 package com.bastet.bastetmanagement.models;
 
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 import org.hibernate.annotations.Type;
 
-import javax.persistence.Column;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
+import javax.persistence.*;
 
 import java.util.UUID;
 
+@Data
+@Entity
+@AllArgsConstructor
+@NoArgsConstructor
+@Table(name = "Expenses")
 public class Expense {
     @Id
     @Column(name="id")
@@ -21,8 +26,9 @@ public class Expense {
     @Column(name = "description")
     private String description;
 
-    @Column(name = "spendedBy")
-    private String spendedBy;
+    @ManyToOne
+    @JoinColumn(name = "spendedBy")
+    private Employee spendedBy;
 
     @Column(name = "expenseAmount")
     private Double expenseAmount;

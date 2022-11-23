@@ -39,8 +39,9 @@ public class Applicant {
     @Column(name = "gender")
     private Genders gender;
 
-    @Column(name = "CV")
-    private String CV;
+    @JoinColumn(name = "CV")
+    @OneToOne(fetch = FetchType.LAZY)
+    private Cv CV;
 
     //bak
     @Column(name = "hrAssessmentStatus")

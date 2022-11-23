@@ -1,40 +1,35 @@
 package com.bastet.bastetmanagement.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.hibernate.annotations.Type;
+import org.springframework.web.multipart.MultipartFile;
 
 import javax.persistence.*;
-import java.util.Date;
 import java.util.UUID;
 
 @Data
 @Entity
 @AllArgsConstructor
 @NoArgsConstructor
-@Table(name = "Dayoffs")
-public class Dayoff {
+@Table(name = "Cvs")
+public class Cv {
     @Id
     @Column(name="id")
     @Type(type="org.hibernate.type.UUIDCharType")
     private UUID id = UUID.randomUUID();
 
-    @Column(name = "begindate")
-    private Date beginDate;
+    @Column(name = "cv")
+    private MultipartFile cv;
 
-    @Column(name = "enddate")
-    private Date endDate;
+    @Column(name = "cvKeywords")
+    private String CvKeywords;
 
-    @Column(name = "ispaid")
-    private Boolean isPaid;
+    @JsonIgnore
+    @OneToOne(mappedBy = "CV")
+    private Applicant applicant;
 
-    @Column(name = "reason")
-    private String reason;
 
-    @ManyToOne
-    @JoinColumn(name = "employee")
-    private Employee employee;
-
-    //NOT FINISHED
 }
