@@ -1,6 +1,7 @@
 package com.bastet.bastetmanagement.models;
 
 import lombok.*;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.hibernate.annotations.Type;
 
 import javax.persistence.*;
@@ -24,4 +25,8 @@ public class SocialActivityType {
 
     @Column(name = "description")
     private String description;
+
+    @OneToMany(mappedBy = "socialActivityType")
+    @JsonIgnore
+    private List<SocialActivity> socialActivities;
 }

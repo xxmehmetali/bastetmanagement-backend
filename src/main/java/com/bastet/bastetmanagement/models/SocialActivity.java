@@ -41,6 +41,6 @@ public class SocialActivity {
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "socialActivityType")
-    private SocialActivityType socialActivitiyType;
+    private SocialActivityType socialActivityType;
     //NOT FINISHED
 }
