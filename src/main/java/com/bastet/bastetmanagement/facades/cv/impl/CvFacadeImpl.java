@@ -1,4 +1,8 @@
 package com.bastet.bastetmanagement.facades.cv.impl;
 
-public class CvFacadeImpl {
+import com.bastet.bastetmanagement.facades.cv.CvFacade;
+import org.springframework.stereotype.Component;
+
+@Component
+public class CvFacadeImpl implements CvFacade {
 }

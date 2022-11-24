@@ -1,4 +1,8 @@
 package com.bastet.bastetmanagement.facades.applicant.impl;
 
-public class ApplicantFacadeImpl {
+import com.bastet.bastetmanagement.facades.applicant.ApplicantFacade;
+import org.springframework.stereotype.Component;
+
+@Component
+public class ApplicantFacadeImpl implements ApplicantFacade {
 }

@@ -1,4 +1,8 @@
 package com.bastet.bastetmanagement.facades.context.impl;
 
-public class ContextFacadeImpl {
+import com.bastet.bastetmanagement.facades.context.ContextFacade;
+import org.springframework.stereotype.Component;
+
+@Component
+public class ContextFacadeImpl implements ContextFacade {
 }

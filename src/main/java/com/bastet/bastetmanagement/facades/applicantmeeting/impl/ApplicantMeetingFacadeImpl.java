@@ -1,4 +1,8 @@
 package com.bastet.bastetmanagement.facades.applicantmeeting.impl;
 
-public class ApplicantMeetingFacadeImpl {
+import com.bastet.bastetmanagement.facades.applicantmeeting.ApplicantMeetingFacade;
+import org.springframework.stereotype.Component;
+
+@Component
+public class ApplicantMeetingFacadeImpl implements ApplicantMeetingFacade {
 }

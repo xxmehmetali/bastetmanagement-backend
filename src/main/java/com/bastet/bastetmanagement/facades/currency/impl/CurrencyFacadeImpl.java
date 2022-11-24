@@ -1,4 +1,8 @@
 package com.bastet.bastetmanagement.facades.currency.impl;
 
-public class CurrencyFacadeImpl {
+import com.bastet.bastetmanagement.facades.currency.CurrencyFacade;
+import org.springframework.stereotype.Component;
+
+@Component
+public class CurrencyFacadeImpl implements CurrencyFacade {
 }

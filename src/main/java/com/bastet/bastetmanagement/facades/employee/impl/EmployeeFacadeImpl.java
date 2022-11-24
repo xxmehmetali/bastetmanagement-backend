@@ -1,4 +1,8 @@
 package com.bastet.bastetmanagement.facades.employee.impl;
 
-public class EmployeeFacadeImpl {
+import com.bastet.bastetmanagement.facades.employee.EmployeeFacade;
+import org.springframework.stereotype.Component;
+
+@Component
+public class EmployeeFacadeImpl implements EmployeeFacade {
 }

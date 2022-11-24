@@ -1,4 +1,8 @@
 package com.bastet.bastetmanagement.facades.dayoff.impl;
 
-public class DayoffFacadeImpl {
+import com.bastet.bastetmanagement.facades.dayoff.DayoffFacade;
+import org.springframework.stereotype.Component;
+
+@Component
+public class DayoffFacadeImpl implements DayoffFacade {
 }

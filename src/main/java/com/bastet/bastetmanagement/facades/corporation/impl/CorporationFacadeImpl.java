@@ -1,4 +1,8 @@
 package com.bastet.bastetmanagement.facades.corporation.impl;
 
-public class CorporationFacadeImpl {
+import com.bastet.bastetmanagement.facades.corporation.CorporationFacade;
+import org.springframework.stereotype.Component;
+
+@Component
+public class CorporationFacadeImpl implements CorporationFacade {
 }

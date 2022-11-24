@@ -1,4 +1,9 @@
 package com.bastet.bastetmanagement.facades.department.impl;
 
-public class DepartmentFacadeImpl {
+import com.bastet.bastetmanagement.facades.department.DepartmentFacade;
+import org.springframework.stereotype.Component;
+
+@Component
+
+public class DepartmentFacadeImpl implements DepartmentFacade {
 }
