@@ -5,6 +5,7 @@ import org.hibernate.annotations.Type;
 
 import javax.persistence.*;
 import java.util.Date;
+import java.util.List;
 import java.util.UUID;
 
 @Getter
@@ -22,9 +23,6 @@ public class Meeting {
     @Column(name = "meetingOwner")
     private long meetingOwner;
 
-    @Column(name = "attendants")
-    private long attendants;
-
     @JoinColumn(name = "meetingPlatform")
     @ManyToOne
     private MeetingPlatform meetingPlatform;
@@ -37,6 +35,9 @@ public class Meeting {
 
     @Column(name = "endHour")
     private Date endHour;
+
+    @ManyToMany
+    private List<Employee> attendants;
 
     //NOT FINISHED
 }
