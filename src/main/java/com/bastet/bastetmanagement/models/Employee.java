@@ -39,6 +39,7 @@ public class Employee {
     private String nationalId;
 
     @Column(name = "gender")
+    @Enumerated(EnumType.STRING)
     private Genders gender;
 
     @JoinColumn(name = "occupation")
