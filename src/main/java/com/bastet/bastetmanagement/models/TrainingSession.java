@@ -1,15 +1,15 @@
 package com.bastet.bastetmanagement.models;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 import org.hibernate.annotations.Type;
 
 import javax.persistence.*;
 import java.util.Date;
+import java.util.List;
 import java.util.UUID;
 
-@Data
+@Getter
+@Setter
 @Entity
 @AllArgsConstructor
 @NoArgsConstructor
@@ -33,14 +33,17 @@ public class TrainingSession {
     private Date endHour;
 
     //NOT FINISHED
+//kaç educator olacak?
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "educator")
+    private Employee educator;
 
-    @Column(name = "educator")
-    private long educator;
+    @ManyToMany(fetch = FetchType.LAZY)
+    @JoinColumn(name = "attendants")
+    private List<Employee> attendants;
 
-    @Column(name = "attendants")
-    private long attendants;
-
-    @Column(name = "platform")
-    private long platform;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "platform")
+    private MeetingPlatform platform;
 
 }

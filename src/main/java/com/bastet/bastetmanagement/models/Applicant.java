@@ -1,15 +1,15 @@
 package com.bastet.bastetmanagement.models;
 
 import com.bastet.bastetmanagement.core.enums.Genders;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import lombok.*;
 import org.hibernate.annotations.Type;
 
 import javax.persistence.*;
 import java.util.UUID;
 
-@Data
+@Getter
+@Setter
 @Entity
 @AllArgsConstructor
 @NoArgsConstructor
@@ -37,10 +37,12 @@ public class Applicant {
 
     //bak
     @Column(name = "gender")
+    @Enumerated(EnumType.STRING)
     private Genders gender;
 
-    @Column(name = "CV")
-    private String CV;
+    @JoinColumn(name = "CV")
+    @OneToOne(fetch = FetchType.LAZY)
+    private Cv CV;
 
     //bak
     @Column(name = "hrAssessmentStatus")
@@ -55,8 +57,8 @@ public class Applicant {
     @Column(name = "technicalReview")
     private long technicalReview;
 
-    @Column(name = "meeting ")
-    private long meeting ;
-
-    //NOT FINISHED
+    @OneToOne()
+   // @JoinColumn(name = "applicantMeeting")
+    @JsonIgnore
+    private ApplicantMeeting applicantMeeting ;
 }

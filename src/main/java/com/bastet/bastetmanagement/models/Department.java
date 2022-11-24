@@ -1,14 +1,13 @@
 package com.bastet.bastetmanagement.models;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 import org.hibernate.annotations.Type;
 
 import javax.persistence.*;
 import java.util.UUID;
 
-@Data
+@Getter
+@Setter
 @Entity
 @AllArgsConstructor
 @NoArgsConstructor
@@ -25,8 +24,9 @@ public class Department {
     @Column(name = "description")
     private String description;
 
-    @Column(name = "departmentResponsible")
-    private long departmentResponsible;
+    @JoinColumn(name = "departmentResponsible")
+    @OneToOne
+    private Employee departmentResponsible;
 
     //NOT FINISHED
 }

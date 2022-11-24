@@ -1,9 +1,6 @@
 package com.bastet.bastetmanagement.models;
 
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 import org.hibernate.annotations.Type;
 
 import javax.persistence.*;
@@ -11,7 +8,8 @@ import java.util.UUID;
 
 @Entity
 @Table(name = "image")
-@Data
+@Getter
+@Setter
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor

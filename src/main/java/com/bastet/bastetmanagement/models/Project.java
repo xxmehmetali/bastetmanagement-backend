@@ -26,11 +26,12 @@ public class Project {
     @Column(name = "occupation")
     private String occupation;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "corporation")
     private Corporation corporation;
 
-
+    @OneToMany(mappedBy = "project", fetch = FetchType.LAZY)
+    private List<Context> contexts;
 
     @Override
     public String toString() {

@@ -1,15 +1,14 @@
 package com.bastet.bastetmanagement.models;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 import org.hibernate.annotations.Type;
 
 import javax.persistence.*;
 import java.util.Date;
 import java.util.UUID;
 
-@Data
+@Getter
+@Setter
 @Entity
 @AllArgsConstructor
 @NoArgsConstructor
@@ -32,8 +31,9 @@ public class Dayoff {
     @Column(name = "reason")
     private String reason;
 
-    @Column(name = "employeeid")
-    private long employeeId;
+    @ManyToOne
+    @JoinColumn(name = "employee")
+    private Employee employee;
 
     //NOT FINISHED
 }

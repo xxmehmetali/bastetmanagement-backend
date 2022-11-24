@@ -1,17 +1,17 @@
 package com.bastet.bastetmanagement.models;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+import lombok.*;
 import org.hibernate.annotations.Type;
 
 import javax.persistence.*;
-import java.util.Date;
-import java.util.UUID;
+import java.util.*;
 
 @Entity
 @Table(name = "SocialActivities")
-@Data
+@Getter
+@Setter
 @AllArgsConstructor
 @NoArgsConstructor
 public class SocialActivity {
@@ -32,11 +32,15 @@ public class SocialActivity {
     @Column(name = "place")
     private String place;
 
-    @Column(name = "expense ")
-    private long expense ;
+    @OneToOne
+    @JoinColumn(name = "expense")
+    private Expense expense ;
 
-    @Column(name = "attendants ")
-    private long attendants ;
+    @ManyToMany(cascade = CascadeType.ALL, mappedBy = "socialActivities", fetch = FetchType.LAZY)
+    private List<Employee> employees = new ArrayList<>();
 
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "socialActivityType")
+    private SocialActivityType socialActivitiyType;
     //NOT FINISHED
 }

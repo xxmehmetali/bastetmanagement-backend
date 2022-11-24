@@ -1,16 +1,16 @@
 package com.bastet.bastetmanagement.models;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 import org.hibernate.annotations.Type;
 
 import javax.persistence.*;
+import java.util.List;
 import java.util.UUID;
 
 @Entity
 @Table
-@Data
+@Getter
+@Setter
 @AllArgsConstructor
 @NoArgsConstructor
 public class Context {
@@ -26,6 +26,11 @@ public class Context {
     private String description;
 
     //NOT FINISHED "FK IMPL"
+    @ManyToOne
+    @JoinColumn(name = "project")
+    private Project project;
 
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "context")
+    private List<Task> tasks;
 
 }

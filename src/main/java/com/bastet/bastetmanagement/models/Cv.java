@@ -1,7 +1,9 @@
 package com.bastet.bastetmanagement.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.*;
 import org.hibernate.annotations.Type;
+import org.springframework.web.multipart.MultipartFile;
 
 import javax.persistence.*;
 import java.util.UUID;
@@ -11,17 +13,22 @@ import java.util.UUID;
 @Entity
 @AllArgsConstructor
 @NoArgsConstructor
-@Table(name = "ApplicantMeetings")
-public class ApplicantMeeting {
+@Table(name = "Cvs")
+public class Cv {
     @Id
     @Column(name="id")
     @Type(type="org.hibernate.type.UUIDCharType")
     private UUID id = UUID.randomUUID();
 
-    @Column(name = "code")
-    private String code;
+    @Column(name = "cv")
+    private MultipartFile cv;
 
-    @OneToOne()
-    @JoinColumn(name="applicant")
+    @Column(name = "cvKeywords")
+    private String CvKeywords;
+
+    @JsonIgnore
+    @OneToOne(mappedBy = "CV")
     private Applicant applicant;
+
+
 }
