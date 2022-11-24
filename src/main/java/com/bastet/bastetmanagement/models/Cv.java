@@ -21,7 +21,7 @@ public class Cv {
     private UUID id = UUID.randomUUID();
 
     @Column(name = "cv")
-    private MultipartFile cv;
+    private String  cv;
 
     @Column(name = "cvKeywords")
     private String CvKeywords;

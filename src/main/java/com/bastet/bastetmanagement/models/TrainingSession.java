@@ -35,11 +35,9 @@ public class TrainingSession {
     //NOT FINISHED
 //kaç educator olacak?
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "educator")
     private Employee educator;
 
     @ManyToMany(fetch = FetchType.LAZY)
-    @JoinColumn(name = "attendants")
     private List<Employee> attendants;
 
     @ManyToOne(fetch = FetchType.LAZY)

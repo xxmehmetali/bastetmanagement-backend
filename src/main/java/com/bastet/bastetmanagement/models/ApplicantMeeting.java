@@ -24,4 +24,8 @@ public class ApplicantMeeting {
     @OneToOne()
     @JoinColumn(name="applicant")
     private Applicant applicant;
+
+    @ManyToOne
+    @JoinColumn(name = "meetingPlatform")
+    private MeetingPlatform meetingPlatform;
 }

@@ -41,7 +41,7 @@ public class Employee {
     @Column(name = "gender")
     private Genders gender;
 
-    @Column(name = "occupation")
+    @JoinColumn(name = "occupation")
     @ManyToOne
     private Occupation occupation;
 
@@ -76,4 +76,12 @@ public class Employee {
     @OneToMany(fetch = FetchType.LAZY)
     private List<Dayoff> dayoffs;
     //NOT FINISHED
+
+    @ManyToMany(mappedBy = "attendants",fetch = FetchType.LAZY)
+    private List<TrainingSession> trainingSessions;
+
+    @ManyToMany(mappedBy = "attendants")
+    private List<Meeting> meetings;
+
+
 }
