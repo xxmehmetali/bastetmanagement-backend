@@ -1,4 +1,8 @@
 package com.bastet.bastetmanagement.services.meeting.impl;
 
-public class MeetingServiceImpl {
+import com.bastet.bastetmanagement.services.meeting.MeetingService;
+import org.springframework.stereotype.Service;
+
+@Service
+public class MeetingServiceImpl implements MeetingService {
 }

@@ -1,4 +1,8 @@
 package com.bastet.bastetmanagement.services.employee.impl;
 
-public class EmployeeServiceImpl {
+import com.bastet.bastetmanagement.services.employee.EmployeeService;
+import org.springframework.stereotype.Service;
+
+@Service
+public class EmployeeServiceImpl implements EmployeeService {
 }

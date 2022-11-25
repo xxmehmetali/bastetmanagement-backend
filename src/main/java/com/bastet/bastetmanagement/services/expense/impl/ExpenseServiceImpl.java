@@ -1,4 +1,8 @@
 package com.bastet.bastetmanagement.services.expense.impl;
 
-public class ExpenseServiceImpl {
+import com.bastet.bastetmanagement.services.expense.ExpenseService;
+import org.springframework.stereotype.Service;
+
+@Service
+public class ExpenseServiceImpl implements ExpenseService {
 }
