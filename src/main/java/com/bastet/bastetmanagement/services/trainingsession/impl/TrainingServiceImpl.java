@@ -1,4 +1,8 @@
 package com.bastet.bastetmanagement.services.trainingsession.impl;
 
-public class TrainingServiceImpl {
+import com.bastet.bastetmanagement.services.trainingsession.TrainingService;
+import org.springframework.stereotype.Service;
+
+@Service
+public class TrainingServiceImpl implements TrainingService {
 }

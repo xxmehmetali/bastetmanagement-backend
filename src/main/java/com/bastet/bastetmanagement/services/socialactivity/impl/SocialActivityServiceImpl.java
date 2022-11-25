@@ -1,4 +1,8 @@
 package com.bastet.bastetmanagement.services.socialactivity.impl;
 
-public class SocialActivityServiceImpl {
+import com.bastet.bastetmanagement.services.socialactivity.SocialActivityService;
+import org.springframework.stereotype.Service;
+
+@Service
+public class SocialActivityServiceImpl implements SocialActivityService {
 }
