@@ -1,4 +1,4 @@
-package com.bastet.bastetmanagement.core.imagemanager;
+package com.bastet.bastetmanagement.core.utilities.image.models;
 
 public class ImageUploadResponse {
     private String message;

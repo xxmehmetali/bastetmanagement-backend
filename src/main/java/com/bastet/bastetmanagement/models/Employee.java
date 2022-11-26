@@ -1,15 +1,19 @@
 package com.bastet.bastetmanagement.models;
 
 import com.bastet.bastetmanagement.core.enums.Genders;
-import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import lombok.*;
-import org.hibernate.annotations.Fetch;
+import com.sun.istack.NotNull;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 import org.hibernate.annotations.Type;
-import org.hibernate.type.CurrencyType;
 
 import javax.persistence.*;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
+import java.util.UUID;
 
 @Getter
 @Setter
@@ -24,6 +28,7 @@ public class Employee {
     private UUID id = UUID.randomUUID();
 
     @Column(name = "name")
+    @NotNull
     private String name;
 
     @Column(name = "surname")

@@ -1,6 +1,9 @@
-package com.bastet.bastetmanagement.core.imagemanager;
+package com.bastet.bastetmanagement.core.utilities.image;
 
-import com.bastet.bastetmanagement.models.Image;
+import com.bastet.bastetmanagement.core.utilities.image.ImageUtility;
+import com.bastet.bastetmanagement.core.utilities.image.dao.ImageRepository;
+import com.bastet.bastetmanagement.core.utilities.image.models.ImageUploadResponse;
+import com.bastet.bastetmanagement.core.utilities.image.models.Image;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -10,10 +13,12 @@ import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
 import java.util.Optional;
+import java.util.UUID;
 
 @RestController
 @RequestMapping(name = "/imageupload")
 public class ImageController {
+    //https://stackoverflow.com/questions/55993377/spring-storing-images-as-byte-arrays-in-database-and-retrieving-them
     @Autowired
     ImageRepository imageRepository;
 
@@ -22,6 +27,7 @@ public class ImageController {
             throws IOException {
 
         imageRepository.save(Image.builder()
+                        .id(new UUID(1,100))
                 .name(file.getOriginalFilename())
                 .type(file.getContentType())
                 .image(ImageUtility.compressImage(file.getBytes())).build());
@@ -36,6 +42,7 @@ public class ImageController {
         final Optional<Image> dbImage = imageRepository.findByName(name);
 
         return Image.builder()
+                .id(dbImage.get().getId())
                 .name(dbImage.get().getName())
                 .type(dbImage.get().getType())
                 .image(ImageUtility.decompressImage(dbImage.get().getImage())).build();
