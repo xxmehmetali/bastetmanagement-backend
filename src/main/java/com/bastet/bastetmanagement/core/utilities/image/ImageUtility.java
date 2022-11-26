@@ -1,4 +1,4 @@
-package com.bastet.bastetmanagement.core.imagemanager;
+package com.bastet.bastetmanagement.core.utilities.image;
 
 import java.io.ByteArrayOutputStream;
 import java.util.zip.Deflater;

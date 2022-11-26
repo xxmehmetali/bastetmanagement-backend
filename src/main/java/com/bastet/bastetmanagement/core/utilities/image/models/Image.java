@@ -1,4 +1,4 @@
-package com.bastet.bastetmanagement.models;
+package com.bastet.bastetmanagement.core.utilities.image.models;
 
 import lombok.*;
 import org.hibernate.annotations.Type;
