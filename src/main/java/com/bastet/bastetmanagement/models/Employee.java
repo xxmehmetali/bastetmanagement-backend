@@ -84,9 +84,11 @@ public class Employee {
     //NOT FINISHED
 
     @ManyToMany(mappedBy = "attendants",fetch = FetchType.LAZY)
+    @JsonIgnore
     private List<TrainingSession> trainingSessions;
 
     @ManyToMany(mappedBy = "attendants")
+    @JsonIgnore
     private List<Meeting> meetings;
 
 

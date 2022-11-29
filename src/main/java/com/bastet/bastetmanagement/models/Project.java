@@ -1,5 +1,6 @@
 package com.bastet.bastetmanagement.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -26,11 +27,12 @@ public class Project {
     @Column(name = "occupation")
     private String occupation;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "corporation")
     private Corporation corporation;
 
     @OneToMany(mappedBy = "project", fetch = FetchType.LAZY)
+    @JsonIgnore
     private List<Context> contexts;
 
     @Override
