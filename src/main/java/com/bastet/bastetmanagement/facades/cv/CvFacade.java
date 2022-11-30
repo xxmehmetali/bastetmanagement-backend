@@ -1,6 +1,6 @@
 package com.bastet.bastetmanagement.facades.cv;
 
-import com.bastet.bastetmanagement.core.utilities.results.DataResult;
+import com.bastet.bastetmanagement.core.utilities.results.dataresults.DataResult;
 import com.bastet.bastetmanagement.models.Cv;
 
 import java.util.List;

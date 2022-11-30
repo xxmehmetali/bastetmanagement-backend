@@ -1,9 +1,12 @@
 package com.bastet.bastetmanagement.models;
 
-import com.bastet.bastetmanagement.core.enums.Priorities;
-import com.bastet.bastetmanagement.core.enums.TaskStatuses;
+import com.bastet.bastetmanagement.core.enums.Priority;
+import com.bastet.bastetmanagement.core.enums.TaskStatus;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.*;
 import org.hibernate.annotations.Type;
+import org.springframework.data.annotation.CreatedDate;
+import org.springframework.data.annotation.LastModifiedDate;
 
 import javax.persistence.*;
 import java.util.Date;
@@ -30,20 +33,14 @@ public class Task{
     @Column(name = "tags")
     private String tags;
 
-    @Column(name = "createdAt")
-    private Date createdAt;
-
-    @Column(name = "updatedAt")
-    private Date updatedAt;
-
     //KEY RELATIONS
     @Column(name = "taskStatus")
     @Enumerated(EnumType.STRING)
-    private TaskStatuses taskStatus;
+    private TaskStatus taskStatus;
 
     @Column(name = "priority")
     @Enumerated(EnumType.STRING)
-    private Priorities priority;
+    private Priority priority;
 
     @JoinColumn(name = "assignedFrom")
     @OneToOne
@@ -60,4 +57,14 @@ public class Task{
     @JoinColumn(name = "context")
     @ManyToOne
     private Context context;
+
+    @Column(name = "createdAt")
+    @JsonIgnore
+    @CreatedDate
+    private Date createdAt;
+
+    @Column(name = "updatedAt")
+    @JsonIgnore
+    @LastModifiedDate
+    private Date updatedAt;
 }

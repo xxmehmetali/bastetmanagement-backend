@@ -4,6 +4,8 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.*;
 import org.hibernate.annotations.Type;
+import org.springframework.data.annotation.CreatedDate;
+import org.springframework.data.annotation.LastModifiedDate;
 
 import javax.persistence.*;
 import java.util.*;
@@ -42,5 +44,15 @@ public class SocialActivity {
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "socialActivityType")
     private SocialActivityType socialActivityType;
+
+    @Column(name = "createdAt")
+    @JsonIgnore
+    @CreatedDate
+    private Date createdAt;
+
+    @Column(name = "updatedAt")
+    @JsonIgnore
+    @LastModifiedDate
+    private Date updatedAt;
     //NOT FINISHED
 }

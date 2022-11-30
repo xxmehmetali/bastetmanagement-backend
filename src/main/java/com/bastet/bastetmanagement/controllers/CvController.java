@@ -1,8 +1,6 @@
 package com.bastet.bastetmanagement.controllers;
 
-import com.bastet.bastetmanagement.core.utilities.results.DataResult;
-import com.bastet.bastetmanagement.core.utilities.results.ErrorDataResult;
-import com.bastet.bastetmanagement.core.utilities.results.SuccessDataResult;
+import com.bastet.bastetmanagement.core.utilities.results.dataresults.DataResult;
 import com.bastet.bastetmanagement.facades.cv.CvFacade;
 import com.bastet.bastetmanagement.models.Cv;
 import org.springframework.web.bind.annotation.GetMapping;

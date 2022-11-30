@@ -1,11 +1,15 @@
 package com.bastet.bastetmanagement.models;
 
-import com.bastet.bastetmanagement.core.enums.Genders;
+import com.bastet.bastetmanagement.core.enums.AssesmentStatus;
+import com.bastet.bastetmanagement.core.enums.Gender;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.*;
 import org.hibernate.annotations.Type;
+import org.springframework.data.annotation.CreatedDate;
+import org.springframework.data.annotation.LastModifiedDate;
 
 import javax.persistence.*;
+import java.util.Date;
 import java.util.UUID;
 
 @Getter
@@ -38,7 +42,7 @@ public class Applicant {
     //bak
     @Column(name = "gender")
     @Enumerated(EnumType.STRING)
-    private Genders gender;
+    private Gender gender;
 
     @JoinColumn(name = "CV")
     @OneToOne(fetch = FetchType.LAZY)
@@ -46,19 +50,30 @@ public class Applicant {
 
     //bak
     @Column(name = "hrAssessmentStatus")
-    private long hrAssessmentStatus;
+    @Enumerated(EnumType.STRING)
+    private AssesmentStatus hrAssessmentStatus;
 
     @Column(name = "technicalAssessmentStatus")
-    private long technicalAssessmentStatus;
+    @Enumerated(EnumType.STRING)
+    private AssesmentStatus technicalAssessmentStatus;
 
     @Column(name = "hrReview")
-    private long hrReview;
+    private String hrReview;
 
     @Column(name = "technicalReview")
-    private long technicalReview;
+    private String technicalReview;
+
+    @Column(name = "createdAt")
+    @JsonIgnore
+    @CreatedDate
+    private Date createdAt;
+
+    @Column(name = "updatedAt")
+    @JsonIgnore
+    @LastModifiedDate
+    private Date updatedAt;
 
     @OneToOne()
-   // @JoinColumn(name = "applicantMeeting")
     @JsonIgnore
-    private ApplicantMeeting applicantMeeting ;
+    private ApplicantMeeting applicantMeeting;
 }

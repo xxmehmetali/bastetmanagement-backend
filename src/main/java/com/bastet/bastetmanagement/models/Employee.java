@@ -1,6 +1,6 @@
 package com.bastet.bastetmanagement.models;
 
-import com.bastet.bastetmanagement.core.enums.Genders;
+import com.bastet.bastetmanagement.core.enums.Gender;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.sun.istack.NotNull;
 import lombok.AllArgsConstructor;
@@ -8,6 +8,8 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.hibernate.annotations.Type;
+import org.springframework.data.annotation.CreatedDate;
+import org.springframework.data.annotation.LastModifiedDate;
 
 import javax.persistence.*;
 import java.util.ArrayList;
@@ -45,7 +47,7 @@ public class Employee {
 
     @Column(name = "gender")
     @Enumerated(EnumType.STRING)
-    private Genders gender;
+    private Gender gender;
 
     @JoinColumn(name = "occupation")
     @ManyToOne
@@ -90,6 +92,16 @@ public class Employee {
     @ManyToMany(mappedBy = "attendants")
     @JsonIgnore
     private List<Meeting> meetings;
+
+    @Column(name = "createdAt")
+    @JsonIgnore
+    @CreatedDate
+    private Date createdAt;
+
+    @Column(name = "updatedAt")
+    @JsonIgnore
+    @LastModifiedDate
+    private Date updatedAt;
 
 
 }

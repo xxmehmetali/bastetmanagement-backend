@@ -1,4 +1,4 @@
-package com.bastet.bastetmanagement.core.utilities.results;
+package com.bastet.bastetmanagement.core.utilities.results.baseresults;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
