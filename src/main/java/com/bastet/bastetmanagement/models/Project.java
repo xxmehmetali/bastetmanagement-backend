@@ -6,8 +6,11 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.hibernate.annotations.Type;
+import org.springframework.data.annotation.CreatedDate;
+import org.springframework.data.annotation.LastModifiedDate;
 
 import javax.persistence.*;
+import java.util.Date;
 import java.util.List;
 import java.util.UUID;
 
@@ -24,8 +27,8 @@ public class Project {
     @Type(type="org.hibernate.type.UUIDCharType")
     private UUID id = UUID.randomUUID();
 
-    @Column(name = "occupation")
-    private String occupation;
+    @Column(name = "name")
+    private String name;
 
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "corporation")
@@ -35,11 +38,21 @@ public class Project {
     @JsonIgnore
     private List<Context> contexts;
 
+    @Column(name = "createdAt")
+    @JsonIgnore
+    @CreatedDate
+    private Date createdAt;
+
+    @Column(name = "updatedAt")
+    @JsonIgnore
+    @LastModifiedDate
+    private Date updatedAt;
+
     @Override
     public String toString() {
         return "Project{" +
                 "uuid=" + id +
-                ", occupation='" + occupation + '\'' +
+                ", name='" + name + '\'' +
                 ", corporation=" + corporation +
                 '}';
     }

@@ -1,4 +1,4 @@
-package com.bastet.bastetmanagement.core.utilities.results;
+package com.bastet.bastetmanagement.core.utilities.results.dataresults;
 
 public class SuccessDataResult<T> extends DataResult<T> {
     public SuccessDataResult(T data, String message) {

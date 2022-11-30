@@ -1,5 +1,6 @@
-package com.bastet.bastetmanagement.core.utilities.results;
+package com.bastet.bastetmanagement.core.utilities.results.dataresults;
 
+import com.bastet.bastetmanagement.core.utilities.results.baseresults.Result;
 import lombok.Getter;
 import lombok.Setter;
 

@@ -1,4 +1,4 @@
-package com.bastet.bastetmanagement.core.utilities.results;
+package com.bastet.bastetmanagement.core.utilities.results.baseresults;
 
 public class SuccessResult extends Result{
     public SuccessResult() {

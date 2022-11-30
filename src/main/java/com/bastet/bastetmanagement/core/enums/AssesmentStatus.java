@@ -1,6 +1,6 @@
 package com.bastet.bastetmanagement.core.enums;
 
-public enum AssesmentStatuses {
+public enum AssesmentStatus {
     NOT_ASSESSED,
     NEGATIVE,
     HESITANT,
