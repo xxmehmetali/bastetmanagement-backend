@@ -25,10 +25,10 @@ public class Currency {
     private UUID id = UUID.randomUUID();
 
     @Column(name = "currencyName ")
-    private String currencyName ;
+    private String currencyName;
 
     @Column(name = "currencySymbol")
-    private String currencySymbol ;
+    private String currencySymbol;
 
     @Column(name = "createdAt")
     @JsonIgnore
