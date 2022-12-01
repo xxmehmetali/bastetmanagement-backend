@@ -26,9 +26,19 @@ public class ApplicantMeeting {
     @JoinColumn(name="applicant")
     private Applicant applicant;
 
+    @OneToOne()
+    @JoinColumn(name="meetingOwner")
+    private Employee meetingOwner;
+
     @ManyToOne
     @JoinColumn(name = "meetingPlatform")
     private MeetingPlatform meetingPlatform;
+
+    @Column(name = "beginHour")
+    private Date beginHour;
+
+    @Column(name = "endHour")
+    private Date endHour;
 
     @Column(name = "createdAt")
     @JsonIgnore

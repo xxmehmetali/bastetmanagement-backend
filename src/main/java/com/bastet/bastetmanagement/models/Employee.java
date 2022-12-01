@@ -56,8 +56,9 @@ public class Employee {
     @Column(name = "salaryAmount")
     private int salaryAmount;
 
-    @Column(name = "salaryCurrecyType")
-    private long salaryCurrecyType;
+    @JoinColumn(name = "salaryCurrecy")
+    @ManyToOne
+    private Currency salaryCurrecy;
 
     @Column(name = "startDate")
     private Date startDate;
@@ -84,10 +85,6 @@ public class Employee {
     @OneToMany(fetch = FetchType.LAZY)
     private List<Dayoff> dayoffs;
     //NOT FINISHED
-
-    @ManyToMany(mappedBy = "attendants",fetch = FetchType.LAZY)
-    @JsonIgnore
-    private List<TrainingSession> trainingSessions;
 
     @ManyToMany(mappedBy = "attendants")
     @JsonIgnore

@@ -22,10 +22,10 @@ public class Dayoff {
     @Type(type="org.hibernate.type.UUIDCharType")
     private UUID id = UUID.randomUUID();
 
-    @Column(name = "begindate")
+    @Column(name = "beginDate")
     private Date beginDate;
 
-    @Column(name = "enddate")
+    @Column(name = "endDate")
     private Date endDate;
 
     @Column(name = "ispaid")
