@@ -70,8 +70,9 @@ public class Employee {
     @ManyToOne
     private Branch branch;
 
-    @Column(name = "department")
-    private long department;
+    @JoinColumn(name = "department")
+    @ManyToOne
+    private Department department;
 
     @ManyToMany(cascade = CascadeType.ALL)
     @JsonIgnore

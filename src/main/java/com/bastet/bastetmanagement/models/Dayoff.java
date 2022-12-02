@@ -1,5 +1,6 @@
 package com.bastet.bastetmanagement.models;
 
+import com.bastet.bastetmanagement.core.enums.DayOffReason;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.*;
 import org.hibernate.annotations.Type;
@@ -32,12 +33,15 @@ public class Dayoff {
     private Boolean isPaid;
 
     @Column(name = "reason")
-    private String reason;
+    @Enumerated(EnumType.STRING)
+    private DayOffReason reason;
+
+    @Column(name = "description")
+    private String description;
 
     @ManyToOne
     @JoinColumn(name = "employee")
     private Employee employee;
-
 
     @Column(name = "createdAt")
     @JsonIgnore

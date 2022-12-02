@@ -1,15 +1,9 @@
-package com.bastet.bastetmanagement.dtos;
+package com.bastet.bastetmanagement.dtos.basedtos;
 
 import com.bastet.bastetmanagement.core.enums.Priority;
 import com.bastet.bastetmanagement.core.enums.TaskStatus;
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.*;
-import org.hibernate.annotations.Type;
-import org.springframework.data.annotation.CreatedDate;
-import org.springframework.data.annotation.LastModifiedDate;
 
-import javax.persistence.*;
-import java.util.Date;
 import java.util.UUID;
 
 @Data

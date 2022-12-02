@@ -8,6 +8,7 @@ import org.springframework.data.annotation.LastModifiedDate;
 
 import javax.persistence.*;
 import java.util.Date;
+import java.util.List;
 import java.util.UUID;
 
 @Getter
@@ -41,5 +42,8 @@ public class Department {
     @JsonIgnore
     @LastModifiedDate
     private Date updatedAt;
+
+    @OneToMany(mappedBy = "department")
+    private List<Employee> employees;
     //NOT FINISHED
 }

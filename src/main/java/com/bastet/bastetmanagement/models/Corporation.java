@@ -41,6 +41,9 @@ public class Corporation {
     @OneToMany(mappedBy = "corporation", fetch = FetchType.LAZY)
     private List<Project> projects;
 
+    @OneToMany(mappedBy = "corporation")
+    List<Branch> branches;
+
     @Column(name = "createdAt")
     @JsonIgnore
     @CreatedDate

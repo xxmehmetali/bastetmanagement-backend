@@ -75,5 +75,6 @@ public class Applicant {
 
     @OneToOne()
     @JsonIgnore
+    @JoinColumn(name = "applicantMeeting")
     private ApplicantMeeting applicantMeeting;
 }
