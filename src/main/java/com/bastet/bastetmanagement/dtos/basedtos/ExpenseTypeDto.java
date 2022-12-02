@@ -1,4 +1,4 @@
-package com.bastet.bastetmanagement.dtos;
+package com.bastet.bastetmanagement.dtos.basedtos;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.*;
@@ -12,8 +12,8 @@ import java.util.List;
 import java.util.UUID;
 
 @Data
-public class SocialActivityTypeDto {
-    private UUID id;
+public class ExpenseTypeDto {
+    private UUID id = UUID.randomUUID();
 
     private String name;
 

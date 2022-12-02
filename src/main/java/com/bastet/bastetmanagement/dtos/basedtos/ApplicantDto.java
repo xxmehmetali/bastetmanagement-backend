@@ -1,4 +1,4 @@
-package com.bastet.bastetmanagement.dtos;
+package com.bastet.bastetmanagement.dtos.basedtos;
 
 import com.bastet.bastetmanagement.core.enums.AssesmentStatus;
 import com.bastet.bastetmanagement.core.enums.Gender;

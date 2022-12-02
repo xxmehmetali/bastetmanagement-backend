@@ -40,8 +40,8 @@ public class Expense {
     @JoinColumn(name = "expenseCurrencyType")
     private Currency expenseCurrencyType;
 
-    @Column(name = "vaucherNo")
-    private Double vaucherNo;
+    @Column(name = "voucherNo")
+    private Double voucherNo;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "expenseType")

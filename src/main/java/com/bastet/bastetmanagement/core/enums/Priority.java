@@ -1,5 +1,8 @@
 package com.bastet.bastetmanagement.core.enums;
 
 public enum Priority {
-    HIGH,LOW
+    HIGH,
+    MEDIUM,
+    LOW,
+    NOT_DECLARED
 }

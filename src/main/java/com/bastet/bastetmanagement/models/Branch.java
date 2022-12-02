@@ -36,6 +36,10 @@ public class Branch {
     @Column(name = "address")
     private String address;
 
+    @ManyToOne
+    @JoinColumn(name = "corporation")
+    private Corporation corporation;
+
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "branch")
     private List<Employee> employees;
 

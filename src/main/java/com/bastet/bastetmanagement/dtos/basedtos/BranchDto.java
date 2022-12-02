@@ -1,4 +1,4 @@
-package com.bastet.bastetmanagement.dtos;
+package com.bastet.bastetmanagement.dtos.basedtos;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.*;
@@ -12,14 +12,16 @@ import java.util.List;
 import java.util.UUID;
 
 @Data
-public class ContextDto {
+public class BranchDto {
+
     private UUID id;
 
     private String name;
 
     private String description;
 
-    private ProjectDto project;
+    private String phoneNumber;
+
+    private String address;
 
 }
-
