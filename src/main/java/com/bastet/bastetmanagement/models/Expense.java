@@ -23,7 +23,7 @@ public class Expense {
     @Type(type="org.hibernate.type.UUIDCharType")
     private UUID id = UUID.randomUUID();
 
-    @Column(name = "name")
+    @Column(name = "name", length = 512)
     private String name;
 
     @Column(name = "description")

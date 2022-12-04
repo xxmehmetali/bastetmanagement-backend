@@ -43,7 +43,7 @@ public class Meeting {
     private MeetingType meetingType;
 
     @Column(name = "meetingUrl")
-    private long meetingUrl;
+    private String meetingUrl;
 
     @Column(name = "beginHour")
     private Date beginHour;

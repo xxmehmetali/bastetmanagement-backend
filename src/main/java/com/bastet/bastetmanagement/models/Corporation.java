@@ -32,9 +32,16 @@ public class Corporation {
     @Type(type="org.hibernate.type.UUIDCharType")
     private UUID id = UUID.randomUUID();
 
+    @Column(name = "name")
     private String name;
+
+    @Column(name = "description", length = 1024)
     private String description;
+
+    @Column(name = "taxNumber")
     private String taxNumber;
+
+    @Column(name = "foundationDate")
     private String foundationDate;
 
     @JsonIgnore
