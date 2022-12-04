@@ -1,6 +1,7 @@
 package com.bastet.bastetmanagement.models;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.*;
 import org.hibernate.annotations.Type;
 import org.springframework.data.annotation.CreatedDate;
@@ -43,7 +44,8 @@ public class Department {
     @LastModifiedDate
     private Date updatedAt;
 
-    @OneToMany(mappedBy = "department")
+    @OneToMany(mappedBy = "department", fetch = FetchType.LAZY)
+    @JsonManagedReference
     private List<Employee> employees;
     //NOT FINISHED
 }

@@ -3,6 +3,7 @@ package com.bastet.bastetmanagement.models;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonIgnoreType;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -48,6 +49,7 @@ public class Corporation {
     @OneToMany(mappedBy = "corporation", fetch = FetchType.LAZY)
     private List<Project> projects;
 
+    @JsonManagedReference
     @OneToMany(mappedBy = "corporation")
     List<Branch> branches;
 

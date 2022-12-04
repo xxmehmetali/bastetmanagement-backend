@@ -4,11 +4,12 @@ import com.bastet.bastetmanagement.core.enums.AssesmentStatus;
 import com.bastet.bastetmanagement.core.enums.Gender;
 import lombok.*;
 
+import java.util.Date;
 import java.util.UUID;
 
 @Data
 public class ApplicantDto {
-    private UUID id = UUID.randomUUID();
+    private UUID id;
 
     private String name;
 
@@ -17,6 +18,8 @@ public class ApplicantDto {
     private String address;
 
     private String phoneNumber;
+
+    private String nationalId;
 
     private Gender gender;
 
@@ -31,4 +34,8 @@ public class ApplicantDto {
     private String technicalReview;
 
     private ApplicantMeetingDto applicantMeeting ;
+
+    private Date createdAt;
+
+    private Date updatedAt;
 }

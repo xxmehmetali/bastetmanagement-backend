@@ -29,6 +29,7 @@ public class Occupation {
     @Column(name = "detail")
     private String detail;
 
+    @JsonIgnore
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "occupation")
     private List<Employee> employees;
 

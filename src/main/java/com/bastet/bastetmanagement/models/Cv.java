@@ -29,7 +29,7 @@ public class Cv {
     private String CvKeywords;
 
     @JsonIgnore
-    @OneToOne(mappedBy = "CV")
+    @OneToOne(mappedBy = "CV", fetch = FetchType.LAZY)
     private Applicant applicant;
 
     @Column(name = "createdAt")

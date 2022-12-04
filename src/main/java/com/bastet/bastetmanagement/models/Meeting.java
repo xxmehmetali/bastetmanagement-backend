@@ -2,6 +2,7 @@ package com.bastet.bastetmanagement.models;
 
 import com.bastet.bastetmanagement.core.enums.MeetingType;
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.*;
 import org.hibernate.annotations.Type;
 import org.springframework.data.annotation.CreatedDate;
@@ -36,6 +37,7 @@ public class Meeting {
 
     @JoinColumn(name = "meetingPlatform")
     @ManyToOne
+    @JsonManagedReference
     private MeetingPlatform meetingPlatform;
 
     @Column(name = "meetingType")
