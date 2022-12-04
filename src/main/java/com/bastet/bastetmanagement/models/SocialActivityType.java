@@ -26,7 +26,7 @@ public class SocialActivityType {
     @Column(name = "name")
     private String name;
 
-    @Column(name = "description")
+    @Column(name = "description", length = 512)
     private String description;
 
     @OneToMany(mappedBy = "socialActivityType")

@@ -17,7 +17,7 @@ import java.util.UUID;
 @Entity
 @AllArgsConstructor
 @NoArgsConstructor
-@Table(name = "Currency")
+@Table(name = "Currencies")
 public class Currency {
     @Id
     @Column(name="id")

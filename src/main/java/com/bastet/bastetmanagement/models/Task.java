@@ -24,10 +24,10 @@ public class Task{
     @Type(type="org.hibernate.type.UUIDCharType")
     private UUID id = UUID.randomUUID();
 
-    @Column(name = "name")
+    @Column(name = "name", length = 1024)
     private String name;
 
-    @Column(name = "description")
+    @Column(name = "description", length = 1024)
     private String description;
 
     @Column(name = "tags")
