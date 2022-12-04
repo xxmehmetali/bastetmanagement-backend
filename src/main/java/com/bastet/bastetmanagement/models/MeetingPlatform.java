@@ -1,5 +1,6 @@
 package com.bastet.bastetmanagement.models;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.*;
 import org.hibernate.annotations.Type;
@@ -33,6 +34,7 @@ public class MeetingPlatform {
     private String baseUrl;
 
     @OneToMany(mappedBy = "meetingPlatform", fetch = FetchType.LAZY)
+    @JsonBackReference
     private List<Meeting> meetings;
 
     @Column(name = "createdAt")

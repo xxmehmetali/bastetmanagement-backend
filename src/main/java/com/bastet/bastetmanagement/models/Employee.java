@@ -1,7 +1,9 @@
 package com.bastet.bastetmanagement.models;
 
 import com.bastet.bastetmanagement.core.enums.Gender;
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.sun.istack.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -67,11 +69,13 @@ public class Employee {
     private Date endDate;
 
     @JoinColumn(name = "branch")
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JsonManagedReference
     private Branch branch;
 
     @JoinColumn(name = "department")
     @ManyToOne
+    @JsonBackReference
     private Department department;
 
     @ManyToMany(cascade = CascadeType.ALL)

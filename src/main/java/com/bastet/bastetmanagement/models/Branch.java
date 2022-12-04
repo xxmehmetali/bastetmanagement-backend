@@ -1,5 +1,6 @@
 package com.bastet.bastetmanagement.models;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.*;
 import org.hibernate.annotations.Type;
@@ -38,9 +39,11 @@ public class Branch {
 
     @ManyToOne
     @JoinColumn(name = "corporation")
+    @JsonBackReference
     private Corporation corporation;
 
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "branch")
+    @JsonBackReference
     private List<Employee> employees;
 
     @Column(name = "createdAt")
