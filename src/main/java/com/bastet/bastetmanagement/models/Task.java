@@ -3,6 +3,7 @@ package com.bastet.bastetmanagement.models;
 import com.bastet.bastetmanagement.core.enums.Priority;
 import com.bastet.bastetmanagement.core.enums.TaskStatus;
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.*;
 import org.hibernate.annotations.Type;
 import org.springframework.data.annotation.CreatedDate;
@@ -56,15 +57,14 @@ public class Task{
 
     @JoinColumn(name = "context")
     @ManyToOne
+    @JsonManagedReference
     private Context context;
 
     @Column(name = "createdAt")
-    @JsonIgnore
     @CreatedDate
     private Date createdAt;
 
     @Column(name = "updatedAt")
-    @JsonIgnore
     @LastModifiedDate
     private Date updatedAt;
 }

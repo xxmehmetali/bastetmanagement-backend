@@ -57,12 +57,10 @@ public class Meeting {
     private List<Employee> attendants;
 
     @Column(name = "createdAt")
-    @JsonIgnore
     @CreatedDate
     private Date createdAt;
 
     @Column(name = "updatedAt")
-    @JsonIgnore
     @LastModifiedDate
     private Date updatedAt;
     //NOT FINISHED

@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
 import java.util.List;
+import java.util.UUID;
 
 @RestController
 @RequestMapping("/corporation")
@@ -24,6 +25,13 @@ public class CorporationController {
         List<Corporation> corporations = corporationDao.findAll();
         List<CorporationDto> corporationDtos = customModelMapper.mapToList(corporations, CorporationDto.class);
         return corporationDtos;
+    }
+
+    @GetMapping("/findById/{id}")
+    public Corporation findById(@PathVariable("id")UUID id){
+
+//        return customModelMapper.map(corporationDao.findById(id).orElse(null), CorporationDto.class);
+        return corporationDao.findById(id).orElse(null);
     }
 
     @PostMapping("/addCorporation")

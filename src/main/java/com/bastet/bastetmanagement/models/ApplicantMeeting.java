@@ -27,7 +27,7 @@ public class ApplicantMeeting {
     @Type(type="org.hibernate.type.UUIDCharType")
     private UUID id = UUID.randomUUID();
 
-    @OneToOne(fetch=FetchType.LAZY)
+    @OneToOne(fetch = FetchType.EAGER)
     @JoinColumn(name="applicant")
     @JsonBackReference
     private Applicant applicant;

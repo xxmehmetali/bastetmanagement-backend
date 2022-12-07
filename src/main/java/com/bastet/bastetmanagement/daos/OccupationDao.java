@@ -9,6 +9,6 @@ import org.springframework.stereotype.Repository;
 import java.util.UUID;
 
 @Repository
-public interface OccupationDao extends JpaRepository<Corporation, UUID> {
+public interface OccupationDao extends JpaRepository<Occupation, UUID> {
 
 }

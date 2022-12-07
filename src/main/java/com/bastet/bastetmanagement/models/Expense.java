@@ -1,5 +1,6 @@
 package com.bastet.bastetmanagement.models;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.*;
 import org.hibernate.annotations.Type;
@@ -36,14 +37,14 @@ public class Expense {
     @Column(name = "expenseAmount")
     private Double expenseAmount;
 
-    @ManyToOne(fetch = FetchType.LAZY, cascade= CascadeType.ALL)
+    @ManyToOne(fetch = FetchType.EAGER, cascade= CascadeType.ALL)
     @JoinColumn(name = "expenseCurrencyType")
     private Currency expenseCurrencyType;
 
     @Column(name = "voucherNo")
     private Double voucherNo;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "expenseType")
     private ExpenseType expenseType;
 

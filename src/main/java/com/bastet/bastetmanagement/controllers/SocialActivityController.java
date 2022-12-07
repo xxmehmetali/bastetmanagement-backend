@@ -20,6 +20,11 @@ public class SocialActivityController {
     @Autowired
     private EmployeeDao employeeDao;
 
+    @GetMapping("/findById/{id}")
+    public SocialActivity findById(@PathVariable("id")UUID id){
+        return  socialActivityDao.findById(id).orElse(null);
+    }
+
     @GetMapping("/getAll")
     public List<SocialActivity> getAll(){
         return socialActivityDao.findAll();

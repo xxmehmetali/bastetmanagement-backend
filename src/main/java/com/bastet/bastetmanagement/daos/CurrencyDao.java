@@ -8,4 +8,6 @@ import java.util.UUID;
 
 @Repository
 public interface CurrencyDao extends JpaRepository<Currency, UUID> {
+
+    Currency findCurrencyByCurrencySymbol(String currencySymbol);
 }
