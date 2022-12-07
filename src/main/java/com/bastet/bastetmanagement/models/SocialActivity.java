@@ -41,7 +41,7 @@ public class SocialActivity {
     @ManyToMany(cascade = CascadeType.ALL, mappedBy = "socialActivities", fetch = FetchType.LAZY)
     private List<Employee> employees = new ArrayList<>();
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "socialActivityType")
     private SocialActivityType socialActivityType;
 

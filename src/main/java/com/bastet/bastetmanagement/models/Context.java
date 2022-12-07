@@ -1,6 +1,8 @@
 package com.bastet.bastetmanagement.models;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.*;
 import org.hibernate.annotations.Type;
 import org.springframework.data.annotation.CreatedDate;
@@ -32,18 +34,18 @@ public class Context {
     //NOT FINISHED "FK IMPL"
     @ManyToOne
     @JoinColumn(name = "project")
+    @JsonBackReference
     private Project project;
 
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "context")
+    @JsonBackReference
     private List<Task> tasks;
 
     @Column(name = "createdAt")
-    @JsonIgnore
     @CreatedDate
     private Date createdAt;
 
     @Column(name = "updatedAt")
-    @JsonIgnore
     @LastModifiedDate
     private Date updatedAt;
 }

@@ -1,6 +1,8 @@
 package com.bastet.bastetmanagement.models;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -32,19 +34,18 @@ public class Project {
 
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "corporation")
+    @JsonBackReference
     private Corporation corporation;
 
     @OneToMany(mappedBy = "project", fetch = FetchType.LAZY)
-    @JsonIgnore
+    @JsonManagedReference
     private List<Context> contexts;
 
     @Column(name = "createdAt")
-    @JsonIgnore
     @CreatedDate
     private Date createdAt;
 
     @Column(name = "updatedAt")
-    @JsonIgnore
     @LastModifiedDate
     private Date updatedAt;
 

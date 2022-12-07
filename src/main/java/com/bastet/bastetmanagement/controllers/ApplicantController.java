@@ -24,15 +24,14 @@ public class ApplicantController {
     private CustomModelMapper customModelMapper;
 
     @GetMapping("/getAll")
-    public List<Applicant> getAll(){
-        return null;
+    public List<ApplicantDto> getAll(){
+
+        return customModelMapper.mapToList(applicantDao.findAll(), ApplicantDto.class);
     }
 
     @GetMapping("/findById/{id}")
-    public ApplicantDto findById(@PathVariable("id") UUID id){
-        Applicant applicant = applicantDao.findById(id).orElse(null);
-
-        return (Objects.nonNull(applicant)) ? customModelMapper.map(applicant, ApplicantDto.class) : null;
+    public Applicant findById(@PathVariable("id") UUID id){
+        return new Applicant();
     }
 
 }

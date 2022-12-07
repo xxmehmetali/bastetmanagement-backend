@@ -1,6 +1,7 @@
 package com.bastet.bastetmanagement.models;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.*;
 import org.hibernate.annotations.Fetch;
 import org.hibernate.annotations.Type;
@@ -31,15 +32,14 @@ public class ExpenseType {
     private String description;
 
     @OneToMany(fetch = FetchType.LAZY ,mappedBy = "expenseType")
+    @JsonIgnore
     private List<Expense> expenses;
 
     @Column(name = "createdAt")
-    @JsonIgnore
     @CreatedDate
     private Date createdAt;
 
     @Column(name = "updatedAt")
-    @JsonIgnore
     @LastModifiedDate
     private Date updatedAt;
 

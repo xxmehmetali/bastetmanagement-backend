@@ -1,5 +1,7 @@
 package com.bastet.bastetmanagement.dtos.basedtos;
 
+import com.bastet.bastetmanagement.models.Corporation;
+import com.bastet.bastetmanagement.models.Employee;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.*;
 import org.hibernate.annotations.Type;
@@ -24,4 +26,11 @@ public class BranchDto {
 
     private String address;
 
+    private Corporation corporation;
+
+    private List<Employee> employees;
+
+    private Date createdAt;
+
+    private Date updatedAt;
 }

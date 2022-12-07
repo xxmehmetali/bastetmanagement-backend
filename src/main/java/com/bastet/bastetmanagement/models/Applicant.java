@@ -51,6 +51,7 @@ public class Applicant {
 
     @JoinColumn(name = "CV")
     @OneToOne(fetch = FetchType.EAGER)
+    @JsonBackReference
     private Cv CV;
 
     //bak
@@ -76,7 +77,7 @@ public class Applicant {
     @LastModifiedDate
     private Date updatedAt;
 
-    @OneToOne(fetch=FetchType.LAZY)
+    @OneToOne(fetch=FetchType.EAGER)
     @JoinColumn(name = "applicantMeeting")
     @JsonManagedReference
     private ApplicantMeeting applicantMeeting;

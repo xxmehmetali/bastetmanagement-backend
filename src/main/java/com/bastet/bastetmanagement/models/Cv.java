@@ -1,6 +1,7 @@
 package com.bastet.bastetmanagement.models;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.*;
 import org.hibernate.annotations.Type;
 import org.springframework.data.annotation.CreatedDate;
@@ -28,17 +29,16 @@ public class Cv {
     @Column(name = "cvKeywords")
     private String CvKeywords;
 
-    @JsonIgnore
+
     @OneToOne(mappedBy = "CV", fetch = FetchType.LAZY)
+    @JsonManagedReference
     private Applicant applicant;
 
     @Column(name = "createdAt")
-    @JsonIgnore
     @CreatedDate
     private Date createdAt;
 
     @Column(name = "updatedAt")
-    @JsonIgnore
     @LastModifiedDate
     private Date updatedAt;
 
