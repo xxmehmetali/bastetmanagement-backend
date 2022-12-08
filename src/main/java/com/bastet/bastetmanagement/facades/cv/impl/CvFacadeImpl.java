@@ -27,11 +27,7 @@ public class CvFacadeImpl implements CvFacade {
     }
 
     @Override
-    public DataResult<Cv> findById(UUID id) {
-        try {
-            return new SuccessDataResult<>(cvService.findById(id));
-        }catch (Exception e){
-            return new ErrorDataResult<>();
-        }
+    public Cv findById(UUID id) {
+        return null;
     }
 }
