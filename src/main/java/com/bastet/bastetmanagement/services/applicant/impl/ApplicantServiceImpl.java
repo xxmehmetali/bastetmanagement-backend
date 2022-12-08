@@ -16,9 +16,9 @@ public class ApplicantServiceImpl implements ApplicantService {
     @Resource
     private ApplicantDao applicantDao;
 
-    private Applicant findById(UUID id){
-        Applicant applicants = applicantDao.findById(id).orElse(null);
-        return applicants;
+    public Applicant findById(UUID id){
+        Applicant applicant = applicantDao.findById(id).orElse(null);
+        return applicant;
     }
 
 }
