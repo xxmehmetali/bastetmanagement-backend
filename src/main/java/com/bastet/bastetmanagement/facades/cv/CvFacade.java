@@ -8,5 +8,5 @@ import java.util.UUID;
 
 public interface CvFacade {
     DataResult<List<Cv>> findAll();
-    DataResult<Cv> findById(UUID id);
+    Cv findById(UUID id);
 }

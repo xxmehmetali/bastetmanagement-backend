@@ -30,6 +30,6 @@ public class EmployeeDto {
 
     private BranchDto branch;
 
-    private long department;
+    private DepartmentDto department;
 
 }

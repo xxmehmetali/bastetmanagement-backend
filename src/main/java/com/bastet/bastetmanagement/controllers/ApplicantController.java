@@ -3,6 +3,7 @@ package com.bastet.bastetmanagement.controllers;
 import com.bastet.bastetmanagement.core.configurations.modelmapper.CustomModelMapper;
 import com.bastet.bastetmanagement.daos.ApplicantDao;
 import com.bastet.bastetmanagement.dtos.basedtos.ApplicantDto;
+import com.bastet.bastetmanagement.facades.applicant.ApplicantFacade;
 import com.bastet.bastetmanagement.models.Applicant;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -18,7 +19,7 @@ import java.util.UUID;
 @RequestMapping("/applicant")
 public class ApplicantController {
     @Resource
-    private ApplicantDao applicantDao;
+    private ApplicantFacade applicantFacade;
 
     @Resource
     private CustomModelMapper customModelMapper;
@@ -26,12 +27,12 @@ public class ApplicantController {
     @GetMapping("/getAll")
     public List<ApplicantDto> getAll(){
 
-        return customModelMapper.mapToList(applicantDao.findAll(), ApplicantDto.class);
+        return null;
     }
 
     @GetMapping("/findById/{id}")
-    public Applicant findById(@PathVariable("id") UUID id){
-        return new Applicant();
+    public ApplicantDto findById(@PathVariable("id") UUID id){
+        return applicantFacade.findById(id);
     }
 
 }

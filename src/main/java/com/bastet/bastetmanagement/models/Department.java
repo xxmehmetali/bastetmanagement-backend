@@ -18,6 +18,7 @@ import java.util.UUID;
 @AllArgsConstructor
 @NoArgsConstructor
 @Table(name = "Departments")
+@ToString
 public class Department {
     @Id
     @Column(name="id")
@@ -35,17 +36,15 @@ public class Department {
     private Employee departmentResponsible;
 
     @Column(name = "createdAt")
-    @JsonIgnore
     @CreatedDate
     private Date createdAt;
 
     @Column(name = "updatedAt")
-    @JsonIgnore
     @LastModifiedDate
     private Date updatedAt;
 
     @OneToMany(mappedBy = "department", fetch = FetchType.LAZY)
-    @JsonManagedReference
+    @JsonIgnore
     private List<Employee> employees;
     //NOT FINISHED
 }

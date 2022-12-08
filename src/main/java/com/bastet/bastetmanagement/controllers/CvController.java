@@ -24,7 +24,7 @@ public class CvController {
     }
 
     @GetMapping("/findById/{id}")
-    public DataResult<Cv> findById(@PathVariable(name = "id")UUID id){
+    public Cv findById(@PathVariable(name = "id")UUID id){
         return cvFacade.findById(id);
     }
 
