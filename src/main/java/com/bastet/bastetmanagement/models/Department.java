@@ -1,5 +1,6 @@
 package com.bastet.bastetmanagement.models;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.*;
@@ -31,8 +32,10 @@ public class Department {
     @Column(name = "description")
     private String description;
 
-    @JoinColumn(name = "departmentResponsible")
-    @OneToOne
+    @JoinColumn(name = "departmentResponsible", referencedColumnName = "id")
+    @OneToOne()
+
+    @JsonManagedReference
     private Employee departmentResponsible;
 
     @Column(name = "createdAt")
@@ -43,8 +46,4 @@ public class Department {
     @LastModifiedDate
     private Date updatedAt;
 
-    @OneToMany(mappedBy = "department", fetch = FetchType.LAZY)
-    @JsonIgnore
-    private List<Employee> employees;
-    //NOT FINISHED
 }

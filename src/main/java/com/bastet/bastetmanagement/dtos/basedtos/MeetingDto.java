@@ -6,15 +6,18 @@ import java.util.Date;
 import java.util.List;
 import java.util.UUID;
 
-@Data
+@Getter
+@Setter
+@AllArgsConstructor
+@NoArgsConstructor
 public class MeetingDto {
     private UUID id;
 
-    private long meetingOwner;
+    private EmployeeDto meetingOwner;
 
     private MeetingPlatformDto meetingPlatform;
 
-    private long meetingUrl;
+    private String meetingUrl;
 
     private Date beginHour;
 

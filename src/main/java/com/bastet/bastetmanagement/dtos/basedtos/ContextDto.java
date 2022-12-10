@@ -4,7 +4,10 @@ import lombok.*;
 
 import java.util.UUID;
 
-@Data
+@Getter
+@Setter
+@AllArgsConstructor
+@NoArgsConstructor
 public class ContextDto {
     private UUID id;
 
@@ -12,7 +15,7 @@ public class ContextDto {
 
     private String description;
 
-    private ProjectDto project;
+//    private ProjectDto project;
 
 }
 

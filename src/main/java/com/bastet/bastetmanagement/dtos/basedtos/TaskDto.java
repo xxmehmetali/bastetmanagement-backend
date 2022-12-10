@@ -6,7 +6,10 @@ import lombok.*;
 
 import java.util.UUID;
 
-@Data
+@Getter
+@Setter
+@AllArgsConstructor
+@NoArgsConstructor
 public class TaskDto {
     private UUID id;
 

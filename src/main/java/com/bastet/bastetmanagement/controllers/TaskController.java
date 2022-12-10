@@ -1,6 +1,8 @@
 package com.bastet.bastetmanagement.controllers;
 
+import com.bastet.bastetmanagement.core.configurations.modelmapper.CustomModelMapper;
 import com.bastet.bastetmanagement.daos.TaskDao;
+import com.bastet.bastetmanagement.dtos.basedtos.TaskDto;
 import com.bastet.bastetmanagement.models.Task;
 import org.springframework.web.bind.annotation.*;
 
@@ -14,14 +16,15 @@ public class TaskController {
 
     @Resource
     private TaskDao taskDao;
-
+    @Resource
+    private CustomModelMapper customModelMapper;
     @GetMapping("/findAll")
     public List<Task> findAll(){
         return taskDao.findAll();
     }
 
     @GetMapping("/findById/{id}")
-    public Task findById(@PathVariable("id") UUID id){
-        return taskDao.findById(id).orElse(null);
+    public TaskDto findById(@PathVariable("id") UUID id){
+        return customModelMapper.map(taskDao.findById(id).orElse(null), TaskDto.class);
     }
 }

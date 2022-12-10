@@ -13,7 +13,10 @@ import java.util.Date;
 import java.util.List;
 import java.util.UUID;
 
-@Data
+@Getter
+@Setter
+@AllArgsConstructor
+@NoArgsConstructor
 public class BranchDto {
 
     private UUID id;
@@ -26,9 +29,9 @@ public class BranchDto {
 
     private String address;
 
-    private Corporation corporation;
+    private CorporationDto corporation;
 
-    private List<Employee> employees;
+//    private List<EmployeeDto> employees;
 
     private Date createdAt;
 

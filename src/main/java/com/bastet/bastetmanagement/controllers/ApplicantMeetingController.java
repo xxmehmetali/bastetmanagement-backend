@@ -22,9 +22,8 @@ public class ApplicantMeetingController {
     private CustomModelMapper customModelMapper;
 
     @GetMapping("/findById/{id}")
-    public ApplicantMeeting findById(@PathVariable("id") UUID id){
+    public ApplicantMeetingDto findById(@PathVariable("id") UUID id){
         ApplicantMeeting applicantMeeting = applicantMeetingDao.findById(id).orElse(null);
-//        return customModelMapper.map(applicantMeeting, ApplicantMeetingDto.class);
-        return applicantMeeting;
+        return customModelMapper.map(applicantMeeting, ApplicantMeetingDto.class);
     }
 }

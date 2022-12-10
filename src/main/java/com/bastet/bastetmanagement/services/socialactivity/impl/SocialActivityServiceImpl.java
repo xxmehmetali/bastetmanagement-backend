@@ -11,7 +11,6 @@ import java.util.UUID;
 
 @Service
 @Log4j2
-
 public class SocialActivityServiceImpl implements SocialActivityService {
 
     @Resource

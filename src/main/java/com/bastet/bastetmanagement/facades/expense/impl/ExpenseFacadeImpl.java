@@ -21,16 +21,9 @@ public class ExpenseFacadeImpl implements ExpenseFacade {
     @Resource
     private CustomModelMapper customModelMapper;
 
-    public ExpenseDto findById(UUID id){
-        try {
-            Expense expense = expenseService.findById(id);
-            ExpenseDto expenseDto = customModelMapper.map(expense, ExpenseDto.class);
-            return expenseDto;
-        }catch (Exception e){
-            log.warn("");
-        }
-//        böyle olması lazım, tipleri düzelt facade da
-        // return new ErrorResult();
-        return null;
+    public ExpenseDto findById(UUID id) {
+        Expense expense = expenseService.findById(id);
+        ExpenseDto expenseDto = customModelMapper.map(expense, ExpenseDto.class);
+        return expenseDto;
     }
 }

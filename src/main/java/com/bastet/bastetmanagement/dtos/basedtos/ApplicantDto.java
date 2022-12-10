@@ -7,7 +7,10 @@ import lombok.*;
 import java.util.Date;
 import java.util.UUID;
 
-@Data
+@Getter
+@Setter
+@AllArgsConstructor
+@NoArgsConstructor
 public class ApplicantDto {
     private UUID id;
 
@@ -33,7 +36,7 @@ public class ApplicantDto {
 
     private String technicalReview;
 
-    private ApplicantMeetingDto applicantMeeting ;
+    private ApplicantMeetingDto applicantMeeting;
 
     private Date createdAt;
 

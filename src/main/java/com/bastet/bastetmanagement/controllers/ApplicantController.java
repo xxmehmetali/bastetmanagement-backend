@@ -24,6 +24,9 @@ public class ApplicantController {
     @Resource
     private CustomModelMapper customModelMapper;
 
+    @Resource
+    private ApplicantDao applicantDao;
+
     @GetMapping("/getAll")
     public List<ApplicantDto> getAll(){
 

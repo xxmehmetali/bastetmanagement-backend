@@ -1,5 +1,6 @@
 package com.bastet.bastetmanagement.models;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.*;
@@ -23,16 +24,11 @@ public class Cv {
     @Type(type="org.hibernate.type.UUIDCharType")
     private UUID id = UUID.randomUUID();
 
-    @Column(name = "cv")
-    private String  cv;
+    @Column(name = "cvFilee")
+    private String  cvFile;
 
     @Column(name = "cvKeywords")
     private String CvKeywords;
-
-
-    @OneToOne(mappedBy = "CV", fetch = FetchType.LAZY)
-    @JsonManagedReference
-    private Applicant applicant;
 
     @Column(name = "createdAt")
     @CreatedDate
