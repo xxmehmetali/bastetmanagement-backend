@@ -1,5 +1,6 @@
 package com.bastet.bastetmanagement.controllers;
 
+import com.bastet.bastetmanagement.core.configurations.mapstruct.ApplicantMapper;
 import com.bastet.bastetmanagement.core.configurations.modelmapper.CustomModelMapper;
 import com.bastet.bastetmanagement.daos.ApplicantDao;
 import com.bastet.bastetmanagement.dtos.basedtos.ApplicantDto;
@@ -28,6 +29,9 @@ public class ApplicantController {
     @Resource
     private ApplicantDao applicantDao;
 
+    @Resource
+    private ApplicantMapper applicantMapper;
+
     @GetMapping("/getAll")
     public List<ApplicantDto> getAll(){
 
@@ -36,7 +40,8 @@ public class ApplicantController {
 
     @GetMapping("/findById/{id}")
     public ApplicantDto findById(@PathVariable("id") UUID id){
-        return applicantFacade.findById(id);
+//        return applicantFacade.findById(id);
+        return applicantMapper.applicantToApplicantDto(applicantDao.findById(id).orElse(null));
     }
 
     @GetMapping("/simplified/findById/{id}")
