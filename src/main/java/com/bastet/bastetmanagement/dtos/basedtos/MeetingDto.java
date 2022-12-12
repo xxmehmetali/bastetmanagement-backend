@@ -23,6 +23,6 @@ public class MeetingDto {
 
     private Date endHour;
 
-    private List<EmployeeDto> attendants;
+//    private List<EmployeeDto> attendants;
 
 }

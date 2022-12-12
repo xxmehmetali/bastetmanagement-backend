@@ -3,6 +3,8 @@ package com.bastet.bastetmanagement.controllers;
 import com.bastet.bastetmanagement.core.configurations.modelmapper.CustomModelMapper;
 import com.bastet.bastetmanagement.daos.TaskDao;
 import com.bastet.bastetmanagement.dtos.basedtos.TaskDto;
+import com.bastet.bastetmanagement.dtos.simplifieddtos.TaskSimplifiedDto;
+import com.bastet.bastetmanagement.facades.task.TaskFacade;
 import com.bastet.bastetmanagement.models.Task;
 import org.springframework.web.bind.annotation.*;
 

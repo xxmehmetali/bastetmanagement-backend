@@ -3,6 +3,7 @@ package com.bastet.bastetmanagement.facades.cv.impl;
 import com.bastet.bastetmanagement.core.utilities.results.dataresults.DataResult;
 import com.bastet.bastetmanagement.core.utilities.results.dataresults.ErrorDataResult;
 import com.bastet.bastetmanagement.core.utilities.results.dataresults.SuccessDataResult;
+import com.bastet.bastetmanagement.dtos.simplifieddtos.CvSimplifiedDto;
 import com.bastet.bastetmanagement.facades.cv.CvFacade;
 import com.bastet.bastetmanagement.models.Cv;
 import com.bastet.bastetmanagement.services.cv.CvService;
@@ -29,5 +30,10 @@ public class CvFacadeImpl implements CvFacade {
     @Override
     public Cv findById(UUID id) {
         return null;
+    }
+
+    @Override
+    public CvSimplifiedDto findByIdSimplified(UUID id) {
+        return customModelMapper.map(cvService.findById(id), CvSimplifiedDto.class);
     }
 }

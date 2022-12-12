@@ -4,6 +4,8 @@ import com.bastet.bastetmanagement.core.configurations.modelmapper.CustomModelMa
 import com.bastet.bastetmanagement.core.customexceptions.ModelNotFoundException;
 import com.bastet.bastetmanagement.daos.ContextDao;
 import com.bastet.bastetmanagement.dtos.basedtos.ContextDto;
+import com.bastet.bastetmanagement.dtos.simplifieddtos.ContextSimplifiedDto;
+import com.bastet.bastetmanagement.facades.context.ContextFacade;
 import com.bastet.bastetmanagement.models.Context;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -19,7 +21,8 @@ public class ContextController {
 
     @Resource
     private ContextDao contextDao;
-
+    @Resource
+    private ContextFacade contextFacade;
     @Resource
     private CustomModelMapper customModelMapper;
 
@@ -31,5 +34,10 @@ public class ContextController {
     public ContextDto findById(@PathVariable("id")UUID id){
         return customModelMapper.map(contextDao.findById(id).orElseThrow(() -> new ModelNotFoundException(Context.class.getName())), ContextDto.class);
 //        return contextDao.findById(id).orElse(null);
+    }
+
+    @GetMapping("/simplified/findById/{id}")
+    public ContextSimplifiedDto findByIdSimplified(@PathVariable("id") UUID id){
+        return contextFacade.findByIdSimplified(id);
     }
 }

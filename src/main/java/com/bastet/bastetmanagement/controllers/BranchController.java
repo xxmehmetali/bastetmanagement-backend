@@ -3,6 +3,8 @@ package com.bastet.bastetmanagement.controllers;
 import com.bastet.bastetmanagement.core.configurations.modelmapper.CustomModelMapper;
 import com.bastet.bastetmanagement.daos.BranchDao;
 import com.bastet.bastetmanagement.dtos.basedtos.BranchDto;
+import com.bastet.bastetmanagement.dtos.simplifieddtos.BranchSimplifiedDto;
+import com.bastet.bastetmanagement.facades.branch.BranchFacade;
 import com.bastet.bastetmanagement.models.Branch;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -20,10 +22,17 @@ public class BranchController {
     private BranchDao branchDao;
 
     @Resource
+    private BranchFacade branchFacade;
+    @Resource
     private CustomModelMapper customModelMapper;
 
     @GetMapping("/findById/{id}")
     public BranchDto findById(@PathVariable("id")UUID id){
         return customModelMapper.map(branchDao.findById(id).orElse(null), BranchDto.class);
+    }
+
+    @GetMapping("/simplified/findById/{id}")
+    public BranchSimplifiedDto findByIdSimplified(@PathVariable("id") UUID id){
+        return branchFacade.findByIdSimplified(id);
     }
 }

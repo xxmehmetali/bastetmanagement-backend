@@ -2,8 +2,8 @@ package com.bastet.bastetmanagement.facades.applicant.impl;
 
 import com.bastet.bastetmanagement.core.configurations.modelmapper.CustomModelMapper;
 import com.bastet.bastetmanagement.dtos.basedtos.ApplicantDto;
+import com.bastet.bastetmanagement.dtos.simplifieddtos.ApplicantSimplifiedDto;
 import com.bastet.bastetmanagement.facades.applicant.ApplicantFacade;
-import com.bastet.bastetmanagement.models.Applicant;
 import com.bastet.bastetmanagement.services.applicant.ApplicantService;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.stereotype.Component;
@@ -23,5 +23,10 @@ public class ApplicantFacadeImpl implements ApplicantFacade {
     @Override
     public ApplicantDto findById(UUID id) {
         return customModelMapper.map(applicantService.findById(id), ApplicantDto.class);
+    }
+
+    @Override
+    public ApplicantSimplifiedDto findByIdSimplified(UUID id) {
+        return customModelMapper.map(applicantService.findById(id), ApplicantSimplifiedDto.class);
     }
 }

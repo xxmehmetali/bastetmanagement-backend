@@ -2,6 +2,7 @@ package com.bastet.bastetmanagement.controllers;
 
 import com.bastet.bastetmanagement.core.utilities.results.dataresults.SuccessDataResult;
 import com.bastet.bastetmanagement.dtos.basedtos.ExpenseDto;
+import com.bastet.bastetmanagement.dtos.simplifieddtos.ExpenseSimplifiedDto;
 import com.bastet.bastetmanagement.facades.expense.ExpenseFacade;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.http.HttpStatus;
@@ -25,5 +26,10 @@ public class ExpenseController {
     public ResponseEntity findById(@PathVariable("id")UUID id){
 //        return expenseFacade.findById(id);
         return ResponseEntity.status(HttpStatus.OK).body(new SuccessDataResult<ExpenseDto>(expenseFacade.findById(id), "data listed."));
+    }
+
+    @GetMapping("/simplified/findById/{id}")
+    public ExpenseSimplifiedDto findByIdSimplified(@PathVariable("id") UUID id){
+        return expenseFacade.findByIdSimplified(id);
     }
 }
