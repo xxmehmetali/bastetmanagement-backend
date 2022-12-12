@@ -18,7 +18,7 @@ public class TaskServiceImpl implements TaskService {
 
     @Override
     public Task findById(UUID id) {
-        Task task= taskDao.findById(id).orElse(null);
-        return task;
+        return taskDao.findById(id).orElseThrow(() -> new ModelNotFoundException("Task not found"));
     }
+
 }

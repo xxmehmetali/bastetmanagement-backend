@@ -1,5 +1,6 @@
 package com.bastet.bastetmanagement.facades.cv.impl;
 
+import com.bastet.bastetmanagement.core.configurations.modelmapper.CustomModelMapper;
 import com.bastet.bastetmanagement.core.utilities.results.dataresults.DataResult;
 import com.bastet.bastetmanagement.core.utilities.results.dataresults.ErrorDataResult;
 import com.bastet.bastetmanagement.core.utilities.results.dataresults.SuccessDataResult;
@@ -17,7 +18,8 @@ import java.util.UUID;
 public class CvFacadeImpl implements CvFacade {
     @Resource
     CvService cvService;
-
+    @Resource
+    private CustomModelMapper customModelMapper;
     @Override
     public DataResult<List<Cv>> findAll(){
         try{

@@ -19,6 +19,9 @@ public class TaskController {
     @Resource
     private TaskDao taskDao;
     @Resource
+    private TaskFacade taskFacade;
+
+    @Resource
     private CustomModelMapper customModelMapper;
     @GetMapping("/findAll")
     public List<Task> findAll(){
@@ -29,4 +32,9 @@ public class TaskController {
     public TaskDto findById(@PathVariable("id") UUID id){
         return customModelMapper.map(taskDao.findById(id).orElse(null), TaskDto.class);
     }
+    @GetMapping("/simplified/findById/{id}")
+    public TaskSimplifiedDto findByIdSimplified(@PathVariable("id") UUID id){
+        return taskFacade.findByIdSimplified(id);
+    }
+
 }

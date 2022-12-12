@@ -12,6 +12,10 @@ import java.util.UUID;
 
 @Component
 public class BranchFacadeImpl implements BranchFacade {
+    @Resource
+    private BranchService branchService;
+    @Resource
+    private CustomModelMapper customModelMapper;
     @Override
     public BranchDto findById(UUID id) {
         return null;
