@@ -6,7 +6,10 @@ import java.util.Date;
 import java.util.List;
 import java.util.UUID;
 
-@Data
+@Getter
+@Setter
+@AllArgsConstructor
+@NoArgsConstructor
 public class SocialActivityDto {
     private UUID id;
 
@@ -19,6 +22,8 @@ public class SocialActivityDto {
     private String place;
 
     private List<EmployeeDto> employees;
+
+    private ExpenseDto expense;
 
     private SocialActivityTypeDto socialActivityType;
 }

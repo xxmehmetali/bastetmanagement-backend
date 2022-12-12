@@ -1,6 +1,10 @@
 package com.bastet.bastetmanagement.controllers;
 
+import com.bastet.bastetmanagement.core.configurations.modelmapper.CustomModelMapper;
 import com.bastet.bastetmanagement.daos.DayOffDao;
+import com.bastet.bastetmanagement.dtos.basedtos.DayoffDto;
+import com.bastet.bastetmanagement.dtos.simplifieddtos.DayoffSimplifiedDto;
+import com.bastet.bastetmanagement.facades.dayoff.DayoffFacade;
 import com.bastet.bastetmanagement.models.Dayoff;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -17,8 +21,19 @@ public class DayoffController {
     @Resource
     private DayOffDao dayOffDao;
 
+    @Resource
+    private DayoffFacade dayoffFacade;
+
+    @Resource
+    private CustomModelMapper customModelMapper;
+
     @GetMapping("/findById/{id}")
-    public Dayoff findById(@PathVariable("id")UUID id){
-        return dayOffDao.findById(id).orElse(null);
+    public DayoffDto findById(@PathVariable("id")UUID id){
+        return customModelMapper.map(dayOffDao.findById(id).orElse(null), DayoffDto.class);
+    }
+
+    @GetMapping("/simplified/findById/{id}")
+    public DayoffSimplifiedDto findByIdSimplified(@PathVariable("id") UUID id){
+        return dayoffFacade.findByIdSimplified(id);
     }
 }

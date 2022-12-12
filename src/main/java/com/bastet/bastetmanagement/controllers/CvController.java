@@ -1,6 +1,7 @@
 package com.bastet.bastetmanagement.controllers;
 
 import com.bastet.bastetmanagement.core.utilities.results.dataresults.DataResult;
+import com.bastet.bastetmanagement.dtos.simplifieddtos.CvSimplifiedDto;
 import com.bastet.bastetmanagement.facades.cv.CvFacade;
 import com.bastet.bastetmanagement.models.Cv;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -28,4 +29,8 @@ public class CvController {
         return cvFacade.findById(id);
     }
 
+    @GetMapping("/simplified/findById/{id}")
+    public CvSimplifiedDto findByIdSimplified(@PathVariable("id") UUID id){
+        return cvFacade.findByIdSimplified(id);
+    }
 }

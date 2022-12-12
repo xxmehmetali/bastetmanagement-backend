@@ -4,7 +4,10 @@ import lombok.*;
 
 import java.util.UUID;
 
-@Data
+@Getter
+@Setter
+@AllArgsConstructor
+@NoArgsConstructor
 public class DepartmentDto {
     private UUID id;
 
@@ -12,6 +15,6 @@ public class DepartmentDto {
 
     private String description;
 
-    private EmployeeDto departmentResponsible;
+//    private EmployeeDto departmentResponsible;
 
 }

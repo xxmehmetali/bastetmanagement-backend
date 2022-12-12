@@ -1,6 +1,10 @@
 package com.bastet.bastetmanagement.controllers;
 
+import com.bastet.bastetmanagement.core.configurations.modelmapper.CustomModelMapper;
 import com.bastet.bastetmanagement.daos.ExpenseTypeDao;
+import com.bastet.bastetmanagement.dtos.basedtos.ExpenseTypeDto;
+import com.bastet.bastetmanagement.dtos.simplifieddtos.ExpenseTypeSimplifiedDto;
+import com.bastet.bastetmanagement.facades.expensetype.ExpenseTypeFacade;
 import com.bastet.bastetmanagement.models.ExpenseType;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -17,10 +21,17 @@ public class ExpenseTypeController {
 
     @Resource
     private ExpenseTypeDao expenseTypeDao;
-
-
+    @Resource
+    private ExpenseTypeFacade expenseTypeFacade;
+    @Resource
+    private CustomModelMapper customModelMapper;
     @GetMapping("/findById/{id}")
-    public ExpenseType findById(@PathVariable("id")UUID id){
-        return expenseTypeDao.findById(id).orElse(null);
+    public ExpenseTypeDto findById(@PathVariable("id")UUID id){
+        return customModelMapper.map(expenseTypeDao.findById(id).orElse(null), ExpenseTypeDto.class);
+    }
+
+    @GetMapping("/simplified/findById/{id}")
+    public ExpenseTypeSimplifiedDto findByIdSimplified(@PathVariable("id") UUID id){
+        return expenseTypeFacade.findByIdSimplified(id);
     }
 }

@@ -39,19 +39,17 @@ public class SocialActivity {
     private Expense expense ;
 
     @ManyToMany(cascade = CascadeType.ALL, mappedBy = "socialActivities", fetch = FetchType.LAZY)
-    private List<Employee> employees = new ArrayList<>();
+    private List<Employee> employees;
 
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "socialActivityType")
     private SocialActivityType socialActivityType;
 
     @Column(name = "createdAt")
-    @JsonIgnore
     @CreatedDate
     private Date createdAt;
 
     @Column(name = "updatedAt")
-    @JsonIgnore
     @LastModifiedDate
     private Date updatedAt;
     //NOT FINISHED

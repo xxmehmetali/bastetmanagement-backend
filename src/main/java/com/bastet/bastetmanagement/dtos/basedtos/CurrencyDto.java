@@ -15,9 +15,19 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 import java.util.Date;
 import java.util.UUID;
-
+@Getter
+@Setter
+@AllArgsConstructor
+@NoArgsConstructor
 public class CurrencyDto {
-    private UUID id;
 
-    private String currencySymbol ;
+    private UUID id = UUID.randomUUID();
+
+    private String currencyName;
+
+    private String currencySymbol;
+
+    private Date createdAt;
+
+    private Date updatedAt;
 }

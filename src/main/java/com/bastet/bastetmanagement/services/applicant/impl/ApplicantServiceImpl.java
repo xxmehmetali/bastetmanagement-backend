@@ -1,5 +1,6 @@
 package com.bastet.bastetmanagement.services.applicant.impl;
 
+import com.bastet.bastetmanagement.core.customexceptions.ModelNotFoundException;
 import com.bastet.bastetmanagement.daos.ApplicantDao;
 import com.bastet.bastetmanagement.models.Applicant;
 import com.bastet.bastetmanagement.services.applicant.ApplicantService;
@@ -19,9 +20,8 @@ public class ApplicantServiceImpl implements ApplicantService {
     private ApplicantDao applicantDao;
 
     @Override
-    public Applicant findById(UUID id){
-        Applicant applicant = applicantDao.findById(id).orElse(null);
-        return applicant;
+    public Applicant findById(UUID id) {
+        return applicantDao.findById(id).orElseThrow(() -> new ModelNotFoundException("Applicant not found"));
     }
 
 }

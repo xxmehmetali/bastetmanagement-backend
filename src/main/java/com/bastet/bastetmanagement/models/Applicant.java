@@ -13,17 +13,13 @@ import java.util.Date;
 import java.util.Objects;
 import java.util.UUID;
 
-//@Getter
-//@Setter
+@Getter
+@Setter
 @Entity
 @AllArgsConstructor
 @NoArgsConstructor
 @Table(name = "Applicants")
-@JsonIdentityInfo(
-        generator = ObjectIdGenerators.PropertyGenerator.class,
-        property = "id")
 public class Applicant {
-    private static final long serialVersionUID = 2L;
     @Id
     @Column(name="id")
     @Type(type="org.hibernate.type.UUIDCharType")
@@ -51,7 +47,7 @@ public class Applicant {
 
     @JoinColumn(name = "CV")
     @OneToOne(fetch = FetchType.EAGER)
-    @JsonBackReference
+    @JsonManagedReference
     private Cv CV;
 
     //bak
@@ -77,128 +73,9 @@ public class Applicant {
     @LastModifiedDate
     private Date updatedAt;
 
-    @OneToOne(fetch=FetchType.EAGER)
+    @OneToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "applicantMeeting")
-    @JsonManagedReference
+    @JsonBackReference
     private ApplicantMeeting applicantMeeting;
 
-    public UUID getId() {
-        return id;
-    }
-
-    public void setId(UUID id) {
-        this.id = id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getSurname() {
-        return surname;
-    }
-
-    public void setSurname(String surname) {
-        this.surname = surname;
-    }
-
-    public String getAddress() {
-        return address;
-    }
-
-    public void setAddress(String address) {
-        this.address = address;
-    }
-
-    public String getPhoneNumber() {
-        return phoneNumber;
-    }
-
-    public void setPhoneNumber(String phoneNumber) {
-        this.phoneNumber = phoneNumber;
-    }
-
-    public String getNationalId() {
-        return nationalId;
-    }
-
-    public void setNationalId(String nationalId) {
-        this.nationalId = nationalId;
-    }
-
-    public Gender getGender() {
-        return gender;
-    }
-
-    public void setGender(Gender gender) {
-        this.gender = gender;
-    }
-
-    public Cv getCV() {
-        return CV;
-    }
-
-    public void setCV(Cv CV) {
-        this.CV = CV;
-    }
-
-    public AssesmentStatus getHrAssessmentStatus() {
-        return hrAssessmentStatus;
-    }
-
-    public void setHrAssessmentStatus(AssesmentStatus hrAssessmentStatus) {
-        this.hrAssessmentStatus = hrAssessmentStatus;
-    }
-
-    public AssesmentStatus getTechnicalAssessmentStatus() {
-        return technicalAssessmentStatus;
-    }
-
-    public void setTechnicalAssessmentStatus(AssesmentStatus technicalAssessmentStatus) {
-        this.technicalAssessmentStatus = technicalAssessmentStatus;
-    }
-
-    public String getHrReview() {
-        return hrReview;
-    }
-
-    public void setHrReview(String hrReview) {
-        this.hrReview = hrReview;
-    }
-
-    public String getTechnicalReview() {
-        return technicalReview;
-    }
-
-    public void setTechnicalReview(String technicalReview) {
-        this.technicalReview = technicalReview;
-    }
-
-    public Date getCreatedAt() {
-        return createdAt;
-    }
-
-    public void setCreatedAt(Date createdAt) {
-        this.createdAt = createdAt;
-    }
-
-    public Date getUpdatedAt() {
-        return updatedAt;
-    }
-
-    public void setUpdatedAt(Date updatedAt) {
-        this.updatedAt = updatedAt;
-    }
-
-    public ApplicantMeeting getApplicantMeeting() {
-        return applicantMeeting;
-    }
-
-    public void setApplicantMeeting(ApplicantMeeting applicantMeeting) {
-        this.applicantMeeting = applicantMeeting;
-    }
 }

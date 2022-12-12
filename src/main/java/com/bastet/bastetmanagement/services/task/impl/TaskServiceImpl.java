@@ -1,5 +1,6 @@
 package com.bastet.bastetmanagement.services.task.impl;
 
+import com.bastet.bastetmanagement.core.customexceptions.ModelNotFoundException;
 import com.bastet.bastetmanagement.daos.TaskDao;
 import com.bastet.bastetmanagement.models.Task;
 import com.bastet.bastetmanagement.services.task.TaskService;
@@ -17,7 +18,7 @@ public class TaskServiceImpl implements TaskService {
 
     @Override
     public Task findById(UUID id) {
-        Task task= taskDao.findById(id).orElse(null);
-        return task;
+        return taskDao.findById(id).orElseThrow(() -> new ModelNotFoundException("Task not found"));
     }
+
 }

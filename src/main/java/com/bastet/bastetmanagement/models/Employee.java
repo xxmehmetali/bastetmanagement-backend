@@ -71,7 +71,8 @@ public class Employee {
     private Branch branch;
 
     @JoinColumn(name = "department")
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JsonBackReference
     private Department department;
 
     @ManyToMany(cascade = CascadeType.ALL)
