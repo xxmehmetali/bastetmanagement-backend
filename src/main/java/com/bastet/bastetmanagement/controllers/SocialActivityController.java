@@ -1,6 +1,6 @@
 package com.bastet.bastetmanagement.controllers;
 
-import com.bastet.bastetmanagement.core.configurations.modelmapper.CustomModelMapper;
+
 import com.bastet.bastetmanagement.daos.EmployeeDao;
 import com.bastet.bastetmanagement.daos.SocialActivityDao;
 import com.bastet.bastetmanagement.dtos.basedtos.SocialActivityDto;
@@ -23,8 +23,7 @@ public class SocialActivityController {
     private SocialActivityDao socialActivityDao;
     @Autowired
     private EmployeeDao employeeDao;
-    @Resource
-    private CustomModelMapper customModelMapper;
+
     @Resource
     private SocialActivityFacade socialActivityFacade;
 

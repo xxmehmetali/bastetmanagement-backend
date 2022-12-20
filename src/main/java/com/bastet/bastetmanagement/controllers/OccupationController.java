@@ -1,6 +1,6 @@
 package com.bastet.bastetmanagement.controllers;
 
-import com.bastet.bastetmanagement.core.configurations.modelmapper.CustomModelMapper;
+
 import com.bastet.bastetmanagement.daos.OccupationDao;
 import com.bastet.bastetmanagement.daos.ProjectDao;
 import com.bastet.bastetmanagement.dtos.basedtos.OccupationDto;
@@ -23,8 +23,7 @@ public class OccupationController {
 
     @Resource
     private OccupationDao occupationDao;
-    @Resource
-    private CustomModelMapper customModelMapper;
+
 
     @Resource
     private OccupationFacade occupationFacade;

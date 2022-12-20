@@ -1,6 +1,6 @@
 package com.bastet.bastetmanagement.facades.corporation.impl;
 
-import com.bastet.bastetmanagement.core.configurations.modelmapper.CustomModelMapper;
+
 import com.bastet.bastetmanagement.dtos.basedtos.CorporationDto;
 import com.bastet.bastetmanagement.dtos.simplifieddtos.CorporationSimplifiedDto;
 import com.bastet.bastetmanagement.facades.corporation.CorporationFacade;
@@ -15,8 +15,7 @@ public class CorporationFacadeImpl implements CorporationFacade {
 
     @Resource
     private CorporationService corporationService;
-    @Resource
-    private CustomModelMapper customModelMapper;
+
     @Override
     public CorporationDto findById(UUID id) {
         return null;
@@ -24,6 +23,6 @@ public class CorporationFacadeImpl implements CorporationFacade {
 
     @Override
     public CorporationSimplifiedDto findByIdSimplified(UUID id) {
-        return customModelMapper.map(corporationService.findById(id), CorporationSimplifiedDto.class);
+        return null;
     }
 }

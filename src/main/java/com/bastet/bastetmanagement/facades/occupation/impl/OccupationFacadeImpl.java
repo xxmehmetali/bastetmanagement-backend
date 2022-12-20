@@ -1,6 +1,6 @@
 package com.bastet.bastetmanagement.facades.occupation.impl;
 
-import com.bastet.bastetmanagement.core.configurations.modelmapper.CustomModelMapper;
+
 import com.bastet.bastetmanagement.dtos.basedtos.OccupationDto;
 import com.bastet.bastetmanagement.dtos.simplifieddtos.OccupationSimplifiedDto;
 import com.bastet.bastetmanagement.facades.occupation.OccupationFacade;
@@ -14,8 +14,7 @@ import java.util.UUID;
 public class OccupationFacadeImpl implements OccupationFacade {
     @Resource
     private OccupationService occupationService;
-    @Resource
-    private CustomModelMapper customModelMapper;
+
     @Override
     public OccupationDto findById(UUID id) {
         return null;
@@ -23,6 +22,6 @@ public class OccupationFacadeImpl implements OccupationFacade {
 
     @Override
     public OccupationSimplifiedDto findByIdSimplified(UUID id) {
-        return customModelMapper.map(occupationService.findById(id), OccupationSimplifiedDto.class);
+        return null;
     }
 }

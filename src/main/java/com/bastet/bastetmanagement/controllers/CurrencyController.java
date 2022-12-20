@@ -1,6 +1,6 @@
 package com.bastet.bastetmanagement.controllers;
 
-import com.bastet.bastetmanagement.core.configurations.modelmapper.CustomModelMapper;
+
 import com.bastet.bastetmanagement.core.customexceptions.ModelNotFoundException;
 import com.bastet.bastetmanagement.daos.CurrencyDao;
 import com.bastet.bastetmanagement.dtos.basedtos.ContextDto;
@@ -27,8 +27,7 @@ public class CurrencyController {
     @Resource
     private CurrencyFacade currencyFacade;
 
-    @Resource
-    private CustomModelMapper customModelMapper;
+
 
     @GetMapping("/findById/{id}")
     public Currency findById(@PathVariable("id")UUID id){

@@ -1,6 +1,6 @@
 package com.bastet.bastetmanagement.controllers;
 
-import com.bastet.bastetmanagement.core.configurations.modelmapper.CustomModelMapper;
+
 import com.bastet.bastetmanagement.daos.ExpenseTypeDao;
 import com.bastet.bastetmanagement.dtos.basedtos.ExpenseTypeDto;
 import com.bastet.bastetmanagement.dtos.simplifieddtos.ExpenseTypeSimplifiedDto;
@@ -23,11 +23,10 @@ public class ExpenseTypeController {
     private ExpenseTypeDao expenseTypeDao;
     @Resource
     private ExpenseTypeFacade expenseTypeFacade;
-    @Resource
-    private CustomModelMapper customModelMapper;
+
     @GetMapping("/findById/{id}")
     public ExpenseTypeDto findById(@PathVariable("id")UUID id){
-        return customModelMapper.map(expenseTypeDao.findById(id).orElse(null), ExpenseTypeDto.class);
+        return null;
     }
 
     @GetMapping("/simplified/findById/{id}")

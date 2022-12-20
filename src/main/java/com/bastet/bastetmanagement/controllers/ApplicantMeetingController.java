@@ -1,6 +1,6 @@
 package com.bastet.bastetmanagement.controllers;
 
-import com.bastet.bastetmanagement.core.configurations.modelmapper.CustomModelMapper;
+
 import com.bastet.bastetmanagement.daos.ApplicantMeetingDao;
 import com.bastet.bastetmanagement.dtos.basedtos.ApplicantMeetingDto;
 import com.bastet.bastetmanagement.dtos.simplifieddtos.ApplicantMeetingSimplifiedDto;
@@ -20,8 +20,7 @@ import java.util.UUID;
 public class ApplicantMeetingController {
     @Resource
     private ApplicantMeetingDao applicantMeetingDao;
-    @Resource
-    private CustomModelMapper customModelMapper;
+
 
     @Resource
     private ApplicantMeetingFacade applicantMeetingFacade;

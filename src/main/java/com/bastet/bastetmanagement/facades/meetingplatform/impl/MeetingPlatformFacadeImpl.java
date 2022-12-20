@@ -1,6 +1,6 @@
 package com.bastet.bastetmanagement.facades.meetingplatform.impl;
 
-import com.bastet.bastetmanagement.core.configurations.modelmapper.CustomModelMapper;
+
 import com.bastet.bastetmanagement.dtos.basedtos.MeetingPlatformDto;
 import com.bastet.bastetmanagement.dtos.simplifieddtos.MeetingPlatformSimplifiedDto;
 import com.bastet.bastetmanagement.facades.meetingplatform.MeetingPlatformFacade;
@@ -14,8 +14,7 @@ import java.util.UUID;
 public class MeetingPlatformFacadeImpl implements MeetingPlatformFacade {
     @Resource
     private MeetingPlatformService meetingPlatformService;
-    @Resource
-    private CustomModelMapper customModelMapper;
+
     @Override
     public MeetingPlatformDto findById(UUID id) {
         return null;
@@ -23,6 +22,6 @@ public class MeetingPlatformFacadeImpl implements MeetingPlatformFacade {
 
     @Override
     public MeetingPlatformSimplifiedDto findByIdSimplified(UUID id) {
-        return customModelMapper.map(meetingPlatformService.findById(id), MeetingPlatformSimplifiedDto.class);
+        return null;
     }
 }

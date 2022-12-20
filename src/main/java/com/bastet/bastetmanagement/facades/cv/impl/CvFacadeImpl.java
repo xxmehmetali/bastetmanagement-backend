@@ -1,7 +1,7 @@
 package com.bastet.bastetmanagement.facades.cv.impl;
 
-import com.bastet.bastetmanagement.core.configurations.mapstruct.CvMapper;
-import com.bastet.bastetmanagement.core.configurations.modelmapper.CustomModelMapper;
+import com.bastet.bastetmanagement.mappers.CvMapper;
+
 import com.bastet.bastetmanagement.core.utilities.results.dataresults.DataResult;
 import com.bastet.bastetmanagement.core.utilities.results.dataresults.ErrorDataResult;
 import com.bastet.bastetmanagement.core.utilities.results.dataresults.SuccessDataResult;
@@ -20,8 +20,7 @@ import java.util.UUID;
 public class CvFacadeImpl implements CvFacade {
     @Resource
     CvService cvService;
-    @Resource
-    private CustomModelMapper customModelMapper;
+
 
     @Resource
     private CvMapper cvMapper;
@@ -43,6 +42,6 @@ public class CvFacadeImpl implements CvFacade {
 
     @Override
     public CvSimplifiedDto findByIdSimplified(UUID id) {
-        return customModelMapper.map(cvService.findById(id), CvSimplifiedDto.class);
+        return null;
     }
 }

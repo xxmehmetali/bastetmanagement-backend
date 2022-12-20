@@ -1,6 +1,6 @@
 package com.bastet.bastetmanagement.facades.expensetype.impl;
 
-import com.bastet.bastetmanagement.core.configurations.modelmapper.CustomModelMapper;
+
 import com.bastet.bastetmanagement.dtos.basedtos.ExpenseTypeDto;
 import com.bastet.bastetmanagement.dtos.simplifieddtos.ExpenseTypeSimplifiedDto;
 import com.bastet.bastetmanagement.facades.expensetype.ExpenseTypeFacade;
@@ -14,8 +14,7 @@ import java.util.UUID;
 public class ExpenseTypeFacadeImpl implements ExpenseTypeFacade {
     @Resource
     private ExpenseTypeService expenseTypeService;
-    @Resource
-    private CustomModelMapper customModelMapper;
+
     @Override
     public ExpenseTypeDto findById(UUID id) {
         return null;
@@ -25,6 +24,6 @@ public class ExpenseTypeFacadeImpl implements ExpenseTypeFacade {
 
     @Override
     public ExpenseTypeSimplifiedDto findByIdSimplified(UUID id) {
-        return customModelMapper.map(expenseTypeService.findById(id), ExpenseTypeSimplifiedDto.class);
+        return null;
     }
 }

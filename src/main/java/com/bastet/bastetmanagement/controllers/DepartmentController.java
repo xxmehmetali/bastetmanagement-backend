@@ -1,6 +1,6 @@
 package com.bastet.bastetmanagement.controllers;
 
-import com.bastet.bastetmanagement.core.configurations.modelmapper.CustomModelMapper;
+
 import com.bastet.bastetmanagement.daos.DepartmentDao;
 import com.bastet.bastetmanagement.dtos.basedtos.DepartmentDto;
 import com.bastet.bastetmanagement.dtos.simplifieddtos.DepartmentSimplifiedDto;
@@ -21,8 +21,7 @@ public class DepartmentController {
     private DepartmentFacade departmentFacade;
     @Resource
     private DepartmentDao departmentDao;
-    @Resource
-    private CustomModelMapper customModelMapper;
+
     @GetMapping("/findById/{id}")
     public DepartmentDto findById(@PathVariable("id")UUID id){
         return

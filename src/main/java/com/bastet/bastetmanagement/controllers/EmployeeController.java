@@ -1,6 +1,6 @@
 package com.bastet.bastetmanagement.controllers;
 
-import com.bastet.bastetmanagement.core.configurations.modelmapper.CustomModelMapper;
+
 import com.bastet.bastetmanagement.daos.EmployeeDao;
 import com.bastet.bastetmanagement.dtos.basedtos.EmployeeDto;
 import com.bastet.bastetmanagement.dtos.simplifieddtos.EmployeeSimplifiedDto;
@@ -18,8 +18,7 @@ import java.util.UUID;
 public class EmployeeController {
     @Autowired
     private EmployeeDao employeeDao;
-    @Resource
-    private CustomModelMapper customModelMapper;
+
 
     @Resource
     private EmployeeFacade employeeFacade;

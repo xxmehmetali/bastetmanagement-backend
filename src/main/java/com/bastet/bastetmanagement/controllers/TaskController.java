@@ -1,7 +1,7 @@
 package com.bastet.bastetmanagement.controllers;
 
-import com.bastet.bastetmanagement.core.configurations.mapstruct.TaskMapper;
-import com.bastet.bastetmanagement.core.configurations.modelmapper.CustomModelMapper;
+import com.bastet.bastetmanagement.mappers.TaskMapper;
+
 import com.bastet.bastetmanagement.daos.TaskDao;
 import com.bastet.bastetmanagement.dtos.basedtos.TaskDto;
 import com.bastet.bastetmanagement.dtos.simplifieddtos.TaskSimplifiedDto;
@@ -22,8 +22,6 @@ public class TaskController {
     @Resource
     private TaskFacade taskFacade;
 
-    @Resource
-    private CustomModelMapper customModelMapper;
 
     @Resource
     private TaskMapper taskMapper;

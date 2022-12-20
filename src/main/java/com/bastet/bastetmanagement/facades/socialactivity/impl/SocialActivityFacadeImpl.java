@@ -1,6 +1,6 @@
 package com.bastet.bastetmanagement.facades.socialactivity.impl;
 
-import com.bastet.bastetmanagement.core.configurations.modelmapper.CustomModelMapper;
+
 import com.bastet.bastetmanagement.dtos.basedtos.SocialActivityDto;
 import com.bastet.bastetmanagement.dtos.simplifieddtos.SocialActivitySimplifiedDto;
 import com.bastet.bastetmanagement.facades.socialactivity.SocialActivityFacade;
@@ -15,8 +15,7 @@ public class SocialActivityFacadeImpl implements SocialActivityFacade {
 
     @Resource
     private SocialActivityService socialActivityService;
-    @Resource
-    private CustomModelMapper customModelMapper;
+
 
     @Override
     public SocialActivityDto findById(UUID id) {
@@ -25,7 +24,7 @@ public class SocialActivityFacadeImpl implements SocialActivityFacade {
 
     @Override
     public SocialActivitySimplifiedDto findByIdSimplified(UUID id) {
-        return customModelMapper.map(socialActivityService.findById(id), SocialActivitySimplifiedDto.class);
+        return null;
     }
 
 }
