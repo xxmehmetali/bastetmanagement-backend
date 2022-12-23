@@ -1,6 +1,6 @@
 package com.bastet.bastetmanagement.services.applicantmeeting.impl;
 
-import com.bastet.bastetmanagement.core.configurations.modelmapper.CustomModelMapper;
+
 import com.bastet.bastetmanagement.daos.ApplicantMeetingDao;
 import com.bastet.bastetmanagement.models.ApplicantMeeting;
 import com.bastet.bastetmanagement.services.applicantmeeting.ApplicantMeetingService;

@@ -1,6 +1,6 @@
 package com.bastet.bastetmanagement.facades.context.impl;
 
-import com.bastet.bastetmanagement.core.configurations.modelmapper.CustomModelMapper;
+
 import com.bastet.bastetmanagement.dtos.basedtos.ContextDto;
 import com.bastet.bastetmanagement.dtos.simplifieddtos.ContextSimplifiedDto;
 import com.bastet.bastetmanagement.facades.context.ContextFacade;
@@ -14,8 +14,7 @@ import java.util.UUID;
 public class ContextFacadeImpl implements ContextFacade {
     @Resource
     private ContextService contextService;
-    @Resource
-    private CustomModelMapper customModelMapper;
+
     @Override
     public ContextDto findById(UUID id) {
         return null;
@@ -23,6 +22,6 @@ public class ContextFacadeImpl implements ContextFacade {
 
     @Override
     public ContextSimplifiedDto findByIdSimplified(UUID id) {
-        return customModelMapper.map(contextService.findById(id), ContextSimplifiedDto.class);
+        return null;
     }
 }

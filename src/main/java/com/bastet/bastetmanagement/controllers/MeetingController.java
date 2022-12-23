@@ -1,6 +1,6 @@
 package com.bastet.bastetmanagement.controllers;
 
-import com.bastet.bastetmanagement.core.configurations.modelmapper.CustomModelMapper;
+
 import com.bastet.bastetmanagement.daos.MeetingDao;
 import com.bastet.bastetmanagement.dtos.basedtos.MeetingDto;
 import com.bastet.bastetmanagement.dtos.simplifieddtos.MeetingPlatformSimplifiedDto;
@@ -24,11 +24,10 @@ public class MeetingController {
 
     @Resource
     private MeetingDao meetingDao;
-    @Resource
-    private CustomModelMapper customModelMapper;
+
     @GetMapping("/findById/{id}")
     public MeetingDto findById(@PathVariable("id")UUID id){
-        return customModelMapper.map(meetingDao.findById(id).orElse(null), MeetingDto.class);
+        return null;
     }
     @GetMapping("/simplified/findById/{id}")
     public MeetingSimplifiedDto findByIdSimplified(@PathVariable("id") UUID id){

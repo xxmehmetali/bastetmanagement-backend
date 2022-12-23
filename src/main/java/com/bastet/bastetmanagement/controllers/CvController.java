@@ -1,6 +1,7 @@
 package com.bastet.bastetmanagement.controllers;
 
 import com.bastet.bastetmanagement.core.utilities.results.dataresults.DataResult;
+import com.bastet.bastetmanagement.dtos.basedtos.CvDto;
 import com.bastet.bastetmanagement.dtos.simplifieddtos.CvSimplifiedDto;
 import com.bastet.bastetmanagement.facades.cv.CvFacade;
 import com.bastet.bastetmanagement.models.Cv;
@@ -25,7 +26,7 @@ public class CvController {
     }
 
     @GetMapping("/findById/{id}")
-    public Cv findById(@PathVariable(name = "id")UUID id){
+    public CvDto findById(@PathVariable(name = "id")UUID id){
         return cvFacade.findById(id);
     }
 

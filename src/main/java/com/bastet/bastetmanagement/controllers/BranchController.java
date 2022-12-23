@@ -1,6 +1,6 @@
 package com.bastet.bastetmanagement.controllers;
 
-import com.bastet.bastetmanagement.core.configurations.modelmapper.CustomModelMapper;
+
 import com.bastet.bastetmanagement.daos.BranchDao;
 import com.bastet.bastetmanagement.dtos.basedtos.BranchDto;
 import com.bastet.bastetmanagement.dtos.simplifieddtos.BranchSimplifiedDto;
@@ -23,8 +23,7 @@ public class BranchController {
 
     @Resource
     private BranchFacade branchFacade;
-    @Resource
-    private CustomModelMapper customModelMapper;
+
 
     @GetMapping("/findById/{id}")
     public BranchDto findById(@PathVariable("id")UUID id){

@@ -1,6 +1,6 @@
 package com.bastet.bastetmanagement.controllers;
 
-import com.bastet.bastetmanagement.core.configurations.modelmapper.CustomModelMapper;
+
 import com.bastet.bastetmanagement.daos.DayOffDao;
 import com.bastet.bastetmanagement.dtos.basedtos.DayoffDto;
 import com.bastet.bastetmanagement.dtos.simplifieddtos.DayoffSimplifiedDto;
@@ -24,12 +24,11 @@ public class DayoffController {
     @Resource
     private DayoffFacade dayoffFacade;
 
-    @Resource
-    private CustomModelMapper customModelMapper;
 
     @GetMapping("/findById/{id}")
     public DayoffDto findById(@PathVariable("id")UUID id){
-        return customModelMapper.map(dayOffDao.findById(id).orElse(null), DayoffDto.class);
+//        return customModelMapper.map(dayOffDao.findById(id).orElse(null), DayoffDto.class);
+        return null;
     }
 
     @GetMapping("/simplified/findById/{id}")

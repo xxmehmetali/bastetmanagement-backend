@@ -1,6 +1,7 @@
 package com.bastet.bastetmanagement.facades.cv;
 
 import com.bastet.bastetmanagement.core.utilities.results.dataresults.DataResult;
+import com.bastet.bastetmanagement.dtos.basedtos.CvDto;
 import com.bastet.bastetmanagement.dtos.simplifieddtos.CvSimplifiedDto;
 import com.bastet.bastetmanagement.models.Cv;
 
@@ -9,6 +10,6 @@ import java.util.UUID;
 
 public interface CvFacade {
     DataResult<List<Cv>> findAll();
-    Cv findById(UUID id);
+    CvDto findById(UUID id);
     CvSimplifiedDto findByIdSimplified(UUID id);
 }

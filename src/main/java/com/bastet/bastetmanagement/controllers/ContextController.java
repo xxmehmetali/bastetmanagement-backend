@@ -1,6 +1,6 @@
 package com.bastet.bastetmanagement.controllers;
 
-import com.bastet.bastetmanagement.core.configurations.modelmapper.CustomModelMapper;
+
 import com.bastet.bastetmanagement.core.customexceptions.ModelNotFoundException;
 import com.bastet.bastetmanagement.daos.ContextDao;
 import com.bastet.bastetmanagement.dtos.basedtos.ContextDto;
@@ -23,8 +23,6 @@ public class ContextController {
     private ContextDao contextDao;
     @Resource
     private ContextFacade contextFacade;
-    @Resource
-    private CustomModelMapper customModelMapper;
 
     public ContextController(final ContextDao contextDao){
         this.contextDao = contextDao;
@@ -32,8 +30,7 @@ public class ContextController {
 
     @GetMapping("/findById/{id}")
     public ContextDto findById(@PathVariable("id")UUID id){
-        return customModelMapper.map(contextDao.findById(id).orElseThrow(() -> new ModelNotFoundException(Context.class.getName())), ContextDto.class);
-//        return contextDao.findById(id).orElse(null);
+        return null;
     }
 
     @GetMapping("/simplified/findById/{id}")

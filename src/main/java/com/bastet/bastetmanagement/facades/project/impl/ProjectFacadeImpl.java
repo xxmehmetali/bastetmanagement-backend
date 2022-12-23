@@ -1,6 +1,6 @@
 package com.bastet.bastetmanagement.facades.project.impl;
 
-import com.bastet.bastetmanagement.core.configurations.modelmapper.CustomModelMapper;
+
 import com.bastet.bastetmanagement.dtos.basedtos.ProjectDto;
 import com.bastet.bastetmanagement.dtos.simplifieddtos.ProjectSimplifiedDto;
 import com.bastet.bastetmanagement.facades.project.ProjectFacade;
@@ -14,8 +14,7 @@ import java.util.UUID;
 public class ProjectFacadeImpl implements ProjectFacade {
     @Resource
     private ProjectService projectService;
-    @Resource
-    private CustomModelMapper customModelMapper;
+
     @Override
     public ProjectDto findById(UUID id) {
         return null;
@@ -23,6 +22,6 @@ public class ProjectFacadeImpl implements ProjectFacade {
 
     @Override
     public ProjectSimplifiedDto findByIdSimplified(UUID id) {
-        return customModelMapper.map(projectService.findById(id), ProjectSimplifiedDto.class);
+        return null;
     }
 }

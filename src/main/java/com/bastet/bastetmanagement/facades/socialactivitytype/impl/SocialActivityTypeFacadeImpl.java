@@ -1,6 +1,6 @@
 package com.bastet.bastetmanagement.facades.socialactivitytype.impl;
 
-import com.bastet.bastetmanagement.core.configurations.modelmapper.CustomModelMapper;
+
 import com.bastet.bastetmanagement.dtos.basedtos.SocialActivityTypeDto;
 import com.bastet.bastetmanagement.dtos.simplifieddtos.SocialActivityTypeSimplifiedDto;
 import com.bastet.bastetmanagement.facades.socialactivitytype.SocialActivityTypeFacade;
@@ -13,8 +13,7 @@ import java.util.UUID;
 @Component
 public class SocialActivityTypeFacadeImpl implements SocialActivityTypeFacade {
 
-    @Resource
-    private CustomModelMapper customModelMapper;
+
 
     @Resource
     private SocialActivityTypeService socialActivityTypeService;
@@ -26,7 +25,7 @@ public class SocialActivityTypeFacadeImpl implements SocialActivityTypeFacade {
 
     @Override
     public SocialActivityTypeSimplifiedDto findByIdSimplified(UUID id) {
-        return customModelMapper.map(socialActivityTypeService.findById(id), SocialActivityTypeSimplifiedDto.class);
+        return null;
     }
 
 

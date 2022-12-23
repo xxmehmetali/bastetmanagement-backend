@@ -1,12 +1,11 @@
 package com.bastet.bastetmanagement.controllers;
 
-import com.bastet.bastetmanagement.core.configurations.modelmapper.CustomModelMapper;
+
 import com.bastet.bastetmanagement.daos.EmployeeDao;
 import com.bastet.bastetmanagement.daos.SocialActivityDao;
 import com.bastet.bastetmanagement.dtos.basedtos.SocialActivityDto;
 import com.bastet.bastetmanagement.dtos.simplifieddtos.SocialActivitySimplifiedDto;
 import com.bastet.bastetmanagement.facades.socialactivity.SocialActivityFacade;
-import com.bastet.bastetmanagement.facades.socialactivitytype.SocialActivityTypeFacade;
 import com.bastet.bastetmanagement.models.Employee;
 import com.bastet.bastetmanagement.models.SocialActivity;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,7 +13,6 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
 import java.util.List;
-import java.util.Set;
 import java.util.UUID;
 
 @RestController
@@ -25,8 +23,7 @@ public class SocialActivityController {
     private SocialActivityDao socialActivityDao;
     @Autowired
     private EmployeeDao employeeDao;
-    @Resource
-    private CustomModelMapper customModelMapper;
+
     @Resource
     private SocialActivityFacade socialActivityFacade;
 

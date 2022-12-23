@@ -1,6 +1,7 @@
 package com.bastet.bastetmanagement.controllers;
 
-import com.bastet.bastetmanagement.core.configurations.modelmapper.CustomModelMapper;
+import com.bastet.bastetmanagement.mappers.TaskMapper;
+
 import com.bastet.bastetmanagement.daos.TaskDao;
 import com.bastet.bastetmanagement.dtos.basedtos.TaskDto;
 import com.bastet.bastetmanagement.dtos.simplifieddtos.TaskSimplifiedDto;
@@ -21,8 +22,10 @@ public class TaskController {
     @Resource
     private TaskFacade taskFacade;
 
+
     @Resource
-    private CustomModelMapper customModelMapper;
+    private TaskMapper taskMapper;
+
     @GetMapping("/findAll")
     public List<Task> findAll(){
         return taskDao.findAll();
@@ -30,7 +33,8 @@ public class TaskController {
 
     @GetMapping("/findById/{id}")
     public TaskDto findById(@PathVariable("id") UUID id){
-        return customModelMapper.map(taskDao.findById(id).orElse(null), TaskDto.class);
+//        return customModelMapper.map(taskDao.findById(id).orElse(null), TaskDto.class);
+        return taskMapper.taskToTaskDto(taskDao.findById(id).orElse(null));
     }
     @GetMapping("/simplified/findById/{id}")
     public TaskSimplifiedDto findByIdSimplified(@PathVariable("id") UUID id){

@@ -1,6 +1,6 @@
 package com.bastet.bastetmanagement.facades.department.impl;
 
-import com.bastet.bastetmanagement.core.configurations.modelmapper.CustomModelMapper;
+
 import com.bastet.bastetmanagement.dtos.basedtos.DepartmentDto;
 import com.bastet.bastetmanagement.dtos.simplifieddtos.DepartmentSimplifiedDto;
 import com.bastet.bastetmanagement.facades.department.DepartmentFacade;
@@ -15,8 +15,7 @@ import java.util.UUID;
 public class DepartmentFacadeImpl implements DepartmentFacade {
     @Resource
     private DepartmentService departmentService;
-    @Resource
-    private CustomModelMapper customModelMapper;
+
     @Override
     public DepartmentDto findById(UUID id) {
         return null;
@@ -24,6 +23,6 @@ public class DepartmentFacadeImpl implements DepartmentFacade {
 
     @Override
     public DepartmentSimplifiedDto findByIdSimplified(UUID id) {
-        return customModelMapper.map(departmentService.findById(id), DepartmentSimplifiedDto.class);
+        return null;
     }
 }
