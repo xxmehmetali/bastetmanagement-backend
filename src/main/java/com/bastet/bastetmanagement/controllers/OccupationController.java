@@ -18,7 +18,7 @@ import java.util.List;
 import java.util.UUID;
 
 @RestController
-@RequestMapping("/occupation")
+@RequestMapping("/api/v1/occupation")
 public class OccupationController {
 
     @Resource
@@ -35,7 +35,7 @@ public class OccupationController {
 
     @GetMapping("/findById/{id}")
     public OccupationDto findById(@PathVariable("id") UUID id){
-        return customModelMapper.map(occupationDao.findById(id).orElse(null), OccupationDto.class);
+        return null;
     }
 
     @GetMapping("/simplified/findById/{id}")

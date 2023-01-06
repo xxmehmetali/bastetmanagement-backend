@@ -14,7 +14,7 @@ import java.util.List;
 import java.util.UUID;
 
 @RestController
-@RequestMapping("/employee")
+@RequestMapping("/api/v1/employee")
 public class EmployeeController {
     @Autowired
     private EmployeeDao employeeDao;
@@ -34,7 +34,7 @@ public class EmployeeController {
 
     @GetMapping("/findById/{id}")
     public EmployeeDto findById(@PathVariable("id")UUID id){
-        return customModelMapper.map(employeeDao.findById(id).orElse(null), EmployeeDto.class);
+        return null;
 
     }
 

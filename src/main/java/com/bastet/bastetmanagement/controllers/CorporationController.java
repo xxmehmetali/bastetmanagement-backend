@@ -13,7 +13,7 @@ import java.util.List;
 import java.util.UUID;
 
 @RestController
-@RequestMapping("/corporation")
+@RequestMapping("/api/v1/corporation")
 public class CorporationController {
     @Resource
     private CorporationFacade corporationFacade;
@@ -25,8 +25,7 @@ public class CorporationController {
     @GetMapping("/getAll")
     public List<CorporationDto> getAll(){
         List<Corporation> corporations = corporationDao.findAll();
-        List<CorporationDto> corporationDtos = customModelMapper.mapToList(corporations, CorporationDto.class);
-        return corporationDtos;
+        return null;
     }
 
     @GetMapping("/findById/{id}")

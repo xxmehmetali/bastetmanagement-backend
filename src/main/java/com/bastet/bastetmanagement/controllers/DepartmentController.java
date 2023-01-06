@@ -15,7 +15,7 @@ import javax.annotation.Resource;
 import java.util.UUID;
 
 @RestController
-@RequestMapping("/department")
+@RequestMapping("/api/v1/department")
 public class DepartmentController {
     @Resource
     private DepartmentFacade departmentFacade;
@@ -24,8 +24,7 @@ public class DepartmentController {
 
     @GetMapping("/findById/{id}")
     public DepartmentDto findById(@PathVariable("id")UUID id){
-        return
-        customModelMapper.map(departmentDao.findById(id).orElse(null), DepartmentDto.class);
+        return null;
     }
 
     @GetMapping("/simplified/findById/{id}")

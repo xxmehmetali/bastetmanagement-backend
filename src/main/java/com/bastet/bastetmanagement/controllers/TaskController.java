@@ -14,7 +14,7 @@ import java.util.List;
 import java.util.UUID;
 
 @RestController
-@RequestMapping("/task")
+@RequestMapping("/api/v1/task")
 public class TaskController {
 
     @Resource

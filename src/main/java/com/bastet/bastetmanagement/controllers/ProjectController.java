@@ -17,7 +17,7 @@ import java.util.List;
 import java.util.UUID;
 
 @RestController
-@RequestMapping("/project")
+@RequestMapping("/api/v1/project")
 public class ProjectController {
 
     @Resource

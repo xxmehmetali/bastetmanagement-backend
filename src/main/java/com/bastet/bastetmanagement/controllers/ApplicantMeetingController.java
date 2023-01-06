@@ -16,7 +16,7 @@ import java.util.Objects;
 import java.util.UUID;
 
 @RestController
-@RequestMapping("/applicantMeeting")
+@RequestMapping("/api/v1/applicantMeeting")
 public class ApplicantMeetingController {
     @Resource
     private ApplicantMeetingDao applicantMeetingDao;
@@ -28,7 +28,7 @@ public class ApplicantMeetingController {
     @GetMapping("/findById/{id}")
     public ApplicantMeetingDto findById(@PathVariable("id") UUID id){
         ApplicantMeeting applicantMeeting = applicantMeetingDao.findById(id).orElse(null);
-        return customModelMapper.map(applicantMeeting, ApplicantMeetingDto.class);
+        return null;
     }
 
     @GetMapping("/simplified/findById/{id}")

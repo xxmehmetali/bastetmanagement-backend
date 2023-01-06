@@ -15,7 +15,7 @@ import java.util.List;
 import java.util.UUID;
 
 @RestController
-@RequestMapping("/applicant")
+@RequestMapping("/api/v1/applicant")
 public class ApplicantController {
     @Resource
     private ApplicantFacade applicantFacade;
