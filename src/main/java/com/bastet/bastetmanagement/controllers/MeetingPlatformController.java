@@ -17,7 +17,7 @@ import java.util.List;
 import java.util.UUID;
 
 @RestController
-@RequestMapping("/meetingPlatform")
+@RequestMapping("/api/v1/meetingPlatform")
 public class MeetingPlatformController {
     @Resource
     private MeetingPlatformFacade meetingPlatformFacade;

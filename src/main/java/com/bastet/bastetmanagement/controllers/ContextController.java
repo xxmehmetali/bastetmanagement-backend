@@ -16,7 +16,7 @@ import javax.annotation.Resource;
 import java.util.UUID;
 
 @RestController
-@RequestMapping("/context")
+@RequestMapping("/api/v1/context")
 public class ContextController {
 
     @Resource

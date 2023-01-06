@@ -15,7 +15,7 @@ import javax.annotation.Resource;
 import java.util.UUID;
 
 @RestController
-@RequestMapping("/dayoff")
+@RequestMapping("/api/v1/dayoff")
 public class DayoffController {
 
     @Resource

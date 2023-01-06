@@ -21,7 +21,7 @@ import java.util.List;
 import java.util.UUID;
 
 @RestControllerAdvice
-@RequestMapping("/socialActivityType")
+@RequestMapping("/api/v1/socialActivityType")
 public class SocialActivityTypeController {
 
     @Resource
@@ -43,7 +43,7 @@ public class SocialActivityTypeController {
     public SocialActivityTypeDto findById(@PathVariable("id") UUID id){
 //        SocialActivityType activityType =  socialActivityTypeDao.findById(id).get();
 //        return activityType;
-        return customModelMapper.map(socialActivityTypeDao.findById(id).orElse(null), SocialActivityTypeDto.class);
+        return null;
     }
 }
 

@@ -16,7 +16,7 @@ import javax.annotation.Resource;
 import java.util.UUID;
 
 @RestController
-@RequestMapping("/expense")
+@RequestMapping("/api/v1/expense")
 @Log4j2
 public class ExpenseController {
     @Resource

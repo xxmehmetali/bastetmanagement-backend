@@ -18,7 +18,7 @@ import javax.annotation.Resource;
 import java.util.UUID;
 
 @RestController
-@RequestMapping("/currency")
+@RequestMapping("/api/v1/currency")
 public class CurrencyController {
 
     @Resource
@@ -35,7 +35,7 @@ public class CurrencyController {
     }
     @GetMapping("/findByCurrencySymbol/{currencySymbol}")
     public CurrencyDto findByCurrencySymbol(@PathVariable("currencySymbol")String currencySymbol){
-        return customModelMapper.map(currencyDao.findCurrencyByCurrencySymbol(currencySymbol).orElseThrow(() -> new ModelNotFoundException(CurrencyDto.class.getName())), CurrencyDto.class);
+        return null;
     }
 
     @GetMapping("/simplified/findById/{id}")

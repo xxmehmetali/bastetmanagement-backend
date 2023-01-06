@@ -17,7 +17,7 @@ import javax.annotation.Resource;
 import java.util.UUID;
 
 @RestController
-@RequestMapping("/meeting")
+@RequestMapping("/api/v1/meeting")
 public class MeetingController {
     @Resource
     private MeetingFacade meetingFacade;

@@ -5,22 +5,22 @@ import com.bastet.bastetmanagement.dtos.basedtos.CvDto;
 import com.bastet.bastetmanagement.dtos.simplifieddtos.CvSimplifiedDto;
 import com.bastet.bastetmanagement.facades.cv.CvFacade;
 import com.bastet.bastetmanagement.models.Cv;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
 import java.util.List;
 import java.util.UUID;
 
 @RestController
-@RequestMapping("/cv")
+@RequestMapping("/api/v1/cv")
+@CrossOrigin(origins = "*", maxAge = 3600)
 public class CvController {
     @Resource
     private CvFacade cvFacade;
 
     @GetMapping("/findAll")
+    @PreAuthorize("hasRole('USER')")
     public DataResult<List<Cv>> findAll(){
         return cvFacade.findAll();
     }

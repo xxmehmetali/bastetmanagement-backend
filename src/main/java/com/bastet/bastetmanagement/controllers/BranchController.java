@@ -15,7 +15,7 @@ import javax.annotation.Resource;
 import java.util.UUID;
 
 @RestController
-@RequestMapping("/branch")
+@RequestMapping("/api/v1/branch")
 public class BranchController {
 
     @Resource
@@ -27,7 +27,7 @@ public class BranchController {
 
     @GetMapping("/findById/{id}")
     public BranchDto findById(@PathVariable("id")UUID id){
-        return customModelMapper.map(branchDao.findById(id).orElse(null), BranchDto.class);
+        return null;
     }
 
     @GetMapping("/simplified/findById/{id}")
