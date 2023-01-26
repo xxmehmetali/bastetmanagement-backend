@@ -16,7 +16,7 @@ import java.util.UUID;
 
 @RestController
 @RequestMapping("/api/v1/department")
-public class DepartmentController {
+public class DepartmentController extends BaseController {
     @Resource
     private DepartmentFacade departmentFacade;
     @Resource

@@ -15,7 +15,7 @@ import java.util.UUID;
 
 @RestController
 @RequestMapping("/api/v1/employee")
-public class EmployeeController {
+public class EmployeeController extends BaseController {
     @Autowired
     private EmployeeDao employeeDao;
 

@@ -1,5 +1,6 @@
 package com.bastet.bastetmanagement.dtos.basedtos;
 
+import com.bastet.bastetmanagement.dtos.Dto;
 import com.bastet.bastetmanagement.models.SocialActivity;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.*;
@@ -16,7 +17,7 @@ import java.util.UUID;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class SocialActivityTypeDto {
+public class SocialActivityTypeDto implements Dto {
     private UUID id;
 
     private String name;

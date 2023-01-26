@@ -15,7 +15,7 @@ import java.util.UUID;
 
 @RestController
 @RequestMapping("/api/v1/task")
-public class TaskController {
+public class TaskController extends BaseController {
 
     @Resource
     private TaskDao taskDao;

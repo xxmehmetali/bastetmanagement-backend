@@ -2,6 +2,7 @@ package com.bastet.bastetmanagement.dtos.simplifieddtos;
 
 import com.bastet.bastetmanagement.core.enums.AssesmentStatus;
 import com.bastet.bastetmanagement.core.enums.Gender;
+import com.bastet.bastetmanagement.dtos.Dto;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -14,7 +15,7 @@ import java.util.UUID;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class ApplicantSimplifiedDto {
+public class ApplicantSimplifiedDto implements Dto {
     private UUID id;
 
     private String name;

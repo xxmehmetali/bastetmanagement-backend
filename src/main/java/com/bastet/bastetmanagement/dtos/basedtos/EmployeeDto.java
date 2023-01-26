@@ -1,6 +1,7 @@
 package com.bastet.bastetmanagement.dtos.basedtos;
 
 import com.bastet.bastetmanagement.core.enums.Gender;
+import com.bastet.bastetmanagement.dtos.Dto;
 import lombok.*;
 
 import java.util.Date;
@@ -10,7 +11,7 @@ import java.util.UUID;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class EmployeeDto {
+public class EmployeeDto implements Dto {
     private UUID id = UUID.randomUUID();
 
     private String name;

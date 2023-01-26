@@ -1,5 +1,6 @@
 package com.bastet.bastetmanagement.dtos.simplifieddtos;
 
+import com.bastet.bastetmanagement.dtos.Dto;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -12,7 +13,7 @@ import java.util.UUID;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class MeetingSimplifiedDto {
+public class MeetingSimplifiedDto implements Dto {
     private UUID id;
 
     private EmployeeSimplifiedDto meetingOwner;

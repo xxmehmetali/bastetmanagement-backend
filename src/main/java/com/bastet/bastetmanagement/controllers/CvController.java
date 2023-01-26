@@ -15,7 +15,7 @@ import java.util.UUID;
 @RestController
 @RequestMapping("/api/v1/cv")
 @CrossOrigin(origins = "*", maxAge = 3600)
-public class CvController {
+public class CvController extends BaseController {
     @Resource
     private CvFacade cvFacade;
 

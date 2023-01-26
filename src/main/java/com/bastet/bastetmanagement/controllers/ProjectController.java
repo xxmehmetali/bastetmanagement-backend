@@ -18,7 +18,7 @@ import java.util.UUID;
 
 @RestController
 @RequestMapping("/api/v1/project")
-public class ProjectController {
+public class ProjectController extends BaseController {
 
     @Resource
     private ProjectFacade projectFacade;

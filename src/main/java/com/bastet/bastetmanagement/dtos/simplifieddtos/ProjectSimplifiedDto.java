@@ -1,5 +1,6 @@
 package com.bastet.bastetmanagement.dtos.simplifieddtos;
 
+import com.bastet.bastetmanagement.dtos.Dto;
 import com.bastet.bastetmanagement.models.Corporation;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -14,7 +15,7 @@ import java.util.UUID;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class ProjectSimplifiedDto {
+public class ProjectSimplifiedDto implements Dto {
     private UUID id;
 
     private String name;

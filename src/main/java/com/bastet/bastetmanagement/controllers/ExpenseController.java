@@ -18,7 +18,7 @@ import java.util.UUID;
 @RestController
 @RequestMapping("/api/v1/expense")
 @Log4j2
-public class ExpenseController {
+public class ExpenseController extends BaseController {
     @Resource
     private ExpenseFacade expenseFacade;
 

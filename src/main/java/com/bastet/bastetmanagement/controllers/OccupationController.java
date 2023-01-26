@@ -19,7 +19,7 @@ import java.util.UUID;
 
 @RestController
 @RequestMapping("/api/v1/occupation")
-public class OccupationController {
+public class OccupationController extends BaseController {
 
     @Resource
     private OccupationDao occupationDao;

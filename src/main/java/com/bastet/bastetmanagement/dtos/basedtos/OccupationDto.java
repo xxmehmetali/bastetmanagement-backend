@@ -1,5 +1,6 @@
 package com.bastet.bastetmanagement.dtos.basedtos;
 
+import com.bastet.bastetmanagement.dtos.Dto;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.*;
 import org.hibernate.annotations.Type;
@@ -15,7 +16,7 @@ import java.util.UUID;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class OccupationDto {
+public class OccupationDto implements Dto {
     private UUID id;
 
     private String occupation;

@@ -17,7 +17,7 @@ import java.util.UUID;
 
 @RestController
 @RequestMapping("/api/v1/applicantMeeting")
-public class ApplicantMeetingController {
+public class ApplicantMeetingController extends BaseController {
     @Resource
     private ApplicantMeetingDao applicantMeetingDao;
 

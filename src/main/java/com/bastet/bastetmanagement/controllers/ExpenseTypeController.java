@@ -17,7 +17,7 @@ import java.util.UUID;
 @RestController
 
 @RequestMapping("/api/v1/expenseType")
-public class ExpenseTypeController {
+public class ExpenseTypeController extends BaseController {
 
     @Resource
     private ExpenseTypeDao expenseTypeDao;

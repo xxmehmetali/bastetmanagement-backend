@@ -22,7 +22,7 @@ import java.util.UUID;
 
 @RestControllerAdvice
 @RequestMapping("/api/v1/socialActivityType")
-public class SocialActivityTypeController {
+public class SocialActivityTypeController extends BaseController {
 
     @Resource
     private SocialActivityTypeDao socialActivityTypeDao;

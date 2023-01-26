@@ -17,7 +17,7 @@ import java.util.UUID;
 
 @RestController
 @RequestMapping("/api/v1/socialActivity")
-public class SocialActivityController {
+public class SocialActivityController extends BaseController {
 
     @Autowired
     private SocialActivityDao socialActivityDao;

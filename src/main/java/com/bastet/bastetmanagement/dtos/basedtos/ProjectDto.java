@@ -1,5 +1,6 @@
 package com.bastet.bastetmanagement.dtos.basedtos;
 
+import com.bastet.bastetmanagement.dtos.Dto;
 import com.bastet.bastetmanagement.models.Corporation;
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import lombok.*;
@@ -18,7 +19,7 @@ import java.util.UUID;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class ProjectDto {
+public class ProjectDto implements Dto {
     private UUID id;
 
     private String name;

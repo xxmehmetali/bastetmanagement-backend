@@ -17,7 +17,7 @@ import java.util.UUID;
 
 @RestController
 @RequestMapping("/api/v1/context")
-public class ContextController {
+public class ContextController extends BaseController {
 
     @Resource
     private ContextDao contextDao;

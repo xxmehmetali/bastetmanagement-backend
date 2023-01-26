@@ -16,7 +16,7 @@ import java.util.UUID;
 
 @RestController
 @RequestMapping("/api/v1/dayoff")
-public class DayoffController {
+public class DayoffController extends BaseController {
 
     @Resource
     private DayOffDao dayOffDao;

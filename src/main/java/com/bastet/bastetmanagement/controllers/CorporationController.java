@@ -14,7 +14,7 @@ import java.util.UUID;
 
 @RestController
 @RequestMapping("/api/v1/corporation")
-public class CorporationController {
+public class CorporationController extends BaseController {
     @Resource
     private CorporationFacade corporationFacade;
     @Resource

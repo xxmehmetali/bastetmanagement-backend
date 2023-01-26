@@ -15,7 +15,6 @@ public class TaskFacadeImpl implements TaskFacade {
     @Resource
     private TaskService taskService;
 
-
     @Override
     public TaskDto findById(UUID id) {
         return null;

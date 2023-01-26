@@ -1,5 +1,6 @@
 package com.bastet.bastetmanagement.controllers;
 
+import com.bastet.bastetmanagement.core.utilities.results.baseresults.Result;
 import com.bastet.bastetmanagement.mappers.ApplicantMapper;
 import com.bastet.bastetmanagement.daos.ApplicantDao;
 import com.bastet.bastetmanagement.dtos.basedtos.ApplicantDto;
@@ -16,12 +17,9 @@ import java.util.UUID;
 
 @RestController
 @RequestMapping("/api/v1/applicant")
-public class ApplicantController {
+public class ApplicantController extends BaseController {
     @Resource
     private ApplicantFacade applicantFacade;
-
-    @Resource
-    private ApplicantDao applicantDao;
 
     @Resource
     private ApplicantMapper applicantMapper;
@@ -32,9 +30,10 @@ public class ApplicantController {
     }
 
     @GetMapping("/findById/{id}")
-    public ApplicantDto findById(@PathVariable("id") UUID id){
+    public Result findById(@PathVariable("id") UUID id){
 //        return applicantFacade.findById(id);
-        return applicantMapper.applicantToApplicantDto(applicantDao.findById(id).orElse(null));
+        Result r=wrapErrorDataResultWithMessage("as","asd");
+        return r;
     }
 
     @GetMapping("/simplified/findById/{id}")

@@ -2,6 +2,7 @@ package com.bastet.bastetmanagement.dtos.basedtos;
 
 import com.bastet.bastetmanagement.core.enums.Priority;
 import com.bastet.bastetmanagement.core.enums.TaskStatus;
+import com.bastet.bastetmanagement.dtos.Dto;
 import lombok.*;
 
 import java.util.UUID;
@@ -10,7 +11,7 @@ import java.util.UUID;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class TaskDto {
+public class TaskDto implements Dto {
     private UUID id;
 
     private String name;
