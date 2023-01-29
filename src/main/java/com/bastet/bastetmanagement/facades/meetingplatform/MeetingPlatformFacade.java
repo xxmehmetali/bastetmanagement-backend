@@ -8,6 +8,4 @@ import com.bastet.bastetmanagement.facades.GenericFacade;
 import java.util.UUID;
 
 public interface MeetingPlatformFacade extends GenericFacade<Dto> {
-    MeetingPlatformDto findById(UUID id);
-    MeetingPlatformSimplifiedDto findByIdSimplified(UUID id);
 }

@@ -5,7 +5,10 @@ import com.bastet.bastetmanagement.dtos.Dto;
 import com.bastet.bastetmanagement.dtos.basedtos.BranchDto;
 import com.bastet.bastetmanagement.dtos.simplifieddtos.BranchSimplifiedDto;
 import com.bastet.bastetmanagement.facades.branch.BranchFacade;
+import com.bastet.bastetmanagement.mappers.BranchMapper;
 import com.bastet.bastetmanagement.services.branch.BranchService;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Component;
 
 import javax.annotation.Resource;
@@ -15,6 +18,9 @@ import java.util.UUID;
 public class BranchFacadeImpl implements BranchFacade {
     @Resource
     private BranchService branchService;
+
+    @Resource
+    private BranchMapper branchMapper;
 
     @Override
     public BranchDto findById(UUID id) {
@@ -26,4 +32,13 @@ public class BranchFacadeImpl implements BranchFacade {
         return null;
     }
 
+    @Override
+    public Page<BranchDto> findAllPaged(Pageable pageable) {
+        return null;
+    }
+
+    @Override
+    public Page<BranchSimplifiedDto> findAllPagedSimplified(Pageable pageable) {
+        return null;
+    }
 }

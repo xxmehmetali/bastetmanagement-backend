@@ -8,6 +8,4 @@ import com.bastet.bastetmanagement.facades.GenericFacade;
 import java.util.UUID;
 
 public interface SocialActivityTypeFacade extends GenericFacade<Dto> {
-    SocialActivityTypeDto findById(UUID id);
-    SocialActivityTypeSimplifiedDto findByIdSimplified(UUID id);
 }

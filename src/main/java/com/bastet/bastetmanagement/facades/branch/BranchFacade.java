@@ -4,6 +4,4 @@ import com.bastet.bastetmanagement.dtos.Dto;
 import com.bastet.bastetmanagement.facades.GenericFacade;
 
 public interface BranchFacade extends GenericFacade<Dto> {
-//    BranchDto findById(UUID id);
-//    BranchSimplifiedDto findByIdSimplified(UUID id);
 }

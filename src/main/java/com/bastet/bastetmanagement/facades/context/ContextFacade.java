@@ -9,6 +9,4 @@ import com.bastet.bastetmanagement.facades.GenericFacade;
 import java.util.UUID;
 
 public interface ContextFacade extends GenericFacade<Dto> {
-    ContextDto findById(UUID id);
-    ContextSimplifiedDto findByIdSimplified(UUID id);
 }

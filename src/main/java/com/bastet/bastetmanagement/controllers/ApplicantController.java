@@ -6,12 +6,11 @@ import com.bastet.bastetmanagement.daos.ApplicantDao;
 import com.bastet.bastetmanagement.dtos.basedtos.ApplicantDto;
 import com.bastet.bastetmanagement.dtos.simplifieddtos.ApplicantSimplifiedDto;
 import com.bastet.bastetmanagement.facades.applicant.ApplicantFacade;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.data.domain.Pageable;
+import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
+
 import java.util.List;
 import java.util.UUID;
 
@@ -37,8 +36,15 @@ public class ApplicantController extends BaseController {
     }
 
     @GetMapping("/simplified/findById/{id}")
-    public ApplicantSimplifiedDto findByIdSimplified(@PathVariable("id") UUID id){
-        return (ApplicantSimplifiedDto) applicantFacade.findByIdSimplified(id);
+    @ResponseBody
+    public Result findByIdSimplified(@PathVariable("id") UUID id){
+        return wrapDataResult((ApplicantSimplifiedDto) applicantFacade.findByIdSimplified(id), true);
+    }
+
+    @GetMapping("/simplified/paged")
+    @ResponseBody
+    public Result findApplicantsPaged(Pageable pageable) {
+        return wrapDataResultWithMessage(applicantFacade.findAllPaged(pageable), true, "Data listed.");
     }
 
 }

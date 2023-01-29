@@ -9,6 +9,4 @@ import com.bastet.bastetmanagement.models.Dayoff;
 import java.util.UUID;
 
 public interface DayoffFacade extends GenericFacade<Dto> {
-    DayoffDto findById(UUID id);
-    DayoffSimplifiedDto findByIdSimplified(UUID id);
 }

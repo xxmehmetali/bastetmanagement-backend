@@ -8,6 +8,4 @@ import com.bastet.bastetmanagement.facades.GenericFacade;
 import java.util.UUID;
 
 public interface DepartmentFacade extends GenericFacade<Dto> {
-    DepartmentDto findById(UUID id);
-    DepartmentSimplifiedDto findByIdSimplified(UUID id);
 }

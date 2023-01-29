@@ -8,5 +8,4 @@ import com.bastet.bastetmanagement.facades.GenericFacade;
 import java.util.UUID;
 
 public interface SocialActivityFacade extends GenericFacade<Dto> {
-
 }

@@ -5,6 +5,11 @@ import com.bastet.bastetmanagement.daos.ApplicantDao;
 import com.bastet.bastetmanagement.models.Applicant;
 import com.bastet.bastetmanagement.services.applicant.ApplicantService;
 import lombok.extern.log4j.Log4j2;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
+import org.springframework.data.web.PageableDefault;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
@@ -24,4 +29,7 @@ public class ApplicantServiceImpl implements ApplicantService {
         return applicantDao.findById(id).orElseThrow(() -> new ModelNotFoundException("Applicant not found"));
     }
 
+    public Page<Applicant> findApplicantsPaged(Pageable pageable) {
+        return applicantDao.findAll(pageable);
+    }
 }

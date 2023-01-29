@@ -11,7 +11,4 @@ import java.util.List;
 import java.util.UUID;
 
 public interface CvFacade extends GenericFacade<Dto> {
-    DataResult<List<Cv>> findAll();
-    CvDto findById(UUID id);
-    CvSimplifiedDto findByIdSimplified(UUID id);
 }

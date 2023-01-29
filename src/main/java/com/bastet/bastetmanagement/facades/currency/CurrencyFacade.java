@@ -8,6 +8,4 @@ import com.bastet.bastetmanagement.facades.GenericFacade;
 import java.util.UUID;
 
 public interface CurrencyFacade extends GenericFacade<Dto> {
-    CurrencyDto findById(UUID id);
-    CurrencySimplifiedDto findByIdSimplified(UUID id);
 }
