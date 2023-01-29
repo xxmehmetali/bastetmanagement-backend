@@ -32,6 +32,6 @@ public class BranchController extends BaseController {
 
     @GetMapping("/simplified/findById/{id}")
     public BranchSimplifiedDto findByIdSimplified(@PathVariable("id") UUID id){
-        return branchFacade.findByIdSimplified(id);
+        return (BranchSimplifiedDto) branchFacade.findByIdSimplified(id);
     }
 }

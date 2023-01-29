@@ -16,7 +16,7 @@ import java.util.UUID;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class MeetingPlatformDto implements Dto {
+public class MeetingPlatformDto extends Dto {
     private UUID id;
 
     private String name;

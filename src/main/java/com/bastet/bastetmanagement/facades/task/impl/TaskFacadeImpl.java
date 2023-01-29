@@ -1,6 +1,7 @@
 package com.bastet.bastetmanagement.facades.task.impl;
 
 
+import com.bastet.bastetmanagement.dtos.Dto;
 import com.bastet.bastetmanagement.dtos.basedtos.TaskDto;
 import com.bastet.bastetmanagement.dtos.simplifieddtos.TaskSimplifiedDto;
 import com.bastet.bastetmanagement.facades.task.TaskFacade;
@@ -22,7 +23,8 @@ public class TaskFacadeImpl implements TaskFacade {
 
     @Override
     public TaskSimplifiedDto findByIdSimplified(UUID id) {
-        return null;
+        return new TaskSimplifiedDto();
+
     }
 
 }

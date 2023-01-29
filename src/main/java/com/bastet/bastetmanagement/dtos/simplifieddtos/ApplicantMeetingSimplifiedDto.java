@@ -13,7 +13,7 @@ import java.util.UUID;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class ApplicantMeetingSimplifiedDto implements Dto {
+public class ApplicantMeetingSimplifiedDto extends Dto {
     private UUID id;
 
     private MeetingPlatformSimplifiedDto meetingPlatform;

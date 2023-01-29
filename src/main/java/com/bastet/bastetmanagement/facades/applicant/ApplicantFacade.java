@@ -10,7 +10,7 @@ import com.bastet.bastetmanagement.models.Applicant;
 import java.util.UUID;
 
 public interface ApplicantFacade extends GenericFacade<Dto> {
-    ApplicantDto findById(UUID id);
-
-    ApplicantSimplifiedDto findByIdSimplified(UUID id);
+//    ApplicantDto findById(UUID id);
+//
+//    ApplicantSimplifiedDto findByIdSimplified(UUID id);
 }

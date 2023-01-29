@@ -13,7 +13,7 @@ import java.util.UUID;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class DayoffSimplifiedDto implements Dto {
+public class DayoffSimplifiedDto extends Dto {
     private UUID id;
 
     private Date beginDate;

@@ -16,7 +16,7 @@ import java.util.UUID;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class ExpenseTypeDto implements Dto {
+public class ExpenseTypeDto extends Dto {
     private UUID id = UUID.randomUUID();
 
     private String name;

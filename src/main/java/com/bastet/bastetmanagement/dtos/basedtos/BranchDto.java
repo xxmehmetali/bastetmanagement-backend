@@ -18,7 +18,7 @@ import java.util.UUID;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class BranchDto implements Dto {
+public class BranchDto extends Dto {
 
     private UUID id;
 

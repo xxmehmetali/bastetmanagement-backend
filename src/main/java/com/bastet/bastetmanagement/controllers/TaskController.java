@@ -38,7 +38,7 @@ public class TaskController extends BaseController {
     }
     @GetMapping("/simplified/findById/{id}")
     public TaskSimplifiedDto findByIdSimplified(@PathVariable("id") UUID id){
-        return taskFacade.findByIdSimplified(id);
+        return (TaskSimplifiedDto) taskFacade.findByIdSimplified(id);
     }
 
 }

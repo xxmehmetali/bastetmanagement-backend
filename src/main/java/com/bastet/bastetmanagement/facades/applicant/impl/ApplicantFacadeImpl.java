@@ -1,6 +1,7 @@
 package com.bastet.bastetmanagement.facades.applicant.impl;
 
 
+import com.bastet.bastetmanagement.dtos.Dto;
 import com.bastet.bastetmanagement.dtos.basedtos.ApplicantDto;
 import com.bastet.bastetmanagement.dtos.simplifieddtos.ApplicantSimplifiedDto;
 import com.bastet.bastetmanagement.facades.applicant.ApplicantFacade;
@@ -26,6 +27,6 @@ public class ApplicantFacadeImpl implements ApplicantFacade {
 
     @Override
     public ApplicantSimplifiedDto findByIdSimplified(UUID id) {
-        return null;
+        return new ApplicantSimplifiedDto();
     }
 }

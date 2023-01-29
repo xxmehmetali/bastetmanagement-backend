@@ -14,7 +14,7 @@ import java.util.UUID;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class EmployeeSimplifiedDto implements Dto {
+public class EmployeeSimplifiedDto extends Dto {
     private UUID id;
 
     private String name;

@@ -12,7 +12,7 @@ import java.util.UUID;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class CvSimplifiedDto implements Dto {
+public class CvSimplifiedDto extends Dto {
     private UUID id;
 
     private String  cvFile;

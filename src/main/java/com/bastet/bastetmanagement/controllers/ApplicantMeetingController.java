@@ -1,7 +1,9 @@
 package com.bastet.bastetmanagement.controllers;
 
 
+import com.bastet.bastetmanagement.core.utilities.results.baseresults.Result;
 import com.bastet.bastetmanagement.daos.ApplicantMeetingDao;
+import com.bastet.bastetmanagement.dtos.Dto;
 import com.bastet.bastetmanagement.dtos.basedtos.ApplicantMeetingDto;
 import com.bastet.bastetmanagement.dtos.simplifieddtos.ApplicantMeetingSimplifiedDto;
 import com.bastet.bastetmanagement.facades.applicantmeeting.ApplicantMeetingFacade;
@@ -33,7 +35,7 @@ public class ApplicantMeetingController extends BaseController {
 
     @GetMapping("/simplified/findById/{id}")
     public ApplicantMeetingSimplifiedDto findByIdSimplified(@PathVariable("id") UUID id){
-        return applicantMeetingFacade.findByIdSimplified(id);
+        return (ApplicantMeetingSimplifiedDto) applicantMeetingFacade.findByIdSimplified(id);
     }
 
 

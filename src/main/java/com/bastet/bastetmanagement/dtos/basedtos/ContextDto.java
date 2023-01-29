@@ -9,7 +9,7 @@ import java.util.UUID;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class ContextDto implements Dto {
+public class ContextDto extends Dto {
     private UUID id;
 
     private String name;

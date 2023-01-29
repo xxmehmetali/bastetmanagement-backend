@@ -14,7 +14,7 @@ import java.util.UUID;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class SocialActivitySimplifiedDto implements Dto {
+public class SocialActivitySimplifiedDto extends Dto {
     private UUID id;
 
     private String name;

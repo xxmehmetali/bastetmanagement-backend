@@ -20,7 +20,7 @@ import java.util.UUID;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class CurrencyDto implements Dto {
+public class CurrencyDto extends Dto {
 
     private UUID id = UUID.randomUUID();
 

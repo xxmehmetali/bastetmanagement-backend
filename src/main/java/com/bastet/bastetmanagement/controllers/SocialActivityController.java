@@ -29,7 +29,7 @@ public class SocialActivityController extends BaseController {
 
     @GetMapping("/simplified/findById/{id}")
     public SocialActivitySimplifiedDto findByIdSimplified(@PathVariable("id") UUID id){
-        return socialActivityFacade.findByIdSimplified(id);
+        return (SocialActivitySimplifiedDto) socialActivityFacade.findByIdSimplified(id);
     }
 
 

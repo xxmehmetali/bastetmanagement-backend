@@ -38,7 +38,7 @@ public class ApplicantController extends BaseController {
 
     @GetMapping("/simplified/findById/{id}")
     public ApplicantSimplifiedDto findByIdSimplified(@PathVariable("id") UUID id){
-        return applicantFacade.findByIdSimplified(id);
+        return (ApplicantSimplifiedDto) applicantFacade.findByIdSimplified(id);
     }
 
 }

@@ -14,7 +14,7 @@ import java.util.UUID;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class TaskSimplifiedDto implements Dto {
+public class TaskSimplifiedDto extends Dto {
     private UUID id;
 
     private String name;

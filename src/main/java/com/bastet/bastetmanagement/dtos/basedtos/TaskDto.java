@@ -11,7 +11,7 @@ import java.util.UUID;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class TaskDto implements Dto {
+public class TaskDto extends Dto {
     private UUID id;
 
     private String name;

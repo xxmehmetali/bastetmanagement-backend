@@ -12,7 +12,7 @@ import java.util.UUID;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class ContextSimplifiedDto implements Dto {
+public class ContextSimplifiedDto extends Dto {
     private UUID id;
 
     private String name;

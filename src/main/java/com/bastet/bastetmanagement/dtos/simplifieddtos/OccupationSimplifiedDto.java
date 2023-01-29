@@ -13,7 +13,7 @@ import java.util.UUID;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class OccupationSimplifiedDto implements Dto {
+public class OccupationSimplifiedDto extends Dto {
     private UUID id;
 
     private String occupation;

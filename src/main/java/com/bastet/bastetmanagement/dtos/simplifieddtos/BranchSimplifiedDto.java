@@ -13,7 +13,7 @@ import java.util.UUID;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class BranchSimplifiedDto implements Dto {
+public class BranchSimplifiedDto extends Dto {
 
     private UUID id;
 

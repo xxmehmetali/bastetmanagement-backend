@@ -12,7 +12,7 @@ import java.util.UUID;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class MeetingPlatformSimplifiedDto implements Dto {
+public class MeetingPlatformSimplifiedDto extends Dto {
     private UUID id;
 
     private String name;

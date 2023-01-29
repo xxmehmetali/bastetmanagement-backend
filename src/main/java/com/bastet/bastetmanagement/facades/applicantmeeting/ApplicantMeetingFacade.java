@@ -9,6 +9,4 @@ import com.bastet.bastetmanagement.models.ApplicantMeeting;
 import java.util.UUID;
 
 public interface ApplicantMeetingFacade extends GenericFacade<Dto> {
-    ApplicantMeetingDto findById(UUID id);
-    ApplicantMeetingSimplifiedDto findByIdSimplified(UUID id);
 }
