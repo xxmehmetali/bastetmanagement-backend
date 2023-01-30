@@ -5,6 +5,8 @@ import com.bastet.bastetmanagement.models.Employee;
 import com.bastet.bastetmanagement.services.employee.EmployeeService;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
@@ -19,5 +21,10 @@ public class EmployeeServiceImpl implements EmployeeService {
     public Employee findById(UUID id){
         Employee employee = employeeDao.findById(id).orElse(null);
         return employee;
+    }
+
+    @Override
+    public Page<Employee> findAllPaged(Pageable pageable) {
+        return null;
     }
 }

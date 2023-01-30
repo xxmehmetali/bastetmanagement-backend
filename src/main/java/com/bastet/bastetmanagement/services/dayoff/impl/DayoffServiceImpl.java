@@ -6,6 +6,7 @@ import com.bastet.bastetmanagement.services.cv.CvService;
 import com.bastet.bastetmanagement.services.dayoff.DayoffService;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
@@ -20,6 +21,11 @@ public class DayoffServiceImpl implements DayoffService {
     public Dayoff findById(UUID id){
         Dayoff dayoff = dayOffDao.findById(id).orElse(null);
         return dayoff;
+    }
+
+    @Override
+    public Page<Dayoff> findAllPaged(Pageable pageable) {
+        return null;
     }
 
 }

@@ -2,16 +2,19 @@ package com.bastet.bastetmanagement.facades.meetingplatform.impl;
 
 
 import com.bastet.bastetmanagement.dtos.Dto;
+import com.bastet.bastetmanagement.dtos.basedtos.DepartmentDto;
 import com.bastet.bastetmanagement.dtos.basedtos.MeetingPlatformDto;
 import com.bastet.bastetmanagement.dtos.simplifieddtos.MeetingPlatformSimplifiedDto;
 import com.bastet.bastetmanagement.facades.meetingplatform.MeetingPlatformFacade;
 import com.bastet.bastetmanagement.mappers.MeetingPlatformMapper;
 import com.bastet.bastetmanagement.services.meetingplatform.MeetingPlatformService;
 import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Component;
 
 import javax.annotation.Resource;
+import java.util.List;
 import java.util.UUID;
 
 @Component
@@ -34,7 +37,10 @@ public class MeetingPlatformFacadeImpl implements MeetingPlatformFacade {
 
     @Override
     public Page<MeetingPlatformDto> findAllPaged(Pageable pageable) {
-        return null;
+        Page pageImpl = meetingPlatformService.findAllPaged(pageable);
+        List<MeetingPlatformDto> dtos = meetingPlatformMapper.meetingPlatformListToMeetingPlatformDtoList(pageImpl.getContent());
+        return new PageImpl<>(dtos, pageable, pageImpl.getTotalPages());
+
     }
 
     @Override

@@ -4,6 +4,8 @@ import com.bastet.bastetmanagement.daos.MeetingPlatformDao;
 import com.bastet.bastetmanagement.models.MeetingPlatform;
 import com.bastet.bastetmanagement.services.meetingplatform.MeetingPlatformService;
 import lombok.extern.log4j.Log4j2;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
@@ -19,5 +21,10 @@ public class MeetingPlatformServiceImpl implements MeetingPlatformService {
         MeetingPlatform meetingPlatform=meetingPlatformDao.findById(id).orElse(null);
 
         return meetingPlatform;
+    }
+
+    @Override
+    public Page<MeetingPlatform> findAllPaged(Pageable pageable) {
+        return null;
     }
 }

@@ -4,6 +4,8 @@ import com.bastet.bastetmanagement.daos.CorporationDao;
 import com.bastet.bastetmanagement.models.Corporation;
 import com.bastet.bastetmanagement.services.corporation.CorporationService;
 import lombok.extern.log4j.Log4j2;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
@@ -13,11 +15,16 @@ import java.util.UUID;
 @Log4j2
 public class CorporationServiceImpl implements CorporationService {
 
+
     @Resource
     private CorporationDao corporationDao;
     @Override
     public Corporation findById(UUID id){
         Corporation corporation = corporationDao.findById(id).orElse(null);
         return corporation;
+    }
+    @Override
+    public Page<Corporation> findAllPaged(Pageable pageable) {
+        return null;
     }
 }

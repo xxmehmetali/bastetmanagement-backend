@@ -4,6 +4,8 @@ import com.bastet.bastetmanagement.daos.BranchDao;
 import com.bastet.bastetmanagement.models.Branch;
 import com.bastet.bastetmanagement.services.branch.BranchService;
 import lombok.extern.log4j.Log4j2;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
@@ -19,5 +21,10 @@ public class BranchServiceImpl implements BranchService {
     public Branch findById(UUID id) {
         Branch branch = branchDao.findById(id).orElse(null);
         return branch;
+    }
+
+    @Override
+    public Page<Branch> findAllPaged(Pageable pageable) {
+        return branchDao.findAll(pageable);
     }
 }

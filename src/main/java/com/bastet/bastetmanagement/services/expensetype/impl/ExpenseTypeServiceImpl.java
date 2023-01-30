@@ -4,6 +4,8 @@ import com.bastet.bastetmanagement.daos.ExpenseTypeDao;
 import com.bastet.bastetmanagement.models.ExpenseType;
 import com.bastet.bastetmanagement.services.expensetype.ExpenseTypeService;
 import lombok.extern.log4j.Log4j2;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
@@ -18,5 +20,10 @@ public class ExpenseTypeServiceImpl implements ExpenseTypeService {
     public ExpenseType findById(UUID id) {
         ExpenseType expenseType=expenseTypeDao.findById(id).orElse(null);
         return expenseType;
+    }
+
+    @Override
+    public Page<ExpenseType> findAllPaged(Pageable pageable) {
+        return null;
     }
 }

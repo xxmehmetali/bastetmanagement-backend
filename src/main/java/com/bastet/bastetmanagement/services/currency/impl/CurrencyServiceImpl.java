@@ -4,6 +4,8 @@ import com.bastet.bastetmanagement.daos.CurrencyDao;
 import com.bastet.bastetmanagement.models.Currency;
 import com.bastet.bastetmanagement.services.currency.CurrencyService;
 import lombok.extern.log4j.Log4j2;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
@@ -18,5 +20,10 @@ public class CurrencyServiceImpl implements CurrencyService {
     public Currency findById(UUID id){
         Currency currency = currencyDao.findById(id).orElse(null);
         return currency;
+    }
+
+    @Override
+    public Page<Currency> findAllPaged(Pageable pageable) {
+        return null;
     }
 }

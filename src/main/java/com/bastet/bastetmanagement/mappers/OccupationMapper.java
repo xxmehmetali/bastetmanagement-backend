@@ -1,9 +1,13 @@
 package com.bastet.bastetmanagement.mappers;
 
+import com.bastet.bastetmanagement.dtos.basedtos.ApplicantDto;
 import com.bastet.bastetmanagement.dtos.basedtos.OccupationDto;
 import com.bastet.bastetmanagement.dtos.simplifieddtos.OccupationSimplifiedDto;
+import com.bastet.bastetmanagement.models.Applicant;
 import com.bastet.bastetmanagement.models.Occupation;
 import org.mapstruct.Mapper;
+
+import java.util.List;
 
 @Mapper
 public interface OccupationMapper {
@@ -11,4 +15,8 @@ public interface OccupationMapper {
     Occupation occupationDtoToOccupation(OccupationDto occupationDto);
     OccupationSimplifiedDto occupationToOccupationSimplifiedDto(Occupation occupation);
     Occupation occupationSimplifiedDtoToOccupation(OccupationSimplifiedDto occupationSimplifiedDto);
+    //list versions
+    List<Occupation> occupationDtoListToOccupationList(List<OccupationDto> occupationDtos);
+    List<OccupationDto> occupationListToOccupationDtoList(List<Occupation> occupations);
+
 }

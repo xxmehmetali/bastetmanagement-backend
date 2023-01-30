@@ -5,6 +5,8 @@ import com.bastet.bastetmanagement.daos.SocialActivityTypeDao;
 import com.bastet.bastetmanagement.models.SocialActivityType;
 import com.bastet.bastetmanagement.services.socialactivitytype.SocialActivityTypeService;
 import lombok.extern.log4j.Log4j2;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
@@ -23,5 +25,10 @@ public class SocialActivityTypeServiceImpl implements SocialActivityTypeService 
             SocialActivityType socialActivityType= socialActivityTypeDao.findById(id).orElse(null);
 
         return socialActivityType;
+    }
+
+    @Override
+    public Page<SocialActivityType> findAllPaged(Pageable pageable) {
+        return null;
     }
 }

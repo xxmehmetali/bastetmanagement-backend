@@ -2,16 +2,19 @@ package com.bastet.bastetmanagement.facades.task.impl;
 
 
 import com.bastet.bastetmanagement.dtos.Dto;
+import com.bastet.bastetmanagement.dtos.basedtos.DepartmentDto;
 import com.bastet.bastetmanagement.dtos.basedtos.TaskDto;
 import com.bastet.bastetmanagement.dtos.simplifieddtos.TaskSimplifiedDto;
 import com.bastet.bastetmanagement.facades.task.TaskFacade;
 import com.bastet.bastetmanagement.mappers.TaskMapper;
 import com.bastet.bastetmanagement.services.task.TaskService;
 import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Component;
 
 import javax.annotation.Resource;
+import java.util.List;
 import java.util.UUID;
 
 @Component
@@ -34,7 +37,10 @@ public class TaskFacadeImpl implements TaskFacade {
 
     @Override
     public Page<TaskDto> findAllPaged(Pageable pageable) {
-        return null;
+        Page pageImpl = taskService.findAllPaged(pageable);
+        List<TaskDto> dtos = taskMapper.taskListToTaskDtoList(pageImpl.getContent());
+        return new PageImpl<>(dtos, pageable, pageImpl.getTotalPages());
+
     }
 
     @Override

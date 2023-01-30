@@ -4,6 +4,8 @@ import com.bastet.bastetmanagement.daos.ProjectDao;
 import com.bastet.bastetmanagement.models.Project;
 import com.bastet.bastetmanagement.services.project.ProjectService;
 import lombok.extern.log4j.Log4j2;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
@@ -19,5 +21,10 @@ public class ProjectServiceImpl implements ProjectService {
         Project project=projectDao.findById(id).orElse(null);
 
         return project;
+    }
+
+    @Override
+    public Page<Project> findAllPaged(Pageable pageable) {
+        return null;
     }
 }

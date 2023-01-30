@@ -1,6 +1,7 @@
 package com.bastet.bastetmanagement.facades.cv.impl;
 
 import com.bastet.bastetmanagement.dtos.Dto;
+import com.bastet.bastetmanagement.dtos.basedtos.CurrencyDto;
 import com.bastet.bastetmanagement.mappers.CvMapper;
 
 import com.bastet.bastetmanagement.core.utilities.results.dataresults.DataResult;
@@ -12,6 +13,7 @@ import com.bastet.bastetmanagement.facades.cv.CvFacade;
 import com.bastet.bastetmanagement.models.Cv;
 import com.bastet.bastetmanagement.services.cv.CvService;
 import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Component;
 
@@ -40,7 +42,9 @@ public class CvFacadeImpl implements CvFacade {
 
     @Override
     public Page<CvDto> findAllPaged(Pageable pageable) {
-        return null;
+        Page pageImpl = cvService.findAllPaged(pageable);
+        List<CvDto> dtos = cvMapper.cvListToCvDtoList(pageImpl.getContent());
+        return new PageImpl<>(dtos, pageable, pageImpl.getTotalPages());
     }
 
     @Override
