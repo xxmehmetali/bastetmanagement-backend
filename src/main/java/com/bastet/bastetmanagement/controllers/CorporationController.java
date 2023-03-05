@@ -17,10 +17,6 @@ import java.util.UUID;
 public class CorporationController extends BaseController {
     @Resource
     private CorporationFacade corporationFacade;
-    @Resource
-    private CorporationDao corporationDao;
-
-
 
     @GetMapping("/getAll")
     public List<CorporationDto> getAll(){

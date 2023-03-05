@@ -17,10 +17,6 @@ import java.util.UUID;
 @RestController
 @RequestMapping("/api/v1/branch")
 public class BranchController extends BaseController {
-
-    @Resource
-    private BranchDao branchDao;
-
     @Resource
     private BranchFacade branchFacade;
 

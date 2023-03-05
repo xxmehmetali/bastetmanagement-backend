@@ -20,25 +20,16 @@ public class ApplicantController extends BaseController {
     @Resource
     private ApplicantFacade applicantFacade;
 
-    @Resource
-    private ApplicantMapper applicantMapper;
-
-    @GetMapping("/getAll")
-    public List<ApplicantDto> getAll(){
-        return null;
-    }
-
     @GetMapping("/findById/{id}")
     public Result findById(@PathVariable("id") UUID id){
-//        return applicantFacade.findById(id);
-        Result r=wrapErrorDataResultWithMessage("as","asd");
-        return r;
+        ApplicantDto applicantDto = (ApplicantDto) applicantFacade.findById(id);
+        return wrapSuccessDataResultWithMessage(applicantDto, "Applicant found.");
     }
 
     @GetMapping("/simplified/findById/{id}")
     @ResponseBody
     public Result findByIdSimplified(@PathVariable("id") UUID id){
-        return wrapDataResult((ApplicantSimplifiedDto) applicantFacade.findByIdSimplified(id), true);
+        return wrapSuccessDataResultWithMessage((ApplicantSimplifiedDto) applicantFacade.findByIdSimplified(id), "Applicant found.");
     }
 
     @GetMapping("/simplified/paged")

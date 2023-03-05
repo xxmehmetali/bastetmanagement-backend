@@ -19,8 +19,6 @@ import java.util.UUID;
 public class DepartmentController extends BaseController {
     @Resource
     private DepartmentFacade departmentFacade;
-    @Resource
-    private DepartmentDao departmentDao;
 
     @GetMapping("/findById/{id}")
     public DepartmentDto findById(@PathVariable("id")UUID id){

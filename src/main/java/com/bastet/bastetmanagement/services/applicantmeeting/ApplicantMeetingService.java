@@ -6,4 +6,6 @@ import com.bastet.bastetmanagement.services.GenericService;
 import java.util.UUID;
 
 public interface ApplicantMeetingService extends GenericService<ApplicantMeeting> {
+
+
 }

@@ -22,9 +22,6 @@ public class MeetingController extends BaseController {
     @Resource
     private MeetingFacade meetingFacade;
 
-    @Resource
-    private MeetingDao meetingDao;
-
     @GetMapping("/findById/{id}")
     public MeetingDto findById(@PathVariable("id")UUID id){
         return null;

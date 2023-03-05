@@ -21,10 +21,6 @@ import java.util.UUID;
 @RequestMapping("/api/v1/applicantMeeting")
 public class ApplicantMeetingController extends BaseController {
     @Resource
-    private ApplicantMeetingDao applicantMeetingDao;
-
-
-    @Resource
     private ApplicantMeetingFacade applicantMeetingFacade;
 
     @GetMapping("/findById/{id}")

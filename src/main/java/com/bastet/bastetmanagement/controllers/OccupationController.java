@@ -22,10 +22,6 @@ import java.util.UUID;
 public class OccupationController extends BaseController {
 
     @Resource
-    private OccupationDao occupationDao;
-
-
-    @Resource
     private OccupationFacade occupationFacade;
 
     @GetMapping("/getAll")

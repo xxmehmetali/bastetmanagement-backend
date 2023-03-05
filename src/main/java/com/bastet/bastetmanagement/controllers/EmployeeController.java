@@ -16,10 +16,6 @@ import java.util.UUID;
 @RestController
 @RequestMapping("/api/v1/employee")
 public class EmployeeController extends BaseController {
-    @Autowired
-    private EmployeeDao employeeDao;
-
-
     @Resource
     private EmployeeFacade employeeFacade;
     @GetMapping("/findAll")

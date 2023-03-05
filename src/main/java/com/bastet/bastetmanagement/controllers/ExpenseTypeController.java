@@ -18,9 +18,6 @@ import java.util.UUID;
 
 @RequestMapping("/api/v1/expenseType")
 public class ExpenseTypeController extends BaseController {
-
-    @Resource
-    private ExpenseTypeDao expenseTypeDao;
     @Resource
     private ExpenseTypeFacade expenseTypeFacade;
 

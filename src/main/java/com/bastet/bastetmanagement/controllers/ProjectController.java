@@ -19,21 +19,8 @@ import java.util.UUID;
 @RestController
 @RequestMapping("/api/v1/project")
 public class ProjectController extends BaseController {
-
     @Resource
     private ProjectFacade projectFacade;
-
-    @Resource
-    private ProjectDao projectDao;
-
-
-    @Resource
-    private ProjectMapper projectMapper;
-
-    @GetMapping("/getAll")
-    public List<Project> getAll(){
-        return projectDao.findAll();
-    }
 
     @GetMapping("/findById/{id}")
     public ProjectDto findById(@PathVariable("id")UUID id){

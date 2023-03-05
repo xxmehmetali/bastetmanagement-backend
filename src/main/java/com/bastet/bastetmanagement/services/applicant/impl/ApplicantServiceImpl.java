@@ -32,4 +32,9 @@ public class ApplicantServiceImpl implements ApplicantService {
     public Page<Applicant> findApplicantsPaged(Pageable pageable) {
         return applicantDao.findAll(pageable);
     }
+
+    @Override
+    public Page<Applicant> findAllPaged(Pageable pageable) {
+        return null;
+    }
 }

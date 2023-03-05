@@ -18,9 +18,6 @@ import java.util.UUID;
 @RestController
 @RequestMapping("/api/v1/context")
 public class ContextController extends BaseController {
-
-    @Resource
-    private ContextDao contextDao;
     @Resource
     private ContextFacade contextFacade;
 
@@ -35,6 +32,6 @@ public class ContextController extends BaseController {
 
     @GetMapping("/simplified/findById/{id}")
     public ContextSimplifiedDto findByIdSimplified(@PathVariable("id") UUID id){
-        return contextFacade.findByIdSimplified(id);
+        return (ContextSimplifiedDto) contextFacade.findByIdSimplified(id);
     }
 }

@@ -21,12 +21,6 @@ import java.util.UUID;
 public class MeetingPlatformController extends BaseController {
     @Resource
     private MeetingPlatformFacade meetingPlatformFacade;
-    @Resource
-    private MeetingPlatformDao meetingPlatformDao;
-    @GetMapping("/getAll")
-    public List<MeetingPlatform> getAll(){
-        return meetingPlatformDao.findAll();
-    }
 
     @GetMapping("/findById/{id}")
     public MeetingPlatformDto findById(@PathVariable("id") UUID id){

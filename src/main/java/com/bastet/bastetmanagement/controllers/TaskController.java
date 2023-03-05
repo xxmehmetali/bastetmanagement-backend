@@ -16,15 +16,8 @@ import java.util.UUID;
 @RestController
 @RequestMapping("/api/v1/task")
 public class TaskController extends BaseController {
-
-    @Resource
-    private TaskDao taskDao;
     @Resource
     private TaskFacade taskFacade;
-
-
-    @Resource
-    private TaskMapper taskMapper;
 
     @GetMapping("/findAll")
     public List<Task> findAll(){

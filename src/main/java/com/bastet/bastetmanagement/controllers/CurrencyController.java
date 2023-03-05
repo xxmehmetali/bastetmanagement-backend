@@ -20,10 +20,6 @@ import java.util.UUID;
 @RestController
 @RequestMapping("/api/v1/currency")
 public class CurrencyController extends BaseController {
-
-    @Resource
-    private CurrencyDao currencyDao;
-
     @Resource
     private CurrencyFacade currencyFacade;
 
