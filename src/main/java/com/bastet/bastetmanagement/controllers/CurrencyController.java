@@ -27,7 +27,7 @@ public class CurrencyController extends BaseController {
 
     @GetMapping("/findById/{id}")
     public Currency findById(@PathVariable("id")UUID id){
-        return currencyDao.findById(id).orElse(null);
+        return null;
     }
     @GetMapping("/findByCurrencySymbol/{currencySymbol}")
     public CurrencyDto findByCurrencySymbol(@PathVariable("currencySymbol")String currencySymbol){
@@ -36,7 +36,7 @@ public class CurrencyController extends BaseController {
 
     @GetMapping("/simplified/findById/{id}")
     public CurrencySimplifiedDto findByIdSimplified(@PathVariable("id") UUID id){
-        return currencyFacade.findByIdSimplified(id);
+        return null;
     }
 
 }

@@ -21,13 +21,12 @@ public class TaskController extends BaseController {
 
     @GetMapping("/findAll")
     public List<Task> findAll(){
-        return taskDao.findAll();
+        return null;
     }
 
     @GetMapping("/findById/{id}")
     public TaskDto findById(@PathVariable("id") UUID id){
-//        return customModelMapper.map(taskDao.findById(id).orElse(null), TaskDto.class);
-        return taskMapper.taskToTaskDto(taskDao.findById(id).orElse(null));
+        return null;
     }
     @GetMapping("/simplified/findById/{id}")
     public TaskSimplifiedDto findByIdSimplified(@PathVariable("id") UUID id){

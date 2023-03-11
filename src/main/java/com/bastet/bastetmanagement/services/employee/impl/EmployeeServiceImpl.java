@@ -1,5 +1,6 @@
 package com.bastet.bastetmanagement.services.employee.impl;
 
+import com.bastet.bastetmanagement.core.customexceptions.ModelNotFoundException;
 import com.bastet.bastetmanagement.daos.EmployeeDao;
 import com.bastet.bastetmanagement.models.Employee;
 import com.bastet.bastetmanagement.services.employee.EmployeeService;
@@ -17,14 +18,14 @@ import java.util.UUID;
 public class EmployeeServiceImpl implements EmployeeService {
     @Resource
     private EmployeeDao employeeDao;
+
     @Override
     public Employee findById(UUID id){
-        Employee employee = employeeDao.findById(id).orElse(null);
-        return employee;
+        return employeeDao.findById(id).orElseThrow(() -> new ModelNotFoundException("Employee not found."));
     }
 
     @Override
     public Page<Employee> findAllPaged(Pageable pageable) {
-        return null;
+        return employeeDao.findAll(pageable);
     }
 }

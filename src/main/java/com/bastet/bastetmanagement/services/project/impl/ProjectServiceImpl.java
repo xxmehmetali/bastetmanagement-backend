@@ -1,5 +1,6 @@
 package com.bastet.bastetmanagement.services.project.impl;
 
+import com.bastet.bastetmanagement.core.customexceptions.ModelNotFoundException;
 import com.bastet.bastetmanagement.daos.ProjectDao;
 import com.bastet.bastetmanagement.models.Project;
 import com.bastet.bastetmanagement.services.project.ProjectService;
@@ -16,15 +17,14 @@ import java.util.UUID;
 public class ProjectServiceImpl implements ProjectService {
     @Resource
     private ProjectDao projectDao;
+
     @Override
     public Project findById(UUID id) {
-        Project project=projectDao.findById(id).orElse(null);
-
-        return project;
+        return projectDao.findById(id).orElseThrow(() -> new ModelNotFoundException("Project not found."));
     }
 
     @Override
     public Page<Project> findAllPaged(Pageable pageable) {
-        return null;
+        return projectDao.findAll(pageable);
     }
 }

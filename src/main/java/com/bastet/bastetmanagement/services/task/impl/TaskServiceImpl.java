@@ -25,7 +25,7 @@ public class TaskServiceImpl implements TaskService {
 
     @Override
     public Page<Task> findAllPaged(Pageable pageable) {
-        return null;
+        return taskDao.findAll(pageable);
     }
 
 }

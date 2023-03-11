@@ -1,5 +1,6 @@
 package com.bastet.bastetmanagement.services.meeting.impl;
 
+import com.bastet.bastetmanagement.core.customexceptions.ModelNotFoundException;
 import com.bastet.bastetmanagement.daos.MeetingDao;
 import com.bastet.bastetmanagement.models.Meeting;
 import com.bastet.bastetmanagement.services.meeting.MeetingService;
@@ -16,15 +17,14 @@ import java.util.UUID;
 public class MeetingServiceImpl implements MeetingService {
     @Resource
     private MeetingDao meetingDao;
+
     @Override
     public Meeting findById(UUID id) {
-        Meeting meeting=meetingDao.findById(id).orElse(null);
-
-        return meeting;
+        return meetingDao.findById(id).orElseThrow(() -> new ModelNotFoundException("Meeting not found."));
     }
 
     @Override
     public Page<Meeting> findAllPaged(Pageable pageable) {
-        return null;
+        return meetingDao.findAll(pageable);
     }
 }

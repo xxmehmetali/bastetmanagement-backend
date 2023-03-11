@@ -35,9 +35,8 @@ public class ApplicantFacadeImpl implements ApplicantFacade {
 
     @Override
     public ApplicantSimplifiedDto findByIdSimplified(UUID id) {
-//        return applicantMapper.applicantToApplicantSimplifiedDto(applicantService.findById(id));
-        return new ApplicantSimplifiedDto();
-
+        Applicant applicant = applicantService.findById(id);
+        return applicantMapper.applicantToApplicantSimplifiedDto(applicant);
     }
 
     @Override

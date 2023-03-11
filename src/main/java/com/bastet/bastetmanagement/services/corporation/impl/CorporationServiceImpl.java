@@ -1,5 +1,6 @@
 package com.bastet.bastetmanagement.services.corporation.impl;
 
+import com.bastet.bastetmanagement.core.customexceptions.ModelNotFoundException;
 import com.bastet.bastetmanagement.daos.CorporationDao;
 import com.bastet.bastetmanagement.models.Corporation;
 import com.bastet.bastetmanagement.services.corporation.CorporationService;
@@ -18,13 +19,14 @@ public class CorporationServiceImpl implements CorporationService {
 
     @Resource
     private CorporationDao corporationDao;
+
     @Override
-    public Corporation findById(UUID id){
-        Corporation corporation = corporationDao.findById(id).orElse(null);
-        return corporation;
+    public Corporation findById(UUID id) {
+        return corporationDao.findById(id).orElseThrow(() -> new ModelNotFoundException("Corporation not found."));
     }
+
     @Override
     public Page<Corporation> findAllPaged(Pageable pageable) {
-        return null;
+        return corporationDao.findAll(pageable);
     }
 }

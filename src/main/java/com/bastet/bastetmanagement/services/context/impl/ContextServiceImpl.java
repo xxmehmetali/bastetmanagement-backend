@@ -1,5 +1,6 @@
 package com.bastet.bastetmanagement.services.context.impl;
 
+import com.bastet.bastetmanagement.core.customexceptions.ModelNotFoundException;
 import com.bastet.bastetmanagement.daos.ContextDao;
 import com.bastet.bastetmanagement.models.Context;
 import com.bastet.bastetmanagement.services.context.ContextService;
@@ -19,13 +20,12 @@ public class ContextServiceImpl implements ContextService {
     private ContextDao contextDao;
 
     @Override
-    public Page<Context> findAllPaged(Pageable pageable) {
-        return null;
+    public Context findById(UUID id){
+        return contextDao.findById(id).orElseThrow(() -> new ModelNotFoundException("Context not found."));
     }
 
     @Override
-    public Context findById(UUID id){
-        Context context = contextDao.findById(id).orElse(null);
-        return context;
+    public Page<Context> findAllPaged(Pageable pageable) {
+        return contextDao.findAll(pageable);
     }
 }

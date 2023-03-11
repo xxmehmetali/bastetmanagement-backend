@@ -1,5 +1,6 @@
 package com.bastet.bastetmanagement.services.socialactivitytype.impl;
 
+import com.bastet.bastetmanagement.core.customexceptions.ModelNotFoundException;
 import com.bastet.bastetmanagement.daos.SocialActivityDao;
 import com.bastet.bastetmanagement.daos.SocialActivityTypeDao;
 import com.bastet.bastetmanagement.models.SocialActivityType;
@@ -20,15 +21,13 @@ public class SocialActivityTypeServiceImpl implements SocialActivityTypeService 
     @Resource
     private SocialActivityTypeDao socialActivityTypeDao;
 
-        @Override
+    @Override
     public SocialActivityType findById(UUID id) {
-            SocialActivityType socialActivityType= socialActivityTypeDao.findById(id).orElse(null);
-
-        return socialActivityType;
+        return socialActivityTypeDao.findById(id).orElseThrow(() -> new ModelNotFoundException("SocialActivityType not found."));
     }
 
     @Override
     public Page<SocialActivityType> findAllPaged(Pageable pageable) {
-        return null;
+        return socialActivityTypeDao.findAll(pageable);
     }
 }

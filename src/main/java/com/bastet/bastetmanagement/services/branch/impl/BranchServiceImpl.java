@@ -1,5 +1,6 @@
 package com.bastet.bastetmanagement.services.branch.impl;
 
+import com.bastet.bastetmanagement.core.customexceptions.ModelNotFoundException;
 import com.bastet.bastetmanagement.daos.BranchDao;
 import com.bastet.bastetmanagement.models.Branch;
 import com.bastet.bastetmanagement.services.branch.BranchService;
@@ -19,8 +20,7 @@ public class BranchServiceImpl implements BranchService {
     private BranchDao branchDao;
     @Override
     public Branch findById(UUID id) {
-        Branch branch = branchDao.findById(id).orElse(null);
-        return branch;
+        return branchDao.findById(id).orElseThrow(() -> new ModelNotFoundException("Branch not found."));
     }
 
     @Override

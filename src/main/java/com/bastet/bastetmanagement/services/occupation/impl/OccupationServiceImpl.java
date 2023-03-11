@@ -1,5 +1,6 @@
 package com.bastet.bastetmanagement.services.occupation.impl;
 
+import com.bastet.bastetmanagement.core.customexceptions.ModelNotFoundException;
 import com.bastet.bastetmanagement.daos.OccupationDao;
 import com.bastet.bastetmanagement.models.Occupation;
 import com.bastet.bastetmanagement.services.occupation.OccupationService;
@@ -20,12 +21,11 @@ public class OccupationServiceImpl implements OccupationService {
 
     @Override
     public Occupation findById(UUID id) {
-        Occupation occupation=occupationDao.findById(id).orElse(null);
-        return occupation;
+        return occupationDao.findById(id).orElseThrow(() -> new ModelNotFoundException("Occupation not found."));
     }
 
     @Override
     public Page<Occupation> findAllPaged(Pageable pageable) {
-        return null;
+        return occupationDao.findAll(pageable);
     }
 }

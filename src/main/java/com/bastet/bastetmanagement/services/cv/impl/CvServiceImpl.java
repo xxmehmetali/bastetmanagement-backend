@@ -1,5 +1,6 @@
 package com.bastet.bastetmanagement.services.cv.impl;
 
+import com.bastet.bastetmanagement.core.customexceptions.ModelNotFoundException;
 import com.bastet.bastetmanagement.daos.CvDao;
 import com.bastet.bastetmanagement.models.Cv;
 import com.bastet.bastetmanagement.services.cv.CvService;
@@ -19,12 +20,12 @@ public class CvServiceImpl implements CvService {
     CvDao cvDao;
 
     public Cv findById(UUID id){
-        return cvDao.findById(id).orElse(null);
+        return cvDao.findById(id).orElseThrow(() -> new ModelNotFoundException("Cv not found."));
     }
 
     @Override
     public Page<Cv> findAllPaged(Pageable pageable) {
-        return null;
+        return cvDao.findAll(pageable);
     }
 
 

@@ -1,5 +1,6 @@
 package com.bastet.bastetmanagement.services.department.impl;
 
+import com.bastet.bastetmanagement.core.customexceptions.ModelNotFoundException;
 import com.bastet.bastetmanagement.daos.DepartmentDao;
 import com.bastet.bastetmanagement.models.Department;
 import com.bastet.bastetmanagement.services.department.DepartmentService;
@@ -16,14 +17,14 @@ import java.util.UUID;
 public class DepartmentServiceImpl implements DepartmentService {
     @Resource
     private DepartmentDao departmentDao;
+
     @Override
-    public Department findById(UUID id){
-        Department department = departmentDao.findById(id).orElse(null);
-        return department;
+    public Department findById(UUID id) {
+        return departmentDao.findById(id).orElseThrow(() -> new ModelNotFoundException("Department not found."));
     }
 
     @Override
     public Page<Department> findAllPaged(Pageable pageable) {
-        return null;
+        return departmentDao.findAll(pageable);
     }
 }

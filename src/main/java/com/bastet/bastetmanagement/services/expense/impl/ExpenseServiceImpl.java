@@ -23,13 +23,12 @@ public class ExpenseServiceImpl implements ExpenseService {
 
     @Override
     public Expense findById(UUID id) throws ModelNotFoundException {
-        Expense expense = expenseDao.findById(id).orElseThrow(() -> new ModelNotFoundException("Expense not found!"));
-        return expense;
+        return expenseDao.findById(id).orElseThrow(() -> new ModelNotFoundException("Expense not found!"));
     }
 
     @Override
     public Page<Expense> findAllPaged(Pageable pageable) {
-        return null;
+        return expenseDao.findAll(pageable);
     }
 
 }
