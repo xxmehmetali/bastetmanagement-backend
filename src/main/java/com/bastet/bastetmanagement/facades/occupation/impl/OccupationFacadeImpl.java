@@ -27,23 +27,20 @@ public class OccupationFacadeImpl implements OccupationFacade {
 
     @Override
     public OccupationDto findById(UUID id) {
-        return null;
+        return occupationMapper.occupationToOccupationDto(occupationService.findById(id));
     }
 
     @Override
     public OccupationSimplifiedDto findByIdSimplified(UUID id) {
-        return null;
+        return occupationMapper.occupationToOccupationSimplifiedDto(occupationService.findById(id));
     }
 
     @Override
     public Page<OccupationDto> findAllPaged(Pageable pageable) {
-        Page pageImpl = occupationService.findAllPaged(pageable);
-        List<OccupationDto> dtos = occupationMapper.occupationListToOccupationDtoList(pageImpl.getContent());
-        return new PageImpl<>(dtos, pageable, pageImpl.getTotalPages());
-
+        return occupationService.findAllPaged(pageable).map(occupation -> occupationMapper.occupationToOccupationDto(occupation));
     }
     @Override
     public Page<OccupationSimplifiedDto> findAllPagedSimplified(Pageable pageable) {
-        return null;
+        return occupationService.findAllPaged(pageable).map(occupation -> occupationMapper.occupationToOccupationSimplifiedDto(occupation));
     }
 }

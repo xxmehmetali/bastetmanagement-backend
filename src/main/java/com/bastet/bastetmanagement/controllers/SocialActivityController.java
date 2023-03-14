@@ -33,24 +33,20 @@ public class SocialActivityController extends BaseController {
         return null;
     }
 
-    @GetMapping("/getAll")
-    public List<SocialActivity> getAll(){
-        return socialActivityDao.findAll();
-    }
 
-    @PutMapping("/save/{employeeId}/{socialActivityId}")
-    public SocialActivity save(@PathVariable("employeeId") UUID employeeId,
-                               @PathVariable("socialActivityId") UUID socialActivityId){
-        Employee employee = employeeDao.findById(employeeId).get();
-        SocialActivity socialActivity = socialActivityDao.findById(socialActivityId).get();
-        try {
-            List<Employee> socialActivity_employees = socialActivity.getEmployees();
-            socialActivity_employees.add(employee);
-            socialActivity.setEmployees(socialActivity_employees);
-            socialActivityDao.save(socialActivity);
-            return socialActivity;
-        }catch (Exception e){
-            return null;
-        }
-    }
+//    @PutMapping("/save/{employeeId}/{socialActivityId}")
+//    public SocialActivity save(@PathVariable("employeeId") UUID employeeId,
+//                               @PathVariable("socialActivityId") UUID socialActivityId){
+//        Employee employee = employeeDao.findById(employeeId).get();
+//        SocialActivity socialActivity = socialActivityDao.findById(socialActivityId).get();
+//        try {
+//            List<Employee> socialActivity_employees = socialActivity.getEmployees();
+//            socialActivity_employees.add(employee);
+//            socialActivity.setEmployees(socialActivity_employees);
+//            socialActivityDao.save(socialActivity);
+//            return socialActivity;
+//        }catch (Exception e){
+//            return null;
+//        }
+//    }
 }

@@ -25,10 +25,12 @@ public class ProjectController extends BaseController {
     @GetMapping("/findById/{id}")
     public ProjectDto findById(@PathVariable("id")UUID id){
 //        return customModelMapper.map(projectDao.findById(id).orElse(null), ProjectDto.class);
-        return projectMapper.projectToProjectDto(projectDao.findById(id).orElse(null));
+//        return projectMapper.projectToProjectDto(projectDao.findById(id).orElse(null));
+        return null;
     }
     @GetMapping("/simplified/findById/{id}")
     public ProjectSimplifiedDto findByIdSimplified(@PathVariable("id") UUID id){
-        return projectFacade.findByIdSimplified(id);
+//        return projectFacade.findByIdSimplified(id);
+        return null;
     }
 }

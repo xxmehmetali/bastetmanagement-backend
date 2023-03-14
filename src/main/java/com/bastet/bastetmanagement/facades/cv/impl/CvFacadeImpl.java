@@ -26,29 +26,26 @@ public class CvFacadeImpl implements CvFacade {
     @Resource
     CvService cvService;
 
-
     @Resource
     private CvMapper cvMapper;
 
     @Override
     public CvDto findById(UUID id) {
-        return null;
+        return cvMapper.cvToCvDto(cvService.findById(id));
     }
 
     @Override
     public CvSimplifiedDto findByIdSimplified(UUID id) {
-        return null;
+        return cvMapper.cvToCvSimplifiedDto(cvService.findById(id));
     }
 
     @Override
     public Page<CvDto> findAllPaged(Pageable pageable) {
-        Page pageImpl = cvService.findAllPaged(pageable);
-        List<CvDto> dtos = cvMapper.cvListToCvDtoList(pageImpl.getContent());
-        return new PageImpl<>(dtos, pageable, pageImpl.getTotalPages());
+        return cvService.findAllPaged(pageable).map(cv -> cvMapper.cvToCvDto(cv));
     }
 
     @Override
     public Page<CvSimplifiedDto> findAllPagedSimplified(Pageable pageable) {
-        return null;
+        return cvService.findAllPaged(pageable).map(cv -> cvMapper.cvToCvSimplifiedDto(cv));
     }
 }

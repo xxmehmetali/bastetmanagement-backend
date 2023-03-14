@@ -25,7 +25,6 @@ public class ApplicantMeetingController extends BaseController {
 
     @GetMapping("/findById/{id}")
     public ApplicantMeetingDto findById(@PathVariable("id") UUID id){
-        ApplicantMeeting applicantMeeting = applicantMeetingDao.findById(id).orElse(null);
         return null;
     }
 

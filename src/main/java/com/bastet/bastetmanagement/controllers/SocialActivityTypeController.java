@@ -28,11 +28,8 @@ public class SocialActivityTypeController extends BaseController {
 
     @GetMapping("/simplified/findById/{id}")
     public SocialActivityTypeSimplifiedDto findByIdSimplified(@PathVariable("id") UUID id){
-        return socialActivityTypeFacade.findByIdSimplified(id);
-    }
-    @GetMapping("/getAll")
-    public List<SocialActivityType> getAll(){
-        return socialActivityTypeDao.findAll();
+//        return socialActivityTypeFacade.findByIdSimplified(id);
+        return null;
     }
 
     @GetMapping("/findById/{id}")

@@ -28,24 +28,21 @@ public class CorporationFacadeImpl implements CorporationFacade {
 
     @Override
     public CorporationDto findById(UUID id) {
-        return null;
+        return corporationMapper.corporationToCorporationDto(corporationService.findById(id));
     }
 
     @Override
     public CorporationSimplifiedDto findByIdSimplified(UUID id) {
-        return null;
+        return corporationMapper.corporationToCorporationSimplifiedDto(corporationService.findById(id));
     }
 
     @Override
     public Page<CorporationDto> findAllPaged(Pageable pageable) {
-        Page pageImpl = corporationService.findAllPaged(pageable);
-        List<CorporationDto> applicantDtoss = corporationMapper.corporationListToCorporationDtoList(pageImpl.getContent());
-        return new PageImpl<>(applicantDtoss, pageable, pageImpl.getTotalPages());
-
+        return corporationService.findAllPaged(pageable).map(corporation -> corporationMapper.corporationToCorporationDto(corporation));
     }
 
     @Override
     public Page<CorporationSimplifiedDto> findAllPagedSimplified(Pageable pageable) {
-        return null;
+        return corporationService.findAllPaged(pageable).map(corporation -> corporationMapper.corporationToCorporationSimplifiedDto(corporation));
     }
 }

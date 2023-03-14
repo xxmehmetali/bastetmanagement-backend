@@ -22,6 +22,10 @@ public interface ApplicantMeetingMapper {
     ApplicantMeetingSimplifiedDto applicantMeetingToApplicantMeetingSimplifiedDto(ApplicantMeeting applicantMeeting);
     ApplicantMeeting applicantMeetingSimplifiedDtoToApplicantMeeting(ApplicantMeetingSimplifiedDto applicantMeetingSimplifiedDto);
     //list versions
-    List<Applicant> applicantMeetingDtoListToApplicantMeetingList(List<ApplicantDto> applicantDtos);
-    List<ApplicantDto> applicantMeetingListToApplicantMeetingDtoList(List<Applicant> applicants);
+    List<ApplicantMeeting> applicantMeetingDtoListToApplicantMeetingList(List<ApplicantMeetingDto> applicantMeetingDtos);
+    List<ApplicantMeetingDto> applicantMeetingListToApplicantMeetingDtoList(List<ApplicantMeeting> applicantMeetings);
+    List<ApplicantMeeting> applicantMeetingSimplifiedDtoListToApplicantMeetingList(List<ApplicantMeetingSimplifiedDto> applicantMeetingSimplifiedDtos);
+    List<ApplicantMeetingSimplifiedDto> applicantMeetingListToApplicantMeetingSimplifiedDtoList(List<ApplicantMeeting> applicantMeetings);
+
+
 }

@@ -27,24 +27,21 @@ public class DayoffFacadeImpl implements DayoffFacade {
 
     @Override
     public DayoffDto findById(UUID id) {
-        return null;
+        return dayoffMapper.dayoffToDayoffDto(dayoffService.findById(id));
     }
 
     @Override
     public DayoffSimplifiedDto findByIdSimplified(UUID id) {
-        return null;
+        return dayoffMapper.dayoffToDayoffSimplifiedDto(dayoffService.findById(id));
     }
 
     @Override
     public Page<DayoffDto> findAllPaged(Pageable pageable) {
-        Page pageImpl = dayoffService.findAllPaged(pageable);
-        List<DayoffDto> dtos = dayoffMapper.dayoffListToDayoffDtoList(pageImpl.getContent());
-        return new PageImpl<>(dtos, pageable, pageImpl.getTotalPages());
-
+        return dayoffService.findAllPaged(pageable).map(dayoff -> dayoffMapper.dayoffToDayoffDto(dayoff));
     }
 
     @Override
     public Page<DayoffSimplifiedDto> findAllPagedSimplified(Pageable pageable) {
-        return null;
+        return dayoffService.findAllPaged(pageable).map(dayoff -> dayoffMapper.dayoffToDayoffSimplifiedDto(dayoff));
     }
 }

@@ -28,24 +28,21 @@ public class ContextFacadeImpl implements ContextFacade {
 
     @Override
     public ContextDto findById(UUID id) {
-        return null;
+        return contextMapper.contextToContextDto(contextService.findById(id));
     }
 
     @Override
     public ContextSimplifiedDto findByIdSimplified(UUID id) {
-        return null;
+        return contextMapper.contextToContextSimplifiedDto(contextService.findById(id));
     }
 
     @Override
     public Page<ContextDto> findAllPaged(Pageable pageable) {
-        Page pageImpl = contextService.findAllPaged(pageable);
-        List<ContextDto> dtos = contextMapper.contextListToContextDtoList(pageImpl.getContent());
-        return new PageImpl<>(dtos, pageable, pageImpl.getTotalPages());
-
+        return contextService.findAllPaged(pageable).map(context -> contextMapper.contextToContextDto(context));
     }
 
     @Override
     public Page<ContextSimplifiedDto> findAllPagedSimplified(Pageable pageable) {
-        return null;
+        return contextService.findAllPaged(pageable).map(context -> contextMapper.contextToContextSimplifiedDto(context));
     }
 }

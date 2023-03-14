@@ -26,24 +26,21 @@ public class MeetingFacadeImpl implements MeetingFacade {
 
     @Override
     public MeetingDto findById(UUID id) {
-        return null;
+        return meetingMapper.meetingToMeetingDto(meetingService.findById(id));
     }
 
     @Override
     public MeetingSimplifiedDto findByIdSimplified(UUID id) {
-        return null;
+        return meetingMapper.meetingToMeetingSimplifiedDto(meetingService.findById(id));
     }
 
     @Override
     public Page<MeetingDto> findAllPaged(Pageable pageable) {
-        Page pageImpl = meetingService.findAllPaged(pageable);
-        List<MeetingDto> dtos = meetingMapper.meetingListToMeetingDtoList(pageImpl.getContent());
-        return new PageImpl<>(dtos, pageable, pageImpl.getTotalPages());
-
+        return meetingService.findAllPaged(pageable).map(meeting -> meetingMapper.meetingToMeetingDto(meeting));
     }
 
     @Override
     public Page<MeetingSimplifiedDto> findAllPagedSimplified(Pageable pageable) {
-        return null;
+        return meetingService.findAllPaged(pageable).map(meeting -> meetingMapper.meetingToMeetingSimplifiedDto(meeting));
     }
 }

@@ -1,11 +1,8 @@
 package com.bastet.bastetmanagement.facades.applicantmeeting.impl;
 
 
-import com.bastet.bastetmanagement.dtos.Dto;
-import com.bastet.bastetmanagement.dtos.basedtos.ApplicantDto;
 import com.bastet.bastetmanagement.dtos.basedtos.ApplicantMeetingDto;
 import com.bastet.bastetmanagement.dtos.simplifieddtos.ApplicantMeetingSimplifiedDto;
-import com.bastet.bastetmanagement.dtos.simplifieddtos.ApplicantSimplifiedDto;
 import com.bastet.bastetmanagement.facades.applicantmeeting.ApplicantMeetingFacade;
 import com.bastet.bastetmanagement.mappers.ApplicantMeetingMapper;
 import com.bastet.bastetmanagement.models.ApplicantMeeting;
@@ -29,23 +26,21 @@ public class ApplicantMeetingFacadeImpl implements ApplicantMeetingFacade {
 
     @Override
     public ApplicantMeetingDto findById(UUID id) {
-        return null;
+        return applicantMeetingMapper.applicantMeetingToApplicantMeetingDto(applicantMeetingService.findById(id));
     }
 
     @Override
     public ApplicantMeetingSimplifiedDto findByIdSimplified(UUID id) {
-        return null;
+        return applicantMeetingMapper.applicantMeetingToApplicantMeetingSimplifiedDto(applicantMeetingService.findById(id));
     }
 
     @Override
     public Page<ApplicantMeetingDto> findAllPaged(Pageable pageable) {
-        Page pageImpl = applicantMeetingService.findAllPaged(pageable);
-        List<ApplicantMeetingDto> applicantDtoss = applicantMeetingMapper.applicantMeetingListToApplicantMeetingDtoList(pageImpl.getContent());
-        return new PageImpl<>(applicantDtoss, pageable, pageImpl.getTotalPages());
+        return applicantMeetingService.findAllPaged(pageable).map(applicantMeeting -> applicantMeetingMapper.applicantMeetingToApplicantMeetingDto(applicantMeeting));
    }
 
     @Override
-    public Page<? extends Dto> findAllPagedSimplified(Pageable pageable) {
-        return null;
+    public Page<ApplicantMeetingSimplifiedDto> findAllPagedSimplified(Pageable pageable) {
+        return applicantMeetingService.findAllPaged(pageable).map(applicantMeeting -> applicantMeetingMapper.applicantMeetingToApplicantMeetingSimplifiedDto(applicantMeeting));
     }
 }

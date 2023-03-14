@@ -27,6 +27,7 @@ public class DepartmentController extends BaseController {
 
     @GetMapping("/simplified/findById/{id}")
     public DepartmentSimplifiedDto findByIdSimplified(@PathVariable("id") UUID id){
-        return departmentFacade.findByIdSimplified(id);
+        return null;
+//        return departmentFacade.findByIdSimplified(id);
     }
 }

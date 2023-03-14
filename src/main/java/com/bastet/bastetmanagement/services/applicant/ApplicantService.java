@@ -9,9 +9,4 @@ import org.springframework.data.domain.Pageable;
 import java.util.UUID;
 
 public interface ApplicantService extends GenericService<Applicant> {
-    //Page<Applicant> findApplicantsPaged(Pageable pageable);
-
-    Applicant findById(UUID id);
-
-    Page<Applicant> findApplicantsPaged(Pageable pageable);
 }

@@ -27,24 +27,21 @@ public class TaskFacadeImpl implements TaskFacade {
 
     @Override
     public TaskDto findById(UUID id) {
-        return null;
+        return taskMapper.taskToTaskDto(taskService.findById(id));
     }
 
     @Override
     public TaskSimplifiedDto findByIdSimplified(UUID id) {
-        return null;
+        return taskMapper.taskToTaskSimplifiedDto(taskService.findById(id));
     }
 
     @Override
     public Page<TaskDto> findAllPaged(Pageable pageable) {
-        Page pageImpl = taskService.findAllPaged(pageable);
-        List<TaskDto> dtos = taskMapper.taskListToTaskDtoList(pageImpl.getContent());
-        return new PageImpl<>(dtos, pageable, pageImpl.getTotalPages());
-
+        return taskService.findAllPaged(pageable).map(task -> taskMapper.taskToTaskDto(task));
     }
 
     @Override
     public Page<TaskSimplifiedDto> findAllPagedSimplified(Pageable pageable) {
-        return null;
+        return taskService.findAllPaged(pageable).map(task -> taskMapper.taskToTaskSimplifiedDto(task));
     }
 }

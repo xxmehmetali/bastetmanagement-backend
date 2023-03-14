@@ -18,27 +18,21 @@ public class CorporationController extends BaseController {
     @Resource
     private CorporationFacade corporationFacade;
 
-    @GetMapping("/getAll")
-    public List<CorporationDto> getAll(){
-        List<Corporation> corporations = corporationDao.findAll();
-        return null;
-    }
-
     @GetMapping("/findById/{id}")
     public Corporation findById(@PathVariable("id")UUID id){
 
 //        return customModelMapper.map(corporationDao.findById(id).orElse(null), CorporationDto.class);
-        return corporationDao.findById(id).orElse(null);
+        return null;
     }
 
     @PostMapping("/addCorporation")
     public String addCorporation(@RequestBody Corporation corporation){
-        corporationDao.save(corporation);
         return "ok";
     }
 
     @GetMapping("/simplified/findById/{id}")
     public CorporationSimplifiedDto findByIdSimplified(@PathVariable("id") UUID id){
-        return corporationFacade.findByIdSimplified(id);
+//        return corporationFacade.findByIdSimplified(id);
+        return null;
     }
 }

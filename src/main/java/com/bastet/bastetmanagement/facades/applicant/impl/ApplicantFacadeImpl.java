@@ -41,13 +41,11 @@ public class ApplicantFacadeImpl implements ApplicantFacade {
 
     @Override
     public Page<ApplicantDto> findAllPaged(Pageable pageable) {
-        Page pageImpl = applicantService.findAllPaged(pageable);
-        List<ApplicantDto> applicantDtoss = applicantMapper.applicantListToApplicantDtoList(pageImpl.getContent());
-        return new PageImpl<>(applicantDtoss, pageable, pageImpl.getTotalPages());
+        return applicantService.findAllPaged(pageable).map(applicant -> applicantMapper.applicantToApplicantDto(applicant));
     }
 
     @Override
     public Page<ApplicantSimplifiedDto> findAllPagedSimplified(Pageable pageable) {
-        return null;
+        return applicantService.findAllPaged(pageable).map(applicant -> applicantMapper.applicantToApplicantSimplifiedDto(applicant));
     }
 }

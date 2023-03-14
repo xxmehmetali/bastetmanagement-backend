@@ -27,24 +27,21 @@ public class ProjectFacadeImpl implements ProjectFacade {
 
     @Override
     public ProjectDto findById(UUID id) {
-        return null;
+        return projectMapper.projectToProjectDto(projectService.findById(id));
     }
 
     @Override
     public ProjectSimplifiedDto findByIdSimplified(UUID id) {
-        return null;
+        return projectMapper.projectToProjectSimplifiedDto(projectService.findById(id));
     }
 
     @Override
     public Page<ProjectDto> findAllPaged(Pageable pageable) {
-        Page pageImpl = projectService.findAllPaged(pageable);
-        List<ProjectDto> dtos = projectMapper.projectListToProjectDtoList(pageImpl.getContent());
-        return new PageImpl<>(dtos, pageable, pageImpl.getTotalPages());
-
+        return projectService.findAllPaged(pageable).map(project -> projectMapper.projectToProjectDto(project));
     }
 
     @Override
     public Page<ProjectSimplifiedDto> findAllPagedSimplified(Pageable pageable) {
-        return null;
+        return projectService.findAllPaged(pageable).map(project -> projectMapper.projectToProjectSimplifiedDto(project));
     }
 }

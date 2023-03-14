@@ -28,7 +28,8 @@ public class MeetingController extends BaseController {
     }
     @GetMapping("/simplified/findById/{id}")
     public MeetingSimplifiedDto findByIdSimplified(@PathVariable("id") UUID id){
-        return meetingFacade.findByIdSimplified(id);
+//        return meetingFacade.findByIdSimplified(id);
+        return null;
     }
 
 }

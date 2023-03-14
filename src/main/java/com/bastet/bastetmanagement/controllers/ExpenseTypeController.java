@@ -28,6 +28,7 @@ public class ExpenseTypeController extends BaseController {
 
     @GetMapping("/simplified/findById/{id}")
     public ExpenseTypeSimplifiedDto findByIdSimplified(@PathVariable("id") UUID id){
-        return expenseTypeFacade.findByIdSimplified(id);
+//        return expenseTypeFacade.findByIdSimplified(id);
+        return null;
     }
 }

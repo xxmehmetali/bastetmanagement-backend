@@ -21,10 +21,6 @@ public class ContextController extends BaseController {
     @Resource
     private ContextFacade contextFacade;
 
-    public ContextController(final ContextDao contextDao){
-        this.contextDao = contextDao;
-    }
-
     @GetMapping("/findById/{id}")
     public ContextDto findById(@PathVariable("id")UUID id){
         return null;

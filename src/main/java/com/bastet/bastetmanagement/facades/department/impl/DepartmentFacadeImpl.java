@@ -25,26 +25,24 @@ public class DepartmentFacadeImpl implements DepartmentFacade {
 
     @Resource
     private DepartmentMapper departmentMapper;
+
     @Override
     public DepartmentDto findById(UUID id) {
-        return null;
+        return departmentMapper.departmentToDepartmentDto(departmentService.findById(id));
     }
 
     @Override
     public DepartmentSimplifiedDto findByIdSimplified(UUID id) {
-        return null;
+        return departmentMapper.departmentToDepartmentSimplifiedDto(departmentService.findById(id));
     }
 
     @Override
     public Page<DepartmentDto> findAllPaged(Pageable pageable) {
-        Page pageImpl = departmentService.findAllPaged(pageable);
-        List<DepartmentDto> dtos = departmentMapper.departmentListToDepartmentDtoList(pageImpl.getContent());
-        return new PageImpl<>(dtos, pageable, pageImpl.getTotalPages());
-
+        return departmentService.findAllPaged(pageable).map(department -> departmentMapper.departmentToDepartmentDto(department));
     }
 
     @Override
     public Page<DepartmentSimplifiedDto> findAllPagedSimplified(Pageable pageable) {
-        return null;
+        return departmentService.findAllPaged(pageable).map(department -> departmentMapper.departmentToDepartmentSimplifiedDto(department));
     }
 }

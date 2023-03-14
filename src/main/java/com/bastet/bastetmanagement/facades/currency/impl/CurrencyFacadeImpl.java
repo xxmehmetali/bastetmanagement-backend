@@ -27,23 +27,21 @@ public class CurrencyFacadeImpl implements CurrencyFacade {
 
     @Override
     public CurrencyDto findById(UUID id) {
-        return null;
+        return currencyMapper.currencyToCurrencyDto(currencyService.findById(id));
     }
 
     @Override
     public CurrencySimplifiedDto findByIdSimplified(UUID id) {
-        return null;
+        return currencyMapper.currencyToCurrencySimplifiedDto(currencyService.findById(id));
     }
 
     @Override
     public Page<CurrencyDto> findAllPaged(Pageable pageable) {
-        Page pageImpl = currencyService.findAllPaged(pageable);
-        List<CurrencyDto> dtos = currencyMapper.currencyListToCurrencyDtoList(pageImpl.getContent());
-        return new PageImpl<>(dtos, pageable, pageImpl.getTotalPages());
+        return currencyService.findAllPaged(pageable).map(currency -> currencyMapper.currencyToCurrencyDto(currency));
     }
 
     @Override
     public Page<CurrencySimplifiedDto> findAllPagedSimplified(Pageable pageable) {
-        return null;
+        return currencyService.findAllPaged(pageable).map(currency -> currencyMapper.currencyToCurrencySimplifiedDto(currency));
     }
 }

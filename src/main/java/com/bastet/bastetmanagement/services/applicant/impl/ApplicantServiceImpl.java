@@ -29,12 +29,8 @@ public class ApplicantServiceImpl implements ApplicantService {
         return applicantDao.findById(id).orElseThrow(() -> new ModelNotFoundException("Applicant not found"));
     }
 
-    public Page<Applicant> findApplicantsPaged(Pageable pageable) {
-        return applicantDao.findAll(pageable);
-    }
-
     @Override
     public Page<Applicant> findAllPaged(Pageable pageable) {
-        return null;
+        return applicantDao.findAll(pageable);
     }
 }

@@ -22,16 +22,17 @@ public class CvController extends BaseController {
     @GetMapping("/findAll")
     @PreAuthorize("hasRole('USER')")
     public DataResult<List<Cv>> findAll(){
-        return cvFacade.findAll();
+        return null;
     }
 
     @GetMapping("/findById/{id}")
     public CvDto findById(@PathVariable(name = "id")UUID id){
-        return cvFacade.findById(id);
+        return null;
+//        return cvFacade.findById(id);
     }
 
     @GetMapping("/simplified/findById/{id}")
     public CvSimplifiedDto findByIdSimplified(@PathVariable("id") UUID id){
-        return cvFacade.findByIdSimplified(id);
+        return null;
     }
 }

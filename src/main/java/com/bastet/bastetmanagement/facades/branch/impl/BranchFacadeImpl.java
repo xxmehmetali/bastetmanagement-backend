@@ -7,6 +7,7 @@ import com.bastet.bastetmanagement.dtos.basedtos.BranchDto;
 import com.bastet.bastetmanagement.dtos.simplifieddtos.BranchSimplifiedDto;
 import com.bastet.bastetmanagement.facades.branch.BranchFacade;
 import com.bastet.bastetmanagement.mappers.BranchMapper;
+import com.bastet.bastetmanagement.models.Branch;
 import com.bastet.bastetmanagement.services.branch.BranchService;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageImpl;
@@ -27,23 +28,21 @@ public class BranchFacadeImpl implements BranchFacade {
 
     @Override
     public BranchDto findById(UUID id) {
-        return null;
+        return branchMapper.branchToBranchDto(branchService.findById(id));
     }
 
     @Override
     public BranchSimplifiedDto findByIdSimplified(UUID id) {
-        return null;
+        return branchMapper.branchToBranchSimplifiedDto(branchService.findById(id));
     }
 
     @Override
     public Page<BranchDto> findAllPaged(Pageable pageable) {
-        Page pageImpl = branchService.findAllPaged(pageable);
-        List<BranchDto> dtos = branchMapper.branchListToBranchDtoList(pageImpl.getContent());
-        return new PageImpl<>(dtos, pageable, pageImpl.getTotalPages());
+        return branchService.findAllPaged(pageable).map(branch -> branchMapper.branchToBranchDto(branch));
     }
 
     @Override
     public Page<BranchSimplifiedDto> findAllPagedSimplified(Pageable pageable) {
-        return null;
+        return branchService.findAllPaged(pageable).map(branch -> branchMapper.branchToBranchSimplifiedDto(branch));
     }
 }

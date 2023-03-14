@@ -29,6 +29,7 @@ public class DayoffController extends BaseController {
 
     @GetMapping("/simplified/findById/{id}")
     public DayoffSimplifiedDto findByIdSimplified(@PathVariable("id") UUID id){
-        return dayoffFacade.findByIdSimplified(id);
+        return null;
+//        return dayoffFacade.findByIdSimplified(id);
     }
 }

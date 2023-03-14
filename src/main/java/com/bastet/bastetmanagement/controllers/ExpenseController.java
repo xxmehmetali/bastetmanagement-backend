@@ -25,11 +25,12 @@ public class ExpenseController extends BaseController {
     @GetMapping("/findById/{id}")
     public ResponseEntity findById(@PathVariable("id")UUID id){
 //        return expenseFacade.findById(id);
-        return ResponseEntity.status(HttpStatus.OK).body(new SuccessDataResult<ExpenseDto>(expenseFacade.findById(id), "data listed."));
+        return ResponseEntity.status(HttpStatus.OK).body("");
     }
 
     @GetMapping("/simplified/findById/{id}")
     public ExpenseSimplifiedDto findByIdSimplified(@PathVariable("id") UUID id){
-        return expenseFacade.findByIdSimplified(id);
+        return null;
+//        return expenseFacade.findByIdSimplified(id);
     }
 }

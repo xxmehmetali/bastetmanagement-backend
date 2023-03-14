@@ -24,11 +24,6 @@ public class OccupationController extends BaseController {
     @Resource
     private OccupationFacade occupationFacade;
 
-    @GetMapping("/getAll")
-    public List<Occupation> getAll(){
-        return occupationDao.findAll();
-    }
-
     @GetMapping("/findById/{id}")
     public OccupationDto findById(@PathVariable("id") UUID id){
         return null;
@@ -36,6 +31,7 @@ public class OccupationController extends BaseController {
 
     @GetMapping("/simplified/findById/{id}")
     public OccupationSimplifiedDto findByIdSimplified(@PathVariable("id") UUID id){
-        return occupationFacade.findByIdSimplified(id);
+//        return occupationFacade.findByIdSimplified(id);
+        return null;
     }
 }

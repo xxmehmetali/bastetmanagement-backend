@@ -18,15 +18,6 @@ import java.util.UUID;
 public class EmployeeController extends BaseController {
     @Resource
     private EmployeeFacade employeeFacade;
-    @GetMapping("/findAll")
-    public List<Employee> getAll(){
-        return employeeDao.findAll();
-    }
-
-    @PostMapping("/save")
-    public Employee save(@RequestBody Employee employee){
-        return employeeDao.save(employee);
-    }
 
     @GetMapping("/findById/{id}")
     public EmployeeDto findById(@PathVariable("id")UUID id){
@@ -36,11 +27,12 @@ public class EmployeeController extends BaseController {
 
     @GetMapping("/findByBranchId/{id}")
     public List<Employee> findByBranchId(@PathVariable("id")UUID id){
-        return employeeDao.findEmployeesByBranch_Id(id);
+        return null;
     }
 
     @GetMapping("/simplified/findById/{id}")
     public EmployeeSimplifiedDto findByIdSimplified(@PathVariable("id") UUID id){
-        return employeeFacade.findByIdSimplified(id);
+        return null;
+//        return employeeFacade.findByIdSimplified(id);
     }
 }

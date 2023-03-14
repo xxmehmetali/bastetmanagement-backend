@@ -31,24 +31,21 @@ public class ExpenseFacadeImpl implements ExpenseFacade {
 
     @Override
     public ExpenseDto findById(UUID id) {
-        return null;
+        return expenseMapper.expenseToExpenseDto(expenseService.findById(id));
     }
 
     @Override
     public ExpenseSimplifiedDto findByIdSimplified(UUID id) {
-        return null;
+        return expenseMapper.expenseToExpenseSimplifiedDto(expenseService.findById(id));
     }
 
     @Override
     public Page<ExpenseDto> findAllPaged(Pageable pageable) {
-        Page pageImpl = expenseService.findAllPaged(pageable);
-        List<ExpenseDto> dtos = expenseMapper.expenseListToExpenseDtoList(pageImpl.getContent());
-        return new PageImpl<>(dtos, pageable, pageImpl.getTotalPages());
-
+        return expenseService.findAllPaged(pageable).map(expense -> expenseMapper.expenseToExpenseDto(expense));
     }
 
     @Override
     public Page<ExpenseSimplifiedDto> findAllPagedSimplified(Pageable pageable) {
-        return null;
+        return expenseService.findAllPaged(pageable).map(expense -> expenseMapper.expenseToExpenseSimplifiedDto(expense));
     }
 }

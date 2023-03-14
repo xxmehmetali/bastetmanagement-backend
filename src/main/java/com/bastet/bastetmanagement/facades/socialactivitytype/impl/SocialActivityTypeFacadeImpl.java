@@ -28,24 +28,21 @@ public class SocialActivityTypeFacadeImpl implements SocialActivityTypeFacade {
 
     @Override
     public SocialActivityTypeDto findById(UUID id) {
-        return null;
+        return socialActivityTypeMapper.socialActivityTypeToSocialActivityTypeDto(socialActivityTypeService.findById(id));
     }
 
     @Override
     public SocialActivityTypeSimplifiedDto findByIdSimplified(UUID id) {
-        return null;
+        return socialActivityTypeMapper.socialActivityTypeToSocialActivityTypeSimplifiedDto(socialActivityTypeService.findById(id));
     }
 
     @Override
     public Page<SocialActivityTypeDto> findAllPaged(Pageable pageable) {
-        Page pageImpl = socialActivityTypeService.findAllPaged(pageable);
-        List<SocialActivityTypeDto> dtos = socialActivityTypeMapper.socialActivityTypeListToSocialActivityTypeDtoList(pageImpl.getContent());
-        return new PageImpl<>(dtos, pageable, pageImpl.getTotalPages());
-
+        return socialActivityTypeService.findAllPaged(pageable).map(socialActivityType -> socialActivityTypeMapper.socialActivityTypeToSocialActivityTypeDto(socialActivityType));
     }
 
     @Override
     public Page<SocialActivityTypeSimplifiedDto> findAllPagedSimplified(Pageable pageable) {
-        return null;
+        return socialActivityTypeService.findAllPaged(pageable).map(socialActivityType -> socialActivityTypeMapper.socialActivityTypeToSocialActivityTypeSimplifiedDto(socialActivityType));
     }
 }
