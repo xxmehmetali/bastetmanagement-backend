@@ -1,11 +1,13 @@
 package com.bastet.bastetmanagement.controllers;
 
 
+import com.bastet.bastetmanagement.core.utilities.results.baseresults.Result;
 import com.bastet.bastetmanagement.daos.CorporationDao;
 import com.bastet.bastetmanagement.dtos.basedtos.CorporationDto;
 import com.bastet.bastetmanagement.dtos.simplifieddtos.CorporationSimplifiedDto;
 import com.bastet.bastetmanagement.facades.corporation.CorporationFacade;
 import com.bastet.bastetmanagement.models.Corporation;
+import org.springframework.data.domain.Pageable;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
@@ -19,20 +21,22 @@ public class CorporationController extends BaseController {
     private CorporationFacade corporationFacade;
 
     @GetMapping("/findById/{id}")
-    public Corporation findById(@PathVariable("id")UUID id){
-
-//        return customModelMapper.map(corporationDao.findById(id).orElse(null), CorporationDto.class);
-        return null;
-    }
-
-    @PostMapping("/addCorporation")
-    public String addCorporation(@RequestBody Corporation corporation){
-        return "ok";
+    public Result findById(@PathVariable("id")UUID id){
+        return wrapSuccessDataResultWithMessage(corporationFacade.findById(id), "");
     }
 
     @GetMapping("/simplified/findById/{id}")
-    public CorporationSimplifiedDto findByIdSimplified(@PathVariable("id") UUID id){
-//        return corporationFacade.findByIdSimplified(id);
-        return null;
+    public Result findByIdSimplified(@PathVariable("id") UUID id){
+        return wrapSuccessDataResultWithMessage(corporationFacade.findByIdSimplified(id), "");
+    }
+
+    @GetMapping("/findAll")
+    public Result findAllPaged(Pageable pageable){
+        return wrapSuccessDataResultWithMessage(corporationFacade.findAllPaged(pageable), "");
+    }
+
+    @GetMapping("/simplified/findAll")
+    public Result findAllPagedSimplified(Pageable pageable){
+        return wrapSuccessDataResultWithMessage(corporationFacade.findAllPagedSimplified(pageable), "");
     }
 }

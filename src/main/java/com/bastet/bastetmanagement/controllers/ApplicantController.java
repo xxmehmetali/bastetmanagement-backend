@@ -27,15 +27,17 @@ public class ApplicantController extends BaseController {
     }
 
     @GetMapping("/simplified/findById/{id}")
-    @ResponseBody
     public Result findByIdSimplified(@PathVariable("id") UUID id){
         return wrapSuccessDataResultWithMessage((ApplicantSimplifiedDto) applicantFacade.findByIdSimplified(id), "Applicant found.");
     }
 
-    @GetMapping("/simplified/paged")
-    @ResponseBody
-    public Result findApplicantsPaged(Pageable pageable) {
+    @GetMapping("/findAll")
+    public Result findAllPaged(Pageable pageable) {
         return wrapDataResultWithMessage(applicantFacade.findAllPaged(pageable), true, "Data listed.");
     }
 
+    @GetMapping("/simplified/findAll")
+    public Result findAllPagedSimplified(Pageable pageable) {
+        return wrapDataResultWithMessage(applicantFacade.findAllPagedSimplified(pageable), true, "Data listed.");
+    }
 }

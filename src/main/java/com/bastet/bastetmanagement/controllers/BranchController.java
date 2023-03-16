@@ -24,23 +24,23 @@ public class BranchController extends BaseController {
 
 
     @GetMapping("/findById/{id}")
-    public BranchDto findById(@PathVariable("id")UUID id){
-        return null;
+    public Result findById(@PathVariable("id")UUID id){
+        return wrapSuccessDataResultWithMessage(branchFacade.findById(id), "");
     }
 
     @GetMapping("/simplified/findById/{id}")
-    public BranchSimplifiedDto findByIdSimplified(@PathVariable("id") UUID id){
-        return (BranchSimplifiedDto) branchFacade.findByIdSimplified(id);
+    public Result findByIdSimplified(@PathVariable("id") UUID id){
+        return wrapSuccessDataResultWithMessage(branchFacade.findByIdSimplified(id), "");
     }
 
-    @GetMapping("/simplified/paged")
-    public Result findBranchesSimplifiedPaged(Pageable pageable){
-        return wrapDataResult(branchFacade.findAllPagedSimplified(pageable), true);
+    @GetMapping("/findAll")
+    public Result findAllPaged(Pageable pageable){
+        return wrapSuccessDataResultWithMessage(branchFacade.findAllPagedSimplified(pageable), "");
     }
 
-//        @GetMapping("/simplified/paged")
-//    @ResponseBody
-//    public Result findApplicantsPaged(Pageable pageable) {
-//        return wrapDataResultWithMessage(applicantFacade.findAllPaged(pageable), true, "Data listed.");
-//
+    @GetMapping("/simplified/findAll")
+    public Result findAllPagedSimplified(Pageable pageable) {
+        return wrapSuccessDataResultWithMessage(branchFacade.findAllPagedSimplified(pageable), "");
+    }
+
 }

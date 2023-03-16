@@ -1,6 +1,7 @@
 package com.bastet.bastetmanagement.controllers;
 
 
+import com.bastet.bastetmanagement.core.utilities.results.baseresults.Result;
 import com.bastet.bastetmanagement.daos.EmployeeDao;
 import com.bastet.bastetmanagement.daos.SocialActivityDao;
 import com.bastet.bastetmanagement.dtos.basedtos.SocialActivityDto;
@@ -9,6 +10,7 @@ import com.bastet.bastetmanagement.facades.socialactivity.SocialActivityFacade;
 import com.bastet.bastetmanagement.models.Employee;
 import com.bastet.bastetmanagement.models.SocialActivity;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Pageable;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
@@ -21,18 +23,25 @@ public class SocialActivityController extends BaseController {
     @Resource
     private SocialActivityFacade socialActivityFacade;
 
-    @GetMapping("/simplified/findById/{id}")
-    public SocialActivitySimplifiedDto findByIdSimplified(@PathVariable("id") UUID id){
-        return (SocialActivitySimplifiedDto) socialActivityFacade.findByIdSimplified(id);
-    }
-
-
-
     @GetMapping("/findById/{id}")
-    public SocialActivityDto findById(@PathVariable("id")UUID id){
-        return null;
+    public Result findById(@PathVariable("id") UUID id) {
+        return wrapSuccessDataResultWithMessage(socialActivityFacade.findById(id), "");
     }
 
+    @GetMapping("/simplified/findById/{id}")
+    public Result findByIdSimplified(@PathVariable("id") UUID id) {
+        return wrapSuccessDataResultWithMessage(socialActivityFacade.findByIdSimplified(id), "");
+    }
+
+    @GetMapping("/findAll")
+    public Result findAllPaged(Pageable pageable){
+        return wrapSuccessDataResultWithMessage(socialActivityFacade.findAllPaged(pageable), "");
+    }
+
+    @GetMapping("/simplified/findAll")
+    public Result findAllPagedSimplified(Pageable pageable){
+        return wrapSuccessDataResultWithMessage(socialActivityFacade.findAllPagedSimplified(pageable), "");
+    }
 
 //    @PutMapping("/save/{employeeId}/{socialActivityId}")
 //    public SocialActivity save(@PathVariable("employeeId") UUID employeeId,
