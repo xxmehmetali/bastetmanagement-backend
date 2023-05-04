@@ -13,7 +13,7 @@ import java.util.UUID;
 @AllArgsConstructor
 @NoArgsConstructor
 public class ExpenseTypeSimplifiedDto extends Dto {
-    private UUID id = UUID.randomUUID();
+    private UUID id;
 
     private String name;
 

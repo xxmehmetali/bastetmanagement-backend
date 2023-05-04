@@ -34,3 +34,4 @@ public class TaskSimplifiedDto extends Dto {
     private EmployeeSimplifiedDto reviewer;
 
 }
+

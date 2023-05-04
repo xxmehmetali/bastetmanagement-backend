@@ -8,10 +8,7 @@ import com.bastet.bastetmanagement.dtos.simplifieddtos.BranchSimplifiedDto;
 import com.bastet.bastetmanagement.facades.branch.BranchFacade;
 import com.bastet.bastetmanagement.models.Branch;
 import org.springframework.data.domain.Pageable;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
 import java.util.UUID;
@@ -35,7 +32,7 @@ public class BranchController extends BaseController {
 
     @GetMapping("/findAll")
     public Result findAllPaged(Pageable pageable){
-        return wrapSuccessDataResultWithMessage(branchFacade.findAllPagedSimplified(pageable), "");
+        return wrapSuccessDataResultWithMessage(branchFacade.findAllPaged(pageable), "");
     }
 
     @GetMapping("/simplified/findAll")

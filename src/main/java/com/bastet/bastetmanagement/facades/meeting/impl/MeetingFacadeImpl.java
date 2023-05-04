@@ -22,6 +22,7 @@ public class MeetingFacadeImpl implements MeetingFacade {
     @Resource
     private MeetingService meetingService;
 
+    @Resource
     private MeetingMapper meetingMapper;
 
     @Override

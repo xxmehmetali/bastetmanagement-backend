@@ -26,3 +26,5 @@ public class BranchSimplifiedDto extends Dto {
     private String address;
 
 }
+
+

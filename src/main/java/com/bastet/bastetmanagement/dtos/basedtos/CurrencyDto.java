@@ -22,7 +22,7 @@ import java.util.UUID;
 @NoArgsConstructor
 public class CurrencyDto extends Dto {
 
-    private UUID id = UUID.randomUUID();
+    private UUID id;
 
     private String currencyName;
 

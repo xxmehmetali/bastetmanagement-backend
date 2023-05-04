@@ -12,7 +12,7 @@ import java.util.UUID;
 @AllArgsConstructor
 @NoArgsConstructor
 public class EmployeeDto extends Dto {
-    private UUID id = UUID.randomUUID();
+    private UUID id;
 
     private String name;
 

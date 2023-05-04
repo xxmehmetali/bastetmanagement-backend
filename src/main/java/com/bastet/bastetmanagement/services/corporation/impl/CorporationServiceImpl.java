@@ -29,4 +29,10 @@ public class CorporationServiceImpl implements CorporationService {
     public Page<Corporation> findAllPaged(Pageable pageable) {
         return corporationDao.findAll(pageable);
     }
+
+
+    @Override
+    public void save(Corporation corporation) {
+        corporationDao.save(corporation);
+    }
 }

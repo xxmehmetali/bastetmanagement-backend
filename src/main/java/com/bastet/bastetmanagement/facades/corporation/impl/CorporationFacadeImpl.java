@@ -45,4 +45,10 @@ public class CorporationFacadeImpl implements CorporationFacade {
     public Page<CorporationSimplifiedDto> findAllPagedSimplified(Pageable pageable) {
         return corporationService.findAllPaged(pageable).map(corporation -> corporationMapper.corporationToCorporationSimplifiedDto(corporation));
     }
+
+    @Override
+    public void add(CorporationDto corporationDto) {
+
+        corporationService.save(corporationMapper.corporationDtoToCorporation(corporationDto));
+    }
 }
