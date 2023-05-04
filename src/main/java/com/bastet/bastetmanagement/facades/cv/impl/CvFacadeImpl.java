@@ -1,5 +1,7 @@
 package com.bastet.bastetmanagement.facades.cv.impl;
 
+import com.bastet.bastetmanagement.dtos.Dto;
+import com.bastet.bastetmanagement.dtos.basedtos.CurrencyDto;
 import com.bastet.bastetmanagement.mappers.CvMapper;
 
 import com.bastet.bastetmanagement.core.utilities.results.dataresults.DataResult;
@@ -10,6 +12,9 @@ import com.bastet.bastetmanagement.dtos.simplifieddtos.CvSimplifiedDto;
 import com.bastet.bastetmanagement.facades.cv.CvFacade;
 import com.bastet.bastetmanagement.models.Cv;
 import com.bastet.bastetmanagement.services.cv.CvService;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageImpl;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Component;
 
 import javax.annotation.Resource;
@@ -21,19 +26,8 @@ public class CvFacadeImpl implements CvFacade {
     @Resource
     CvService cvService;
 
-
     @Resource
     private CvMapper cvMapper;
-
-
-    @Override
-    public DataResult<List<Cv>> findAll(){
-        try{
-            return new SuccessDataResult<>(cvService.findAll(), "Data Listelendi.");
-        }catch (Exception e){
-            return new ErrorDataResult<>("Hata var.");
-        }
-    }
 
     @Override
     public CvDto findById(UUID id) {
@@ -42,6 +36,16 @@ public class CvFacadeImpl implements CvFacade {
 
     @Override
     public CvSimplifiedDto findByIdSimplified(UUID id) {
-        return null;
+        return cvMapper.cvToCvSimplifiedDto(cvService.findById(id));
+    }
+
+    @Override
+    public Page<CvDto> findAllPaged(Pageable pageable) {
+        return cvService.findAllPaged(pageable).map(cv -> cvMapper.cvToCvDto(cv));
+    }
+
+    @Override
+    public Page<CvSimplifiedDto> findAllPagedSimplified(Pageable pageable) {
+        return cvService.findAllPaged(pageable).map(cv -> cvMapper.cvToCvSimplifiedDto(cv));
     }
 }

@@ -1,9 +1,12 @@
 package com.bastet.bastetmanagement.services.cv.impl;
 
+import com.bastet.bastetmanagement.core.customexceptions.ModelNotFoundException;
 import com.bastet.bastetmanagement.daos.CvDao;
 import com.bastet.bastetmanagement.models.Cv;
 import com.bastet.bastetmanagement.services.cv.CvService;
 import lombok.extern.log4j.Log4j2;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
@@ -16,12 +19,14 @@ public class CvServiceImpl implements CvService {
     @Resource
     CvDao cvDao;
 
-    @Override
-    public List<Cv> findAll() {
-        return cvDao.findAll();
+    public Cv findById(UUID id){
+        return cvDao.findById(id).orElseThrow(() -> new ModelNotFoundException("Cv not found."));
     }
 
-    public Cv findById(UUID id){
-        return cvDao.findById(id).orElse(null);
+    @Override
+    public Page<Cv> findAllPaged(Pageable pageable) {
+        return cvDao.findAll(pageable);
     }
+
+
 }

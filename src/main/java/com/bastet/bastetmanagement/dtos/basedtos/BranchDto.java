@@ -1,5 +1,6 @@
 package com.bastet.bastetmanagement.dtos.basedtos;
 
+import com.bastet.bastetmanagement.dtos.Dto;
 import com.bastet.bastetmanagement.models.Corporation;
 import com.bastet.bastetmanagement.models.Employee;
 import com.fasterxml.jackson.annotation.JsonIgnore;
@@ -17,7 +18,7 @@ import java.util.UUID;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class BranchDto {
+public class BranchDto extends Dto {
 
     private UUID id;
 

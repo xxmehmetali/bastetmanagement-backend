@@ -2,6 +2,7 @@ package com.bastet.bastetmanagement.dtos.simplifieddtos;
 
 import com.bastet.bastetmanagement.core.enums.Priority;
 import com.bastet.bastetmanagement.core.enums.TaskStatus;
+import com.bastet.bastetmanagement.dtos.Dto;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -13,7 +14,7 @@ import java.util.UUID;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class TaskSimplifiedDto {
+public class TaskSimplifiedDto extends Dto {
     private UUID id;
 
     private String name;
@@ -33,3 +34,4 @@ public class TaskSimplifiedDto {
     private EmployeeSimplifiedDto reviewer;
 
 }
+

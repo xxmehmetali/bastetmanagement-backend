@@ -6,6 +6,8 @@ import com.bastet.bastetmanagement.models.Expense;
 import com.bastet.bastetmanagement.services.expense.ExpenseService;
 
 import lombok.extern.log4j.Log4j2;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
@@ -21,8 +23,12 @@ public class ExpenseServiceImpl implements ExpenseService {
 
     @Override
     public Expense findById(UUID id) throws ModelNotFoundException {
-        Expense expense = expenseDao.findById(id).orElseThrow(() -> new ModelNotFoundException("Expense not found!"));
-        return expense;
+        return expenseDao.findById(id).orElseThrow(() -> new ModelNotFoundException("Expense not found!"));
+    }
+
+    @Override
+    public Page<Expense> findAllPaged(Pageable pageable) {
+        return expenseDao.findAll(pageable);
     }
 
 }

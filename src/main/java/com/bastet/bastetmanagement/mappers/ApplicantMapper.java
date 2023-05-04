@@ -24,4 +24,5 @@ public interface ApplicantMapper {
     //list versions
     List<Applicant> applicantDtoListToApplicantList(List<ApplicantDto> applicantDtos);
     List<ApplicantDto> applicantListToApplicantDtoList(List<Applicant> applicants);
+    List<ApplicantSimplifiedDto> applicantListToApplicantSimplifiedDtoList(List<Applicant> applicants);
 }

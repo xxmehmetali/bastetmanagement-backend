@@ -1,11 +1,14 @@
 package com.bastet.bastetmanagement.controllers;
 
 
+import com.bastet.bastetmanagement.core.utilities.results.baseresults.Result;
 import com.bastet.bastetmanagement.daos.ApplicantMeetingDao;
+import com.bastet.bastetmanagement.dtos.Dto;
 import com.bastet.bastetmanagement.dtos.basedtos.ApplicantMeetingDto;
 import com.bastet.bastetmanagement.dtos.simplifieddtos.ApplicantMeetingSimplifiedDto;
 import com.bastet.bastetmanagement.facades.applicantmeeting.ApplicantMeetingFacade;
 import com.bastet.bastetmanagement.models.ApplicantMeeting;
+import org.springframework.data.domain.Pageable;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -17,24 +20,30 @@ import java.util.UUID;
 
 @RestController
 @RequestMapping("/api/v1/applicantMeeting")
-public class ApplicantMeetingController {
-    @Resource
-    private ApplicantMeetingDao applicantMeetingDao;
-
-
+public class ApplicantMeetingController extends BaseController {
     @Resource
     private ApplicantMeetingFacade applicantMeetingFacade;
 
     @GetMapping("/findById/{id}")
-    public ApplicantMeetingDto findById(@PathVariable("id") UUID id){
-        ApplicantMeeting applicantMeeting = applicantMeetingDao.findById(id).orElse(null);
-        return null;
+    public Result findById(@PathVariable("id") UUID id){
+        return wrapSuccessDataResultWithMessage(applicantMeetingFacade.findById(id), "");
     }
 
     @GetMapping("/simplified/findById/{id}")
-    public ApplicantMeetingSimplifiedDto findByIdSimplified(@PathVariable("id") UUID id){
-        return applicantMeetingFacade.findByIdSimplified(id);
+    public Result findByIdSimplified(@PathVariable("id") UUID id){
+        return wrapSuccessDataResultWithMessage(applicantMeetingFacade.findByIdSimplified(id), "");
     }
+
+    @GetMapping("/findAll")
+    public Result findAllPaged(Pageable pageable){
+        return wrapSuccessDataResultWithMessage(applicantMeetingFacade.findAllPaged(pageable), "");
+    }
+
+    @GetMapping("/simplified/findAll")
+    public Result findAllPagedSimplified(Pageable pageable){
+        return wrapSuccessDataResultWithMessage(applicantMeetingFacade.findAllPagedSimplified(pageable), "");
+    }
+
 
 
 }

@@ -1,5 +1,6 @@
 package com.bastet.bastetmanagement.dtos.simplifieddtos;
 
+import com.bastet.bastetmanagement.dtos.Dto;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -11,8 +12,8 @@ import java.util.UUID;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class ExpenseTypeSimplifiedDto {
-    private UUID id = UUID.randomUUID();
+public class ExpenseTypeSimplifiedDto extends Dto {
+    private UUID id;
 
     private String name;
 

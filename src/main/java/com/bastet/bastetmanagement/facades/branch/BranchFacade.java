@@ -1,12 +1,7 @@
 package com.bastet.bastetmanagement.facades.branch;
 
-import com.bastet.bastetmanagement.dtos.basedtos.BranchDto;
-import com.bastet.bastetmanagement.dtos.simplifieddtos.BranchSimplifiedDto;
-import com.bastet.bastetmanagement.models.Branch;
+import com.bastet.bastetmanagement.dtos.Dto;
+import com.bastet.bastetmanagement.facades.GenericFacade;
 
-import java.util.UUID;
-
-public interface BranchFacade {
-    BranchDto findById(UUID id);
-    BranchSimplifiedDto findByIdSimplified(UUID id);
+public interface BranchFacade extends GenericFacade<Dto> {
 }
