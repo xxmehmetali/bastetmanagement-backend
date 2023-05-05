@@ -10,6 +10,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
+import java.util.List;
 import java.util.UUID;
 
 @Log4j2
@@ -26,5 +27,11 @@ public class ProjectServiceImpl implements ProjectService {
     @Override
     public Page<Project> findAllPaged(Pageable pageable) {
         return projectDao.findAll(pageable);
+    }
+
+
+    @Override
+    public List<Project> findProjectsByCorporationId(UUID id) {
+        return projectDao.findProjectsByCorporationId(id);
     }
 }

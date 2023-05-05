@@ -25,7 +25,6 @@ public class CorporationController extends BaseController {
     public Result findById(@PathVariable("id")UUID id){
         return wrapSuccessDataResultWithMessage(corporationFacade.findById(id), "");
     }
-
     @GetMapping("/simplified/findById/{id}")
     public Result findByIdSimplified(@PathVariable("id") UUID id){
         return wrapSuccessDataResultWithMessage(corporationFacade.findByIdSimplified(id), "");

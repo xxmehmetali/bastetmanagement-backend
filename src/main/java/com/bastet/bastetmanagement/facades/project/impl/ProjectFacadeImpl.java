@@ -44,4 +44,9 @@ public class ProjectFacadeImpl implements ProjectFacade {
     public Page<ProjectSimplifiedDto> findAllPagedSimplified(Pageable pageable) {
         return projectService.findAllPaged(pageable).map(project -> projectMapper.projectToProjectSimplifiedDto(project));
     }
+
+    @Override
+    public List<ProjectDto> findProjectsByCorporationId(UUID id) {
+        return projectMapper.projectListToProjectDtoList(projectService.findProjectsByCorporationId(id));
+    }
 }

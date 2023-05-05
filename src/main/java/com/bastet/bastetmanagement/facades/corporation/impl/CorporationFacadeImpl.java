@@ -4,6 +4,7 @@ package com.bastet.bastetmanagement.facades.corporation.impl;
 import com.bastet.bastetmanagement.dtos.Dto;
 import com.bastet.bastetmanagement.dtos.basedtos.ApplicantDto;
 import com.bastet.bastetmanagement.dtos.basedtos.CorporationDto;
+import com.bastet.bastetmanagement.dtos.basedtos.ProjectDto;
 import com.bastet.bastetmanagement.dtos.simplifieddtos.CorporationSimplifiedDto;
 import com.bastet.bastetmanagement.facades.corporation.CorporationFacade;
 import com.bastet.bastetmanagement.mappers.CorporationMapper;
