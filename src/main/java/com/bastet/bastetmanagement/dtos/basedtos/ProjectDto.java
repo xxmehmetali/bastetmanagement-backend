@@ -26,7 +26,7 @@ public class ProjectDto extends Dto {
 
     private List<ContextDto> contexts;
 
-    private CorporationDto corporations;
+    private CorporationDto corporation;
 
     private Date createdAt;
 

@@ -44,5 +44,9 @@ public class ProjectController extends BaseController {
     public Result findAllPagedSimplified(Pageable pageable){
         return wrapSuccessDataResultWithMessage(projectFacade.findAllPagedSimplified(pageable), "");
     }
+    @GetMapping("/findProjectsByCorporationId/{id}")
+    public Result findProjectsByCorporationId(@PathVariable("id")UUID id){
+        return wrapSuccessDataResultWithMessage(projectFacade.findProjectsByCorporationId(id), "");
+    }
 
 }

@@ -23,5 +23,16 @@ public class CorporationDto extends Dto {
 
     private String foundationDate;
 
-    private List<ProjectDto> projects;
+
+
+    /*
+    * corporationdto dan projects i kaldır
+    * private List<ProjectDto> projects;
+    * frontta corporationdetail kısmında projectleri göstermemiz lazım o yüzdfen backendde sadece
+    * corporaiton id ile o id ye ait project leri döndüren bir api yaz
+    *
+    * sonra frontta corp detail da bı yazdığın apiye istek atıp o projectleri göster
+    *
+    * ama bublar hep dto formunda olacak
+    * */
 }
