@@ -5,6 +5,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.*;
 import org.mapstruct.Mapping;
 
+import java.util.Date;
 import java.util.List;
 import java.util.UUID;
 
@@ -21,7 +22,7 @@ public class CorporationDto extends Dto {
 
     private String taxNumber;
 
-    private String foundationDate;
+    private Date foundationDate;
 
 
 

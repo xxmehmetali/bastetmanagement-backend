@@ -40,7 +40,7 @@ public class Corporation {
     private String taxNumber;
 
     @Column(name = "foundationDate")
-    private String foundationDate;
+    private Date foundationDate;
 
     @JsonIgnore
     @OneToMany(mappedBy = "corporation", fetch = FetchType.LAZY)
