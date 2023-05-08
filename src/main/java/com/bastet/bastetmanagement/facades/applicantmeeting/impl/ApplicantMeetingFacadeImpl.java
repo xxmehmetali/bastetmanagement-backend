@@ -1,6 +1,7 @@
 package com.bastet.bastetmanagement.facades.applicantmeeting.impl;
 
 
+import com.bastet.bastetmanagement.dtos.Dto;
 import com.bastet.bastetmanagement.dtos.basedtos.ApplicantMeetingDto;
 import com.bastet.bastetmanagement.dtos.simplifieddtos.ApplicantMeetingSimplifiedDto;
 import com.bastet.bastetmanagement.facades.applicantmeeting.ApplicantMeetingFacade;
@@ -42,5 +43,10 @@ public class ApplicantMeetingFacadeImpl implements ApplicantMeetingFacade {
     @Override
     public Page<ApplicantMeetingSimplifiedDto> findAllPagedSimplified(Pageable pageable) {
         return applicantMeetingService.findAllPaged(pageable).map(applicantMeeting -> applicantMeetingMapper.applicantMeetingToApplicantMeetingSimplifiedDto(applicantMeeting));
+    }
+
+    @Override
+    public List<? extends Dto> findAllForSelectElement() {
+        return null;
     }
 }

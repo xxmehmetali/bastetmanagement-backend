@@ -44,4 +44,9 @@ public class TaskFacadeImpl implements TaskFacade {
     public Page<TaskSimplifiedDto> findAllPagedSimplified(Pageable pageable) {
         return taskService.findAllPaged(pageable).map(task -> taskMapper.taskToTaskSimplifiedDto(task));
     }
+
+    @Override
+    public List<? extends Dto> findAllForSelectElement() {
+        return null;
+    }
 }

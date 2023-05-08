@@ -48,4 +48,9 @@ public class ExpenseFacadeImpl implements ExpenseFacade {
     public Page<ExpenseSimplifiedDto> findAllPagedSimplified(Pageable pageable) {
         return expenseService.findAllPaged(pageable).map(expense -> expenseMapper.expenseToExpenseSimplifiedDto(expense));
     }
+
+    @Override
+    public List<? extends Dto> findAllForSelectElement() {
+        return null;
+    }
 }

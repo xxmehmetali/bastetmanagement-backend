@@ -11,6 +11,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
+import java.util.List;
 import java.util.Objects;
 import java.util.UUID;
 
@@ -31,4 +32,8 @@ public class ExpenseServiceImpl implements ExpenseService {
         return expenseDao.findAll(pageable);
     }
 
+    @Override
+    public List<Expense> findAll() {
+        return null;
+    }
 }

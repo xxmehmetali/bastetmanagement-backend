@@ -10,6 +10,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
+import java.util.List;
 import java.util.UUID;
 
 @Service
@@ -26,5 +27,10 @@ public class DepartmentServiceImpl implements DepartmentService {
     @Override
     public Page<Department> findAllPaged(Pageable pageable) {
         return departmentDao.findAll(pageable);
+    }
+
+    @Override
+    public List<Department> findAll() {
+        return null;
     }
 }

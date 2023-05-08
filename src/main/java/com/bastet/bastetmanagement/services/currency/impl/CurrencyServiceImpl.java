@@ -10,6 +10,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
+import java.util.List;
 import java.util.UUID;
 
 @Service
@@ -25,5 +26,10 @@ public class CurrencyServiceImpl implements CurrencyService {
     @Override
     public Page<Currency> findAllPaged(Pageable pageable) {
         return currencyDao.findAll(pageable);
+    }
+
+    @Override
+    public List<Currency> findAll() {
+        return null;
     }
 }

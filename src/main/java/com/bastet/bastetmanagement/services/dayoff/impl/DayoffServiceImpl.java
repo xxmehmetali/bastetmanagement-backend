@@ -11,6 +11,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
+import java.util.List;
 import java.util.UUID;
 
 @Service
@@ -28,4 +29,8 @@ public class DayoffServiceImpl implements DayoffService {
         return dayOffDao.findAll(pageable);
     }
 
+    @Override
+    public List<Dayoff> findAll() {
+        return null;
+    }
 }

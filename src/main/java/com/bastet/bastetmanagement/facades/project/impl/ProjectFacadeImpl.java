@@ -49,4 +49,9 @@ public class ProjectFacadeImpl implements ProjectFacade {
     public List<ProjectDto> findProjectsByCorporationId(UUID id) {
         return projectMapper.projectListToProjectDtoList(projectService.findProjectsByCorporationId(id));
     }
+
+    @Override
+    public List<? extends Dto> findAllForSelectElement() {
+        return null;
+    }
 }

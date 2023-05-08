@@ -28,5 +28,8 @@ public class CvServiceImpl implements CvService {
         return cvDao.findAll(pageable);
     }
 
-
+    @Override
+    public List<Cv> findAll() {
+        return null;
+    }
 }

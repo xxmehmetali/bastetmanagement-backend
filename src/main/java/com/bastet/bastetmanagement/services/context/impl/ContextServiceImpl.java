@@ -10,6 +10,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
+import java.util.List;
 import java.util.UUID;
 
 @Service
@@ -27,5 +28,10 @@ public class ContextServiceImpl implements ContextService {
     @Override
     public Page<Context> findAllPaged(Pageable pageable) {
         return contextDao.findAll(pageable);
+    }
+
+    @Override
+    public List<Context> findAll() {
+        return null;
     }
 }

@@ -48,4 +48,9 @@ public class CvFacadeImpl implements CvFacade {
     public Page<CvSimplifiedDto> findAllPagedSimplified(Pageable pageable) {
         return cvService.findAllPaged(pageable).map(cv -> cvMapper.cvToCvSimplifiedDto(cv));
     }
+
+    @Override
+    public List<? extends Dto> findAllForSelectElement() {
+        return null;
+    }
 }

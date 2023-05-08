@@ -34,4 +34,9 @@ public class ProjectServiceImpl implements ProjectService {
     public List<Project> findProjectsByCorporationId(UUID id) {
         return projectDao.findProjectsByCorporationId(id);
     }
+
+    @Override
+    public List<Project> findAll() {
+        return null;
+    }
 }

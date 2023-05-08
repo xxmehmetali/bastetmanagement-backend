@@ -1,6 +1,7 @@
 package com.bastet.bastetmanagement.facades.employee.impl;
 
 
+import com.bastet.bastetmanagement.dtos.Dto;
 import com.bastet.bastetmanagement.dtos.basedtos.EmployeeDto;
 import com.bastet.bastetmanagement.dtos.simplifieddtos.EmployeeSimplifiedDto;
 import com.bastet.bastetmanagement.facades.employee.EmployeeFacade;
@@ -11,6 +12,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Component;
 
 import javax.annotation.Resource;
+import java.util.List;
 import java.util.UUID;
 
 @Component
@@ -39,5 +41,10 @@ public class EmployeeFacadeImpl implements EmployeeFacade {
     @Override
     public Page<EmployeeSimplifiedDto> findAllPagedSimplified(Pageable pageable) {
         return employeeService.findAllPaged(pageable).map(employee -> employeeMapper.employeeToEmployeeSimplifiedDto(employee));
+    }
+
+    @Override
+    public List<? extends Dto> findAllForSelectElement() {
+        return null;
     }
 }

@@ -44,4 +44,9 @@ public class CurrencyFacadeImpl implements CurrencyFacade {
     public Page<CurrencySimplifiedDto> findAllPagedSimplified(Pageable pageable) {
         return currencyService.findAllPaged(pageable).map(currency -> currencyMapper.currencyToCurrencySimplifiedDto(currency));
     }
+
+    @Override
+    public List<? extends Dto> findAllForSelectElement() {
+        return null;
+    }
 }

@@ -43,4 +43,9 @@ public class OccupationFacadeImpl implements OccupationFacade {
     public Page<OccupationSimplifiedDto> findAllPagedSimplified(Pageable pageable) {
         return occupationService.findAllPaged(pageable).map(occupation -> occupationMapper.occupationToOccupationSimplifiedDto(occupation));
     }
+
+    @Override
+    public List<? extends Dto> findAllForSelectElement() {
+        return null;
+    }
 }

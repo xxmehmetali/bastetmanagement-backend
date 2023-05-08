@@ -48,4 +48,9 @@ public class ApplicantFacadeImpl implements ApplicantFacade {
     public Page<ApplicantSimplifiedDto> findAllPagedSimplified(Pageable pageable) {
         return applicantService.findAllPaged(pageable).map(applicant -> applicantMapper.applicantToApplicantSimplifiedDto(applicant));
     }
+
+    @Override
+    public List<? extends Dto> findAllForSelectElement() {
+        return null;
+    }
 }

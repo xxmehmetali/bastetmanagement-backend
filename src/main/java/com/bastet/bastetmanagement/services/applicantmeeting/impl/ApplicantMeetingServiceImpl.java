@@ -11,6 +11,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
+import java.util.List;
 import java.util.UUID;
 
 @Service
@@ -27,5 +28,10 @@ public class ApplicantMeetingServiceImpl implements ApplicantMeetingService {
     @Override
     public Page<ApplicantMeeting> findAllPaged(Pageable pageable) {
         return applicantMeetingDao.findAll(pageable);
+    }
+
+    @Override
+    public List<ApplicantMeeting> findAll() {
+        return null;
     }
 }

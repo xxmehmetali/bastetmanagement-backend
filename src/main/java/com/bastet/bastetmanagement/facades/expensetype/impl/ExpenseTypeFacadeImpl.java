@@ -1,6 +1,7 @@
 package com.bastet.bastetmanagement.facades.expensetype.impl;
 
 
+import com.bastet.bastetmanagement.dtos.Dto;
 import com.bastet.bastetmanagement.dtos.basedtos.ExpenseTypeDto;
 import com.bastet.bastetmanagement.dtos.simplifieddtos.ExpenseTypeSimplifiedDto;
 import com.bastet.bastetmanagement.facades.expensetype.ExpenseTypeFacade;
@@ -11,6 +12,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Component;
 
 import javax.annotation.Resource;
+import java.util.List;
 import java.util.UUID;
 
 @Component
@@ -39,5 +41,10 @@ public class ExpenseTypeFacadeImpl implements ExpenseTypeFacade {
     @Override
     public Page<ExpenseTypeSimplifiedDto> findAllPagedSimplified(Pageable pageable) {
         return expenseTypeService.findAllPaged(pageable).map(expenseType -> expenseTypeMapper.expenseTypeToExpenseTypeSimplifiedDto(expenseType));
+    }
+
+    @Override
+    public List<? extends Dto> findAllForSelectElement() {
+        return null;
     }
 }

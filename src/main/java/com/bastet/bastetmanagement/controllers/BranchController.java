@@ -4,6 +4,7 @@ package com.bastet.bastetmanagement.controllers;
 import com.bastet.bastetmanagement.core.utilities.results.baseresults.Result;
 import com.bastet.bastetmanagement.daos.BranchDao;
 import com.bastet.bastetmanagement.dtos.basedtos.BranchDto;
+import com.bastet.bastetmanagement.dtos.basedtos.CorporationDto;
 import com.bastet.bastetmanagement.dtos.simplifieddtos.BranchSimplifiedDto;
 import com.bastet.bastetmanagement.facades.branch.BranchFacade;
 import com.bastet.bastetmanagement.models.Branch;
@@ -38,6 +39,12 @@ public class BranchController extends BaseController {
     @GetMapping("/simplified/findAll")
     public Result findAllPagedSimplified(Pageable pageable) {
         return wrapSuccessDataResultWithMessage(branchFacade.findAllPagedSimplified(pageable), "");
+    }
+
+    @PostMapping(value = "/add",consumes = "application/json")
+    public Result add(@RequestBody BranchDto branchDto){
+        branchFacade.add(branchDto);
+        return new Result(true);
     }
 
 }

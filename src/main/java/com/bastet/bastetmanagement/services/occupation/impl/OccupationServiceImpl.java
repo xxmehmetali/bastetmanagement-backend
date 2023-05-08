@@ -10,6 +10,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
+import java.util.List;
 import java.util.UUID;
 
 @Service
@@ -27,5 +28,10 @@ public class OccupationServiceImpl implements OccupationService {
     @Override
     public Page<Occupation> findAllPaged(Pageable pageable) {
         return occupationDao.findAll(pageable);
+    }
+
+    @Override
+    public List<Occupation> findAll() {
+        return null;
     }
 }

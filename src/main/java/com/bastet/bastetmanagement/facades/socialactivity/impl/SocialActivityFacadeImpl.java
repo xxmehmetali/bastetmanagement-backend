@@ -45,4 +45,9 @@ public class SocialActivityFacadeImpl implements SocialActivityFacade {
     public Page<SocialActivitySimplifiedDto> findAllPagedSimplified(Pageable pageable) {
         return socialActivityService.findAllPaged(pageable).map(socialActivity -> socialActivityMapper.socialActivityToSocialActivitySimplifiedDto(socialActivity));
     }
+
+    @Override
+    public List<? extends Dto> findAllForSelectElement() {
+        return null;
+    }
 }

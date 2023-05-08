@@ -11,6 +11,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
+import java.util.List;
 import java.util.UUID;
 
 @Service
@@ -29,5 +30,10 @@ public class SocialActivityTypeServiceImpl implements SocialActivityTypeService 
     @Override
     public Page<SocialActivityType> findAllPaged(Pageable pageable) {
         return socialActivityTypeDao.findAll(pageable);
+    }
+
+    @Override
+    public List<SocialActivityType> findAll() {
+        return null;
     }
 }

@@ -10,6 +10,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
+import java.util.List;
 import java.util.UUID;
 
 @Log4j2
@@ -26,5 +27,15 @@ public class BranchServiceImpl implements BranchService {
     @Override
     public Page<Branch> findAllPaged(Pageable pageable) {
         return branchDao.findAll(pageable);
+    }
+
+    @Override
+    public void add(Branch branch) {
+        branchDao.save(branch);
+    }
+
+    @Override
+    public List<Branch> findAll() {
+        return null;
     }
 }

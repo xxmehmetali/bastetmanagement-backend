@@ -10,6 +10,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
+import java.util.List;
 import java.util.UUID;
 
 @Service
@@ -26,5 +27,10 @@ public class MeetingPlatformServiceImpl implements MeetingPlatformService {
     @Override
     public Page<MeetingPlatform> findAllPaged(Pageable pageable) {
         return meetingPlatformDao.findAll(pageable);
+    }
+
+    @Override
+    public List<MeetingPlatform> findAll() {
+        return null;
     }
 }

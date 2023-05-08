@@ -44,4 +44,9 @@ public class MeetingFacadeImpl implements MeetingFacade {
     public Page<MeetingSimplifiedDto> findAllPagedSimplified(Pageable pageable) {
         return meetingService.findAllPaged(pageable).map(meeting -> meetingMapper.meetingToMeetingSimplifiedDto(meeting));
     }
+
+    @Override
+    public List<? extends Dto> findAllForSelectElement() {
+        return null;
+    }
 }

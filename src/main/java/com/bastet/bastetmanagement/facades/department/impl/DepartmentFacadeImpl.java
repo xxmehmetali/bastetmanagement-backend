@@ -45,4 +45,9 @@ public class DepartmentFacadeImpl implements DepartmentFacade {
     public Page<DepartmentSimplifiedDto> findAllPagedSimplified(Pageable pageable) {
         return departmentService.findAllPaged(pageable).map(department -> departmentMapper.departmentToDepartmentSimplifiedDto(department));
     }
+
+    @Override
+    public List<? extends Dto> findAllForSelectElement() {
+        return null;
+    }
 }

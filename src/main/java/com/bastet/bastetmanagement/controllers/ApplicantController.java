@@ -40,4 +40,9 @@ public class ApplicantController extends BaseController {
     public Result findAllPagedSimplified(Pageable pageable) {
         return wrapDataResultWithMessage(applicantFacade.findAllPagedSimplified(pageable), true, "Data listed.");
     }
+
+    @GetMapping("")
+    public Result findAllForSelectElement(){
+       return null;
+    }
 }

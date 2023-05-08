@@ -45,4 +45,9 @@ public class ContextFacadeImpl implements ContextFacade {
     public Page<ContextSimplifiedDto> findAllPagedSimplified(Pageable pageable) {
         return contextService.findAllPaged(pageable).map(context -> contextMapper.contextToContextSimplifiedDto(context));
     }
+
+    @Override
+    public List<? extends Dto> findAllForSelectElement() {
+        return null;
+    }
 }

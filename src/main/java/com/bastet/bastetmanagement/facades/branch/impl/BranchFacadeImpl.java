@@ -45,4 +45,15 @@ public class BranchFacadeImpl implements BranchFacade {
     public Page<BranchSimplifiedDto> findAllPagedSimplified(Pageable pageable) {
         return branchService.findAllPaged(pageable).map(branch -> branchMapper.branchToBranchSimplifiedDto(branch));
     }
+
+    public String add(BranchDto branchDto){
+        Branch branch = branchMapper.branchDtoToBranch(branchDto);
+        branchService.add(branch);
+        return "";
+    }
+
+    @Override
+    public List<? extends Dto> findAllForSelectElement() {
+        return null;
+    }
 }

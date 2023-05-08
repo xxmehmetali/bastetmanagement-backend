@@ -44,4 +44,9 @@ public class DayoffFacadeImpl implements DayoffFacade {
     public Page<DayoffSimplifiedDto> findAllPagedSimplified(Pageable pageable) {
         return dayoffService.findAllPaged(pageable).map(dayoff -> dayoffMapper.dayoffToDayoffSimplifiedDto(dayoff));
     }
+
+    @Override
+    public List<? extends Dto> findAllForSelectElement() {
+        return null;
+    }
 }

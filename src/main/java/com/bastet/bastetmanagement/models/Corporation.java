@@ -10,6 +10,7 @@ import org.hibernate.annotations.Type;
 import org.hibernate.annotations.UpdateTimestamp;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedDate;
+import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import javax.persistence.*;
 import java.util.Date;
@@ -24,6 +25,7 @@ import java.util.UUID;
 //@JsonIgnoreProperties({"hibernateLazyInitializer","handler","projects"})
 @Getter
 @Setter
+@EntityListeners(AuditingEntityListener.class)
 public class Corporation {
     @Id
     @Column(name="id")
