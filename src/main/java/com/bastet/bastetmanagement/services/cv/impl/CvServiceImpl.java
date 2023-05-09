@@ -30,6 +30,6 @@ public class CvServiceImpl implements CvService {
 
     @Override
     public List<Cv> findAll() {
-        return null;
+        return cvDao.findAll();
     }
 }

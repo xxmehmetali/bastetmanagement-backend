@@ -32,6 +32,6 @@ public class ApplicantMeetingServiceImpl implements ApplicantMeetingService {
 
     @Override
     public List<ApplicantMeeting> findAll() {
-        return null;
+        return applicantMeetingDao.findAll();
     }
 }

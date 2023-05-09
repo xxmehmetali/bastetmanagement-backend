@@ -4,9 +4,11 @@ package com.bastet.bastetmanagement.facades.context.impl;
 import com.bastet.bastetmanagement.dtos.Dto;
 import com.bastet.bastetmanagement.dtos.basedtos.ApplicantDto;
 import com.bastet.bastetmanagement.dtos.basedtos.ContextDto;
+import com.bastet.bastetmanagement.dtos.selectdtos.ContextSelectElementDto;
 import com.bastet.bastetmanagement.dtos.simplifieddtos.ContextSimplifiedDto;
 import com.bastet.bastetmanagement.facades.context.ContextFacade;
 import com.bastet.bastetmanagement.mappers.ContextMapper;
+import com.bastet.bastetmanagement.models.Applicant;
 import com.bastet.bastetmanagement.models.Context;
 import com.bastet.bastetmanagement.services.context.ContextService;
 import org.springframework.data.domain.Page;
@@ -47,7 +49,8 @@ public class ContextFacadeImpl implements ContextFacade {
     }
 
     @Override
-    public List<? extends Dto> findAllForSelectElement() {
-        return null;
+    public List<ContextSelectElementDto> findAllForSelectElement(){
+        List<Context> contexts = contextService.findAll();
+        return contextMapper.contextListToContextSelectElementDtoList(contexts);
     }
 }

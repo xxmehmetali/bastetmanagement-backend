@@ -2,9 +2,12 @@ package com.bastet.bastetmanagement.mappers;
 
 import com.bastet.bastetmanagement.dtos.basedtos.ApplicantDto;
 import com.bastet.bastetmanagement.dtos.basedtos.BranchDto;
+import com.bastet.bastetmanagement.dtos.selectdtos.BranchSelectElementDto;
+import com.bastet.bastetmanagement.dtos.selectdtos.CorporationSelectElementDto;
 import com.bastet.bastetmanagement.dtos.simplifieddtos.BranchSimplifiedDto;
 import com.bastet.bastetmanagement.models.Applicant;
 import com.bastet.bastetmanagement.models.Branch;
+import com.bastet.bastetmanagement.models.Corporation;
 import org.mapstruct.Mapper;
 
 import java.util.List;
@@ -23,5 +26,6 @@ public interface BranchMapper {
     //list versions
     List<Branch> branchDtoListToBranchList(List<BranchDto> branchDtos);
     List<BranchDto> branchListToBranchDtoList(List<Branch> branch);
+    List<BranchSelectElementDto> branchListToBranchSelectElementDtoList(List<Branch> branch);
 
 }

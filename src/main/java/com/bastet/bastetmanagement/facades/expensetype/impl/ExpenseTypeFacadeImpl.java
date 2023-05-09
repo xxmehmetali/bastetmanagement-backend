@@ -3,9 +3,14 @@ package com.bastet.bastetmanagement.facades.expensetype.impl;
 
 import com.bastet.bastetmanagement.dtos.Dto;
 import com.bastet.bastetmanagement.dtos.basedtos.ExpenseTypeDto;
+import com.bastet.bastetmanagement.dtos.selectdtos.ExpenseSelectElementDto;
+import com.bastet.bastetmanagement.dtos.selectdtos.ExpenseTypeSelectElementDto;
 import com.bastet.bastetmanagement.dtos.simplifieddtos.ExpenseTypeSimplifiedDto;
 import com.bastet.bastetmanagement.facades.expensetype.ExpenseTypeFacade;
 import com.bastet.bastetmanagement.mappers.ExpenseTypeMapper;
+import com.bastet.bastetmanagement.models.Applicant;
+import com.bastet.bastetmanagement.models.Expense;
+import com.bastet.bastetmanagement.models.ExpenseType;
 import com.bastet.bastetmanagement.services.expensetype.ExpenseTypeService;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -44,7 +49,7 @@ public class ExpenseTypeFacadeImpl implements ExpenseTypeFacade {
     }
 
     @Override
-    public List<? extends Dto> findAllForSelectElement() {
-        return null;
-    }
-}
+    public List<ExpenseTypeSelectElementDto> findAllForSelectElement(){
+        List<ExpenseType> expenseTypes = expenseTypeService.findAll();
+        return expenseTypeMapper.expenseTypeListToExpenseTypeSelectElementDtoList(expenseTypes);
+    }}

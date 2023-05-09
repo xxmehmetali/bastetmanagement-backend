@@ -6,6 +6,7 @@ import com.bastet.bastetmanagement.daos.ApplicantDao;
 import com.bastet.bastetmanagement.daos.SocialActivityDao;
 import com.bastet.bastetmanagement.daos.SocialActivityTypeDao;
 import com.bastet.bastetmanagement.dtos.basedtos.SocialActivityTypeDto;
+import com.bastet.bastetmanagement.dtos.selectdtos.SocialActivitySelectElementDto;
 import com.bastet.bastetmanagement.dtos.simplifieddtos.SocialActivityTypeSimplifiedDto;
 import com.bastet.bastetmanagement.facades.socialactivitytype.SocialActivityTypeFacade;
 import com.bastet.bastetmanagement.models.Applicant;
@@ -48,5 +49,10 @@ public class SocialActivityTypeController extends BaseController {
         return wrapSuccessDataResultWithMessage(socialActivityTypeFacade.findAllPagedSimplified(pageable), "");
     }
 
+    @GetMapping(value = "/selectElement/findAll")
+    public Result findAllForSelectElement() {
+        List<SocialActivitySelectElementDto> socialActivitySelectElementDtos = (List<SocialActivitySelectElementDto>) socialActivityTypeFacade.findAllForSelectElement();
+        return wrapSuccessDataResultWithMessage(socialActivitySelectElementDtos, "");
+    }
 }
 

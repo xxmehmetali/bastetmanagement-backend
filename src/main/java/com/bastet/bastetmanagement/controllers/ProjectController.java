@@ -1,6 +1,7 @@
 package com.bastet.bastetmanagement.controllers;
 
 import com.bastet.bastetmanagement.core.utilities.results.baseresults.Result;
+import com.bastet.bastetmanagement.dtos.selectdtos.ProjectSelectElementDto;
 import com.bastet.bastetmanagement.mappers.ProjectMapper;
 
 import com.bastet.bastetmanagement.daos.ProjectDao;
@@ -49,4 +50,9 @@ public class ProjectController extends BaseController {
         return wrapSuccessDataResultWithMessage(projectFacade.findProjectsByCorporationId(id), "");
     }
 
+    @GetMapping(value = "/selectElement/findAll")
+    public Result findAllForSelectElement() {
+        List<ProjectSelectElementDto> projectSelectElementDtos = (List<ProjectSelectElementDto>) projectFacade.findAllForSelectElement();
+        return wrapSuccessDataResultWithMessage(projectSelectElementDtos, "");
+    }
 }

@@ -31,6 +31,6 @@ public class DepartmentServiceImpl implements DepartmentService {
 
     @Override
     public List<Department> findAll() {
-        return null;
+        return departmentDao.findAll();
     }
 }

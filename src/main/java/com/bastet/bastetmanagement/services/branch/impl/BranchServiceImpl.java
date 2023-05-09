@@ -36,6 +36,6 @@ public class BranchServiceImpl implements BranchService {
 
     @Override
     public List<Branch> findAll() {
-        return null;
+        return branchDao.findAll();
     }
 }

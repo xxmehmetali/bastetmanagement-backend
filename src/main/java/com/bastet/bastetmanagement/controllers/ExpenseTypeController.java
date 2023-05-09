@@ -4,6 +4,7 @@ package com.bastet.bastetmanagement.controllers;
 import com.bastet.bastetmanagement.core.utilities.results.baseresults.Result;
 import com.bastet.bastetmanagement.daos.ExpenseTypeDao;
 import com.bastet.bastetmanagement.dtos.basedtos.ExpenseTypeDto;
+import com.bastet.bastetmanagement.dtos.selectdtos.ExpenseTypeSelectElementDto;
 import com.bastet.bastetmanagement.dtos.simplifieddtos.ExpenseTypeSimplifiedDto;
 import com.bastet.bastetmanagement.facades.expensetype.ExpenseTypeFacade;
 import com.bastet.bastetmanagement.models.ExpenseType;
@@ -14,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.annotation.Resource;
+import java.util.List;
 import java.util.UUID;
 
 @RestController
@@ -41,5 +43,10 @@ public class ExpenseTypeController extends BaseController {
     @GetMapping("/simplified/findAll")
     public Result findAllPagedSimplified(Pageable pageable){
         return wrapSuccessDataResultWithMessage(expenseTypeFacade.findAllPagedSimplified(pageable), "");
+    }
+    @GetMapping(value = "/selectElement/findAll")
+    public Result findAllForSelectElement() {
+        List<ExpenseTypeSelectElementDto> expenseSelectElementDtos = (List<ExpenseTypeSelectElementDto>) expenseTypeFacade.findAllForSelectElement();
+        return wrapSuccessDataResultWithMessage(expenseSelectElementDtos, "");
     }
 }

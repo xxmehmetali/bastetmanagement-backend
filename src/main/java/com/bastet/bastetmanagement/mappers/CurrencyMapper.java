@@ -2,8 +2,11 @@ package com.bastet.bastetmanagement.mappers;
 
 import com.bastet.bastetmanagement.dtos.basedtos.ApplicantDto;
 import com.bastet.bastetmanagement.dtos.basedtos.CurrencyDto;
+import com.bastet.bastetmanagement.dtos.selectdtos.CorporationSelectElementDto;
+import com.bastet.bastetmanagement.dtos.selectdtos.CurrencySelectElementDto;
 import com.bastet.bastetmanagement.dtos.simplifieddtos.CurrencySimplifiedDto;
 import com.bastet.bastetmanagement.models.Applicant;
+import com.bastet.bastetmanagement.models.Corporation;
 import com.bastet.bastetmanagement.models.Currency;
 import org.mapstruct.Mapper;
 
@@ -18,5 +21,6 @@ public interface CurrencyMapper {
     //list versions
     List<Currency> currencyDtoListToCurrencyList(List<CurrencyDto> currencyDtos);
     List<CurrencyDto> currencyListToCurrencyDtoList(List<Currency> currencies);
+    List<CurrencySelectElementDto> currencyListToCurrencySelectElementDtoList(List<Currency> currencies);
 
 }

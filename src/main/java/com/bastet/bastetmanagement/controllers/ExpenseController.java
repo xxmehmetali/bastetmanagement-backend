@@ -3,6 +3,8 @@ package com.bastet.bastetmanagement.controllers;
 import com.bastet.bastetmanagement.core.utilities.results.baseresults.Result;
 import com.bastet.bastetmanagement.core.utilities.results.dataresults.SuccessDataResult;
 import com.bastet.bastetmanagement.dtos.basedtos.ExpenseDto;
+import com.bastet.bastetmanagement.dtos.selectdtos.CorporationSelectElementDto;
+import com.bastet.bastetmanagement.dtos.selectdtos.ExpenseSelectElementDto;
 import com.bastet.bastetmanagement.dtos.simplifieddtos.ExpenseSimplifiedDto;
 import com.bastet.bastetmanagement.facades.expense.ExpenseFacade;
 import lombok.extern.log4j.Log4j2;
@@ -15,6 +17,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.annotation.Resource;
+import java.util.List;
 import java.util.UUID;
 
 @RestController
@@ -42,5 +45,10 @@ public class ExpenseController extends BaseController {
     @GetMapping("/simplified/findAll")
     public Result findAllPagedSimplified(Pageable pageable){
         return wrapSuccessDataResultWithMessage(expenseFacade.findAllPagedSimplified(pageable), "");
+    }
+    @GetMapping(value = "/selectElement/findAll")
+    public Result findAllForSelectElement() {
+        List<ExpenseSelectElementDto> expenseSelectElementDtos = (List<ExpenseSelectElementDto>) expenseFacade.findAllForSelectElement();
+        return wrapSuccessDataResultWithMessage(expenseSelectElementDtos, "");
     }
 }

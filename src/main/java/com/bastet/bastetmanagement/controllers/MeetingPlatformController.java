@@ -4,6 +4,7 @@ package com.bastet.bastetmanagement.controllers;
 import com.bastet.bastetmanagement.core.utilities.results.baseresults.Result;
 import com.bastet.bastetmanagement.daos.MeetingPlatformDao;
 import com.bastet.bastetmanagement.dtos.basedtos.MeetingPlatformDto;
+import com.bastet.bastetmanagement.dtos.selectdtos.MeetingPlatformSelectElementDto;
 import com.bastet.bastetmanagement.dtos.simplifieddtos.MeetingPlatformSimplifiedDto;
 import com.bastet.bastetmanagement.dtos.simplifieddtos.MeetingSimplifiedDto;
 import com.bastet.bastetmanagement.facades.meetingplatform.MeetingPlatformFacade;
@@ -42,6 +43,12 @@ public class MeetingPlatformController extends BaseController {
     @GetMapping("/simplified/findAll")
     public Result findAllPagedSimplified(Pageable pageable){
         return wrapSuccessDataResultWithMessage(meetingPlatformFacade.findAllPagedSimplified(pageable), "");
+    }
+
+    @GetMapping(value = "/selectElement/findAll")
+    public Result findAllForSelectElement() {
+        List<MeetingPlatformSelectElementDto> meetingPlatformSelectElementDtos = (List<MeetingPlatformSelectElementDto>) meetingPlatformFacade.findAllForSelectElement();
+        return wrapSuccessDataResultWithMessage(meetingPlatformSelectElementDtos, "");
     }
 
 }

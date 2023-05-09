@@ -1,6 +1,7 @@
 package com.bastet.bastetmanagement.controllers;
 
 import com.bastet.bastetmanagement.core.utilities.results.baseresults.Result;
+import com.bastet.bastetmanagement.dtos.selectdtos.TaskSelectElementDto;
 import com.bastet.bastetmanagement.mappers.TaskMapper;
 
 import com.bastet.bastetmanagement.daos.TaskDao;
@@ -39,6 +40,12 @@ public class TaskController extends BaseController {
     @GetMapping("/simplified/findAll")
     public Result findAllPagedSimplified(Pageable pageable){
         return wrapSuccessDataResultWithMessage(taskFacade.findAllPagedSimplified(pageable), "");
+    }
+
+    @GetMapping(value = "/selectElement/findAll")
+    public Result findAllForSelectElement() {
+        List<TaskSelectElementDto> taskSelectElementDtos = (List<TaskSelectElementDto>) taskFacade.findAllForSelectElement();
+        return wrapSuccessDataResultWithMessage(taskSelectElementDtos, "");
     }
 
 }

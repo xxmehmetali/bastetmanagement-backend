@@ -31,6 +31,6 @@ public class MeetingPlatformServiceImpl implements MeetingPlatformService {
 
     @Override
     public List<MeetingPlatform> findAll() {
-        return null;
+        return meetingPlatformDao.findAll();
     }
 }

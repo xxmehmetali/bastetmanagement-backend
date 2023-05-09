@@ -31,6 +31,6 @@ public class TaskServiceImpl implements TaskService {
 
     @Override
     public List<Task> findAll() {
-        return null;
+        return taskDao.findAll();
     }
 }

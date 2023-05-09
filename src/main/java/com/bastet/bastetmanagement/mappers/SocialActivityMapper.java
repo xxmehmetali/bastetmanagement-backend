@@ -2,8 +2,11 @@ package com.bastet.bastetmanagement.mappers;
 
 import com.bastet.bastetmanagement.dtos.basedtos.ApplicantDto;
 import com.bastet.bastetmanagement.dtos.basedtos.SocialActivityDto;
+import com.bastet.bastetmanagement.dtos.selectdtos.CorporationSelectElementDto;
+import com.bastet.bastetmanagement.dtos.selectdtos.SocialActivitySelectElementDto;
 import com.bastet.bastetmanagement.dtos.simplifieddtos.SocialActivitySimplifiedDto;
 import com.bastet.bastetmanagement.models.Applicant;
+import com.bastet.bastetmanagement.models.Corporation;
 import com.bastet.bastetmanagement.models.SocialActivity;
 import org.mapstruct.Mapper;
 
@@ -25,4 +28,6 @@ public interface SocialActivityMapper {
     //list versions
     List<SocialActivityDto> socialActivityDtoListToSocialActivityList(List<SocialActivityDto> socialActivityDtos);
     List<SocialActivity> socialActivityListToSocialActivityDtoList(List<SocialActivity> socialActivities);
+    List<SocialActivitySelectElementDto> socialActivityListToSocialActivitySelectElementDtoList(List<SocialActivity> socialActivities);
+
 }

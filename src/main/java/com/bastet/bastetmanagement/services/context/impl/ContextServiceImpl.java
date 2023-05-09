@@ -32,6 +32,6 @@ public class ContextServiceImpl implements ContextService {
 
     @Override
     public List<Context> findAll() {
-        return null;
+        return contextDao.findAll();
     }
 }

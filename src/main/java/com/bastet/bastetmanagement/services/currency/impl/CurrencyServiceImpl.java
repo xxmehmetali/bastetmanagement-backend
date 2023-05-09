@@ -30,6 +30,6 @@ public class CurrencyServiceImpl implements CurrencyService {
 
     @Override
     public List<Currency> findAll() {
-        return null;
+        return currencyDao.findAll();
     }
 }

@@ -4,9 +4,12 @@ package com.bastet.bastetmanagement.facades.branch.impl;
 import com.bastet.bastetmanagement.dtos.Dto;
 import com.bastet.bastetmanagement.dtos.basedtos.ApplicantDto;
 import com.bastet.bastetmanagement.dtos.basedtos.BranchDto;
+import com.bastet.bastetmanagement.dtos.selectdtos.ApplicantSelectElementDto;
+import com.bastet.bastetmanagement.dtos.selectdtos.BranchSelectElementDto;
 import com.bastet.bastetmanagement.dtos.simplifieddtos.BranchSimplifiedDto;
 import com.bastet.bastetmanagement.facades.branch.BranchFacade;
 import com.bastet.bastetmanagement.mappers.BranchMapper;
+import com.bastet.bastetmanagement.models.Applicant;
 import com.bastet.bastetmanagement.models.Branch;
 import com.bastet.bastetmanagement.services.branch.BranchService;
 import org.springframework.data.domain.Page;
@@ -53,7 +56,8 @@ public class BranchFacadeImpl implements BranchFacade {
     }
 
     @Override
-    public List<? extends Dto> findAllForSelectElement() {
-        return null;
+    public List<BranchSelectElementDto> findAllForSelectElement(){
+        List<Branch> branches = branchService.findAll();
+        return branchMapper.branchListToBranchSelectElementDtoList(branches);
     }
 }

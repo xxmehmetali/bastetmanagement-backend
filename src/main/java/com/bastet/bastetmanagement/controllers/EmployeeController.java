@@ -4,6 +4,7 @@ package com.bastet.bastetmanagement.controllers;
 import com.bastet.bastetmanagement.core.utilities.results.baseresults.Result;
 import com.bastet.bastetmanagement.daos.EmployeeDao;
 import com.bastet.bastetmanagement.dtos.basedtos.EmployeeDto;
+import com.bastet.bastetmanagement.dtos.selectdtos.EmployeeSelectElementDto;
 import com.bastet.bastetmanagement.dtos.simplifieddtos.EmployeeSimplifiedDto;
 import com.bastet.bastetmanagement.facades.employee.EmployeeFacade;
 import com.bastet.bastetmanagement.models.Employee;
@@ -42,4 +43,11 @@ public class EmployeeController extends BaseController {
     public Result findAllPagedSimplified(Pageable pageable){
         return wrapSuccessDataResultWithMessage(employeeFacade.findAllPagedSimplified(pageable), "");
     }
+
+    @GetMapping(value = "/selectElement/findAll")
+    public Result findAllForSelectElement() {
+        List<EmployeeSelectElementDto> employeeSelectElementDtos = (List<EmployeeSelectElementDto>) employeeFacade.findAllForSelectElement();
+        return wrapSuccessDataResultWithMessage(employeeSelectElementDtos, "");
+    }
+
 }

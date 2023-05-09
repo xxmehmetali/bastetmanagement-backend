@@ -31,6 +31,6 @@ public class DayoffServiceImpl implements DayoffService {
 
     @Override
     public List<Dayoff> findAll() {
-        return null;
+        return dayOffDao.findAll();
     }
 }

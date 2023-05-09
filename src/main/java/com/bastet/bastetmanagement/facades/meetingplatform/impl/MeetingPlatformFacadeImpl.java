@@ -4,9 +4,11 @@ package com.bastet.bastetmanagement.facades.meetingplatform.impl;
 import com.bastet.bastetmanagement.dtos.Dto;
 import com.bastet.bastetmanagement.dtos.basedtos.DepartmentDto;
 import com.bastet.bastetmanagement.dtos.basedtos.MeetingPlatformDto;
+import com.bastet.bastetmanagement.dtos.selectdtos.MeetingPlatformSelectElementDto;
 import com.bastet.bastetmanagement.dtos.simplifieddtos.MeetingPlatformSimplifiedDto;
 import com.bastet.bastetmanagement.facades.meetingplatform.MeetingPlatformFacade;
 import com.bastet.bastetmanagement.mappers.MeetingPlatformMapper;
+import com.bastet.bastetmanagement.models.MeetingPlatform;
 import com.bastet.bastetmanagement.services.meetingplatform.MeetingPlatformService;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageImpl;
@@ -46,7 +48,7 @@ public class MeetingPlatformFacadeImpl implements MeetingPlatformFacade {
     }
 
     @Override
-    public List<? extends Dto> findAllForSelectElement() {
-        return null;
-    }
-}
+    public List<MeetingPlatformSelectElementDto> findAllForSelectElement(){
+        List<MeetingPlatform> meetingPlatforms = meetingPlatformService.findAll();
+        return meetingPlatformMapper.meetingPlatformListToMeetingPlatformSelectElementDtoList(meetingPlatforms);
+    }}

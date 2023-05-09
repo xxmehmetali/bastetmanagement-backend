@@ -4,9 +4,12 @@ package com.bastet.bastetmanagement.facades.socialactivity.impl;
 import com.bastet.bastetmanagement.dtos.Dto;
 import com.bastet.bastetmanagement.dtos.basedtos.DepartmentDto;
 import com.bastet.bastetmanagement.dtos.basedtos.SocialActivityDto;
+import com.bastet.bastetmanagement.dtos.selectdtos.SocialActivitySelectElementDto;
 import com.bastet.bastetmanagement.dtos.simplifieddtos.SocialActivitySimplifiedDto;
 import com.bastet.bastetmanagement.facades.socialactivity.SocialActivityFacade;
 import com.bastet.bastetmanagement.mappers.SocialActivityMapper;
+import com.bastet.bastetmanagement.models.Applicant;
+import com.bastet.bastetmanagement.models.SocialActivity;
 import com.bastet.bastetmanagement.services.socialactivity.SocialActivityService;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageImpl;
@@ -47,7 +50,7 @@ public class SocialActivityFacadeImpl implements SocialActivityFacade {
     }
 
     @Override
-    public List<? extends Dto> findAllForSelectElement() {
-        return null;
-    }
-}
+    public List<SocialActivitySelectElementDto> findAllForSelectElement(){
+        List<SocialActivity> socialActivities = socialActivityService.findAll();
+        return socialActivityMapper.socialActivityListToSocialActivitySelectElementDtoList(socialActivities);
+    }}

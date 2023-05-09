@@ -1,8 +1,11 @@
 package com.bastet.bastetmanagement.mappers;
 
 import com.bastet.bastetmanagement.dtos.basedtos.ContextDto;
+import com.bastet.bastetmanagement.dtos.selectdtos.ContextSelectElementDto;
+import com.bastet.bastetmanagement.dtos.selectdtos.CorporationSelectElementDto;
 import com.bastet.bastetmanagement.dtos.simplifieddtos.ContextSimplifiedDto;
 import com.bastet.bastetmanagement.models.Context;
+import com.bastet.bastetmanagement.models.Corporation;
 import org.mapstruct.Mapper;
 
 import java.util.List;
@@ -17,4 +20,6 @@ public interface ContextMapper {
     List<Context> contextDtoListToContextList(List<ContextDto> list);
     List<ContextSimplifiedDto> contextListToContextSimplifiedDtoList(List<Context> contexts);
     List<Context> contextSimplifiedDtoListToContextList(List<ContextSimplifiedDto> contexts);
+    List<ContextSelectElementDto> contextListToContextSelectElementDtoList(List<Context> contexts);
+
 }

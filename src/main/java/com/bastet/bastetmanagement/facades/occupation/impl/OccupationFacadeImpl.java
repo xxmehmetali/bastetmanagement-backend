@@ -4,9 +4,12 @@ package com.bastet.bastetmanagement.facades.occupation.impl;
 import com.bastet.bastetmanagement.dtos.Dto;
 import com.bastet.bastetmanagement.dtos.basedtos.DepartmentDto;
 import com.bastet.bastetmanagement.dtos.basedtos.OccupationDto;
+import com.bastet.bastetmanagement.dtos.selectdtos.OccupationSelectElementDto;
 import com.bastet.bastetmanagement.dtos.simplifieddtos.OccupationSimplifiedDto;
 import com.bastet.bastetmanagement.facades.occupation.OccupationFacade;
 import com.bastet.bastetmanagement.mappers.OccupationMapper;
+import com.bastet.bastetmanagement.models.Applicant;
+import com.bastet.bastetmanagement.models.Occupation;
 import com.bastet.bastetmanagement.services.occupation.OccupationService;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageImpl;
@@ -45,7 +48,7 @@ public class OccupationFacadeImpl implements OccupationFacade {
     }
 
     @Override
-    public List<? extends Dto> findAllForSelectElement() {
-        return null;
-    }
-}
+    public List<OccupationSelectElementDto> findAllForSelectElement(){
+        List<Occupation> occupations = occupationService.findAll();
+        return occupationMapper.occupationListToOccupationSelectElementDtoList(occupations);
+    }}

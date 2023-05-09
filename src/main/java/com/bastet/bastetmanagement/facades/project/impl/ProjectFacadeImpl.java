@@ -4,9 +4,12 @@ package com.bastet.bastetmanagement.facades.project.impl;
 import com.bastet.bastetmanagement.dtos.Dto;
 import com.bastet.bastetmanagement.dtos.basedtos.DepartmentDto;
 import com.bastet.bastetmanagement.dtos.basedtos.ProjectDto;
+import com.bastet.bastetmanagement.dtos.selectdtos.ProjectSelectElementDto;
 import com.bastet.bastetmanagement.dtos.simplifieddtos.ProjectSimplifiedDto;
 import com.bastet.bastetmanagement.facades.project.ProjectFacade;
 import com.bastet.bastetmanagement.mappers.ProjectMapper;
+import com.bastet.bastetmanagement.models.Applicant;
+import com.bastet.bastetmanagement.models.Project;
 import com.bastet.bastetmanagement.services.project.ProjectService;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageImpl;
@@ -51,7 +54,8 @@ public class ProjectFacadeImpl implements ProjectFacade {
     }
 
     @Override
-    public List<? extends Dto> findAllForSelectElement() {
-        return null;
+    public List<ProjectSelectElementDto> findAllForSelectElement(){
+        List<Project> projects = projectService.findAll();
+        return projectMapper.projectListToProjectSelectElementDtoList(projects);
     }
 }

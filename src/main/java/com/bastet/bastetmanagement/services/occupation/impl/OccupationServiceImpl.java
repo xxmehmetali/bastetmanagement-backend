@@ -32,6 +32,6 @@ public class OccupationServiceImpl implements OccupationService {
 
     @Override
     public List<Occupation> findAll() {
-        return null;
+        return occupationDao.findAll();
     }
 }

@@ -5,9 +5,12 @@ import com.bastet.bastetmanagement.core.utilities.results.baseresults.ErrorResul
 import com.bastet.bastetmanagement.dtos.Dto;
 import com.bastet.bastetmanagement.dtos.basedtos.DepartmentDto;
 import com.bastet.bastetmanagement.dtos.basedtos.ExpenseDto;
+import com.bastet.bastetmanagement.dtos.selectdtos.CorporationSelectElementDto;
+import com.bastet.bastetmanagement.dtos.selectdtos.ExpenseSelectElementDto;
 import com.bastet.bastetmanagement.dtos.simplifieddtos.ExpenseSimplifiedDto;
 import com.bastet.bastetmanagement.facades.expense.ExpenseFacade;
 import com.bastet.bastetmanagement.mappers.ExpenseMapper;
+import com.bastet.bastetmanagement.models.Corporation;
 import com.bastet.bastetmanagement.models.Expense;
 import com.bastet.bastetmanagement.services.expense.ExpenseService;
 import lombok.extern.log4j.Log4j2;
@@ -50,7 +53,8 @@ public class ExpenseFacadeImpl implements ExpenseFacade {
     }
 
     @Override
-    public List<? extends Dto> findAllForSelectElement() {
-        return null;
+    public List<ExpenseSelectElementDto> findAllForSelectElement(){
+        List<Expense> expenses = expenseService.findAll();
+        return expenseMapper.expenseListToExpenseSelectElementDtoList(expenses);
     }
 }

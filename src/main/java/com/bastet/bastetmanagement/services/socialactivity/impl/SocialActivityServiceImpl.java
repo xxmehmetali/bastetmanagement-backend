@@ -32,6 +32,6 @@ public class SocialActivityServiceImpl implements SocialActivityService {
 
     @Override
     public List<SocialActivity> findAll() {
-        return null;
+        return socialActivityDao.findAll();
     }
 }

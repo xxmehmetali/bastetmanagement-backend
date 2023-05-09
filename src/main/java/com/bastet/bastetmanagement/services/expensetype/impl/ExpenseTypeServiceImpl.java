@@ -31,6 +31,6 @@ public class ExpenseTypeServiceImpl implements ExpenseTypeService {
 
     @Override
     public List<ExpenseType> findAll() {
-        return null;
+        return expenseTypeDao.findAll();
     }
 }

@@ -2,8 +2,11 @@ package com.bastet.bastetmanagement.mappers;
 
 import com.bastet.bastetmanagement.dtos.basedtos.ApplicantDto;
 import com.bastet.bastetmanagement.dtos.basedtos.ExpenseTypeDto;
+import com.bastet.bastetmanagement.dtos.selectdtos.CorporationSelectElementDto;
+import com.bastet.bastetmanagement.dtos.selectdtos.ExpenseTypeSelectElementDto;
 import com.bastet.bastetmanagement.dtos.simplifieddtos.ExpenseTypeSimplifiedDto;
 import com.bastet.bastetmanagement.models.Applicant;
+import com.bastet.bastetmanagement.models.Corporation;
 import com.bastet.bastetmanagement.models.ExpenseType;
 import org.mapstruct.Mapper;
 
@@ -18,5 +21,6 @@ public interface ExpenseTypeMapper {
     //list versions
     List<ExpenseType> expenseTypeDtoListToExpenseTypeList(List<ExpenseTypeDto> expenseTypeDtos);
     List<ExpenseTypeDto> expenseTypeListToExpenseTypeDtoList(List<ExpenseType> expenseTypes);
+    List<ExpenseTypeSelectElementDto> expenseTypeListToExpenseTypeSelectElementDtoList(List<ExpenseType> expenseTypes);
 
 }

@@ -3,10 +3,13 @@ package com.bastet.bastetmanagement.facades.applicant.impl;
 
 import com.bastet.bastetmanagement.dtos.Dto;
 import com.bastet.bastetmanagement.dtos.basedtos.ApplicantDto;
+import com.bastet.bastetmanagement.dtos.selectdtos.ApplicantSelectElementDto;
+import com.bastet.bastetmanagement.dtos.selectdtos.CorporationSelectElementDto;
 import com.bastet.bastetmanagement.dtos.simplifieddtos.ApplicantSimplifiedDto;
 import com.bastet.bastetmanagement.facades.applicant.ApplicantFacade;
 import com.bastet.bastetmanagement.mappers.ApplicantMapper;
 import com.bastet.bastetmanagement.models.Applicant;
+import com.bastet.bastetmanagement.models.Corporation;
 import com.bastet.bastetmanagement.services.applicant.ApplicantService;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.data.domain.Page;
@@ -49,8 +52,8 @@ public class ApplicantFacadeImpl implements ApplicantFacade {
         return applicantService.findAllPaged(pageable).map(applicant -> applicantMapper.applicantToApplicantSimplifiedDto(applicant));
     }
 
-    @Override
-    public List<? extends Dto> findAllForSelectElement() {
-        return null;
+    public List<ApplicantSelectElementDto> findAllForSelectElement(){
+        List<Applicant> applicants = applicantService.findAll();
+        return applicantMapper.applicantListToApplicantSelectElementDtoList(applicants);
     }
 }

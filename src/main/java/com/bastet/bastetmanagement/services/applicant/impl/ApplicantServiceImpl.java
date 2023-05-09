@@ -36,6 +36,6 @@ public class ApplicantServiceImpl implements ApplicantService {
 
     @Override
     public List<Applicant> findAll() {
-        return null;
+        return applicantDao.findAll();
     }
 }

@@ -1,11 +1,13 @@
 package com.bastet.bastetmanagement.controllers;
 
 import com.bastet.bastetmanagement.core.utilities.results.baseresults.Result;
+import com.bastet.bastetmanagement.dtos.selectdtos.ApplicantSelectElementDto;
 import com.bastet.bastetmanagement.mappers.ApplicantMapper;
 import com.bastet.bastetmanagement.daos.ApplicantDao;
 import com.bastet.bastetmanagement.dtos.basedtos.ApplicantDto;
 import com.bastet.bastetmanagement.dtos.simplifieddtos.ApplicantSimplifiedDto;
 import com.bastet.bastetmanagement.facades.applicant.ApplicantFacade;
+import com.bastet.bastetmanagement.models.Applicant;
 import org.springframework.data.domain.Pageable;
 import org.springframework.web.bind.annotation.*;
 
@@ -41,8 +43,9 @@ public class ApplicantController extends BaseController {
         return wrapDataResultWithMessage(applicantFacade.findAllPagedSimplified(pageable), true, "Data listed.");
     }
 
-    @GetMapping("")
-    public Result findAllForSelectElement(){
-       return null;
+    @GetMapping(value = "/selectElement/findAll")
+    public Result findAllForSelectElement() {
+        List<ApplicantSelectElementDto> applicantSelectElementDtos = (List<ApplicantSelectElementDto>) applicantFacade.findAllForSelectElement();
+        return wrapSuccessDataResultWithMessage(applicantSelectElementDtos, "");
     }
 }

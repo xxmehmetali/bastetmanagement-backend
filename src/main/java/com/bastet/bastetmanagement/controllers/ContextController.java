@@ -5,6 +5,7 @@ import com.bastet.bastetmanagement.core.customexceptions.ModelNotFoundException;
 import com.bastet.bastetmanagement.core.utilities.results.baseresults.Result;
 import com.bastet.bastetmanagement.daos.ContextDao;
 import com.bastet.bastetmanagement.dtos.basedtos.ContextDto;
+import com.bastet.bastetmanagement.dtos.selectdtos.ContextSelectElementDto;
 import com.bastet.bastetmanagement.dtos.simplifieddtos.ContextSimplifiedDto;
 import com.bastet.bastetmanagement.facades.context.ContextFacade;
 import com.bastet.bastetmanagement.models.Context;
@@ -15,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.annotation.Resource;
+import java.util.List;
 import java.util.UUID;
 
 @RestController
@@ -41,5 +43,10 @@ public class ContextController extends BaseController {
     @GetMapping("/simplified/findAll")
     public Result findAllPagedSimplified(Pageable pageable) {
         return wrapSuccessDataResultWithMessage(contextFacade.findAllPagedSimplified(pageable), "");
+    }
+    @GetMapping(value = "/selectElement/findAll")
+    public Result findAllForSelectElement() {
+        List<ContextSelectElementDto> contextSelectElementDtos = (List<ContextSelectElementDto>) contextFacade.findAllForSelectElement();
+        return wrapSuccessDataResultWithMessage(contextSelectElementDtos, "");
     }
 }

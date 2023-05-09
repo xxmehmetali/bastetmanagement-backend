@@ -32,6 +32,6 @@ public class EmployeeServiceImpl implements EmployeeService {
 
     @Override
     public List<Employee> findAll() {
-        return null;
+        return employeeDao.findAll();
     }
 }

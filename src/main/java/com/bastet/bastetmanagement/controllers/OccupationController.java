@@ -5,6 +5,7 @@ import com.bastet.bastetmanagement.core.utilities.results.baseresults.Result;
 import com.bastet.bastetmanagement.daos.OccupationDao;
 import com.bastet.bastetmanagement.daos.ProjectDao;
 import com.bastet.bastetmanagement.dtos.basedtos.OccupationDto;
+import com.bastet.bastetmanagement.dtos.selectdtos.OccupationSelectElementDto;
 import com.bastet.bastetmanagement.dtos.simplifieddtos.OccupationSimplifiedDto;
 import com.bastet.bastetmanagement.facades.occupation.OccupationFacade;
 import com.bastet.bastetmanagement.models.Occupation;
@@ -44,5 +45,10 @@ public class OccupationController extends BaseController {
     @GetMapping("/simplified/findAll")
     public Result findAllPagedSimplified(Pageable pageable){
         return wrapSuccessDataResultWithMessage(occupationFacade.findAllPagedSimplified(pageable), "");
+    }
+    @GetMapping(value = "/selectElement/findAll")
+    public Result findAllForSelectElement() {
+        List<OccupationSelectElementDto> occupationSelectElementDtos = (List<OccupationSelectElementDto>) occupationFacade.findAllForSelectElement();
+        return wrapSuccessDataResultWithMessage(occupationSelectElementDtos, "");
     }
 }

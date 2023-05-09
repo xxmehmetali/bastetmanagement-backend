@@ -3,9 +3,12 @@ package com.bastet.bastetmanagement.facades.employee.impl;
 
 import com.bastet.bastetmanagement.dtos.Dto;
 import com.bastet.bastetmanagement.dtos.basedtos.EmployeeDto;
+import com.bastet.bastetmanagement.dtos.selectdtos.EmployeeSelectElementDto;
 import com.bastet.bastetmanagement.dtos.simplifieddtos.EmployeeSimplifiedDto;
 import com.bastet.bastetmanagement.facades.employee.EmployeeFacade;
 import com.bastet.bastetmanagement.mappers.EmployeeMapper;
+import com.bastet.bastetmanagement.models.Applicant;
+import com.bastet.bastetmanagement.models.Employee;
 import com.bastet.bastetmanagement.services.employee.EmployeeService;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -44,7 +47,7 @@ public class EmployeeFacadeImpl implements EmployeeFacade {
     }
 
     @Override
-    public List<? extends Dto> findAllForSelectElement() {
-        return null;
-    }
-}
+    public List<EmployeeSelectElementDto> findAllForSelectElement(){
+        List<Employee> employees = employeeService.findAll();
+        return employeeMapper.employeeListToEmployeeSelectElementDtoList(employees);
+    }}
