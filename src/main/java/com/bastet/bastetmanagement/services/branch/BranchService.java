@@ -6,5 +6,4 @@ import com.bastet.bastetmanagement.services.GenericService;
 import java.util.UUID;
 
 public interface BranchService extends GenericService<Branch> {
-    void add(Branch branch);
 }

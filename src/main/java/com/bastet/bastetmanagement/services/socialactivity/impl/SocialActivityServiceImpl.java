@@ -1,7 +1,9 @@
 package com.bastet.bastetmanagement.services.socialactivity.impl;
 
 import com.bastet.bastetmanagement.core.customexceptions.ModelNotFoundException;
+import com.bastet.bastetmanagement.core.utilities.results.ResultUtil;
 import com.bastet.bastetmanagement.daos.SocialActivityDao;
+import com.bastet.bastetmanagement.models.Applicant;
 import com.bastet.bastetmanagement.models.SocialActivity;
 import com.bastet.bastetmanagement.services.socialactivity.SocialActivityService;
 import lombok.extern.log4j.Log4j2;
@@ -33,5 +35,10 @@ public class SocialActivityServiceImpl implements SocialActivityService {
     @Override
     public List<SocialActivity> findAll() {
         return socialActivityDao.findAll();
+    }
+
+    @Override
+    public boolean add(SocialActivity socialActivity) {
+        return ResultUtil.extractSuccess(socialActivityDao.save(socialActivity));
     }
 }

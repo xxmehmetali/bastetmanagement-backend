@@ -9,6 +9,8 @@ import com.bastet.bastetmanagement.models.Applicant;
 import com.bastet.bastetmanagement.models.Corporation;
 import com.bastet.bastetmanagement.models.SocialActivity;
 import org.mapstruct.Mapper;
+import org.mapstruct.Mapping;
+import org.mapstruct.Named;
 
 import java.util.List;
 
@@ -22,7 +24,15 @@ import java.util.List;
 )
 public interface SocialActivityMapper {
     SocialActivityDto socialActivityToSocialActivityDto(SocialActivity socialActivity);
+
+    @Mapping(ignore = true, target = "id")
+    @Mapping(source = "expense", target = "expense", qualifiedByName = "expenseDtoToExpenseIdStatic")
+//    @Mapping(source = "socialActivityType", target = "socialActivityType", qualifiedByName = "socialActivityTypeDtoToSocialActivityTypeIdStatic")
     SocialActivity socialActivityDtoToSocialActivity(SocialActivityDto socialActivityDto);
+
+    @Named("socialActivityDtoToSocialActivityIdStatic")
+    SocialActivity socialActivityDtoToSocialActivityIdStatic(SocialActivityDto socialActivityDto);
+
     SocialActivitySimplifiedDto socialActivityToSocialActivitySimplifiedDto(SocialActivity socialActivity);
     SocialActivity socialActivitySimplifiedDtoToSocialActivity(SocialActivitySimplifiedDto socialActivitySimplifiedDto);
     //list versions

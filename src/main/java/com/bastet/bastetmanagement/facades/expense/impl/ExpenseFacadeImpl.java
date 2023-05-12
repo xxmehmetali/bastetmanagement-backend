@@ -57,4 +57,11 @@ public class ExpenseFacadeImpl implements ExpenseFacade {
         List<Expense> expenses = expenseService.findAll();
         return expenseMapper.expenseListToExpenseSelectElementDtoList(expenses);
     }
+
+    @Override
+    public boolean add(Dto dto) {
+        Expense expense = expenseMapper.expenseDtoToExpense((ExpenseDto) dto);
+        boolean success = expenseService.add(expense);
+        return success;
+    }
 }

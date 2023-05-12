@@ -52,9 +52,10 @@ public class CorporationFacadeImpl implements CorporationFacade {
     }
 
     @Override
-    public void add(CorporationDto corporationDto) {
-
-        corporationService.save(corporationMapper.corporationDtoToCorporation(corporationDto));
+    public boolean add(Dto dto) {
+        Corporation corporation = corporationMapper.corporationDtoToCorporation((CorporationDto) dto);
+        boolean success = corporationService.add(corporation);
+        return success;
     }
 
     public List<CorporationSelectElementDto> findAllForSelectElement(){

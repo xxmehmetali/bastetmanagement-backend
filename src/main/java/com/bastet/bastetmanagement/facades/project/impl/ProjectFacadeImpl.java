@@ -10,6 +10,7 @@ import com.bastet.bastetmanagement.facades.project.ProjectFacade;
 import com.bastet.bastetmanagement.mappers.ProjectMapper;
 import com.bastet.bastetmanagement.models.Applicant;
 import com.bastet.bastetmanagement.models.Project;
+import com.bastet.bastetmanagement.models.Project;
 import com.bastet.bastetmanagement.services.project.ProjectService;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageImpl;
@@ -57,5 +58,12 @@ public class ProjectFacadeImpl implements ProjectFacade {
     public List<ProjectSelectElementDto> findAllForSelectElement(){
         List<Project> projects = projectService.findAll();
         return projectMapper.projectListToProjectSelectElementDtoList(projects);
+    }
+
+    @Override
+    public boolean add(Dto dto) {
+        Project project = projectMapper.projectDtoToProject((ProjectDto) dto);
+        boolean success = projectService.add(project);
+        return success;
     }
 }

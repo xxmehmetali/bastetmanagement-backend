@@ -9,13 +9,21 @@ import com.bastet.bastetmanagement.models.Applicant;
 import com.bastet.bastetmanagement.models.Corporation;
 import com.bastet.bastetmanagement.models.Occupation;
 import org.mapstruct.Mapper;
+import org.mapstruct.Mapping;
+import org.mapstruct.Named;
 
 import java.util.List;
 
 @Mapper
 public interface OccupationMapper {
     OccupationDto occupationToOccupationDto(Occupation occupation);
+
+    @Mapping(ignore = true, target = "id")
     Occupation occupationDtoToOccupation(OccupationDto occupationDto);
+
+    @Named("occupationDtoToOccupationIdStatic")
+    Occupation occupationDtoToOccupationIdStatic(OccupationDto occupationDto);
+
     OccupationSimplifiedDto occupationToOccupationSimplifiedDto(Occupation occupation);
     Occupation occupationSimplifiedDtoToOccupation(OccupationSimplifiedDto occupationSimplifiedDto);
     //list versions

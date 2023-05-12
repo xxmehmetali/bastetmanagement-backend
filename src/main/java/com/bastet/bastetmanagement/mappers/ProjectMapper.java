@@ -9,6 +9,8 @@ import com.bastet.bastetmanagement.models.Applicant;
 import com.bastet.bastetmanagement.models.Corporation;
 import com.bastet.bastetmanagement.models.Project;
 import org.mapstruct.Mapper;
+import org.mapstruct.Mapping;
+import org.mapstruct.Named;
 
 import java.util.List;
 
@@ -21,7 +23,14 @@ import java.util.List;
 )
 public interface ProjectMapper {
     ProjectDto projectToProjectDto(Project project);
+
+    @Mapping(ignore = true, target = "id")
+    @Mapping(source = "corporation", target = "corporation", qualifiedByName = "corporationDtoToCorporationIdStatic")
     Project projectDtoToProject(ProjectDto projectDto);
+
+    @Named("projectDtoToProjectIdStatic")
+    Project projectDtoToProjectIdStatic(ProjectDto projectDto);
+
     ProjectSimplifiedDto projectToProjectSimplifiedDto(Project project);
     Project projectSimplifiedDtoToProject(ProjectSimplifiedDto projectSimplifiedDto);
     //list versions

@@ -1,7 +1,9 @@
 package com.bastet.bastetmanagement.services.cv.impl;
 
 import com.bastet.bastetmanagement.core.customexceptions.ModelNotFoundException;
+import com.bastet.bastetmanagement.core.utilities.results.ResultUtil;
 import com.bastet.bastetmanagement.daos.CvDao;
+import com.bastet.bastetmanagement.models.Applicant;
 import com.bastet.bastetmanagement.models.Cv;
 import com.bastet.bastetmanagement.services.cv.CvService;
 import lombok.extern.log4j.Log4j2;
@@ -31,5 +33,10 @@ public class CvServiceImpl implements CvService {
     @Override
     public List<Cv> findAll() {
         return cvDao.findAll();
+    }
+
+    @Override
+    public boolean add(Cv cv) {
+        return ResultUtil.extractSuccess(cvDao.save(cv));
     }
 }

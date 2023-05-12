@@ -6,6 +6,7 @@ public final class ResultConstants
 
     public static final String FOUND_MESSAGE = "%s found.";
     public static final String NOT_FOUND_MESSAGE = "%s found.";
+    public static final String ADDED_MESSAGE = "%s added.";
 
     public static String foundMessage(Class clazz){
         return String.format(FOUND_MESSAGE, clazz.getSimpleName());
@@ -13,5 +14,9 @@ public final class ResultConstants
 
     public static String notFoundMessage(Class clazz){
         return String.format(NOT_FOUND_MESSAGE, clazz.getSimpleName());
+    }
+
+    public static String addedMessage(Class clazz) {
+        return String.format(ADDED_MESSAGE, clazz.getSimpleName());
     }
 }

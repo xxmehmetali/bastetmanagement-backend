@@ -52,4 +52,11 @@ public class TaskFacadeImpl implements TaskFacade {
         List<Task> tasks = taskService.findAll();
         return taskMapper.taskListToTaskSelectElementDtoList(tasks);
     }
+
+    @Override
+    public boolean add(Dto dto) {
+        Task task = taskMapper.taskDtoToTask((TaskDto) dto);
+        boolean success = taskService.add(task);
+        return success;
+    }
 }

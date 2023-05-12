@@ -2,6 +2,7 @@ package com.bastet.bastetmanagement.controllers;
 
 import com.bastet.bastetmanagement.core.utilities.results.baseresults.Result;
 import com.bastet.bastetmanagement.dtos.selectdtos.ProjectSelectElementDto;
+import com.bastet.bastetmanagement.dtos.basedtos.OccupationDto;
 import com.bastet.bastetmanagement.mappers.ProjectMapper;
 
 import com.bastet.bastetmanagement.daos.ProjectDao;
@@ -10,10 +11,7 @@ import com.bastet.bastetmanagement.dtos.simplifieddtos.ProjectSimplifiedDto;
 import com.bastet.bastetmanagement.facades.project.ProjectFacade;
 import com.bastet.bastetmanagement.models.Project;
 import org.springframework.data.domain.Pageable;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
 import java.util.List;
@@ -55,4 +53,10 @@ public class ProjectController extends BaseController {
         List<ProjectSelectElementDto> projectSelectElementDtos = (List<ProjectSelectElementDto>) projectFacade.findAllForSelectElement();
         return wrapSuccessDataResultWithMessage(projectSelectElementDtos, "");
     }
+    @PostMapping(value = "/add",consumes = "application/json")
+    public Result add(@RequestBody ProjectDto projectDto){
+        boolean success = projectFacade.add(projectDto);
+        return wrapResultWithMessage(success, "selamke");
+    }
+
 }

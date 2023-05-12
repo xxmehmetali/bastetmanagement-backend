@@ -5,5 +5,4 @@ import com.bastet.bastetmanagement.dtos.basedtos.BranchDto;
 import com.bastet.bastetmanagement.facades.GenericFacade;
 
 public interface BranchFacade extends GenericFacade<Dto> {
-    String add(BranchDto branchDto);
 }

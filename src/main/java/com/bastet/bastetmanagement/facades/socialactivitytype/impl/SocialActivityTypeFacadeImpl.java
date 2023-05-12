@@ -10,6 +10,7 @@ import com.bastet.bastetmanagement.facades.socialactivitytype.SocialActivityType
 import com.bastet.bastetmanagement.mappers.SocialActivityTypeMapper;
 import com.bastet.bastetmanagement.models.Applicant;
 import com.bastet.bastetmanagement.models.SocialActivityType;
+import com.bastet.bastetmanagement.models.SocialActivityType;
 import com.bastet.bastetmanagement.services.socialactivitytype.SocialActivityTypeService;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageImpl;
@@ -53,4 +54,12 @@ public class SocialActivityTypeFacadeImpl implements SocialActivityTypeFacade {
     public List<SocialActivityTypeSelectElementDto> findAllForSelectElement(){
         List<SocialActivityType> socialActivityTypes = socialActivityTypeService.findAll();
         return socialActivityTypeMapper.SocialActivityTypeListToSocialActivityTypeSelectElementDtoList(socialActivityTypes);
-    }}
+    }
+
+    @Override
+    public boolean add(Dto dto) {
+        SocialActivityType socialActivityType = socialActivityTypeMapper.socialActivityTypeDtoToSocialActivityType((SocialActivityTypeDto) dto);
+        boolean success = socialActivityTypeService.add(socialActivityType);
+        return success;
+    }
+}

@@ -1,6 +1,8 @@
 package com.bastet.bastetmanagement.controllers;
 
 
+import com.bastet.bastetmanagement.core.constants.ResultConstants;
+import com.bastet.bastetmanagement.core.utilities.results.ResultUtil;
 import com.bastet.bastetmanagement.core.utilities.results.baseresults.Result;
 import com.bastet.bastetmanagement.daos.BranchDao;
 import com.bastet.bastetmanagement.dtos.basedtos.BranchDto;
@@ -51,8 +53,8 @@ public class BranchController extends BaseController {
 
     @PostMapping(value = "/add",consumes = "application/json")
     public Result add(@RequestBody BranchDto branchDto){
-        branchFacade.add(branchDto);
-        return new Result(true);
+        boolean success = branchFacade.add(branchDto);
+        return wrapResultWithMessage(success, ResultConstants.addedMessage(Branch.class));
     }
 
 

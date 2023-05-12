@@ -1,7 +1,9 @@
 package com.bastet.bastetmanagement.services.expensetype.impl;
 
 import com.bastet.bastetmanagement.core.customexceptions.ModelNotFoundException;
+import com.bastet.bastetmanagement.core.utilities.results.ResultUtil;
 import com.bastet.bastetmanagement.daos.ExpenseTypeDao;
+import com.bastet.bastetmanagement.models.Applicant;
 import com.bastet.bastetmanagement.models.ExpenseType;
 import com.bastet.bastetmanagement.services.expensetype.ExpenseTypeService;
 import lombok.extern.log4j.Log4j2;
@@ -32,5 +34,10 @@ public class ExpenseTypeServiceImpl implements ExpenseTypeService {
     @Override
     public List<ExpenseType> findAll() {
         return expenseTypeDao.findAll();
+    }
+
+    @Override
+    public boolean add(ExpenseType expenseType) {
+        return ResultUtil.extractSuccess(expenseTypeDao.save(expenseType));
     }
 }

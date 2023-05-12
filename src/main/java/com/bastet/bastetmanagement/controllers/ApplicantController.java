@@ -2,6 +2,7 @@ package com.bastet.bastetmanagement.controllers;
 
 import com.bastet.bastetmanagement.core.utilities.results.baseresults.Result;
 import com.bastet.bastetmanagement.dtos.selectdtos.ApplicantSelectElementDto;
+import com.bastet.bastetmanagement.dtos.basedtos.BranchDto;
 import com.bastet.bastetmanagement.mappers.ApplicantMapper;
 import com.bastet.bastetmanagement.daos.ApplicantDao;
 import com.bastet.bastetmanagement.dtos.basedtos.ApplicantDto;
@@ -47,5 +48,11 @@ public class ApplicantController extends BaseController {
     public Result findAllForSelectElement() {
         List<ApplicantSelectElementDto> applicantSelectElementDtos = (List<ApplicantSelectElementDto>) applicantFacade.findAllForSelectElement();
         return wrapSuccessDataResultWithMessage(applicantSelectElementDtos, "");
+    }
+
+    @PostMapping(value = "/add",consumes = "application/json")
+    public Result add(@RequestBody ApplicantDto applicantDto){
+        boolean success = applicantFacade.add(applicantDto);
+        return wrapResultWithMessage(success, "selamke");
     }
 }

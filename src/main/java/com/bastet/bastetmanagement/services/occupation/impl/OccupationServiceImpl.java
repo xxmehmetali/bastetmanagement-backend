@@ -1,7 +1,9 @@
 package com.bastet.bastetmanagement.services.occupation.impl;
 
 import com.bastet.bastetmanagement.core.customexceptions.ModelNotFoundException;
+import com.bastet.bastetmanagement.core.utilities.results.ResultUtil;
 import com.bastet.bastetmanagement.daos.OccupationDao;
+import com.bastet.bastetmanagement.models.Applicant;
 import com.bastet.bastetmanagement.models.Occupation;
 import com.bastet.bastetmanagement.services.occupation.OccupationService;
 import lombok.extern.log4j.Log4j2;
@@ -33,5 +35,10 @@ public class OccupationServiceImpl implements OccupationService {
     @Override
     public List<Occupation> findAll() {
         return occupationDao.findAll();
+    }
+
+    @Override
+    public boolean add(Occupation occupation) {
+        return ResultUtil.extractSuccess(occupationDao.save(occupation));
     }
 }

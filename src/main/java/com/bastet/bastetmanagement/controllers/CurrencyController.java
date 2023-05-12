@@ -4,9 +4,11 @@ package com.bastet.bastetmanagement.controllers;
 import com.bastet.bastetmanagement.core.customexceptions.ModelNotFoundException;
 import com.bastet.bastetmanagement.core.utilities.results.baseresults.Result;
 import com.bastet.bastetmanagement.daos.CurrencyDao;
+import com.bastet.bastetmanagement.dtos.basedtos.BranchDto;
 import com.bastet.bastetmanagement.dtos.basedtos.ContextDto;
 import com.bastet.bastetmanagement.dtos.basedtos.CurrencyDto;
 import com.bastet.bastetmanagement.dtos.selectdtos.CurrencySelectElementDto;
+import com.bastet.bastetmanagement.dtos.basedtos.CvDto;
 import com.bastet.bastetmanagement.dtos.simplifieddtos.CurrencySimplifiedDto;
 import com.bastet.bastetmanagement.facades.currency.CurrencyFacade;
 import com.bastet.bastetmanagement.models.Context;
@@ -56,6 +58,12 @@ public class CurrencyController extends BaseController {
     public Result findAllForSelectElement() {
         List<CurrencySelectElementDto> currencySelectElementDtos = (List<CurrencySelectElementDto>) currencyFacade.findAllForSelectElement();
         return wrapSuccessDataResultWithMessage(currencySelectElementDtos, "");
+    }
+
+    @PostMapping(value = "/add",consumes = "application/json")
+    public Result add(@RequestBody CurrencyDto currencyDto){
+        boolean success = currencyFacade.add(currencyDto);
+        return wrapResultWithMessage(success, "selamke");
     }
 
 }

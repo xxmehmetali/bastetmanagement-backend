@@ -2,6 +2,7 @@ package com.bastet.bastetmanagement.controllers;
 
 import com.bastet.bastetmanagement.core.utilities.results.baseresults.Result;
 import com.bastet.bastetmanagement.dtos.selectdtos.TaskSelectElementDto;
+import com.bastet.bastetmanagement.dtos.basedtos.SocialActivityTypeDto;
 import com.bastet.bastetmanagement.mappers.TaskMapper;
 
 import com.bastet.bastetmanagement.daos.TaskDao;
@@ -46,6 +47,12 @@ public class TaskController extends BaseController {
     public Result findAllForSelectElement() {
         List<TaskSelectElementDto> taskSelectElementDtos = (List<TaskSelectElementDto>) taskFacade.findAllForSelectElement();
         return wrapSuccessDataResultWithMessage(taskSelectElementDtos, "");
+    }
+
+    @PostMapping(value = "/add",consumes = "application/json")
+    public Result add(@RequestBody TaskDto taskDto){
+        boolean success = taskFacade.add(taskDto);
+        return wrapResultWithMessage(success, "selamke");
     }
 
 }

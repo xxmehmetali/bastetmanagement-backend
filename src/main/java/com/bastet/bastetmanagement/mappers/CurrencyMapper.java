@@ -9,13 +9,21 @@ import com.bastet.bastetmanagement.models.Applicant;
 import com.bastet.bastetmanagement.models.Corporation;
 import com.bastet.bastetmanagement.models.Currency;
 import org.mapstruct.Mapper;
+import org.mapstruct.Mapping;
+import org.mapstruct.Named;
 
 import java.util.List;
 
 @Mapper
 public interface CurrencyMapper {
     CurrencyDto currencyToCurrencyDto(Currency currency);
+
+    @Mapping(ignore = true, target = "id")
     Currency currencyDtoToCurrency(CurrencyDto currencyDto);
+
+    @Named("currencyDtoToCurrencyIdStatic")
+    Currency currencyDtoToCurrencyIdStatic(CurrencyDto currencyDto);
+
     CurrencySimplifiedDto currencyToCurrencySimplifiedDto(Currency currency);
     Currency currencySimplifiedDtoToCurrency(CurrencySimplifiedDto currencySimplifiedDto);
     //list versions

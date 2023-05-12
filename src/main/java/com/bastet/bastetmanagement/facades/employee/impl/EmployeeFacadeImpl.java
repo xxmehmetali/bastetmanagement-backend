@@ -9,6 +9,7 @@ import com.bastet.bastetmanagement.facades.employee.EmployeeFacade;
 import com.bastet.bastetmanagement.mappers.EmployeeMapper;
 import com.bastet.bastetmanagement.models.Applicant;
 import com.bastet.bastetmanagement.models.Employee;
+import com.bastet.bastetmanagement.models.Employee;
 import com.bastet.bastetmanagement.services.employee.EmployeeService;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -17,6 +18,7 @@ import org.springframework.stereotype.Component;
 import javax.annotation.Resource;
 import java.util.List;
 import java.util.UUID;
+import java.util.stream.Collectors;
 
 @Component
 public class EmployeeFacadeImpl implements EmployeeFacade {
@@ -49,5 +51,16 @@ public class EmployeeFacadeImpl implements EmployeeFacade {
     @Override
     public List<EmployeeSelectElementDto> findAllForSelectElement(){
         List<Employee> employees = employeeService.findAll();
-        return employeeMapper.employeeListToEmployeeSelectElementDtoList(employees);
-    }}
+        return employees.stream()
+                .map(employee -> {
+                    return employeeMapper.employeeToEmployeeSelectElementDto(employee);
+                })
+                .collect(Collectors.toList());
+    }
+    @Override
+    public boolean add(Dto dto) {
+        Employee employee = employeeMapper.employeeDtoToEmployee((EmployeeDto) dto);
+        boolean success = employeeService.add(employee);
+        return success;
+    }
+}

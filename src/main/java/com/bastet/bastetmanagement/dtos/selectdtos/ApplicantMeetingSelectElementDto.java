@@ -12,8 +12,8 @@ import java.util.UUID;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class EmployeeSelectElementDto extends Dto {
+public class ApplicantMeetingSelectElementDto extends Dto {
     private UUID id;
 
-    private String employeeFullName;
+    private String applicantFullName;
 }

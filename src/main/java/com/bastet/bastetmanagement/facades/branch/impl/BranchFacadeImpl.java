@@ -49,15 +49,20 @@ public class BranchFacadeImpl implements BranchFacade {
         return branchService.findAllPaged(pageable).map(branch -> branchMapper.branchToBranchSimplifiedDto(branch));
     }
 
-    public String add(BranchDto branchDto){
+    public boolean add(BranchDto branchDto){
         Branch branch = branchMapper.branchDtoToBranch(branchDto);
-        branchService.add(branch);
-        return "";
+        return branchService.add(branch);
     }
 
     @Override
     public List<BranchSelectElementDto> findAllForSelectElement(){
         List<Branch> branches = branchService.findAll();
         return branchMapper.branchListToBranchSelectElementDtoList(branches);
+    }
+
+    @Override
+    public boolean add(Dto dto) {
+        Branch branch = branchMapper.branchDtoToBranch((BranchDto) dto);
+        return branchService.add(branch);
     }
 }

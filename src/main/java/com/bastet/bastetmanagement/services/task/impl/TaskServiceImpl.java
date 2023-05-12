@@ -1,7 +1,9 @@
 package com.bastet.bastetmanagement.services.task.impl;
 
 import com.bastet.bastetmanagement.core.customexceptions.ModelNotFoundException;
+import com.bastet.bastetmanagement.core.utilities.results.ResultUtil;
 import com.bastet.bastetmanagement.daos.TaskDao;
+import com.bastet.bastetmanagement.models.Applicant;
 import com.bastet.bastetmanagement.models.Task;
 import com.bastet.bastetmanagement.services.task.TaskService;
 import lombok.extern.log4j.Log4j2;
@@ -32,5 +34,10 @@ public class TaskServiceImpl implements TaskService {
     @Override
     public List<Task> findAll() {
         return taskDao.findAll();
+    }
+
+    @Override
+    public boolean add(Task task) {
+        return ResultUtil.extractSuccess(taskDao.save(task));
     }
 }

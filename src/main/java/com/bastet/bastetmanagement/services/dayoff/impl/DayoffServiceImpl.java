@@ -1,7 +1,9 @@
 package com.bastet.bastetmanagement.services.dayoff.impl;
 
 import com.bastet.bastetmanagement.core.customexceptions.ModelNotFoundException;
+import com.bastet.bastetmanagement.core.utilities.results.ResultUtil;
 import com.bastet.bastetmanagement.daos.DayOffDao;
+import com.bastet.bastetmanagement.models.Applicant;
 import com.bastet.bastetmanagement.models.Dayoff;
 import com.bastet.bastetmanagement.services.cv.CvService;
 import com.bastet.bastetmanagement.services.dayoff.DayoffService;
@@ -32,5 +34,10 @@ public class DayoffServiceImpl implements DayoffService {
     @Override
     public List<Dayoff> findAll() {
         return dayOffDao.findAll();
+    }
+
+    @Override
+    public boolean add(Dayoff dayoff) {
+        return ResultUtil.extractSuccess(dayOffDao.save(dayoff));
     }
 }

@@ -1,7 +1,9 @@
 package com.bastet.bastetmanagement.services.employee.impl;
 
 import com.bastet.bastetmanagement.core.customexceptions.ModelNotFoundException;
+import com.bastet.bastetmanagement.core.utilities.results.ResultUtil;
 import com.bastet.bastetmanagement.daos.EmployeeDao;
+import com.bastet.bastetmanagement.models.Applicant;
 import com.bastet.bastetmanagement.models.Employee;
 import com.bastet.bastetmanagement.services.employee.EmployeeService;
 import lombok.extern.log4j.Log4j2;
@@ -33,5 +35,10 @@ public class EmployeeServiceImpl implements EmployeeService {
     @Override
     public List<Employee> findAll() {
         return employeeDao.findAll();
+    }
+
+    @Override
+    public boolean add(Employee employee) {
+        return ResultUtil.extractSuccess(employeeDao.save(employee));
     }
 }

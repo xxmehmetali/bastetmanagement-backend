@@ -10,6 +10,7 @@ import com.bastet.bastetmanagement.facades.department.DepartmentFacade;
 import com.bastet.bastetmanagement.mappers.DepartmentMapper;
 import com.bastet.bastetmanagement.models.Applicant;
 import com.bastet.bastetmanagement.models.Department;
+import com.bastet.bastetmanagement.models.Department;
 import com.bastet.bastetmanagement.services.department.DepartmentService;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageImpl;
@@ -53,5 +54,12 @@ public class DepartmentFacadeImpl implements DepartmentFacade {
     public List<DepartmentSelectElementDto> findAllForSelectElement(){
         List<Department> departments = departmentService.findAll();
         return departmentMapper.departmentListToDepartmentSelectElementDtoList(departments);
+    }
+
+    @Override
+    public boolean add(Dto dto) {
+        Department department = departmentMapper.departmentDtoToDepartment((DepartmentDto) dto);
+        boolean success = departmentService.add(department);
+        return success;
     }
 }

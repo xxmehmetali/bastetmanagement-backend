@@ -8,6 +8,7 @@ import com.bastet.bastetmanagement.dtos.selectdtos.ExpenseTypeSelectElementDto;
 import com.bastet.bastetmanagement.dtos.simplifieddtos.ExpenseTypeSimplifiedDto;
 import com.bastet.bastetmanagement.facades.expensetype.ExpenseTypeFacade;
 import com.bastet.bastetmanagement.mappers.ExpenseTypeMapper;
+import com.bastet.bastetmanagement.models.ExpenseType;
 import com.bastet.bastetmanagement.models.Applicant;
 import com.bastet.bastetmanagement.models.Expense;
 import com.bastet.bastetmanagement.models.ExpenseType;
@@ -52,4 +53,12 @@ public class ExpenseTypeFacadeImpl implements ExpenseTypeFacade {
     public List<ExpenseTypeSelectElementDto> findAllForSelectElement(){
         List<ExpenseType> expenseTypes = expenseTypeService.findAll();
         return expenseTypeMapper.expenseTypeListToExpenseTypeSelectElementDtoList(expenseTypes);
-    }}
+    }
+
+    @Override
+    public boolean add(Dto dto) {
+        ExpenseType expenseType = expenseTypeMapper.expenseTypeDtoToExpenseType((ExpenseTypeDto) dto);
+        boolean success = expenseTypeService.add(expenseType);
+        return success;
+    }
+}

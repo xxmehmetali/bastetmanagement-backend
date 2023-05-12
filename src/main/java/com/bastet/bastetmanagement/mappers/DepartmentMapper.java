@@ -9,13 +9,21 @@ import com.bastet.bastetmanagement.models.Applicant;
 import com.bastet.bastetmanagement.models.Corporation;
 import com.bastet.bastetmanagement.models.Department;
 import org.mapstruct.Mapper;
+import org.mapstruct.Mapping;
+import org.mapstruct.Named;
 
 import java.util.List;
 
 @Mapper
 public interface DepartmentMapper {
     DepartmentDto departmentToDepartmentDto(Department department);
+
+    @Mapping(ignore = true, target = "id")
     Department departmentDtoToDepartment(DepartmentDto departmentDto);
+
+    @Named("departmentDtoToDepartmentIdStatic")
+    Department departmentDtoToDepartmentIdStatic(DepartmentDto departmentDto);
+
     DepartmentSimplifiedDto departmentToDepartmentSimplifiedDto(Department department);
     Department departmentSimplifiedDtoToDepartment(DepartmentSimplifiedDto departmentSimplifiedDto);
 

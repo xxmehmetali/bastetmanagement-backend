@@ -18,6 +18,7 @@ import org.springframework.stereotype.Component;
 import javax.annotation.Resource;
 import java.util.List;
 import java.util.UUID;
+import java.util.stream.Collectors;
 
 @Component
 public class MeetingPlatformFacadeImpl implements MeetingPlatformFacade {
@@ -48,7 +49,19 @@ public class MeetingPlatformFacadeImpl implements MeetingPlatformFacade {
     }
 
     @Override
+    public boolean add(Dto dto) {
+        MeetingPlatform meetingPlatform = meetingPlatformMapper.meetingPlatformDtoToMeetingPlatform((MeetingPlatformDto) dto);
+        boolean success = meetingPlatformService.add(meetingPlatform);
+        return success;
+    }
+
     public List<MeetingPlatformSelectElementDto> findAllForSelectElement(){
         List<MeetingPlatform> meetingPlatforms = meetingPlatformService.findAll();
-        return meetingPlatformMapper.meetingPlatformListToMeetingPlatformSelectElementDtoList(meetingPlatforms);
-    }}
+        return meetingPlatforms.stream()
+                .map(meetingPlatform -> {
+                    return meetingPlatformMapper.meetingToMeetingPlatformSelectElementDto(meetingPlatform);
+                })
+                .collect(Collectors.toList());
+    }
+
+}

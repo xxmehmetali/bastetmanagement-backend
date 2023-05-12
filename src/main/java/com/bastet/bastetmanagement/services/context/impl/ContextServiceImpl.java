@@ -1,7 +1,9 @@
 package com.bastet.bastetmanagement.services.context.impl;
 
 import com.bastet.bastetmanagement.core.customexceptions.ModelNotFoundException;
+import com.bastet.bastetmanagement.core.utilities.results.ResultUtil;
 import com.bastet.bastetmanagement.daos.ContextDao;
+import com.bastet.bastetmanagement.models.Applicant;
 import com.bastet.bastetmanagement.models.Context;
 import com.bastet.bastetmanagement.services.context.ContextService;
 import lombok.extern.log4j.Log4j2;
@@ -33,5 +35,10 @@ public class ContextServiceImpl implements ContextService {
     @Override
     public List<Context> findAll() {
         return contextDao.findAll();
+    }
+
+    @Override
+    public boolean add(Context context) {
+        return ResultUtil.extractSuccess(contextDao.save(context));
     }
 }

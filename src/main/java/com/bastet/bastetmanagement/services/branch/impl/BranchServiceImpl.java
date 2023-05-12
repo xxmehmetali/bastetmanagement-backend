@@ -1,7 +1,9 @@
 package com.bastet.bastetmanagement.services.branch.impl;
 
 import com.bastet.bastetmanagement.core.customexceptions.ModelNotFoundException;
+import com.bastet.bastetmanagement.core.utilities.results.ResultUtil;
 import com.bastet.bastetmanagement.daos.BranchDao;
+import com.bastet.bastetmanagement.models.Applicant;
 import com.bastet.bastetmanagement.models.Branch;
 import com.bastet.bastetmanagement.services.branch.BranchService;
 import lombok.extern.log4j.Log4j2;
@@ -30,8 +32,8 @@ public class BranchServiceImpl implements BranchService {
     }
 
     @Override
-    public void add(Branch branch) {
-        branchDao.save(branch);
+    public boolean add(Branch branch) {
+        return ResultUtil.extractSuccess(branchDao.save(branch));
     }
 
     @Override

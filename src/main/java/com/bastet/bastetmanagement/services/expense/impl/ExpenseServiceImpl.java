@@ -1,7 +1,9 @@
 package com.bastet.bastetmanagement.services.expense.impl;
 
 import com.bastet.bastetmanagement.core.customexceptions.ModelNotFoundException;
+import com.bastet.bastetmanagement.core.utilities.results.ResultUtil;
 import com.bastet.bastetmanagement.daos.ExpenseDao;
+import com.bastet.bastetmanagement.models.Applicant;
 import com.bastet.bastetmanagement.models.Expense;
 import com.bastet.bastetmanagement.services.expense.ExpenseService;
 
@@ -35,5 +37,10 @@ public class ExpenseServiceImpl implements ExpenseService {
     @Override
     public List<Expense> findAll() {
         return expenseDao.findAll();
+    }
+
+    @Override
+    public boolean add(Expense expense) {
+        return ResultUtil.extractSuccess(expenseDao.save(expense));
     }
 }

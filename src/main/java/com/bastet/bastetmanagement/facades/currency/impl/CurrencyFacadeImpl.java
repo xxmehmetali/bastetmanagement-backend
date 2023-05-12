@@ -52,4 +52,11 @@ public class CurrencyFacadeImpl implements CurrencyFacade {
         List<Currency> currencies = currencyService.findAll();
         return currencyMapper.currencyListToCurrencySelectElementDtoList(currencies);
     }
+
+    @Override
+    public boolean add(Dto dto) {
+        Currency currency = currencyMapper.currencyDtoToCurrency((CurrencyDto) dto);
+        boolean success = currencyService.add(currency);
+        return success;
+    }
 }

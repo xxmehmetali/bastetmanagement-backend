@@ -5,6 +5,7 @@ import com.bastet.bastetmanagement.core.utilities.results.baseresults.Result;
 import com.bastet.bastetmanagement.daos.ApplicantDao;
 import com.bastet.bastetmanagement.daos.SocialActivityDao;
 import com.bastet.bastetmanagement.daos.SocialActivityTypeDao;
+import com.bastet.bastetmanagement.dtos.basedtos.SocialActivityDto;
 import com.bastet.bastetmanagement.dtos.basedtos.SocialActivityTypeDto;
 import com.bastet.bastetmanagement.dtos.selectdtos.SocialActivitySelectElementDto;
 import com.bastet.bastetmanagement.dtos.simplifieddtos.SocialActivityTypeSimplifiedDto;
@@ -14,10 +15,7 @@ import com.bastet.bastetmanagement.models.Project;
 import com.bastet.bastetmanagement.models.SocialActivity;
 import com.bastet.bastetmanagement.models.SocialActivityType;
 import org.springframework.data.domain.Pageable;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestControllerAdvice;
+import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
 import java.util.List;
@@ -54,5 +52,11 @@ public class SocialActivityTypeController extends BaseController {
         List<SocialActivitySelectElementDto> socialActivitySelectElementDtos = (List<SocialActivitySelectElementDto>) socialActivityTypeFacade.findAllForSelectElement();
         return wrapSuccessDataResultWithMessage(socialActivitySelectElementDtos, "");
     }
+    @PostMapping(value = "/add",consumes = "application/json")
+    public Result add(@RequestBody SocialActivityTypeDto socialActivityDto){
+        boolean success = socialActivityTypeFacade.add(socialActivityDto);
+        return wrapResultWithMessage(success, "selamke");
+    }
+
 }
 

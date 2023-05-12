@@ -1,7 +1,9 @@
 package com.bastet.bastetmanagement.services.meeting.impl;
 
 import com.bastet.bastetmanagement.core.customexceptions.ModelNotFoundException;
+import com.bastet.bastetmanagement.core.utilities.results.ResultUtil;
 import com.bastet.bastetmanagement.daos.MeetingDao;
+import com.bastet.bastetmanagement.models.Applicant;
 import com.bastet.bastetmanagement.models.Meeting;
 import com.bastet.bastetmanagement.services.meeting.MeetingService;
 import lombok.extern.log4j.Log4j2;
@@ -32,5 +34,10 @@ public class MeetingServiceImpl implements MeetingService {
     @Override
     public List<Meeting> findAll() {
         return meetingDao.findAll();
+    }
+
+    @Override
+    public boolean add(Meeting meeting) {
+        return ResultUtil.extractSuccess(meetingDao.save(meeting));
     }
 }

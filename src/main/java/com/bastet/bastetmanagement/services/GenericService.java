@@ -12,4 +12,6 @@ public interface GenericService<T> {
     Page<T> findAllPaged(Pageable pageable);
 
     List<T> findAll();
+
+    boolean add(T model);
 }

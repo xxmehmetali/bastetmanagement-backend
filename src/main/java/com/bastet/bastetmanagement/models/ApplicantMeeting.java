@@ -5,6 +5,7 @@ import lombok.*;
 import org.hibernate.annotations.Type;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedDate;
+import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import javax.persistence.*;
 import java.util.Date;
@@ -17,6 +18,7 @@ import java.util.UUID;
 @AllArgsConstructor
 @NoArgsConstructor
 @Table(name = "ApplicantMeetings")
+@EntityListeners(AuditingEntityListener.class)
 public class ApplicantMeeting {
     private static final long serialVersionUID = 1L;
     @Id
@@ -31,6 +33,10 @@ public class ApplicantMeeting {
     @ManyToOne
     @JoinColumn(name = "meetingPlatform")
     private MeetingPlatform meetingPlatform;
+
+    @OneToOne
+    @JoinColumn(name = "applicant")
+    private Applicant applicant;
 
     @Column(name = "beginHour")
     private Date beginHour;

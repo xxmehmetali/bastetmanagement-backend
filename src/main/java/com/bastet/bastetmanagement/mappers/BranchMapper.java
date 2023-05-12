@@ -9,6 +9,8 @@ import com.bastet.bastetmanagement.models.Applicant;
 import com.bastet.bastetmanagement.models.Branch;
 import com.bastet.bastetmanagement.models.Corporation;
 import org.mapstruct.Mapper;
+import org.mapstruct.Mapping;
+import org.mapstruct.Named;
 
 import java.util.List;
 
@@ -20,12 +22,19 @@ import java.util.List;
 )
 public interface BranchMapper {
     BranchDto branchToBranchDto(Branch branch);
+
+    @Mapping(ignore = true, target = "id")
+    @Mapping(source = "corporation", target = "corporation", qualifiedByName = "corporationDtoToCorporationIdStatic")
     Branch branchDtoToBranch(BranchDto branchDto);
+
+    @Named("branchDtoToBranchIdStatic")
+    Branch branchDtoToBranchIdStatic(BranchDto branchDto);
+
     BranchSimplifiedDto branchToBranchSimplifiedDto(Branch branch);
     Branch branchSimplifiedDtoToBranch(BranchSimplifiedDto branchSimplifiedDto);
     //list versions
     List<Branch> branchDtoListToBranchList(List<BranchDto> branchDtos);
     List<BranchDto> branchListToBranchDtoList(List<Branch> branch);
-    List<BranchSelectElementDto> branchListToBranchSelectElementDtoList(List<Branch> branch);
+    List<BranchSelectElementDto> branchListToBranchSelectElementDtoList(List<Branch> branches);
 
 }
