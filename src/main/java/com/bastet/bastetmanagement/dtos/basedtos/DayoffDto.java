@@ -17,6 +17,8 @@ public class DayoffDto extends Dto {
 
     private Date endDate;
 
+    private String description;
+
     private Boolean isPaid;
 
     private String reason;

@@ -2,6 +2,7 @@ package com.bastet.bastetmanagement.dtos.basedtos;
 
 import com.bastet.bastetmanagement.core.enums.Gender;
 import com.bastet.bastetmanagement.dtos.Dto;
+import com.bastet.bastetmanagement.models.Currency;
 import lombok.*;
 
 import java.util.Date;
@@ -35,5 +36,9 @@ public class EmployeeDto extends Dto {
     private BranchDto branch;
 
     private DepartmentDto department;
+
+    private int salaryAmount;
+
+    private CurrencyDto salaryCurrency;
 
 }

@@ -16,6 +16,6 @@ public class DepartmentDto extends Dto {
 
     private String description;
 
-//    private EmployeeDto departmentResponsible;
+    private EmployeeDto departmentResponsible;
 
 }

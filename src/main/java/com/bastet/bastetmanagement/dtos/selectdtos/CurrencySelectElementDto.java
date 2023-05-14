@@ -15,5 +15,5 @@ import java.util.UUID;
 public class CurrencySelectElementDto extends Dto {
     private UUID id;
 
-    private String currencyName;
+    private String currencyNameAndSymbol;
 }

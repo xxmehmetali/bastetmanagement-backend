@@ -2,7 +2,6 @@ package com.bastet.bastetmanagement.facades.currency.impl;
 
 
 import com.bastet.bastetmanagement.dtos.Dto;
-import com.bastet.bastetmanagement.dtos.basedtos.ApplicantDto;
 import com.bastet.bastetmanagement.dtos.basedtos.CurrencyDto;
 import com.bastet.bastetmanagement.dtos.selectdtos.CurrencySelectElementDto;
 import com.bastet.bastetmanagement.dtos.simplifieddtos.CurrencySimplifiedDto;
@@ -11,13 +10,13 @@ import com.bastet.bastetmanagement.mappers.CurrencyMapper;
 import com.bastet.bastetmanagement.models.Currency;
 import com.bastet.bastetmanagement.services.currency.CurrencyService;
 import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Component;
 
 import javax.annotation.Resource;
 import java.util.List;
 import java.util.UUID;
+import java.util.stream.Collectors;
 
 @Component
 public class CurrencyFacadeImpl implements CurrencyFacade {
@@ -50,7 +49,11 @@ public class CurrencyFacadeImpl implements CurrencyFacade {
     @Override
     public List<CurrencySelectElementDto> findAllForSelectElement(){
         List<Currency> currencies = currencyService.findAll();
-        return currencyMapper.currencyListToCurrencySelectElementDtoList(currencies);
+        return currencies.stream()
+                .map(currency -> {
+                    return currencyMapper.currencyToCurrencySelectElementDto(currency);
+                })
+                .collect(Collectors.toList());
     }
 
     @Override

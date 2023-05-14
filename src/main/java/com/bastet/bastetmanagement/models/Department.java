@@ -36,7 +36,6 @@ public class Department {
 
     @JoinColumn(name = "departmentResponsible", referencedColumnName = "id")
     @OneToOne()
-
     @JsonManagedReference
     private Employee departmentResponsible;
 

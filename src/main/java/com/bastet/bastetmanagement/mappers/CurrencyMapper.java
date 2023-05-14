@@ -10,6 +10,7 @@ import com.bastet.bastetmanagement.models.Corporation;
 import com.bastet.bastetmanagement.models.Currency;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
+import org.mapstruct.Mappings;
 import org.mapstruct.Named;
 
 import java.util.List;
@@ -24,11 +25,25 @@ public interface CurrencyMapper {
     @Named("currencyDtoToCurrencyIdStatic")
     Currency currencyDtoToCurrencyIdStatic(CurrencyDto currencyDto);
 
+    @Named("currencyDtoToCurrencyOnlyId")
+    default Currency currencyDtoToCurrencyOnlyId(CurrencyDto currencyDto) {
+        Currency currency = new Currency();
+        currency.setId( currencyDto.getId() );
+        return currency;
+    }
+
     CurrencySimplifiedDto currencyToCurrencySimplifiedDto(Currency currency);
+
     Currency currencySimplifiedDtoToCurrency(CurrencySimplifiedDto currencySimplifiedDto);
+
     //list versions
     List<Currency> currencyDtoListToCurrencyList(List<CurrencyDto> currencyDtos);
+
     List<CurrencyDto> currencyListToCurrencyDtoList(List<Currency> currencies);
-    List<CurrencySelectElementDto> currencyListToCurrencySelectElementDtoList(List<Currency> currencies);
+
+    @Mappings({
+            @Mapping(target = "currencyNameAndSymbol", expression = "java(currency.getCurrencyName() + ' ' + currency.getCurrencySymbol())")
+    })
+    CurrencySelectElementDto currencyToCurrencySelectElementDto(Currency currency);
 
 }

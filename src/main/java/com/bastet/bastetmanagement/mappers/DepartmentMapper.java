@@ -10,26 +10,44 @@ import com.bastet.bastetmanagement.models.Corporation;
 import com.bastet.bastetmanagement.models.Department;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
+import org.mapstruct.Mappings;
 import org.mapstruct.Named;
 
 import java.util.List;
 
-@Mapper
+@Mapper(componentModel = "spring",
+        uses = {
+                EmployeeMapper.class
+        })
 public interface DepartmentMapper {
+    @Mapping(ignore = true, target = "departmentResponsible")
     DepartmentDto departmentToDepartmentDto(Department department);
 
     @Mapping(ignore = true, target = "id")
+    @Mappings({
+            @Mapping(source = "departmentResponsible", target = "departmentResponsible", qualifiedByName = "employeeDtoToEmployeeOnlyId")
+    })
     Department departmentDtoToDepartment(DepartmentDto departmentDto);
 
     @Named("departmentDtoToDepartmentIdStatic")
     Department departmentDtoToDepartmentIdStatic(DepartmentDto departmentDto);
 
+    @Named("departmentDtoToDepartmentOnlyId")
+    default Department departmentDtoToDepartmentOnlyId(DepartmentDto departmentDto) {
+        Department department = new Department();
+        department.setId( departmentDto.getId() );
+        return department;
+    }
+
     DepartmentSimplifiedDto departmentToDepartmentSimplifiedDto(Department department);
+
     Department departmentSimplifiedDtoToDepartment(DepartmentSimplifiedDto departmentSimplifiedDto);
 
     //list versions
     List<Department> departmentDtoListTDepartmentList(List<DepartmentDto> departmentDtos);
+
     List<DepartmentDto> departmentListToDepartmentDtoList(List<Department> departments);
+
     List<DepartmentSelectElementDto> departmentListToDepartmentSelectElementDtoList(List<Department> department);
 
 }

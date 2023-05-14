@@ -57,9 +57,9 @@ public class Employee {
     @Column(name = "salaryAmount")
     private int salaryAmount;
 
-    @JoinColumn(name = "salaryCurrecy")
+    @JoinColumn(name = "salaryCurrency")
     @ManyToOne
-    private Currency salaryCurrecy;
+    private Currency salaryCurrency;
 
     @Column(name = "startDate")
     private Date startDate;

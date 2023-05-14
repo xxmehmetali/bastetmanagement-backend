@@ -9,10 +9,7 @@ import com.bastet.bastetmanagement.models.Applicant;
 import com.bastet.bastetmanagement.models.Corporation;
 import com.bastet.bastetmanagement.models.Employee;
 import jdk.jfr.Name;
-import org.mapstruct.BeanMapping;
-import org.mapstruct.Mapper;
-import org.mapstruct.Mapping;
-import org.mapstruct.Named;
+import org.mapstruct.*;
 
 import java.util.List;
 
@@ -21,13 +18,20 @@ import java.util.List;
         uses = {
                 OccupationMapper.class,
                 BranchMapper.class,
-                DepartmentMapper.class
+                DepartmentMapper.class,
+                CurrencyMapper.class
         }
 )
 public interface EmployeeMapper {
     EmployeeDto employeeToEmployeeDto(Employee employee);
 
     @Mapping(ignore = true, target = "id")
+    @Mappings({
+            @Mapping(source = "occupation", target = "occupation", qualifiedByName = "occupationDtoToOccupationOnlyId"),
+            @Mapping(source = "department", target = "department", qualifiedByName = "departmentDtoToDepartmentOnlyId"),
+            @Mapping(source = "branch", target = "branch", qualifiedByName = "branchDtoToBranchOnlyId"),
+            @Mapping(source = "salaryCurrency", target = "salaryCurrency", qualifiedByName = "currencyDtoToCurrencyOnlyId"),
+    })
     Employee employeeDtoToEmployee(EmployeeDto employeeDto);
 
     @Named("employeeDtoToEmployeeOnlyId")

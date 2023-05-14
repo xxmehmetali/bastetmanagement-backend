@@ -20,6 +20,7 @@ import org.springframework.stereotype.Component;
 import javax.annotation.Resource;
 import java.util.List;
 import java.util.UUID;
+import java.util.stream.Collectors;
 
 @Component
 public class OccupationFacadeImpl implements OccupationFacade {
@@ -51,7 +52,11 @@ public class OccupationFacadeImpl implements OccupationFacade {
     @Override
     public List<OccupationSelectElementDto> findAllForSelectElement(){
         List<Occupation> occupations = occupationService.findAll();
-        return occupationMapper.occupationListToOccupationSelectElementDtoList(occupations);
+        return occupations.stream()
+                .map(occupation -> {
+                    return occupationMapper.occupationToOccupationSelectElementDto(occupation);
+                })
+                .collect(Collectors.toList());
     }
 
     @Override

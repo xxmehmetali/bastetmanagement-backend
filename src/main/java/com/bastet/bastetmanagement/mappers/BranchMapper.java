@@ -30,11 +30,22 @@ public interface BranchMapper {
     @Named("branchDtoToBranchIdStatic")
     Branch branchDtoToBranchIdStatic(BranchDto branchDto);
 
+    @Named("branchDtoToBranchOnlyId")
+    default Branch branchDtoToBranchOnlyId(BranchDto branchDto) {
+        Branch branch = new Branch();
+        branch.setId( branchDto.getId() );
+        return branch;
+    }
+
     BranchSimplifiedDto branchToBranchSimplifiedDto(Branch branch);
+
     Branch branchSimplifiedDtoToBranch(BranchSimplifiedDto branchSimplifiedDto);
+
     //list versions
     List<Branch> branchDtoListToBranchList(List<BranchDto> branchDtos);
+
     List<BranchDto> branchListToBranchDtoList(List<Branch> branch);
+
     List<BranchSelectElementDto> branchListToBranchSelectElementDtoList(List<Branch> branches);
 
 }
