@@ -8,4 +8,5 @@ import com.bastet.bastetmanagement.facades.GenericFacade;
 import java.util.UUID;
 
 public interface EmployeeFacade extends GenericFacade<Dto> {
+    void update(EmployeeDto employeeDto);
 }

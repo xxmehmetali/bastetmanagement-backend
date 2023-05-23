@@ -22,10 +22,13 @@ public class UserDetailsImpl implements UserDetails {
 
     private final String password;
 
+    private final String employeeId;
+
     private final Collection<? extends GrantedAuthority> authorities;
 
     public UserDetailsImpl(
             UUID id, String username, String email, String password,
+            String employeeId,
             Collection<? extends GrantedAuthority> authorities
     ) {
         this.id = id;
@@ -33,6 +36,7 @@ public class UserDetailsImpl implements UserDetails {
         this.email = email;
         this.password = password;
         this.authorities = authorities;
+        this.employeeId = employeeId;
     }
 
     public static UserDetailsImpl build(User user) {
@@ -45,6 +49,7 @@ public class UserDetailsImpl implements UserDetails {
                 user.getUsername(),
                 user.getEmail(),
                 user.getPassword(),
+                user.getEmployee().getId().toString(),
                 authorities
         );
     }
@@ -60,6 +65,10 @@ public class UserDetailsImpl implements UserDetails {
 
     public String getEmail() {
         return email;
+    }
+
+    public String getEmployeeId() {
+        return employeeId;
     }
 
     @Override

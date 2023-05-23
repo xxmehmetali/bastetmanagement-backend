@@ -23,6 +23,7 @@ import java.util.List;
         }
 )
 public interface EmployeeMapper {
+    @Named("employeeToEmployeeDto")
     EmployeeDto employeeToEmployeeDto(Employee employee);
 
     @Mapping(ignore = true, target = "id")
@@ -43,6 +44,15 @@ public interface EmployeeMapper {
 
     @Named("employeeDtoToEmployeeIdStatic")
     Employee employeeDtoToEmployeeIdStatic(EmployeeDto employeeDto);
+
+    @Mappings({
+            @Mapping(source = "occupation", target = "occupation", qualifiedByName = "occupationDtoToOccupationOnlyId"),
+            @Mapping(source = "department", target = "department", qualifiedByName = "departmentDtoToDepartmentOnlyId"),
+            @Mapping(source = "branch", target = "branch", qualifiedByName = "branchDtoToBranchOnlyId"),
+            @Mapping(source = "salaryCurrency", target = "salaryCurrency", qualifiedByName = "currencyDtoToCurrencyOnlyId"),
+    })
+    @Named("employeeDtoToEmployeeForUpdate")
+    Employee employeeDtoToEmployeeForUpdate(EmployeeDto employeeDto);
 
     @Mapping(target = "employeeFullName", expression = "java(employee.getName() + ' ' + employee.getSurname() + ' ' + '-' + ' ' + employee.getPhoneNumber())")
     EmployeeSelectElementDto employeeToEmployeeSelectElementDto(Employee employee);

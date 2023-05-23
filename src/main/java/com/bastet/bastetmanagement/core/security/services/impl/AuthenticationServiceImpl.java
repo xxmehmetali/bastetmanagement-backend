@@ -11,6 +11,7 @@ import com.bastet.bastetmanagement.models.User;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.authentication.InternalAuthenticationServiceException;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.GrantedAuthority;
@@ -65,7 +66,9 @@ public class AuthenticationServiceImpl implements AuthenticationService {
         return new JwtResponse(jwtToken,
                 userDetails.getId(),
                 userDetails.getUsername(),
-                userDetails.getEmail());
+                userDetails.getEmail(),
+                userDetails.getEmployeeId()
+                );
     }
 
     public MessageResponse registerUser(String username, String password, String email) {

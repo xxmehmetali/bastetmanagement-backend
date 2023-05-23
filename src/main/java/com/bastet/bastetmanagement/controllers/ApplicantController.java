@@ -10,6 +10,7 @@ import com.bastet.bastetmanagement.dtos.simplifieddtos.ApplicantSimplifiedDto;
 import com.bastet.bastetmanagement.facades.applicant.ApplicantFacade;
 import com.bastet.bastetmanagement.models.Applicant;
 import org.springframework.data.domain.Pageable;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
@@ -40,6 +41,8 @@ public class ApplicantController extends BaseController {
     }
 
     @GetMapping("/simplified/findAll")
+    @PreAuthorize("hasRole('USER') or hasRole('MODERATOR') or hasRole('ADMIN')")
+//    @PreAuthorize("hasRole('MODERATOR') or hasRole('ADMIN')")
     public Result findAllPagedSimplified(Pageable pageable) {
         return wrapDataResultWithMessage(applicantFacade.findAllPagedSimplified(pageable), true, "Data listed.");
     }

@@ -1,10 +1,12 @@
 package com.bastet.bastetmanagement.core.security.controllers;
 
+import com.bastet.bastetmanagement.core.constants.ResultConstants;
 import com.bastet.bastetmanagement.core.security.payload.request.LoginRequest;
 import com.bastet.bastetmanagement.core.security.payload.response.JwtResponse;
 import com.bastet.bastetmanagement.core.security.payload.response.MessageResponse;
 import com.bastet.bastetmanagement.core.security.payload.response.RegistrationRequest;
 import com.bastet.bastetmanagement.core.security.services.AuthenticationService;
+import com.bastet.bastetmanagement.core.utilities.results.dataresults.DataResult;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -24,11 +26,12 @@ public class AuthenticationController {
      * @return the jwt response
      */
     @PostMapping("/login")
-    public ResponseEntity<JwtResponse> authenticateUser(@RequestBody LoginRequest loginRequest) {
+    public ResponseEntity<DataResult<JwtResponse>> authenticateUser(@RequestBody LoginRequest loginRequest) {
         log.info("Incoming password login request.");
         JwtResponse jwtResponse = authenticationService.authenticateUser(loginRequest.getUsername(), loginRequest.getPassword());
+        DataResult<JwtResponse> jwtResponseDataResult = new DataResult<JwtResponse>(jwtResponse, true, ResultConstants.loggedInMessage());
         log.info("Successfully authenticated.");
-        return ResponseEntity.ok(jwtResponse);
+        return ResponseEntity.ok(jwtResponseDataResult);
     }
 
     /**

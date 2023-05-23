@@ -37,7 +37,7 @@ public class ApplicantDto extends Dto {
 
     private String technicalReview;
 
-    private ApplicantMeetingDto applicantMeeting;
+//    private ApplicantMeetingDto applicantMeeting;
 
     private Date createdAt;
 

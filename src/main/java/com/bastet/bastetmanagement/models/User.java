@@ -31,6 +31,10 @@ public class User {
     @Column(name = "password")
     private String password;
 
+    @JoinColumn(name = "employee", referencedColumnName = "id")
+    @OneToOne
+    private Employee employee;
+
     @ManyToMany(fetch = FetchType.LAZY)
     @JoinTable(
             name = "user_roles",

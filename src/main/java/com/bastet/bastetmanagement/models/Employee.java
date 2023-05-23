@@ -94,7 +94,7 @@ public class Employee {
     @JsonIgnore
     private List<Meeting> meetings;
 
-    @Column(name = "createdAt")
+    @Column(name = "createdAt", updatable = false)
     @CreatedDate
     private Date createdAt;
 

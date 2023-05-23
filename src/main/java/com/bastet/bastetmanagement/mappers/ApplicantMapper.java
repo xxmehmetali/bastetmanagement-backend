@@ -27,7 +27,7 @@ public interface ApplicantMapper {
     ApplicantDto applicantToApplicantDto(Applicant applicant);
 
     @Mapping(ignore = true, target = "id")
-    @Mapping(source = "applicantMeeting", target = "applicantMeeting", qualifiedByName = "applicantMeetingDtoToApplicantMeetingIdStatic")
+//    @Mapping(source = "applicantMeeting", target = "applicantMeeting", qualifiedByName = "applicantMeetingDtoToApplicantMeetingIdStatic")
     @Mapping(source = "CV", target = "CV", qualifiedByName = "cvDtoToCvIdStatic")
     Applicant applicantDtoToApplicant(ApplicantDto applicantDto);
 

@@ -10,11 +10,16 @@ public class JwtResponse {
     private UUID id;
     private String username;
     private String email;
+    //x
+    private String employeeId;
 
-    public JwtResponse(String jwt, UUID id, String username, String email) {
+    public JwtResponse(String jwt, UUID id, String username, String email,
+                       String employeeId
+    ) {
         this.jwt = jwt;
         this.id = id;
         this.username = username;
         this.email = email;
+        this.employeeId = employeeId;
     }
 }
