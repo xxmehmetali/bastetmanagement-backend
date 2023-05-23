@@ -53,4 +53,9 @@ public class ExpenseTypeController extends BaseController {
         List<ExpenseTypeSelectElementDto> expenseSelectElementDtos = (List<ExpenseTypeSelectElementDto>) expenseTypeFacade.findAllForSelectElement();
         return wrapSuccessDataResultWithMessage(expenseSelectElementDtos, "");
     }
+    @DeleteMapping("/deleteById")
+    public Result deleteById(@RequestParam("id")  UUID id) {
+        boolean success = expenseTypeFacade.deleteById(id);
+        return wrapResultWithMessage(success, "Deleted");
+    }
 }

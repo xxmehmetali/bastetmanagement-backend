@@ -40,4 +40,10 @@ public class BranchServiceImpl implements BranchService {
     public List<Branch> findAll() {
         return branchDao.findAll();
     }
+
+    @Override
+    public boolean deleteById(UUID id) {
+        branchDao.deleteById(id);
+        return ! branchDao.existsById(id);
+    }
 }

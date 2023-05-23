@@ -41,4 +41,9 @@ public class OccupationServiceImpl implements OccupationService {
     public boolean add(Occupation occupation) {
         return ResultUtil.extractSuccess(occupationDao.save(occupation));
     }
+    @Override
+    public boolean deleteById(UUID id) {
+        occupationDao.deleteById(id);
+        return ! occupationDao.existsById(id);
+    }
 }

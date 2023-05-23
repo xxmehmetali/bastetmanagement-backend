@@ -73,5 +73,8 @@ public class CvFacadeImpl implements CvFacade {
         boolean success = cvService.add(cv);
         return success;
     }
-
+    @Override
+    public boolean deleteById(UUID id) {
+        return cvService.deleteById(id);
+    }
 }

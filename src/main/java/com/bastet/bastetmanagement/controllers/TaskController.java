@@ -54,5 +54,10 @@ public class TaskController extends BaseController {
         boolean success = taskFacade.add(taskDto);
         return wrapResultWithMessage(success, "selamke");
     }
+    @DeleteMapping("/deleteById")
+    public Result deleteById(@RequestParam("id")  UUID id) {
+        boolean success = taskFacade.deleteById(id);
+        return wrapResultWithMessage(success, "Deleted");
+    }
 
 }

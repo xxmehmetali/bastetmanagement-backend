@@ -62,6 +62,9 @@ public class CorporationFacadeImpl implements CorporationFacade {
         List<Corporation> corporations = corporationService.findAll();
         return corporationMapper.corporationListToCorporationSelectElementDtoList(corporations);
     }
-
+    @Override
+    public boolean deleteById(UUID id) {
+        return corporationService.deleteById(id);
+    }
 
 }

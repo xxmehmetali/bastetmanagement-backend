@@ -56,6 +56,10 @@ public class BranchController extends BaseController {
         boolean success = branchFacade.add(branchDto);
         return wrapResultWithMessage(success, ResultConstants.addedMessage(Branch.class));
     }
-
+    @DeleteMapping("/deleteById")
+    public Result deleteById(@RequestParam("id")  UUID id) {
+        boolean success = branchFacade.deleteById(id);
+        return wrapResultWithMessage(success, "Deleted");
+    }
 
 }

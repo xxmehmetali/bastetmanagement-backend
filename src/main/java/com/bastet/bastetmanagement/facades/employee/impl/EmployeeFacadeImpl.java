@@ -84,4 +84,8 @@ public class EmployeeFacadeImpl implements EmployeeFacade {
         Employee employee = employeeMapper.employeeDtoToEmployeeForUpdate(employeeDto);
         employeeService.add(employee);
     }
+    @Override
+    public boolean deleteById(UUID id) {
+        return employeeService.deleteById(id);
+    }
 }

@@ -31,4 +31,10 @@ public interface ContextMapper {
     List<Context> contextSimplifiedDtoListToContextList(List<ContextSimplifiedDto> contexts);
     List<ContextSelectElementDto> contextListToContextSelectElementDtoList(List<Context> contexts);
 
+    @Named("contextDtoToContextOnlyId")
+    default Context contextDtoToContextOnlyId(ContextDto contextDto){
+        Context context = new Context();
+        context.setId( contextDto.getId() );
+        return context;
+    }
 }

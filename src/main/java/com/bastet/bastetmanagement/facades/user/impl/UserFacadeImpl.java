@@ -54,4 +54,9 @@ public class UserFacadeImpl implements UserFacade {
     public boolean add(Dto dto) {
         return false;
     }
+
+    @Override
+    public boolean deleteById(UUID id) {
+        return false;
+    }
 }

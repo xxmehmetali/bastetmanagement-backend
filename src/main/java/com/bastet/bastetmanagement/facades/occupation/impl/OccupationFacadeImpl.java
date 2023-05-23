@@ -65,4 +65,9 @@ public class OccupationFacadeImpl implements OccupationFacade {
         boolean success = occupationService.add(occupation);
         return success;
     }
+
+    @Override
+    public boolean deleteById(UUID id) {
+        return occupationService.deleteById(id);
+    }
 }

@@ -41,4 +41,10 @@ public class ApplicantMeetingServiceImpl implements ApplicantMeetingService {
     public boolean add(ApplicantMeeting applicantMeeting) {
         return ResultUtil.extractSuccess(applicantMeetingDao.save(applicantMeeting));
     }
+
+    @Override
+    public boolean deleteById(UUID id) {
+        applicantMeetingDao.deleteById(id);
+        return ! applicantMeetingDao.existsById(id);
+    }
 }

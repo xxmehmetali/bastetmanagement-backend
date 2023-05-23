@@ -22,5 +22,6 @@ public interface GenericFacade<T> {
     List<? extends T> findAllForSelectElement();
 
     boolean add(Dto dto);
+    boolean deleteById(UUID id);
 
 }

@@ -53,4 +53,9 @@ public class DepartmentController extends BaseController {
         boolean success = departmentFacade.add(departmentDto);
         return wrapResultWithMessage(success, "selamke");
     }
+    @DeleteMapping("/deleteById")
+    public Result deleteById(@RequestParam("id")  UUID id) {
+        boolean success = departmentFacade.deleteById(id);
+        return wrapResultWithMessage(success, "Deleted");
+    }
 }

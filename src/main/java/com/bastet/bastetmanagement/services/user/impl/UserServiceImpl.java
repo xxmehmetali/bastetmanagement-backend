@@ -38,4 +38,9 @@ public class UserServiceImpl implements UserService {
     public boolean add(User model) {
         return false;
     }
+
+    @Override
+    public boolean deleteById(UUID id) {
+        return false;
+    }
 }

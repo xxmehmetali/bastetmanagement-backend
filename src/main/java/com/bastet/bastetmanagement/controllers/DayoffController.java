@@ -46,4 +46,9 @@ public class DayoffController extends BaseController {
         boolean success = dayoffFacade.add(dayoffDto);
         return wrapResultWithMessage(success, "selamke");
     }
+    @DeleteMapping("/deleteById")
+    public Result deleteById(@RequestParam("id")  UUID id) {
+        boolean success = dayoffFacade.deleteById(id);
+        return wrapResultWithMessage(success, "Deleted");
+    }
 }

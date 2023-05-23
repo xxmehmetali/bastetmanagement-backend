@@ -40,4 +40,9 @@ public class DayoffServiceImpl implements DayoffService {
     public boolean add(Dayoff dayoff) {
         return ResultUtil.extractSuccess(dayOffDao.save(dayoff));
     }
+    @Override
+    public boolean deleteById(UUID id) {
+        dayOffDao.deleteById(id);
+        return ! dayOffDao.existsById(id);
+    }
 }

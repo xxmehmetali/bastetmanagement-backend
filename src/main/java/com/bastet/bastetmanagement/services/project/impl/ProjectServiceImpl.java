@@ -46,4 +46,10 @@ public class ProjectServiceImpl implements ProjectService {
     public boolean add(Project project) {
         return ResultUtil.extractSuccess(projectDao.save(project));
     }
+
+    @Override
+    public boolean deleteById(UUID id) {
+        projectDao.deleteById(id);
+        return ! projectDao.existsById(id);
+    }
 }

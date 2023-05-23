@@ -41,4 +41,10 @@ public class ContextServiceImpl implements ContextService {
     public boolean add(Context context) {
         return ResultUtil.extractSuccess(contextDao.save(context));
     }
+
+    @Override
+    public boolean deleteById(UUID id) {
+        contextDao.deleteById(id);
+        return ! contextDao.existsById(id);
+    }
 }

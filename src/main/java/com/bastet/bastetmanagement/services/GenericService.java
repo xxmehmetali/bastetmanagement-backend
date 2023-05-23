@@ -14,4 +14,6 @@ public interface GenericService<T> {
     List<T> findAll();
 
     boolean add(T model);
+
+    boolean deleteById(UUID id);
 }

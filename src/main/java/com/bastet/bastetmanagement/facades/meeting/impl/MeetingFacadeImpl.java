@@ -57,4 +57,8 @@ public class MeetingFacadeImpl implements MeetingFacade {
         boolean success = meetingService.add(meeting);
         return success;
     }
+    @Override
+    public boolean deleteById(UUID id) {
+        return meetingService.deleteById(id);
+    }
 }

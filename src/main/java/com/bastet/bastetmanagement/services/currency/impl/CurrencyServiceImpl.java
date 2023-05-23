@@ -39,4 +39,10 @@ public class CurrencyServiceImpl implements CurrencyService {
     public boolean add(Currency currency) {
         return ResultUtil.extractSuccess(currencyDao.save(currency));
     }
+
+    @Override
+    public boolean deleteById(UUID id) {
+        currencyDao.deleteById(id);
+        return ! currencyDao.existsById(id);
+    }
 }

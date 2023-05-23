@@ -40,4 +40,9 @@ public class DepartmentServiceImpl implements DepartmentService {
     public boolean add(Department department) {
         return ResultUtil.extractSuccess(departmentDao.save(department));
     }
+    @Override
+    public boolean deleteById(UUID id) {
+        departmentDao.deleteById(id);
+        return ! departmentDao.existsById(id);
+    }
 }

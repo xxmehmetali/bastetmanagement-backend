@@ -55,4 +55,9 @@ public class OccupationController extends BaseController {
         List<OccupationSelectElementDto> occupationSelectElementDtos = (List<OccupationSelectElementDto>) occupationFacade.findAllForSelectElement();
         return wrapSuccessDataResultWithMessage(occupationSelectElementDtos, "");
     }
+    @DeleteMapping("/deleteById")
+    public Result deleteById(@RequestParam("id")  UUID id) {
+        boolean success = occupationFacade.deleteById(id);
+        return wrapResultWithMessage(success, "Deleted");
+    }
 }

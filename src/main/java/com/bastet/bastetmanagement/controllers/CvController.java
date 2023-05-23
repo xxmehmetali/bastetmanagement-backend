@@ -61,4 +61,9 @@ public class CvController extends BaseController {
         List<CvSelectElementDto> cvSelectElementDtos = (List<CvSelectElementDto>) cvFacade.findAllForSelectElement();
         return wrapSuccessDataResultWithMessage(cvSelectElementDtos, "");
     }
+    @DeleteMapping("/deleteById")
+    public Result deleteById(@RequestParam("id")  UUID id) {
+        boolean success = cvFacade.deleteById(id);
+        return wrapResultWithMessage(success, "Deleted");
+    }
 }

@@ -9,6 +9,8 @@ import com.bastet.bastetmanagement.dtos.basedtos.ApplicantDto;
 import com.bastet.bastetmanagement.dtos.simplifieddtos.ApplicantSimplifiedDto;
 import com.bastet.bastetmanagement.facades.applicant.ApplicantFacade;
 import com.bastet.bastetmanagement.models.Applicant;
+import org.apache.commons.lang3.BooleanUtils;
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.data.domain.Pageable;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
@@ -58,4 +60,11 @@ public class ApplicantController extends BaseController {
         boolean success = applicantFacade.add(applicantDto);
         return wrapResultWithMessage(success, "selamke");
     }
+    @DeleteMapping("/deleteById")
+    public Result deleteById(@RequestParam("id")  UUID id) {
+        boolean success = applicantFacade.deleteById(id);
+        return wrapResultWithMessage(success, "Deleted");
+    }
+
 }
+

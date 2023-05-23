@@ -56,6 +56,11 @@ public class SocialActivityController extends BaseController {
         List<SocialActivitySelectElementDto> socialActivitySelectElementDtos = (List<SocialActivitySelectElementDto>) socialActivityFacade.findAllForSelectElement();
         return wrapSuccessDataResultWithMessage(socialActivitySelectElementDtos, "");
     }
+    @DeleteMapping("/deleteById")
+    public Result deleteById(@RequestParam("id")  UUID id) {
+        boolean success = socialActivityFacade.deleteById(id);
+        return wrapResultWithMessage(success, "Deleted");
+    }
 //    @PutMapping("/save/{employeeId}/{socialActivityId}")
 //    public SocialActivity save(@PathVariable("employeeId") UUID employeeId,
 //                               @PathVariable("socialActivityId") UUID socialActivityId){

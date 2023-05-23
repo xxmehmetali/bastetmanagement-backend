@@ -62,4 +62,8 @@ public class CurrencyFacadeImpl implements CurrencyFacade {
         boolean success = currencyService.add(currency);
         return success;
     }
+    @Override
+    public boolean deleteById(UUID id) {
+        return currencyService.deleteById(id);
+    }
 }

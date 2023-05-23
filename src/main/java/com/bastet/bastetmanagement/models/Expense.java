@@ -44,7 +44,7 @@ public class Expense {
     private Currency expenseCurrencyType;
 
     @Column(name = "voucherNo")
-    private Double voucherNo;
+    private String voucherNo;
 
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "expenseType")

@@ -40,4 +40,10 @@ public class TaskServiceImpl implements TaskService {
     public boolean add(Task task) {
         return ResultUtil.extractSuccess(taskDao.save(task));
     }
+
+    @Override
+    public boolean deleteById(UUID id) {
+        taskDao.deleteById(id);
+        return ! taskDao.existsById(id);
+    }
 }

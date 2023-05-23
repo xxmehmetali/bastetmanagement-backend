@@ -42,4 +42,10 @@ public class CorporationServiceImpl implements CorporationService {
     public List<Corporation> findAll() {
         return corporationDao.findAll();
     }
+
+    @Override
+    public boolean deleteById(UUID id) {
+        corporationDao.deleteById(id);
+        return ! corporationDao.existsById(id);
+    }
 }

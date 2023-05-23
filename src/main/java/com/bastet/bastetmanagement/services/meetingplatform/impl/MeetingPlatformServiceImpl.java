@@ -40,4 +40,9 @@ public class MeetingPlatformServiceImpl implements MeetingPlatformService {
     public boolean add(MeetingPlatform meetingPlatform) {
         return ResultUtil.extractSuccess(meetingPlatformDao.save(meetingPlatform));
     }
+    @Override
+    public boolean deleteById(UUID id) {
+        meetingPlatformDao.deleteById(id);
+        return ! meetingPlatformDao.existsById(id);
+    }
 }

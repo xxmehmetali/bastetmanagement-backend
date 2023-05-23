@@ -43,4 +43,9 @@ public class SocialActivityTypeServiceImpl implements SocialActivityTypeService 
     public boolean add(SocialActivityType socialActivityType) {
         return ResultUtil.extractSuccess(socialActivityTypeDao.save(socialActivityType));
     }
+    @Override
+    public boolean deleteById(UUID id) {
+        socialActivityTypeDao.deleteById(id);
+        return ! socialActivityTypeDao.existsById(id);
+    }
 }

@@ -53,4 +53,9 @@ public class ContextController extends BaseController {
         List<ContextSelectElementDto> contextSelectElementDtos = (List<ContextSelectElementDto>) contextFacade.findAllForSelectElement();
         return wrapSuccessDataResultWithMessage(contextSelectElementDtos, "");
     }
+    @DeleteMapping("/deleteById")
+    public Result deleteById(@RequestParam("id")  UUID id) {
+        boolean success = contextFacade.deleteById(id);
+        return wrapResultWithMessage(success, "Deleted");
+    }
 }

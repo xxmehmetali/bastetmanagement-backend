@@ -43,4 +43,9 @@ public class ExpenseServiceImpl implements ExpenseService {
     public boolean add(Expense expense) {
         return ResultUtil.extractSuccess(expenseDao.save(expense));
     }
+    @Override
+    public boolean deleteById(UUID id) {
+        expenseDao.deleteById(id);
+        return ! expenseDao.existsById(id);
+    }
 }

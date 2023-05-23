@@ -63,5 +63,9 @@ public class MeetingPlatformFacadeImpl implements MeetingPlatformFacade {
                 })
                 .collect(Collectors.toList());
     }
+    @Override
+    public boolean deleteById(UUID id) {
+        return meetingPlatformService.deleteById(id);
+    }
 
 }

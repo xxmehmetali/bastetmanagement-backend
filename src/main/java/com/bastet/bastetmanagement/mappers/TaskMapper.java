@@ -10,6 +10,7 @@ import com.bastet.bastetmanagement.models.Corporation;
 import com.bastet.bastetmanagement.models.Task;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
+import org.mapstruct.Mappings;
 import org.mapstruct.Named;
 
 import java.util.List;
@@ -25,11 +26,14 @@ public interface TaskMapper {
     TaskDto taskToTaskDto(Task task);
 
     @Mapping(ignore = true, target = "id")
-    @Mapping(source = "assignedFrom", target = "assignedFrom", qualifiedByName = "employeeDtoToEmployeeIdStatic")
-    @Mapping(source = "assignedTo", target = "assignedTo", qualifiedByName = "employeeDtoToEmployeeIdStatic")
-    @Mapping(source = "reviewer", target = "reviewer", qualifiedByName = "employeeDtoToEmployeeIdStatic")
-    @Mapping(source = "context", target = "context", qualifiedByName = "contextDtoToContextIdStatic")
-    Task taskDtoToTask(TaskDto taskDto);
+    @Mappings({
+            @Mapping(source = "assignedFrom", target = "assignedFrom", qualifiedByName = "employeeDtoToEmployeeOnlyId"),
+            @Mapping(source = "assignedTo", target = "assignedTo", qualifiedByName = "employeeDtoToEmployeeOnlyId"),
+            @Mapping(source = "reviewer", target = "reviewer", qualifiedByName = "employeeDtoToEmployeeOnlyId"),
+            @Mapping(source = "context", target = "context", qualifiedByName = "contextDtoToContextOnlyId")
+
+    })
+     Task taskDtoToTask(TaskDto taskDto);
 
     @Named("taskDtoToTaskIdStatic")
     Task taskDtoToTaskIdStatic(TaskDto taskDto);

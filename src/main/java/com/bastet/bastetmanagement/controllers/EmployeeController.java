@@ -53,6 +53,11 @@ public class EmployeeController extends BaseController {
         boolean success = employeeFacade.add(employeeDto);
         return wrapResultWithMessage(success, "selamke");
     }
+    @DeleteMapping("/deleteById")
+    public Result deleteById(@RequestParam("id")  UUID id) {
+        boolean success = employeeFacade.deleteById(id);
+        return wrapResultWithMessage(success, "Deleted");
+    }
 
     @PostMapping(value = "/update",consumes = "application/json")
     public Result update(@RequestBody EmployeeDto employeeDto){

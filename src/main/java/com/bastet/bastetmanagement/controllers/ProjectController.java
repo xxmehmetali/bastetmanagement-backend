@@ -58,5 +58,9 @@ public class ProjectController extends BaseController {
         boolean success = projectFacade.add(projectDto);
         return wrapResultWithMessage(success, "selamke");
     }
-
+    @DeleteMapping("/deleteById")
+    public Result deleteById(@RequestParam("id")  UUID id) {
+        boolean success = projectFacade.deleteById(id);
+        return wrapResultWithMessage(success, "Deleted");
+    }
 }

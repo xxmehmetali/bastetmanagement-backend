@@ -61,4 +61,7 @@ public class ContextFacadeImpl implements ContextFacade {
         Context context = contextMapper.contextDtoToContext((ContextDto) dto);
         return contextService.add(context);
     }
-}
+    @Override
+    public boolean deleteById(UUID id) {
+        return contextService.deleteById(id);
+    }}

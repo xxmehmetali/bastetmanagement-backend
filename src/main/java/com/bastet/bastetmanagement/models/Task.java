@@ -62,7 +62,7 @@ public class Task{
     @JsonManagedReference
     private Context context;
 
-    @Column(name = "createdAt")
+    @Column(name = "createdAt", updatable = false)
     @CreatedDate
     private Date createdAt;
 

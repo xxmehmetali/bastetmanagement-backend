@@ -40,4 +40,9 @@ public class ExpenseTypeServiceImpl implements ExpenseTypeService {
     public boolean add(ExpenseType expenseType) {
         return ResultUtil.extractSuccess(expenseTypeDao.save(expenseType));
     }
+    @Override
+    public boolean deleteById(UUID id) {
+        expenseTypeDao.deleteById(id);
+        return ! expenseTypeDao.existsById(id);
+    }
 }

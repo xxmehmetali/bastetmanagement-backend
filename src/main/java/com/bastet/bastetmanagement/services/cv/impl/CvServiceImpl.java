@@ -39,4 +39,10 @@ public class CvServiceImpl implements CvService {
     public boolean add(Cv cv) {
         return ResultUtil.extractSuccess(cvDao.save(cv));
     }
+
+    @Override
+    public boolean deleteById(UUID id) {
+        cvDao.deleteById(id);
+        return ! cvDao.existsById(id);
+    }
 }

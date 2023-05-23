@@ -70,4 +70,10 @@ public class ApplicantFacadeImpl implements ApplicantFacade {
         Applicant applicant = applicantMapper.applicantDtoToApplicant((ApplicantDto) dto);
         return applicantService.add(applicant);
     }
+
+    @Override
+    public boolean deleteById(UUID id) {
+        return applicantService.deleteById(id);
+    }
+
 }

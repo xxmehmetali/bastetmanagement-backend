@@ -64,4 +64,8 @@ public class ExpenseFacadeImpl implements ExpenseFacade {
         boolean success = expenseService.add(expense);
         return success;
     }
+    @Override
+    public boolean deleteById(UUID id) {
+        return expenseService.deleteById(id);
+    }
 }

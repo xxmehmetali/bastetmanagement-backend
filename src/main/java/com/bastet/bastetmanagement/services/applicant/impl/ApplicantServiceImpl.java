@@ -42,6 +42,13 @@ public class ApplicantServiceImpl implements ApplicantService {
 
     @Override
     public boolean add(Applicant applicant) {
+
         return ResultUtil.extractSuccess(applicantDao.save(applicant));
+    }
+
+    @Override
+    public boolean deleteById(UUID id) {
+        applicantDao.deleteById(id);
+        return ! applicantDao.existsById(id);
     }
 }

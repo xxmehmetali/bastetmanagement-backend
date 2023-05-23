@@ -47,4 +47,9 @@ public class MeetingController extends BaseController {
         boolean success = meetingFacade.add(meetingDto);
         return wrapResultWithMessage(success, "selamke");
     }
+    @DeleteMapping("/deleteById")
+    public Result deleteById(@RequestParam("id")  UUID id) {
+        boolean success = meetingFacade.deleteById(id);
+        return wrapResultWithMessage(success, "Deleted");
+    }
 }

@@ -59,4 +59,8 @@ public class TaskFacadeImpl implements TaskFacade {
         boolean success = taskService.add(task);
         return success;
     }
+    @Override
+    public boolean deleteById(UUID id) {
+        return taskService.deleteById(id);
+    }
 }

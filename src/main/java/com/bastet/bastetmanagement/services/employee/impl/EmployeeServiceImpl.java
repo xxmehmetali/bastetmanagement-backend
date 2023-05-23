@@ -41,4 +41,9 @@ public class EmployeeServiceImpl implements EmployeeService {
     public boolean add(Employee employee) {
         return ResultUtil.extractSuccess(employeeDao.save(employee));
     }
+    @Override
+    public boolean deleteById(UUID id) {
+        employeeDao.deleteById(id);
+        return ! employeeDao.existsById(id);
+    }
 }

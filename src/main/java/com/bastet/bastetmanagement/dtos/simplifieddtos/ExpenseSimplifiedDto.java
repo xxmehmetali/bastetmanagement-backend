@@ -6,6 +6,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.util.Date;
 import java.util.UUID;
 
 @Getter
@@ -19,10 +20,12 @@ public class ExpenseSimplifiedDto extends Dto {
 
     private String description;
 
-    private Double vaucherNo;
+    private String vaucherNo;
 
     private ExpenseTypeSimplifiedDto expenseType;
 
-    private String spentDateTime;
+    private Double expenseAmount;
+
+    private Date spentDateTime;
 
 }

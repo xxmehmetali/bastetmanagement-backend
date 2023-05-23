@@ -56,5 +56,10 @@ public class ApplicantMeetingController extends BaseController {
         boolean success = applicantMeetingFacade.add(applicantMeetingDto);
         return wrapResultWithMessage(success, "selamke");
     }
+    @DeleteMapping("/deleteById")
+    public Result deleteById(@RequestParam("id")  UUID id) {
+        boolean success = applicantMeetingFacade.deleteById(id);
+        return wrapResultWithMessage(success, "Deleted");
+    }
 
 }

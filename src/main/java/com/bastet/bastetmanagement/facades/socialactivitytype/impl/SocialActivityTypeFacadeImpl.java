@@ -62,4 +62,8 @@ public class SocialActivityTypeFacadeImpl implements SocialActivityTypeFacade {
         boolean success = socialActivityTypeService.add(socialActivityType);
         return success;
     }
+    @Override
+    public boolean deleteById(UUID id) {
+        return socialActivityTypeService.deleteById(id);
+    }
 }

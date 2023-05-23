@@ -40,4 +40,9 @@ public class MeetingServiceImpl implements MeetingService {
     public boolean add(Meeting meeting) {
         return ResultUtil.extractSuccess(meetingDao.save(meeting));
     }
+    @Override
+    public boolean deleteById(UUID id) {
+        meetingDao.deleteById(id);
+        return ! meetingDao.existsById(id);
+    }
 }
