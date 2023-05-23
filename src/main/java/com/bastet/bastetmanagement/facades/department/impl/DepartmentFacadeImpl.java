@@ -4,9 +4,13 @@ package com.bastet.bastetmanagement.facades.department.impl;
 import com.bastet.bastetmanagement.dtos.Dto;
 import com.bastet.bastetmanagement.dtos.basedtos.CvDto;
 import com.bastet.bastetmanagement.dtos.basedtos.DepartmentDto;
+import com.bastet.bastetmanagement.dtos.selectdtos.DepartmentSelectElementDto;
 import com.bastet.bastetmanagement.dtos.simplifieddtos.DepartmentSimplifiedDto;
 import com.bastet.bastetmanagement.facades.department.DepartmentFacade;
 import com.bastet.bastetmanagement.mappers.DepartmentMapper;
+import com.bastet.bastetmanagement.models.Applicant;
+import com.bastet.bastetmanagement.models.Department;
+import com.bastet.bastetmanagement.models.Department;
 import com.bastet.bastetmanagement.services.department.DepartmentService;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageImpl;
@@ -44,5 +48,22 @@ public class DepartmentFacadeImpl implements DepartmentFacade {
     @Override
     public Page<DepartmentSimplifiedDto> findAllPagedSimplified(Pageable pageable) {
         return departmentService.findAllPaged(pageable).map(department -> departmentMapper.departmentToDepartmentSimplifiedDto(department));
+    }
+
+    @Override
+    public List<DepartmentSelectElementDto> findAllForSelectElement(){
+        List<Department> departments = departmentService.findAll();
+        return departmentMapper.departmentListToDepartmentSelectElementDtoList(departments);
+    }
+
+    @Override
+    public boolean add(Dto dto) {
+        Department department = departmentMapper.departmentDtoToDepartment((DepartmentDto) dto);
+        boolean success = departmentService.add(department);
+        return success;
+    }
+    @Override
+    public boolean deleteById(UUID id) {
+        return departmentService.deleteById(id);
     }
 }

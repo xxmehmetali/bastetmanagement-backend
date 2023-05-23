@@ -6,6 +6,9 @@ import com.bastet.bastetmanagement.dtos.simplifieddtos.DayoffSimplifiedDto;
 import com.bastet.bastetmanagement.models.Applicant;
 import com.bastet.bastetmanagement.models.Dayoff;
 import org.mapstruct.Mapper;
+import org.mapstruct.Mapping;
+import org.mapstruct.Mappings;
+import org.mapstruct.Named;
 
 import java.util.List;
 
@@ -17,7 +20,16 @@ import java.util.List;
 )
 public interface DayoffMapper {
     DayoffDto dayoffToDayoffDto(Dayoff dayoff);
+
+    @Mapping(ignore = true, target = "id")
+    @Mappings({
+            @Mapping(source = "employee", target = "employee", qualifiedByName = "employeeDtoToEmployeeOnlyId"),
+    })
     Dayoff dayoffDtoToDayoff(DayoffDto dayoffDto);
+
+    @Named("dayoffDtoToDayoffIdStatic")
+    Dayoff dayoffDtoToDayoffIdStatic(DayoffDto dayoffDto);
+
     DayoffSimplifiedDto dayoffToDayoffSimplifiedDto(Dayoff dayoff);
     Dayoff dayoffSimplifiedDtoToDayoff(DayoffSimplifiedDto dayoffSimplifiedDto);
     //list versions

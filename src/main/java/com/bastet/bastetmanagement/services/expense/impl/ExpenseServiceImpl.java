@@ -1,7 +1,9 @@
 package com.bastet.bastetmanagement.services.expense.impl;
 
 import com.bastet.bastetmanagement.core.customexceptions.ModelNotFoundException;
+import com.bastet.bastetmanagement.core.utilities.results.ResultUtil;
 import com.bastet.bastetmanagement.daos.ExpenseDao;
+import com.bastet.bastetmanagement.models.Applicant;
 import com.bastet.bastetmanagement.models.Expense;
 import com.bastet.bastetmanagement.services.expense.ExpenseService;
 
@@ -11,6 +13,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
+import java.util.List;
 import java.util.Objects;
 import java.util.UUID;
 
@@ -31,4 +34,18 @@ public class ExpenseServiceImpl implements ExpenseService {
         return expenseDao.findAll(pageable);
     }
 
+    @Override
+    public List<Expense> findAll() {
+        return expenseDao.findAll();
+    }
+
+    @Override
+    public boolean add(Expense expense) {
+        return ResultUtil.extractSuccess(expenseDao.save(expense));
+    }
+    @Override
+    public boolean deleteById(UUID id) {
+        expenseDao.deleteById(id);
+        return ! expenseDao.existsById(id);
+    }
 }

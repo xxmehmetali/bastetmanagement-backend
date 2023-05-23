@@ -4,7 +4,9 @@ package com.bastet.bastetmanagement.controllers;
 import com.bastet.bastetmanagement.core.utilities.results.baseresults.Result;
 import com.bastet.bastetmanagement.daos.EmployeeDao;
 import com.bastet.bastetmanagement.daos.SocialActivityDao;
+import com.bastet.bastetmanagement.dtos.basedtos.ProjectDto;
 import com.bastet.bastetmanagement.dtos.basedtos.SocialActivityDto;
+import com.bastet.bastetmanagement.dtos.selectdtos.SocialActivitySelectElementDto;
 import com.bastet.bastetmanagement.dtos.simplifieddtos.SocialActivitySimplifiedDto;
 import com.bastet.bastetmanagement.facades.socialactivity.SocialActivityFacade;
 import com.bastet.bastetmanagement.models.Employee;
@@ -43,6 +45,22 @@ public class SocialActivityController extends BaseController {
         return wrapSuccessDataResultWithMessage(socialActivityFacade.findAllPagedSimplified(pageable), "");
     }
 
+    @PostMapping(value = "/add",consumes = "application/json")
+    public Result add(@RequestBody SocialActivityDto socialActivityDto){
+        boolean success = socialActivityFacade.add(socialActivityDto);
+        return wrapResultWithMessage(success, "selamke");
+    }
+
+    @GetMapping(value = "/selectElement/findAll")
+    public Result findAllForSelectElement() {
+        List<SocialActivitySelectElementDto> socialActivitySelectElementDtos = (List<SocialActivitySelectElementDto>) socialActivityFacade.findAllForSelectElement();
+        return wrapSuccessDataResultWithMessage(socialActivitySelectElementDtos, "");
+    }
+    @DeleteMapping("/deleteById")
+    public Result deleteById(@RequestParam("id")  UUID id) {
+        boolean success = socialActivityFacade.deleteById(id);
+        return wrapResultWithMessage(success, "Deleted");
+    }
 //    @PutMapping("/save/{employeeId}/{socialActivityId}")
 //    public SocialActivity save(@PathVariable("employeeId") UUID employeeId,
 //                               @PathVariable("socialActivityId") UUID socialActivityId){

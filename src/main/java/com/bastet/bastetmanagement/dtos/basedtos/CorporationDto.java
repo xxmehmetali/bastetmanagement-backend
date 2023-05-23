@@ -24,6 +24,10 @@ public class CorporationDto extends Dto {
 
     private Date foundationDate;
 
+    private Date createdAt;
+
+    private Date updatedAt;
+
 
 
     /*

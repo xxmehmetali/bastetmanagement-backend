@@ -1,6 +1,7 @@
 package com.bastet.bastetmanagement.services.applicant.impl;
 
 import com.bastet.bastetmanagement.core.customexceptions.ModelNotFoundException;
+import com.bastet.bastetmanagement.core.utilities.results.ResultUtil;
 import com.bastet.bastetmanagement.daos.ApplicantDao;
 import com.bastet.bastetmanagement.models.Applicant;
 import com.bastet.bastetmanagement.services.applicant.ApplicantService;
@@ -32,5 +33,22 @@ public class ApplicantServiceImpl implements ApplicantService {
     @Override
     public Page<Applicant> findAllPaged(Pageable pageable) {
         return applicantDao.findAll(pageable);
+    }
+
+    @Override
+    public List<Applicant> findAll() {
+        return applicantDao.findAll();
+    }
+
+    @Override
+    public boolean add(Applicant applicant) {
+
+        return ResultUtil.extractSuccess(applicantDao.save(applicant));
+    }
+
+    @Override
+    public boolean deleteById(UUID id) {
+        applicantDao.deleteById(id);
+        return ! applicantDao.existsById(id);
     }
 }

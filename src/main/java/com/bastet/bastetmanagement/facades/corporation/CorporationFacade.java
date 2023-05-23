@@ -11,5 +11,5 @@ import java.util.List;
 import java.util.UUID;
 
 public interface CorporationFacade extends GenericFacade<Dto> {
-    void add(CorporationDto corporationDto);
+
 }

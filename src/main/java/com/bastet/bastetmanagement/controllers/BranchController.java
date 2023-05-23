@@ -1,9 +1,13 @@
 package com.bastet.bastetmanagement.controllers;
 
 
+import com.bastet.bastetmanagement.core.constants.ResultConstants;
+import com.bastet.bastetmanagement.core.utilities.results.ResultUtil;
 import com.bastet.bastetmanagement.core.utilities.results.baseresults.Result;
 import com.bastet.bastetmanagement.daos.BranchDao;
 import com.bastet.bastetmanagement.dtos.basedtos.BranchDto;
+import com.bastet.bastetmanagement.dtos.basedtos.CorporationDto;
+import com.bastet.bastetmanagement.dtos.selectdtos.BranchSelectElementDto;
 import com.bastet.bastetmanagement.dtos.simplifieddtos.BranchSimplifiedDto;
 import com.bastet.bastetmanagement.facades.branch.BranchFacade;
 import com.bastet.bastetmanagement.models.Branch;
@@ -11,6 +15,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
+import java.util.List;
 import java.util.UUID;
 
 @RestController
@@ -38,6 +43,23 @@ public class BranchController extends BaseController {
     @GetMapping("/simplified/findAll")
     public Result findAllPagedSimplified(Pageable pageable) {
         return wrapSuccessDataResultWithMessage(branchFacade.findAllPagedSimplified(pageable), "");
+    }
+
+    @GetMapping(value = "/selectElement/findAll")
+    public Result findAllForSelectElement() {
+        List<BranchSelectElementDto> branchSelectElementDtos = (List<BranchSelectElementDto>) branchFacade.findAllForSelectElement();
+        return wrapSuccessDataResultWithMessage(branchSelectElementDtos, "");
+    }
+
+    @PostMapping(value = "/add",consumes = "application/json")
+    public Result add(@RequestBody BranchDto branchDto){
+        boolean success = branchFacade.add(branchDto);
+        return wrapResultWithMessage(success, ResultConstants.addedMessage(Branch.class));
+    }
+    @DeleteMapping("/deleteById")
+    public Result deleteById(@RequestParam("id")  UUID id) {
+        boolean success = branchFacade.deleteById(id);
+        return wrapResultWithMessage(success, "Deleted");
     }
 
 }

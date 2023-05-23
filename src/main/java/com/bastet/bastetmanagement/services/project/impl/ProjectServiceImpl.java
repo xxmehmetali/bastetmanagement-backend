@@ -1,7 +1,9 @@
 package com.bastet.bastetmanagement.services.project.impl;
 
 import com.bastet.bastetmanagement.core.customexceptions.ModelNotFoundException;
+import com.bastet.bastetmanagement.core.utilities.results.ResultUtil;
 import com.bastet.bastetmanagement.daos.ProjectDao;
+import com.bastet.bastetmanagement.models.Applicant;
 import com.bastet.bastetmanagement.models.Project;
 import com.bastet.bastetmanagement.services.project.ProjectService;
 import lombok.extern.log4j.Log4j2;
@@ -33,5 +35,21 @@ public class ProjectServiceImpl implements ProjectService {
     @Override
     public List<Project> findProjectsByCorporationId(UUID id) {
         return projectDao.findProjectsByCorporationId(id);
+    }
+
+    @Override
+    public List<Project> findAll() {
+        return projectDao.findAll();
+    }
+
+    @Override
+    public boolean add(Project project) {
+        return ResultUtil.extractSuccess(projectDao.save(project));
+    }
+
+    @Override
+    public boolean deleteById(UUID id) {
+        projectDao.deleteById(id);
+        return ! projectDao.existsById(id);
     }
 }

@@ -1,18 +1,22 @@
 package com.bastet.bastetmanagement.facades.corporation.impl;
 
 
+import com.bastet.bastetmanagement.core.utilities.results.baseresults.Result;
 import com.bastet.bastetmanagement.dtos.Dto;
 import com.bastet.bastetmanagement.dtos.basedtos.ApplicantDto;
 import com.bastet.bastetmanagement.dtos.basedtos.CorporationDto;
 import com.bastet.bastetmanagement.dtos.basedtos.ProjectDto;
+import com.bastet.bastetmanagement.dtos.selectdtos.CorporationSelectElementDto;
 import com.bastet.bastetmanagement.dtos.simplifieddtos.CorporationSimplifiedDto;
 import com.bastet.bastetmanagement.facades.corporation.CorporationFacade;
 import com.bastet.bastetmanagement.mappers.CorporationMapper;
+import com.bastet.bastetmanagement.models.Corporation;
 import com.bastet.bastetmanagement.services.corporation.CorporationService;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Component;
+import org.springframework.web.bind.annotation.RequestBody;
 
 import javax.annotation.Resource;
 import java.util.List;
@@ -48,8 +52,19 @@ public class CorporationFacadeImpl implements CorporationFacade {
     }
 
     @Override
-    public void add(CorporationDto corporationDto) {
-
-        corporationService.save(corporationMapper.corporationDtoToCorporation(corporationDto));
+    public boolean add(Dto dto) {
+        Corporation corporation = corporationMapper.corporationDtoToCorporation((CorporationDto) dto);
+        boolean success = corporationService.add(corporation);
+        return success;
     }
+
+    public List<CorporationSelectElementDto> findAllForSelectElement(){
+        List<Corporation> corporations = corporationService.findAll();
+        return corporationMapper.corporationListToCorporationSelectElementDtoList(corporations);
+    }
+    @Override
+    public boolean deleteById(UUID id) {
+        return corporationService.deleteById(id);
+    }
+
 }

@@ -3,6 +3,7 @@ package com.bastet.bastetmanagement.dtos.basedtos;
 import com.bastet.bastetmanagement.dtos.Dto;
 import lombok.*;
 
+import java.util.Date;
 import java.util.UUID;
 
 @Getter
@@ -18,11 +19,13 @@ public class ExpenseDto extends Dto {
 
     private EmployeeDto spendedBy;
 
-    private Double vaucherNo;
+    private String voucherNo;
 
     private ExpenseTypeDto expenseType;
 
-    private String spentDateTime;
+    private Double expenseAmount;
+
+    private Date spentDateTime;
 
 
 }

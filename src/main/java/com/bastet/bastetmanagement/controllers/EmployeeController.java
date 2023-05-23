@@ -2,13 +2,12 @@ package com.bastet.bastetmanagement.controllers;
 
 
 import com.bastet.bastetmanagement.core.utilities.results.baseresults.Result;
-import com.bastet.bastetmanagement.daos.EmployeeDao;
 import com.bastet.bastetmanagement.dtos.basedtos.EmployeeDto;
-import com.bastet.bastetmanagement.dtos.simplifieddtos.EmployeeSimplifiedDto;
+import com.bastet.bastetmanagement.dtos.selectdtos.EmployeeSelectElementDto;
 import com.bastet.bastetmanagement.facades.employee.EmployeeFacade;
-import com.bastet.bastetmanagement.models.Employee;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Pageable;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.Validator;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
@@ -25,7 +24,6 @@ public class EmployeeController extends BaseController {
     @GetMapping("/findById/{id}")
     public Result findById(@PathVariable("id")UUID id){
         return wrapSuccessDataResultWithMessage(employeeFacade.findById(id), "");
-
     }
 
     @GetMapping("/simplified/findById/{id}")
@@ -42,4 +40,29 @@ public class EmployeeController extends BaseController {
     public Result findAllPagedSimplified(Pageable pageable){
         return wrapSuccessDataResultWithMessage(employeeFacade.findAllPagedSimplified(pageable), "");
     }
+
+    @GetMapping(value = "/selectElement/findAll")
+    public Result findAllForSelectElement() {
+        List<EmployeeSelectElementDto> employeeSelectElementDtos = (List<EmployeeSelectElementDto>) employeeFacade.findAllForSelectElement();
+        return wrapSuccessDataResultWithMessage(employeeSelectElementDtos, "");
+    }
+
+
+    @PostMapping(value = "/add",consumes = "application/json")
+    public Result add(@RequestBody EmployeeDto employeeDto){
+        boolean success = employeeFacade.add(employeeDto);
+        return wrapResultWithMessage(success, "selamke");
+    }
+    @DeleteMapping("/deleteById")
+    public Result deleteById(@RequestParam("id")  UUID id) {
+        boolean success = employeeFacade.deleteById(id);
+        return wrapResultWithMessage(success, "Deleted");
+    }
+
+    @PostMapping(value = "/update",consumes = "application/json")
+    public Result update(@RequestBody EmployeeDto employeeDto){
+        employeeFacade.update(employeeDto);
+        return wrapResultWithMessage(true, "selamke");
+    }
+
 }

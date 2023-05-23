@@ -3,16 +3,15 @@ package com.bastet.bastetmanagement.controllers;
 
 import com.bastet.bastetmanagement.core.utilities.results.baseresults.Result;
 import com.bastet.bastetmanagement.daos.MeetingPlatformDao;
+import com.bastet.bastetmanagement.dtos.basedtos.MeetingDto;
 import com.bastet.bastetmanagement.dtos.basedtos.MeetingPlatformDto;
+import com.bastet.bastetmanagement.dtos.selectdtos.MeetingPlatformSelectElementDto;
 import com.bastet.bastetmanagement.dtos.simplifieddtos.MeetingPlatformSimplifiedDto;
 import com.bastet.bastetmanagement.dtos.simplifieddtos.MeetingSimplifiedDto;
 import com.bastet.bastetmanagement.facades.meetingplatform.MeetingPlatformFacade;
 import com.bastet.bastetmanagement.models.MeetingPlatform;
 import org.springframework.data.domain.Pageable;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
 import java.util.List;
@@ -44,4 +43,20 @@ public class MeetingPlatformController extends BaseController {
         return wrapSuccessDataResultWithMessage(meetingPlatformFacade.findAllPagedSimplified(pageable), "");
     }
 
+    @GetMapping(value = "/selectElement/findAll")
+    public Result findAllForSelectElement() {
+        List<MeetingPlatformSelectElementDto> meetingPlatformSelectElementDtos = (List<MeetingPlatformSelectElementDto>) meetingPlatformFacade.findAllForSelectElement();
+        return wrapSuccessDataResultWithMessage(meetingPlatformSelectElementDtos, "");
+    }
+
+    @PostMapping(value = "/add",consumes = "application/json")
+    public Result add(@RequestBody MeetingPlatformDto meetingPlatformDto){
+        boolean success = meetingPlatformFacade.add(meetingPlatformDto);
+        return wrapResultWithMessage(success, "selamke");
+    }
+    @DeleteMapping("/deleteById")
+    public Result deleteById(@RequestParam("id")  UUID id) {
+        boolean success = meetingPlatformFacade.deleteById(id);
+        return wrapResultWithMessage(success, "Deleted");
+    }
 }

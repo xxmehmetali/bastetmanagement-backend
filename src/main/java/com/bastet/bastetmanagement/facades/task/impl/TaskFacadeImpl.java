@@ -4,9 +4,11 @@ package com.bastet.bastetmanagement.facades.task.impl;
 import com.bastet.bastetmanagement.dtos.Dto;
 import com.bastet.bastetmanagement.dtos.basedtos.DepartmentDto;
 import com.bastet.bastetmanagement.dtos.basedtos.TaskDto;
+import com.bastet.bastetmanagement.dtos.selectdtos.TaskSelectElementDto;
 import com.bastet.bastetmanagement.dtos.simplifieddtos.TaskSimplifiedDto;
 import com.bastet.bastetmanagement.facades.task.TaskFacade;
 import com.bastet.bastetmanagement.mappers.TaskMapper;
+import com.bastet.bastetmanagement.models.Task;
 import com.bastet.bastetmanagement.services.task.TaskService;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageImpl;
@@ -43,5 +45,22 @@ public class TaskFacadeImpl implements TaskFacade {
     @Override
     public Page<TaskSimplifiedDto> findAllPagedSimplified(Pageable pageable) {
         return taskService.findAllPaged(pageable).map(task -> taskMapper.taskToTaskSimplifiedDto(task));
+    }
+
+    @Override
+    public List<TaskSelectElementDto> findAllForSelectElement(){
+        List<Task> tasks = taskService.findAll();
+        return taskMapper.taskListToTaskSelectElementDtoList(tasks);
+    }
+
+    @Override
+    public boolean add(Dto dto) {
+        Task task = taskMapper.taskDtoToTask((TaskDto) dto);
+        boolean success = taskService.add(task);
+        return success;
+    }
+    @Override
+    public boolean deleteById(UUID id) {
+        return taskService.deleteById(id);
     }
 }

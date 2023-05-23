@@ -1,7 +1,9 @@
 package com.bastet.bastetmanagement.services.task.impl;
 
 import com.bastet.bastetmanagement.core.customexceptions.ModelNotFoundException;
+import com.bastet.bastetmanagement.core.utilities.results.ResultUtil;
 import com.bastet.bastetmanagement.daos.TaskDao;
+import com.bastet.bastetmanagement.models.Applicant;
 import com.bastet.bastetmanagement.models.Task;
 import com.bastet.bastetmanagement.services.task.TaskService;
 import lombok.extern.log4j.Log4j2;
@@ -10,6 +12,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
+import java.util.List;
 import java.util.UUID;
 
 @Service
@@ -28,4 +31,19 @@ public class TaskServiceImpl implements TaskService {
         return taskDao.findAll(pageable);
     }
 
+    @Override
+    public List<Task> findAll() {
+        return taskDao.findAll();
+    }
+
+    @Override
+    public boolean add(Task task) {
+        return ResultUtil.extractSuccess(taskDao.save(task));
+    }
+
+    @Override
+    public boolean deleteById(UUID id) {
+        taskDao.deleteById(id);
+        return ! taskDao.existsById(id);
+    }
 }

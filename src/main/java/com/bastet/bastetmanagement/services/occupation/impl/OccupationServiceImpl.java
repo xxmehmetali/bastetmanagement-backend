@@ -1,7 +1,9 @@
 package com.bastet.bastetmanagement.services.occupation.impl;
 
 import com.bastet.bastetmanagement.core.customexceptions.ModelNotFoundException;
+import com.bastet.bastetmanagement.core.utilities.results.ResultUtil;
 import com.bastet.bastetmanagement.daos.OccupationDao;
+import com.bastet.bastetmanagement.models.Applicant;
 import com.bastet.bastetmanagement.models.Occupation;
 import com.bastet.bastetmanagement.services.occupation.OccupationService;
 import lombok.extern.log4j.Log4j2;
@@ -10,6 +12,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
+import java.util.List;
 import java.util.UUID;
 
 @Service
@@ -27,5 +30,20 @@ public class OccupationServiceImpl implements OccupationService {
     @Override
     public Page<Occupation> findAllPaged(Pageable pageable) {
         return occupationDao.findAll(pageable);
+    }
+
+    @Override
+    public List<Occupation> findAll() {
+        return occupationDao.findAll();
+    }
+
+    @Override
+    public boolean add(Occupation occupation) {
+        return ResultUtil.extractSuccess(occupationDao.save(occupation));
+    }
+    @Override
+    public boolean deleteById(UUID id) {
+        occupationDao.deleteById(id);
+        return ! occupationDao.existsById(id);
     }
 }

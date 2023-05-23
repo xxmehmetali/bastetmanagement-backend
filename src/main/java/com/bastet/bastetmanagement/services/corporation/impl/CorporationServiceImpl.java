@@ -1,6 +1,7 @@
 package com.bastet.bastetmanagement.services.corporation.impl;
 
 import com.bastet.bastetmanagement.core.customexceptions.ModelNotFoundException;
+import com.bastet.bastetmanagement.core.utilities.results.ResultUtil;
 import com.bastet.bastetmanagement.daos.CorporationDao;
 import com.bastet.bastetmanagement.models.Corporation;
 import com.bastet.bastetmanagement.services.corporation.CorporationService;
@@ -10,6 +11,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
+import java.util.List;
 import java.util.UUID;
 
 @Service
@@ -32,7 +34,18 @@ public class CorporationServiceImpl implements CorporationService {
 
 
     @Override
-    public void save(Corporation corporation) {
-        corporationDao.save(corporation);
+    public boolean add(Corporation corporation) {
+        return ResultUtil.extractSuccess(corporationDao.save(corporation));
+    }
+
+    @Override
+    public List<Corporation> findAll() {
+        return corporationDao.findAll();
+    }
+
+    @Override
+    public boolean deleteById(UUID id) {
+        corporationDao.deleteById(id);
+        return ! corporationDao.existsById(id);
     }
 }

@@ -2,6 +2,7 @@ package com.bastet.bastetmanagement.models;
 
 import lombok.*;
 import org.hibernate.annotations.Type;
+import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import javax.persistence.*;
 import java.util.HashSet;
@@ -14,6 +15,7 @@ import java.util.UUID;
 @AllArgsConstructor
 @NoArgsConstructor
 @Table(name = "Users")
+@EntityListeners(AuditingEntityListener.class)
 public class User {
     @Id
     @Column(name="id")
@@ -28,6 +30,10 @@ public class User {
 
     @Column(name = "password")
     private String password;
+
+    @JoinColumn(name = "employee", referencedColumnName = "id")
+    @OneToOne
+    private Employee employee;
 
     @ManyToMany(fetch = FetchType.LAZY)
     @JoinTable(

@@ -21,6 +21,8 @@ public class ApplicantMeetingDto extends Dto {
 
     private EmployeeDto meetingOwner;
 
+    private ApplicantDto applicant;
+
     private Date createdAt;
 
     private Date updatedAt;

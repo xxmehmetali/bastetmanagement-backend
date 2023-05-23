@@ -4,9 +4,13 @@ package com.bastet.bastetmanagement.facades.socialactivity.impl;
 import com.bastet.bastetmanagement.dtos.Dto;
 import com.bastet.bastetmanagement.dtos.basedtos.DepartmentDto;
 import com.bastet.bastetmanagement.dtos.basedtos.SocialActivityDto;
+import com.bastet.bastetmanagement.dtos.selectdtos.SocialActivitySelectElementDto;
 import com.bastet.bastetmanagement.dtos.simplifieddtos.SocialActivitySimplifiedDto;
 import com.bastet.bastetmanagement.facades.socialactivity.SocialActivityFacade;
 import com.bastet.bastetmanagement.mappers.SocialActivityMapper;
+import com.bastet.bastetmanagement.models.Applicant;
+import com.bastet.bastetmanagement.models.SocialActivity;
+import com.bastet.bastetmanagement.models.SocialActivity;
 import com.bastet.bastetmanagement.services.socialactivity.SocialActivityService;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageImpl;
@@ -44,5 +48,22 @@ public class SocialActivityFacadeImpl implements SocialActivityFacade {
     @Override
     public Page<SocialActivitySimplifiedDto> findAllPagedSimplified(Pageable pageable) {
         return socialActivityService.findAllPaged(pageable).map(socialActivity -> socialActivityMapper.socialActivityToSocialActivitySimplifiedDto(socialActivity));
+    }
+
+    @Override
+    public List<SocialActivitySelectElementDto> findAllForSelectElement(){
+        List<SocialActivity> socialActivities = socialActivityService.findAll();
+        return socialActivityMapper.socialActivityListToSocialActivitySelectElementDtoList(socialActivities);
+    }
+
+    @Override
+    public boolean add(Dto dto) {
+        SocialActivity socialActivity = socialActivityMapper.socialActivityDtoToSocialActivity((SocialActivityDto) dto);
+        boolean success = socialActivityService.add(socialActivity);
+        return success;
+    }
+    @Override
+    public boolean deleteById(UUID id) {
+        return socialActivityService.deleteById(id);
     }
 }

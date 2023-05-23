@@ -9,6 +9,7 @@ import lombok.*;
 import org.hibernate.annotations.Type;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedDate;
+import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import javax.persistence.*;
 import java.util.ArrayList;
@@ -22,6 +23,7 @@ import java.util.UUID;
 @AllArgsConstructor
 @NoArgsConstructor
 @Table(name = "Employees")
+@EntityListeners(AuditingEntityListener.class)
 public class Employee {
     @Id
     @Column(name="id")
@@ -55,9 +57,9 @@ public class Employee {
     @Column(name = "salaryAmount")
     private int salaryAmount;
 
-    @JoinColumn(name = "salaryCurrecy")
+    @JoinColumn(name = "salaryCurrency")
     @ManyToOne
-    private Currency salaryCurrecy;
+    private Currency salaryCurrency;
 
     @Column(name = "startDate")
     private Date startDate;
@@ -92,7 +94,7 @@ public class Employee {
     @JsonIgnore
     private List<Meeting> meetings;
 
-    @Column(name = "createdAt")
+    @Column(name = "createdAt", updatable = false)
     @CreatedDate
     private Date createdAt;
 

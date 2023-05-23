@@ -7,6 +7,7 @@ import com.bastet.bastetmanagement.dtos.basedtos.MeetingDto;
 import com.bastet.bastetmanagement.dtos.simplifieddtos.MeetingSimplifiedDto;
 import com.bastet.bastetmanagement.facades.meeting.MeetingFacade;
 import com.bastet.bastetmanagement.mappers.MeetingMapper;
+import com.bastet.bastetmanagement.models.Meeting;
 import com.bastet.bastetmanagement.services.meeting.MeetingService;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageImpl;
@@ -43,5 +44,21 @@ public class MeetingFacadeImpl implements MeetingFacade {
     @Override
     public Page<MeetingSimplifiedDto> findAllPagedSimplified(Pageable pageable) {
         return meetingService.findAllPaged(pageable).map(meeting -> meetingMapper.meetingToMeetingSimplifiedDto(meeting));
+    }
+
+    @Override
+    public List<? extends Dto> findAllForSelectElement() {
+        return null;
+    }
+
+    @Override
+    public boolean add(Dto dto) {
+        Meeting meeting = meetingMapper.meetingDtoToMeeting((MeetingDto) dto);
+        boolean success = meetingService.add(meeting);
+        return success;
+    }
+    @Override
+    public boolean deleteById(UUID id) {
+        return meetingService.deleteById(id);
     }
 }

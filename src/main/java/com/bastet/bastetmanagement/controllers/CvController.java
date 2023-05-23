@@ -2,7 +2,10 @@ package com.bastet.bastetmanagement.controllers;
 
 import com.bastet.bastetmanagement.core.utilities.results.baseresults.Result;
 import com.bastet.bastetmanagement.core.utilities.results.dataresults.DataResult;
+import com.bastet.bastetmanagement.dtos.basedtos.BranchDto;
 import com.bastet.bastetmanagement.dtos.basedtos.CvDto;
+import com.bastet.bastetmanagement.dtos.selectdtos.CurrencySelectElementDto;
+import com.bastet.bastetmanagement.dtos.selectdtos.CvSelectElementDto;
 import com.bastet.bastetmanagement.dtos.simplifieddtos.CvSimplifiedDto;
 import com.bastet.bastetmanagement.facades.cv.CvFacade;
 import com.bastet.bastetmanagement.models.Cv;
@@ -45,5 +48,22 @@ public class CvController extends BaseController {
     @GetMapping("/simplified/findAll")
     public Result findAllPagedSimplified(Pageable pageable){
         return wrapSuccessDataResultWithMessage(cvFacade.findAllPagedSimplified(pageable), "");
+    }
+
+    @PostMapping(value = "/add",consumes = "application/json")
+    public Result add(@RequestBody CvDto cvDto){
+        boolean success = cvFacade.add(cvDto);
+        return wrapResultWithMessage(success, "selamke");
+    }
+
+    @GetMapping(value = "/selectElement/findAll")
+    public Result findAllForSelectElement() {
+        List<CvSelectElementDto> cvSelectElementDtos = (List<CvSelectElementDto>) cvFacade.findAllForSelectElement();
+        return wrapSuccessDataResultWithMessage(cvSelectElementDtos, "");
+    }
+    @DeleteMapping("/deleteById")
+    public Result deleteById(@RequestParam("id")  UUID id) {
+        boolean success = cvFacade.deleteById(id);
+        return wrapResultWithMessage(success, "Deleted");
     }
 }
