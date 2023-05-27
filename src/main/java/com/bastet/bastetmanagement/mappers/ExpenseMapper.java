@@ -10,6 +10,7 @@ import com.bastet.bastetmanagement.models.Corporation;
 import com.bastet.bastetmanagement.models.Expense;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
+import org.mapstruct.Mappings;
 import org.mapstruct.Named;
 
 import java.util.List;
@@ -21,6 +22,9 @@ import java.util.List;
         }
 )
 public interface ExpenseMapper {
+    @Mappings({
+            @Mapping(source = "spendedBy", target = "spendedBy", qualifiedByName = "employeeToEmployeeDto")
+    })
     ExpenseDto expenseToExpenseDto(Expense expense);
 
     @Mapping(ignore = true, target = "id")

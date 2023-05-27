@@ -58,6 +58,9 @@ public class BranchController extends BaseController {
     }
     @DeleteMapping("/deleteById")
     public Result deleteById(@RequestParam("id")  UUID id) {
+        //corp = 3e751b9d-2213-4eff-9426-43b20fab3a5e
+        // branch name xaoxao
+        // emp 8304e5ff-6324-4863-ac51-8fcbc6812b13
         boolean success = branchFacade.deleteById(id);
         return wrapResultWithMessage(success, "Deleted");
     }

@@ -8,6 +8,7 @@ import com.bastet.bastetmanagement.models.Meeting;
 import jdk.jfr.Name;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
+import org.mapstruct.Mappings;
 import org.mapstruct.Named;
 
 import java.util.List;
@@ -20,6 +21,11 @@ import java.util.List;
         }
 )
 public interface MeetingMapper {
+    //xxxx 1693
+    @Mappings({
+            @Mapping(source = "meetingPlatform", target = "meetingPlatform", qualifiedByName = "meetingPlatformToMeetingPlatformDto"),
+            @Mapping(source = "meetingOwner", target = "meetingOwner", qualifiedByName = "employeeToEmployeeDto")
+    })
     MeetingDto meetingToMeetingDto(Meeting meeting);
 
     @Mapping(ignore = true, target = "id")

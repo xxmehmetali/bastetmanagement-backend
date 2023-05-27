@@ -51,7 +51,7 @@ public class Expense {
     private ExpenseType expenseType;
 
     @Column(name = "spentDateTime")
-    private String spentDateTime;
+    private Date spentDateTime;
 
     @Column(name = "createdAt")
     @JsonIgnore

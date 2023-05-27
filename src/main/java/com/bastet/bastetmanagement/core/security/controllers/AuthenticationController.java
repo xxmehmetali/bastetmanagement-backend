@@ -6,6 +6,7 @@ import com.bastet.bastetmanagement.core.security.payload.response.JwtResponse;
 import com.bastet.bastetmanagement.core.security.payload.response.MessageResponse;
 import com.bastet.bastetmanagement.core.security.payload.response.RegistrationRequest;
 import com.bastet.bastetmanagement.core.security.services.AuthenticationService;
+import com.bastet.bastetmanagement.core.utilities.results.baseresults.Result;
 import com.bastet.bastetmanagement.core.utilities.results.dataresults.DataResult;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -40,7 +41,7 @@ public class AuthenticationController {
      * @return the response entity
      */
     @PostMapping("/register")
-    public ResponseEntity<?> registerUser(@RequestBody RegistrationRequest request) {
+    public ResponseEntity<Result> registerUser(@RequestBody RegistrationRequest request) {
         log.info("Incoming registration request.");
         MessageResponse response = authenticationService.registerUser(request.getUsername(), request.getPassword(), request.getEmail());
 
@@ -48,9 +49,12 @@ public class AuthenticationController {
             log.error(" Username already exists");
             return ResponseEntity
                     .badRequest()
-                    .body(new MessageResponse("Error: Username already exists"));
+                    .body(
+                            new Result(false, ResultConstants.USERNAME_ALREADY_EXISTS)
+//                            new MessageResponse("Error: Username already exists")
+                    );
         }
         log.info("User registration success.");
-        return ResponseEntity.ok(response);
+        return ResponseEntity.ok(new Result(true, response.getMessage()));
     }
 }

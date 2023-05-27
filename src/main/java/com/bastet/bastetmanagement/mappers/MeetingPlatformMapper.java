@@ -16,6 +16,7 @@ import java.util.List;
 
 @Mapper
 public interface MeetingPlatformMapper {
+    @Named("meetingPlatformToMeetingPlatformDto")
     MeetingPlatformDto meetingPlatformToMeetingPlatformDto(MeetingPlatform meetingPlatform);
 
     @Mapping(ignore = true, target = "id")
