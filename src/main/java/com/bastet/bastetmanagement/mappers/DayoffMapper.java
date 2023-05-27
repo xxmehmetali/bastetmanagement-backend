@@ -19,6 +19,9 @@ import java.util.List;
         }
 )
 public interface DayoffMapper {
+    @Mappings({
+            @Mapping(source = "employee", target = "employee", qualifiedByName = "employeeToEmployeeDto")
+    })
     DayoffDto dayoffToDayoffDto(Dayoff dayoff);
 
     @Mapping(ignore = true, target = "id")

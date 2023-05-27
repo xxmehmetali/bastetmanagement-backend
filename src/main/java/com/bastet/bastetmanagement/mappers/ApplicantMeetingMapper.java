@@ -22,6 +22,11 @@ import java.util.List;
         }
 )
 public interface ApplicantMeetingMapper {
+
+
+    @Mappings({
+            @Mapping(source = "meetingOwner", target = "meetingOwner", qualifiedByName = "employeeToEmployeeDto")
+    })
     ApplicantMeetingDto applicantMeetingToApplicantMeetingDto(ApplicantMeeting applicantMeeting);
 
     @Mapping(ignore = true, target = "id")

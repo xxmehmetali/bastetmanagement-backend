@@ -10,6 +10,9 @@ public final class ResultConstants {
     public static final String LOGGED_IN = "You are Logged in.";
     public static final String NO_AVAILABLE_DATA = "No available data.";
 
+    // Authentication
+    public static final String USERNAME_ALREADY_EXISTS = "Username already exists.";
+
     public static String loggedInMessage() {
         return LOGGED_IN;
     }

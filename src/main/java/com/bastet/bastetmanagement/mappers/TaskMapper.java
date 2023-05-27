@@ -23,6 +23,11 @@ import java.util.List;
         }
 )
 public interface TaskMapper {
+    @Mappings({
+            @Mapping(source = "assignedFrom", target = "assignedFrom", qualifiedByName = "employeeToEmployeeDto"),
+            @Mapping(source = "assignedTo", target = "assignedTo", qualifiedByName = "employeeToEmployeeDto"),
+            @Mapping(source = "reviewer", target = "reviewer", qualifiedByName = "employeeToEmployeeDto")
+    })
     TaskDto taskToTaskDto(Task task);
 
     @Mapping(ignore = true, target = "id")
