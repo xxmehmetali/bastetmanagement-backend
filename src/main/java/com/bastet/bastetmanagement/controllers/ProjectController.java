@@ -1,5 +1,6 @@
 package com.bastet.bastetmanagement.controllers;
 
+import com.bastet.bastetmanagement.core.constants.ResultConstants;
 import com.bastet.bastetmanagement.core.utilities.results.baseresults.Result;
 import com.bastet.bastetmanagement.dtos.selectdtos.ProjectSelectElementDto;
 import com.bastet.bastetmanagement.dtos.basedtos.OccupationDto;
@@ -26,41 +27,41 @@ public class ProjectController extends BaseController {
 
     @GetMapping("/findById/{id}")
     public Result findById(@PathVariable("id")UUID id){
-        return wrapSuccessDataResultWithMessage(projectFacade.findById(id), "");
+        return wrapSuccessDataResultWithMessage(projectFacade.findById(id),  ResultConstants.foundMessage(Project.class));
     }
 
     @GetMapping("/simplified/findById/{id}")
     public Result findByIdSimplified(@PathVariable("id") UUID id){
-        return wrapSuccessDataResultWithMessage(projectFacade.findByIdSimplified(id), "");
+        return wrapSuccessDataResultWithMessage(projectFacade.findByIdSimplified(id),  ResultConstants.foundMessage(Project.class));
     }
 
     @GetMapping("/findAll")
     public Result findAllPaged(Pageable pageable){
-        return wrapSuccessDataResultWithMessage(projectFacade.findAllPaged(pageable), "");
+        return wrapSuccessDataResultWithMessage(projectFacade.findAllPaged(pageable),  ResultConstants.dataListedMessage(Project.class));
     }
 
     @GetMapping("/simplified/findAll")
     public Result findAllPagedSimplified(Pageable pageable){
-        return wrapSuccessDataResultWithMessage(projectFacade.findAllPagedSimplified(pageable), "");
+        return wrapSuccessDataResultWithMessage(projectFacade.findAllPagedSimplified(pageable),  ResultConstants.dataListedMessage(Project.class));
     }
     @GetMapping("/findProjectsByCorporationId/{id}")
     public Result findProjectsByCorporationId(@PathVariable("id")UUID id){
-        return wrapSuccessDataResultWithMessage(projectFacade.findProjectsByCorporationId(id), "");
+        return wrapSuccessDataResultWithMessage(projectFacade.findProjectsByCorporationId(id),  ResultConstants.foundMessage(Project.class));
     }
 
     @GetMapping(value = "/selectElement/findAll")
     public Result findAllForSelectElement() {
         List<ProjectSelectElementDto> projectSelectElementDtos = (List<ProjectSelectElementDto>) projectFacade.findAllForSelectElement();
-        return wrapSuccessDataResultWithMessage(projectSelectElementDtos, "");
+        return wrapSuccessDataResultWithMessage(projectSelectElementDtos,  ResultConstants.foundMessage(Project.class));
     }
     @PostMapping(value = "/add",consumes = "application/json")
     public Result add(@RequestBody ProjectDto projectDto){
         boolean success = projectFacade.add(projectDto);
-        return wrapResultWithMessage(success, "selamke");
+        return wrapResultWithMessage(success, ResultConstants.addedMessage(Project.class));
     }
     @DeleteMapping("/deleteById")
     public Result deleteById(@RequestParam("id")  UUID id) {
         boolean success = projectFacade.deleteById(id);
-        return wrapResultWithMessage(success, "Deleted");
+        return wrapResultWithMessage(success, ResultConstants.deletedMessage(Project.class));
     }
 }

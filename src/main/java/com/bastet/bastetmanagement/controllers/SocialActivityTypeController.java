@@ -1,6 +1,7 @@
 package com.bastet.bastetmanagement.controllers;
 
 
+import com.bastet.bastetmanagement.core.constants.ResultConstants;
 import com.bastet.bastetmanagement.core.utilities.results.baseresults.Result;
 import com.bastet.bastetmanagement.daos.ApplicantDao;
 import com.bastet.bastetmanagement.daos.SocialActivityDao;
@@ -29,38 +30,38 @@ public class SocialActivityTypeController extends BaseController {
 
     @GetMapping("/findById/{id}")
     public Result findById(@PathVariable("id") UUID id){
-        return wrapSuccessDataResultWithMessage(socialActivityTypeFacade.findById(id), "");
+        return wrapSuccessDataResultWithMessage(socialActivityTypeFacade.findById(id),  ResultConstants.foundMessage(SocialActivityType.class));
     }
 
     @GetMapping("/simplified/findById/{id}")
     public Result findByIdSimplified(@PathVariable("id") UUID id){
-        return wrapSuccessDataResultWithMessage(socialActivityTypeFacade.findByIdSimplified(id), "");
+        return wrapSuccessDataResultWithMessage(socialActivityTypeFacade.findByIdSimplified(id),  ResultConstants.foundMessage(SocialActivityType.class));
     }
 
     @GetMapping("/findAll")
     public Result findAllPaged(Pageable pageable){
-        return wrapSuccessDataResultWithMessage(socialActivityTypeFacade.findAllPaged(pageable), "");
+        return wrapSuccessDataResultWithMessage(socialActivityTypeFacade.findAllPaged(pageable),  ResultConstants.dataListedMessage(SocialActivityType.class));
     }
 
     @GetMapping("/simplified/findAll")
     public Result findAllPagedSimplified(Pageable pageable){
-        return wrapSuccessDataResultWithMessage(socialActivityTypeFacade.findAllPagedSimplified(pageable), "");
+        return wrapSuccessDataResultWithMessage(socialActivityTypeFacade.findAllPagedSimplified(pageable),  ResultConstants.dataListedMessage(SocialActivityType.class));
     }
 
     @GetMapping(value = "/selectElement/findAll")
     public Result findAllForSelectElement() {
         List<SocialActivitySelectElementDto> socialActivitySelectElementDtos = (List<SocialActivitySelectElementDto>) socialActivityTypeFacade.findAllForSelectElement();
-        return wrapSuccessDataResultWithMessage(socialActivitySelectElementDtos, "");
+        return wrapSuccessDataResultWithMessage(socialActivitySelectElementDtos,  ResultConstants.dataListedMessageForSelection(SocialActivityType.class));
     }
     @PostMapping(value = "/add",consumes = "application/json")
     public Result add(@RequestBody SocialActivityTypeDto socialActivityDto){
         boolean success = socialActivityTypeFacade.add(socialActivityDto);
-        return wrapResultWithMessage(success, "selamke");
+        return wrapResultWithMessage(success, ResultConstants.addedMessage(SocialActivityType.class));
     }
     @DeleteMapping("/deleteById")
     public Result deleteById(@RequestParam("id")  UUID id) {
         boolean success = socialActivityTypeFacade.deleteById(id);
-        return wrapResultWithMessage(success, "Deleted");
+        return wrapResultWithMessage(success, ResultConstants.deletedMessage(SocialActivityType.class));
     }
 }
 

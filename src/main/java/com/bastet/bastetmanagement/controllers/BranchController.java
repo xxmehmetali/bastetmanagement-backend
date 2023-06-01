@@ -27,28 +27,28 @@ public class BranchController extends BaseController {
 
     @GetMapping("/findById/{id}")
     public Result findById(@PathVariable("id")UUID id){
-        return wrapSuccessDataResultWithMessage(branchFacade.findById(id), "");
+        return wrapSuccessDataResultWithMessage(branchFacade.findById(id), ResultConstants.foundMessage(Branch.class));
     }
 
     @GetMapping("/simplified/findById/{id}")
     public Result findByIdSimplified(@PathVariable("id") UUID id){
-        return wrapSuccessDataResultWithMessage(branchFacade.findByIdSimplified(id), "");
+        return wrapSuccessDataResultWithMessage(branchFacade.findByIdSimplified(id), ResultConstants.foundMessage(Branch.class));
     }
 
     @GetMapping("/findAll")
     public Result findAllPaged(Pageable pageable){
-        return wrapSuccessDataResultWithMessage(branchFacade.findAllPaged(pageable), "");
+        return wrapSuccessDataResultWithMessage(branchFacade.findAllPaged(pageable), ResultConstants.dataListedMessage(Branch.class));
     }
 
     @GetMapping("/simplified/findAll")
     public Result findAllPagedSimplified(Pageable pageable) {
-        return wrapSuccessDataResultWithMessage(branchFacade.findAllPagedSimplified(pageable), "");
+        return wrapSuccessDataResultWithMessage(branchFacade.findAllPagedSimplified(pageable), ResultConstants.dataListedMessage(Branch.class));
     }
 
     @GetMapping(value = "/selectElement/findAll")
     public Result findAllForSelectElement() {
         List<BranchSelectElementDto> branchSelectElementDtos = (List<BranchSelectElementDto>) branchFacade.findAllForSelectElement();
-        return wrapSuccessDataResultWithMessage(branchSelectElementDtos, "");
+        return wrapSuccessDataResultWithMessage(branchSelectElementDtos, ResultConstants.dataListedMessageForSelection(Branch.class));
     }
 
     @PostMapping(value = "/add",consumes = "application/json")
@@ -62,7 +62,7 @@ public class BranchController extends BaseController {
         // branch name xaoxao
         // emp 8304e5ff-6324-4863-ac51-8fcbc6812b13
         boolean success = branchFacade.deleteById(id);
-        return wrapResultWithMessage(success, "Deleted");
+        return wrapResultWithMessage(success, ResultConstants.deletedMessage(Branch.class));
     }
 
 }
