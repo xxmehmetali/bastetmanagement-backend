@@ -1,5 +1,6 @@
 package com.bastet.bastetmanagement.controllers;
 
+import com.bastet.bastetmanagement.core.constants.ResultConstants;
 import com.bastet.bastetmanagement.core.utilities.results.baseresults.Result;
 import com.bastet.bastetmanagement.core.utilities.results.dataresults.DataResult;
 import com.bastet.bastetmanagement.dtos.basedtos.BranchDto;
@@ -8,6 +9,8 @@ import com.bastet.bastetmanagement.dtos.selectdtos.CurrencySelectElementDto;
 import com.bastet.bastetmanagement.dtos.selectdtos.CvSelectElementDto;
 import com.bastet.bastetmanagement.dtos.simplifieddtos.CvSimplifiedDto;
 import com.bastet.bastetmanagement.facades.cv.CvFacade;
+import com.bastet.bastetmanagement.models.Applicant;
+import com.bastet.bastetmanagement.models.Branch;
 import com.bastet.bastetmanagement.models.Cv;
 import org.springframework.data.domain.Pageable;
 import org.springframework.security.access.prepost.PreAuthorize;
@@ -32,38 +35,38 @@ public class CvController extends BaseController {
 
     @GetMapping("/findById/{id}")
     public Result findById(@PathVariable(name = "id")UUID id){
-        return wrapSuccessDataResultWithMessage(cvFacade.findById(id),  "");
+        return wrapSuccessDataResultWithMessage(cvFacade.findById(id),  ResultConstants.foundMessage(Cv.class));
     }
 
     @GetMapping("/simplified/findById/{id}")
     public Result findByIdSimplified(@PathVariable("id") UUID id){
-        return wrapSuccessDataResultWithMessage(cvFacade.findByIdSimplified(id), "");
+        return wrapSuccessDataResultWithMessage(cvFacade.findByIdSimplified(id), ResultConstants.foundMessage(Cv.class));
     }
 
     @GetMapping("/findAll")
     public Result findAllPaged(Pageable pageable){
-        return wrapSuccessDataResultWithMessage(cvFacade.findAllPaged(pageable), "");
+        return wrapSuccessDataResultWithMessage(cvFacade.findAllPaged(pageable), ResultConstants.dataListedMessage(Cv.class));
     }
 
     @GetMapping("/simplified/findAll")
     public Result findAllPagedSimplified(Pageable pageable){
-        return wrapSuccessDataResultWithMessage(cvFacade.findAllPagedSimplified(pageable), "");
+        return wrapSuccessDataResultWithMessage(cvFacade.findAllPagedSimplified(pageable), ResultConstants.dataListedMessage(Cv.class));
     }
 
     @PostMapping(value = "/add",consumes = "application/json")
     public Result add(@RequestBody CvDto cvDto){
         boolean success = cvFacade.add(cvDto);
-        return wrapResultWithMessage(success, "selamke");
+        return wrapResultWithMessage(success, ResultConstants.addedMessage(Cv.class));
     }
 
     @GetMapping(value = "/selectElement/findAll")
     public Result findAllForSelectElement() {
         List<CvSelectElementDto> cvSelectElementDtos = (List<CvSelectElementDto>) cvFacade.findAllForSelectElement();
-        return wrapSuccessDataResultWithMessage(cvSelectElementDtos, "");
+        return wrapSuccessDataResultWithMessage(cvSelectElementDtos, ResultConstants.dataListedMessageForSelection(Cv.class));
     }
     @DeleteMapping("/deleteById")
     public Result deleteById(@RequestParam("id")  UUID id) {
         boolean success = cvFacade.deleteById(id);
-        return wrapResultWithMessage(success, "Deleted");
+        return wrapResultWithMessage(success, ResultConstants.deletedMessage(Cv.class));
     }
 }

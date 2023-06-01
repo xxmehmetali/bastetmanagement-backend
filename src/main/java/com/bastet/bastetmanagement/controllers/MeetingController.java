@@ -1,6 +1,7 @@
 package com.bastet.bastetmanagement.controllers;
 
 
+import com.bastet.bastetmanagement.core.constants.ResultConstants;
 import com.bastet.bastetmanagement.core.utilities.results.baseresults.Result;
 import com.bastet.bastetmanagement.daos.MeetingDao;
 import com.bastet.bastetmanagement.dtos.basedtos.ExpenseTypeDto;
@@ -24,32 +25,32 @@ public class MeetingController extends BaseController {
 
     @GetMapping("/findById/{id}")
     public Result findById(@PathVariable("id") UUID id) {
-        return wrapSuccessDataResultWithMessage(meetingFacade.findById(id), "");
+        return wrapSuccessDataResultWithMessage(meetingFacade.findById(id),  ResultConstants.foundMessage(Meeting.class));
     }
 
     @GetMapping("/simplified/findById/{id}")
     public Result findByIdSimplified(@PathVariable("id") UUID id) {
-        return wrapSuccessDataResultWithMessage(meetingFacade.findByIdSimplified(id), "");
+        return wrapSuccessDataResultWithMessage(meetingFacade.findByIdSimplified(id),  ResultConstants.foundMessage(Meeting.class));
     }
 
     @GetMapping("/findAll")
     public Result findAllPaged(Pageable pageable) {
-        return wrapSuccessDataResultWithMessage(meetingFacade.findAllPaged(pageable), "");
+        return wrapSuccessDataResultWithMessage(meetingFacade.findAllPaged(pageable),  ResultConstants.dataListedMessage(Meeting.class));
     }
 
     @GetMapping("/simplified/findAll")
     public Result findAllPagedSimplified(Pageable pageable) {
-        return wrapSuccessDataResultWithMessage(meetingFacade.findAllPagedSimplified(pageable), "");
+        return wrapSuccessDataResultWithMessage(meetingFacade.findAllPagedSimplified(pageable),  ResultConstants.dataListedMessage(Meeting.class));
     }
 
     @PostMapping(value = "/add",consumes = "application/json")
     public Result add(@RequestBody MeetingDto meetingDto){
         boolean success = meetingFacade.add(meetingDto);
-        return wrapResultWithMessage(success, "selamke");
+        return wrapResultWithMessage(success, ResultConstants.addedMessage(Meeting.class));
     }
     @DeleteMapping("/deleteById")
     public Result deleteById(@RequestParam("id")  UUID id) {
         boolean success = meetingFacade.deleteById(id);
-        return wrapResultWithMessage(success, "Deleted");
+        return wrapResultWithMessage(success, ResultConstants.deletedMessage(Meeting.class));
     }
 }
