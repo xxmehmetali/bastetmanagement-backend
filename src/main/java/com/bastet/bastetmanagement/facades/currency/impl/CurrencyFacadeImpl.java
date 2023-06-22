@@ -47,7 +47,7 @@ public class CurrencyFacadeImpl implements CurrencyFacade {
     }
 
     @Override
-    public List<CurrencySelectElementDto> findAllForSelectElement(){
+    public List<CurrencySelectElementDto> findAllForSelectElement() {
         List<Currency> currencies = currencyService.findAll();
         return currencies.stream()
                 .map(currency -> {
@@ -62,8 +62,16 @@ public class CurrencyFacadeImpl implements CurrencyFacade {
         boolean success = currencyService.add(currency);
         return success;
     }
+
     @Override
     public boolean deleteById(UUID id) {
         return currencyService.deleteById(id);
+    }
+
+    @Override
+    public boolean update(Dto dto) {
+        Currency currency = currencyMapper.currencyDtoToCurrencyForUpdate((CurrencyDto) dto);
+        boolean success = currencyService.add(currency);
+        return success;
     }
 }

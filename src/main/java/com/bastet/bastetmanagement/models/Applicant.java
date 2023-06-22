@@ -2,8 +2,13 @@ package com.bastet.bastetmanagement.models;
 
 import com.bastet.bastetmanagement.core.enums.AssesmentStatus;
 import com.bastet.bastetmanagement.core.enums.Gender;
-import com.fasterxml.jackson.annotation.*;
-import lombok.*;
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 import org.hibernate.annotations.Type;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedDate;
@@ -11,7 +16,6 @@ import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import javax.persistence.*;
 import java.util.Date;
-import java.util.Objects;
 import java.util.UUID;
 
 @Getter
@@ -23,8 +27,8 @@ import java.util.UUID;
 @EntityListeners(AuditingEntityListener.class)
 public class Applicant extends Model {
     @Id
-    @Column(name="id")
-    @Type(type="org.hibernate.type.UUIDCharType")
+    @Column(name = "id")
+    @Type(type = "org.hibernate.type.UUIDCharType")
     private UUID id = UUID.randomUUID();
 
     @Column(name = "name")
@@ -42,7 +46,6 @@ public class Applicant extends Model {
     @Column(name = "nationalid")
     private String nationalId;
 
-    //bak
     @Column(name = "gender")
     @Enumerated(EnumType.STRING)
     private Gender gender;
@@ -52,7 +55,6 @@ public class Applicant extends Model {
     @JsonManagedReference
     private Cv CV;
 
-    //bak
     @Column(name = "hrAssessmentStatus")
     @Enumerated(EnumType.STRING)
     private AssesmentStatus hrAssessmentStatus;
@@ -75,9 +77,15 @@ public class Applicant extends Model {
     @LastModifiedDate
     private Date updatedAt;
 
-    @OneToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "applicantMeeting")
-    @JsonBackReference
+    @OneToOne(fetch = FetchType.LAZY, mappedBy = "applicant")
+//    @JoinColumn(name = "applicantMeeting")
+//    @JsonBackReference
     private ApplicantMeeting applicantMeeting;
 
+
+    @PreRemove
+    private void onDeleteSetNull() {
+//        applicantMeeting.setApplicant(null);
+        CV.setApplicant(null);
+    }
 }

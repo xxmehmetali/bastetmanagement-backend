@@ -1,9 +1,11 @@
 package com.bastet.bastetmanagement.mappers;
 
+import com.bastet.bastetmanagement.dtos.basedtos.CurrencyDto;
 import com.bastet.bastetmanagement.dtos.basedtos.CvDto;
 import com.bastet.bastetmanagement.dtos.selectdtos.CvSelectElementDto;
 import com.bastet.bastetmanagement.dtos.simplifieddtos.CvSimplifiedDto;
 import com.bastet.bastetmanagement.models.Applicant;
+import com.bastet.bastetmanagement.models.Currency;
 import com.bastet.bastetmanagement.models.Cv;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
@@ -26,6 +28,16 @@ public interface CvMapper {
 
     @Named("cvDtoToCvIdStatic")
     Cv cvDtoToCvIdStatic(CvDto cvDto);
+
+    @Named("cvDtoToCvOnlyId")
+    default Cv cvDtoToCvOnlyId(CvDto cvDto){
+        Cv cv = new Cv();
+        cv.setId( cvDto.getId() );
+        return cv;
+    }
+
+    @Named("cvDtoToCvForUpdate")
+    Cv cvDtoToCvForUpdate(CvDto cvDto);
 
     @Mapping(source = "applicant.CV.id", target = "id")
     @Mapping(target = "applicantFullName", expression = "java(applicant.getName() + ' ' + applicant.getSurname() + ' ' + '-' + ' ' + applicant.getPhoneNumber())")

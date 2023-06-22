@@ -29,12 +29,19 @@ public interface MeetingMapper {
     MeetingDto meetingToMeetingDto(Meeting meeting);
 
     @Mapping(ignore = true, target = "id")
-    @Mapping(source = "meetingOwner", target = "meetingOwner", qualifiedByName = "employeeDtoToEmployeeIdStatic")
-    @Mapping(source = "meetingPlatform", target = "meetingPlatform", qualifiedByName = "meetingPlatformDtoToMeetingPlatformIdStatic")
+    @Mapping(source = "meetingOwner", target = "meetingOwner", qualifiedByName = "employeeDtoToEmployeeOnlyId")
+    @Mapping(source = "meetingPlatform", target = "meetingPlatform", qualifiedByName = "meetingPlatformDtoToMeetingPlatformOnlyId")
     Meeting meetingDtoToMeeting(MeetingDto meetingDto);
 
     @Named("meetingDtoToMeetingIdStatic")
     Meeting meetingDtoToMeetingIdStatic(MeetingDto meetingDto);
+
+    @Mappings({
+            @Mapping(source = "meetingOwner", target = "meetingOwner", qualifiedByName = "employeeDtoToEmployeeOnlyId"),
+            @Mapping(source = "meetingPlatform", target = "meetingPlatform", qualifiedByName = "meetingPlatformDtoToMeetingPlatformOnlyId")
+    })
+    @Named("meetingDtoToMeetingForUpdate")
+    Meeting meetingDtoToMeetingForUpdate(MeetingDto meetingDto);
 
     MeetingSimplifiedDto meetingToMeetingSimplifiedDto(Meeting meeting);
     Meeting meetingSimplifiedDtoToMeeting(MeetingSimplifiedDto meetingSimplifiedDto);

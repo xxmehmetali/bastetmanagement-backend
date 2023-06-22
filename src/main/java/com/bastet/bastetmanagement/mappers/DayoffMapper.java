@@ -30,6 +30,12 @@ public interface DayoffMapper {
     })
     Dayoff dayoffDtoToDayoff(DayoffDto dayoffDto);
 
+    @Mappings({
+            @Mapping(source = "employee", target = "employee", qualifiedByName = "employeeDtoToEmployeeOnlyId")
+    })
+    @Named("dayoffDtoToDayoffForUpdate")
+    Dayoff dayoffDtoToDayoffForUpdate(DayoffDto dayoffDto);
+
     @Named("dayoffDtoToDayoffIdStatic")
     Dayoff dayoffDtoToDayoffIdStatic(DayoffDto dayoffDto);
 

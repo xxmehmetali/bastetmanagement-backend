@@ -10,6 +10,7 @@ import com.bastet.bastetmanagement.models.Corporation;
 import com.bastet.bastetmanagement.models.Project;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
+import org.mapstruct.Mappings;
 import org.mapstruct.Named;
 
 import java.util.List;
@@ -30,6 +31,13 @@ public interface ProjectMapper {
 
     @Named("projectDtoToProjectIdStatic")
     Project projectDtoToProjectIdStatic(ProjectDto projectDto);
+
+    @Mappings({
+            @Mapping(source = "corporation", target = "corporation", qualifiedByName = "corporationDtoToCorporationOnlyId"),
+            @Mapping(source = "contexts", target = "contexts", qualifiedByName = "contextDtoListToContextListOnlyId")
+    })
+    @Named("projectDtoToProjectForUpdate")
+    Project projectDtoToProjectForUpdate(ProjectDto projectDto);
 
     ProjectSimplifiedDto projectToProjectSimplifiedDto(Project project);
     Project projectSimplifiedDtoToProject(ProjectSimplifiedDto projectSimplifiedDto);

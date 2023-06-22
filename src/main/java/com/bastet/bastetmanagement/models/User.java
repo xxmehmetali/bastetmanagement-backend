@@ -18,8 +18,8 @@ import java.util.UUID;
 @EntityListeners(AuditingEntityListener.class)
 public class User {
     @Id
-    @Column(name="id")
-    @Type(type="org.hibernate.type.UUIDCharType")
+    @Column(name = "id")
+    @Type(type = "org.hibernate.type.UUIDCharType")
     private UUID id = UUID.randomUUID();
 
     @Column(name = "username")
@@ -47,5 +47,9 @@ public class User {
         this.username = username;
         this.email = email;
         this.password = password;
+    }
+
+    public void onDeleteSetNull() {
+        employee.setUser(null);
     }
 }

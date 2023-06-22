@@ -73,4 +73,13 @@ public class Corporation {
                 ", foundationDate='" + foundationDate + '\'' +
                 '}';
     }
+
+    @PreRemove
+    public void onDeletSetNull() {
+        projects.stream()
+                .forEach(project -> project.setCorporation(null));
+        branches.stream()
+                .forEach(branch -> branch.setCorporation(null));
+
+    }
 }

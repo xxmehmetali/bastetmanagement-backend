@@ -1,10 +1,12 @@
 package com.bastet.bastetmanagement.mappers;
 
 import com.bastet.bastetmanagement.dtos.basedtos.ApplicantDto;
+import com.bastet.bastetmanagement.dtos.basedtos.ContextDto;
 import com.bastet.bastetmanagement.dtos.basedtos.CorporationDto;
 import com.bastet.bastetmanagement.dtos.selectdtos.CorporationSelectElementDto;
 import com.bastet.bastetmanagement.dtos.simplifieddtos.CorporationSimplifiedDto;
 import com.bastet.bastetmanagement.models.Applicant;
+import com.bastet.bastetmanagement.models.Context;
 import com.bastet.bastetmanagement.models.Corporation;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
@@ -21,14 +23,21 @@ import java.util.List;
 public interface CorporationMapper {
     CorporationDto corporationToCorporationDto(Corporation corporation);
 
-    //burda mapping ignore olursa dışarıdan gelen update edilmesi gereken corporationların id si modele setlenmeyecek
-    //diğer yandan ignore olmazsa ve yeni bir corporation oluşacak olursa id null gelecektir ve modele null setlenecektir.
-    //buna bir çözüm bulmak lazım, 2 durum corporationdto üstünde çözülürse ekstra iş yükünden kurtuluruz.
     @Mapping(ignore = true, target = "id")
     Corporation corporationDtoToCorporation(CorporationDto corporationDto);
 
     @Named("corporationDtoToCorporationIdStatic")
     Corporation corporationDtoToCorporationIdStatic(CorporationDto corporationDto);
+
+    @Named("corporationDtoToCorporationOnlyId")
+    default Corporation corporationDtoToCorporationOnlyId(CorporationDto corporationDto){
+        Corporation corporation = new Corporation();
+        corporation.setId( corporationDto.getId() );
+        return corporation;
+    }
+
+    @Named("corporationDtoToCorporationForUpdate")
+    Corporation corporationDtoToCorporationForUpdate(CorporationDto corporationDto);
 
     CorporationSimplifiedDto corporationToCorporationSimplifiedDto(Corporation corporation);
     Corporation corporationSimplifiedDtoToCorporation(CorporationSimplifiedDto corporationSimplifiedDto);

@@ -59,5 +59,10 @@ public class Project {
                 ", corporation=" + corporation +
                 '}';
     }
+
+    @PreRemove
+    public void onDeleteSetNull(){
+
+    }
 //NOT FINISHED
 }

@@ -1,7 +1,10 @@
 package com.bastet.bastetmanagement.models;
 
-import com.fasterxml.jackson.annotation.*;
-import lombok.*;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 import org.hibernate.annotations.Type;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedDate;
@@ -9,7 +12,6 @@ import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import javax.persistence.*;
 import java.util.Date;
-import java.util.Objects;
 import java.util.UUID;
 
 @Getter
@@ -22,19 +24,20 @@ import java.util.UUID;
 public class ApplicantMeeting {
     private static final long serialVersionUID = 1L;
     @Id
-    @Column(name="id")
-    @Type(type="org.hibernate.type.UUIDCharType")
+    @Column(name = "id")
+    @Type(type = "org.hibernate.type.UUIDCharType")
     private UUID id = UUID.randomUUID();
 
-    @OneToOne()
-    @JoinColumn(name="meetingOwner")
+    @ManyToOne()
+    @JoinColumn(name = "meetingOwner")
     private Employee meetingOwner;
 
     @ManyToOne
+    @JsonManagedReference
     @JoinColumn(name = "meetingPlatform")
     private MeetingPlatform meetingPlatform;
 
-    @OneToOne
+    @OneToOne()
     @JoinColumn(name = "applicant")
     private Applicant applicant;
 
@@ -52,4 +55,9 @@ public class ApplicantMeeting {
     @LastModifiedDate
     private Date updatedAt;
 
+    @PreRemove
+    private void onDeleteSetNull() {
+//        applicant.setApplicantMeeting(null);
+
+    }
 }

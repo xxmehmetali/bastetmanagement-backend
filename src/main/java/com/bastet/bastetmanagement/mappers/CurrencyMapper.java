@@ -32,6 +32,9 @@ public interface CurrencyMapper {
         return currency;
     }
 
+    @Named("currencyDtoToCurrencyForUpdate")
+    Currency currencyDtoToCurrencyForUpdate(CurrencyDto currencyDto);
+
     CurrencySimplifiedDto currencyToCurrencySimplifiedDto(Currency currency);
 
     Currency currencySimplifiedDtoToCurrency(CurrencySimplifiedDto currencySimplifiedDto);

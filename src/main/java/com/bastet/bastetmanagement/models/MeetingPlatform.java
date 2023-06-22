@@ -39,6 +39,10 @@ public class MeetingPlatform {
     @JsonBackReference
     private List<Meeting> meetings;
 
+    @OneToMany(mappedBy = "meetingPlatform", fetch = FetchType.LAZY)
+    @JsonBackReference
+    private List<ApplicantMeeting> applicantMeetings;
+
     @Column(name = "createdAt")
     @JsonIgnore
     @CreatedDate
@@ -48,4 +52,10 @@ public class MeetingPlatform {
     @JsonIgnore
     @LastModifiedDate
     private Date updatedAt;
+
+    @PreRemove
+    public void onDeleteSetNull(){
+        meetings.stream()
+                .forEach(meeting -> meeting.setMeetingPlatform(null));
+    }
 }

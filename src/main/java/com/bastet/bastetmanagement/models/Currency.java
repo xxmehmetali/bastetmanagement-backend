@@ -32,6 +32,12 @@ public class Currency {
     @Column(name = "currencySymbol")
     private String currencySymbol;
 
+    @OneToMany(mappedBy = "salaryCurrency")
+    private List<Employee> employeesPaid;
+
+    @OneToMany(mappedBy = "expenseCurrencyType")
+    private List<Expense> expenses;
+
     @Column(name = "createdAt")
     @JsonIgnore
     @CreatedDate
@@ -41,4 +47,13 @@ public class Currency {
     @JsonIgnore
     @LastModifiedDate
     private Date updatedAt;
+
+    @PreRemove
+    public void onDeleteSetNull(){
+        employeesPaid.stream()
+                .forEach(employee -> employee.setSalaryCurrency(null));
+
+        expenses.stream()
+                .forEach(expense -> expense.setExpenseCurrencyType(null));
+    }
 }

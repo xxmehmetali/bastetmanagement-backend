@@ -3,15 +3,9 @@ package com.bastet.bastetmanagement.controllers;
 
 import com.bastet.bastetmanagement.core.constants.ResultConstants;
 import com.bastet.bastetmanagement.core.utilities.results.baseresults.Result;
-import com.bastet.bastetmanagement.core.utilities.results.dataresults.DataResult;
-import com.bastet.bastetmanagement.daos.CorporationDao;
-import com.bastet.bastetmanagement.dtos.basedtos.ContextDto;
 import com.bastet.bastetmanagement.dtos.basedtos.CorporationDto;
 import com.bastet.bastetmanagement.dtos.selectdtos.CorporationSelectElementDto;
-import com.bastet.bastetmanagement.dtos.simplifieddtos.CorporationSimplifiedDto;
 import com.bastet.bastetmanagement.facades.corporation.CorporationFacade;
-import com.bastet.bastetmanagement.models.Applicant;
-import com.bastet.bastetmanagement.models.Branch;
 import com.bastet.bastetmanagement.models.Corporation;
 import org.springframework.data.domain.Pageable;
 import org.springframework.web.bind.annotation.*;
@@ -27,21 +21,22 @@ public class CorporationController extends BaseController {
     private CorporationFacade corporationFacade;
 
     @GetMapping("/findById/{id}")
-    public Result findById(@PathVariable("id")UUID id){
+    public Result findById(@PathVariable("id") UUID id) {
         return wrapSuccessDataResultWithMessage(corporationFacade.findById(id), ResultConstants.foundMessage(Corporation.class));
     }
+
     @GetMapping("/simplified/findById/{id}")
-    public Result findByIdSimplified(@PathVariable("id") UUID id){
+    public Result findByIdSimplified(@PathVariable("id") UUID id) {
         return wrapSuccessDataResultWithMessage(corporationFacade.findByIdSimplified(id), ResultConstants.foundMessage(Corporation.class));
     }
 
     @GetMapping("/findAll")
-    public Result findAllPaged(Pageable pageable){
+    public Result findAllPaged(Pageable pageable) {
         return wrapSuccessDataResultWithMessage(corporationFacade.findAllPaged(pageable), ResultConstants.dataListedMessage(Corporation.class));
     }
 
     @GetMapping("/simplified/findAll")
-    public Result findAllPagedSimplified(Pageable pageable){
+    public Result findAllPagedSimplified(Pageable pageable) {
         return wrapSuccessDataResultWithMessage(corporationFacade.findAllPagedSimplified(pageable), ResultConstants.dataListedMessage(Corporation.class));
     }
 
@@ -51,14 +46,22 @@ public class CorporationController extends BaseController {
         return wrapSuccessDataResultWithMessage(corporationSelectElementDtos, ResultConstants.dataListedMessageForSelection(Corporation.class));
     }
 
-    @PostMapping(value = "/add",consumes = "application/json")
-    public Result add(@RequestBody CorporationDto corporationDto){
+    @PostMapping(value = "/add", consumes = "application/json")
+    public Result add(@RequestBody CorporationDto corporationDto) {
         boolean success = corporationFacade.add(corporationDto);
         return wrapResultWithMessage(success, ResultConstants.addedMessage(Corporation.class));
     }
+
     @DeleteMapping("/deleteById")
-    public Result deleteById(@RequestParam("id")  UUID id) {
+    public Result deleteById(@RequestParam("id") UUID id) {
         boolean success = corporationFacade.deleteById(id);
         return wrapResultWithMessage(success, ResultConstants.deletedMessage(Corporation.class));
     }
+
+    @PostMapping(value = "/update", consumes = "application/json")
+    public Result update(@RequestBody CorporationDto corporationDto) {
+        boolean success = corporationFacade.update(corporationDto);
+        return wrapResultWithMessage(success, ResultConstants.updatedMessage(Corporation.class));
+    }
+
 }

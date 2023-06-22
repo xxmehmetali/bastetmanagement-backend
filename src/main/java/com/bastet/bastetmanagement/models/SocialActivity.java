@@ -36,9 +36,9 @@ public class SocialActivity {
     @Column(name = "place")
     private String place;
 
-    @OneToOne
+    @OneToOne(mappedBy = "socialActivity")
     @JoinColumn(name = "expense")
-    private Expense expense ;
+    private Expense expense;
 
     @ManyToMany(cascade = CascadeType.ALL, mappedBy = "socialActivities", fetch = FetchType.LAZY)
     private List<Employee> employees;
@@ -55,4 +55,8 @@ public class SocialActivity {
     @LastModifiedDate
     private Date updatedAt;
     //NOT FINISHED
+
+    public void onDeleteSetNull(){
+        expense.setSocialActivity(null);
+    }
 }

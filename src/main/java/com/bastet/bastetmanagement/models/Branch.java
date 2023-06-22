@@ -12,6 +12,7 @@ import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 import javax.persistence.*;
 import java.util.Date;
 import java.util.List;
+import java.util.Optional;
 import java.util.UUID;
 
 @Getter
@@ -24,8 +25,8 @@ import java.util.UUID;
 public class Branch {
 
     @Id
-    @Column(name="id")
-    @Type(type="org.hibernate.type.UUIDCharType")
+    @Column(name = "id")
+    @Type(type = "org.hibernate.type.UUIDCharType")
     private UUID id = UUID.randomUUID();
 
     @Column(name = "name")
@@ -58,5 +59,14 @@ public class Branch {
     @JsonIgnore
     @LastModifiedDate
     private Date updatedAt;
+
+    @PreRemove
+    public void onDeleteSetNull() {
+        employees.stream()
+                .forEach(employee -> employee.setBranch(null));
+
+        corporation.getBranches().remove(this);
+
+    }
 
 }

@@ -67,4 +67,10 @@ public class CorporationFacadeImpl implements CorporationFacade {
         return corporationService.deleteById(id);
     }
 
+    @Override
+    public boolean update(Dto dto) {
+        Corporation corporation = corporationMapper.corporationDtoToCorporationForUpdate((CorporationDto) dto);
+        boolean success = corporationService.add(corporation);
+        return success;
+    }
 }

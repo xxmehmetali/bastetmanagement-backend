@@ -5,6 +5,7 @@ import com.bastet.bastetmanagement.models.User;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 import org.mapstruct.Mappings;
+import org.mapstruct.Named;
 
 @Mapper(
         componentModel = "spring",
@@ -18,5 +19,11 @@ public interface UserMapper {
             @Mapping(source = "employee", target = "employee", qualifiedByName = "employeeToEmployeeDto")
     })
     UserDto userToUserDto(User user);
+
+    @Mappings({
+            @Mapping(source = "employee", target = "employee", qualifiedByName = "employeeDtoToEmployeeOnlyId")
+    })
+    @Named("userToUserDtoForUpdate")
+    User userToUserDtoForUpdate(UserDto userDto);
 
 }

@@ -69,4 +69,11 @@ public class BranchFacadeImpl implements BranchFacade {
     public boolean deleteById(UUID id) {
         return branchService.deleteById(id);
     }
+
+    @Override
+    public boolean update(Dto dto) {
+        Branch branch = branchMapper.branchDtoToBranchForUpdate((BranchDto) dto);
+        boolean success = branchService.add(branch);
+        return success;
+    }
 }

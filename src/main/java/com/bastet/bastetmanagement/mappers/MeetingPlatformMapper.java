@@ -32,6 +32,9 @@ public interface MeetingPlatformMapper {
     @Named("meetingPlatformDtoToMeetingPlatformIdStatic")
     MeetingPlatform meetingPlatformDtoToMeetingPlatformIdStatic(MeetingPlatformDto meetingPlatformDto);
 
+    @Named("meetingPlatformDtoToMeetingPlatformForUpdate")
+    MeetingPlatform meetingPlatformDtoToMeetingPlatformForUpdate(MeetingPlatformDto meetingPlatformDto);
+
     MeetingPlatformSelectElementDto meetingToMeetingPlatformSelectElementDto(MeetingPlatform meetingPlatform);
     MeetingPlatformSimplifiedDto meetingPlatformToMeetingPlatformSimplifiedDto(MeetingPlatform meetingPlatform);
     MeetingPlatform meetingPlatformSimplifiedDtoToMeetingPlatform(MeetingPlatformSimplifiedDto meetingPlatformSimplifiedDto);

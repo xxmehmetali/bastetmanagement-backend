@@ -40,4 +40,12 @@ public class Cv {
     @LastModifiedDate
     private Date updatedAt;
 
+    @OneToOne(fetch = FetchType.LAZY)
+    private Applicant applicant;
+
+    @PreRemove
+    public void onDeleteSetNull(){
+        applicant.setCV(null);
+    }
+
 }

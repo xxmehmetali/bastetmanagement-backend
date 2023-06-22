@@ -71,4 +71,11 @@ public class ApplicantMeetingFacadeImpl implements ApplicantMeetingFacade {
     public boolean deleteById(UUID id) {
         return applicantMeetingService.deleteById(id);
     }
+
+    @Override
+    public boolean update(Dto dto) {
+        ApplicantMeeting applicantMeeting = applicantMeetingMapper.applicantMeetingDtoToApplicantMeetingForUpdate((ApplicantMeetingDto) dto);
+        boolean success = applicantMeetingService.add(applicantMeeting);
+        return success;
+    }
 }

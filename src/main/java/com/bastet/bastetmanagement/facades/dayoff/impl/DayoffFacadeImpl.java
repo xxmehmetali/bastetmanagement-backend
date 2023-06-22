@@ -57,8 +57,16 @@ public class DayoffFacadeImpl implements DayoffFacade {
         boolean success = dayoffService.add(dayoff);
         return success;
     }
+
     @Override
     public boolean deleteById(UUID id) {
         return dayoffService.deleteById(id);
+    }
+
+    @Override
+    public boolean update(Dto dto) {
+        Dayoff dayoff = dayoffMapper.dayoffDtoToDayoffForUpdate((DayoffDto) dto);
+        boolean success = dayoffService.add(dayoff);
+        return success;
     }
 }

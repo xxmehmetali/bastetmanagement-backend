@@ -62,8 +62,16 @@ public class DepartmentFacadeImpl implements DepartmentFacade {
         boolean success = departmentService.add(department);
         return success;
     }
+
     @Override
     public boolean deleteById(UUID id) {
         return departmentService.deleteById(id);
+    }
+
+    @Override
+    public boolean update(Dto dto) {
+        Department department = departmentMapper.departmentDtoToDepartmentForUpdate((DepartmentDto) dto);
+        boolean success = departmentService.add(department);
+        return success;
     }
 }

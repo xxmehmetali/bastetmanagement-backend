@@ -66,8 +66,17 @@ public class ProjectFacadeImpl implements ProjectFacade {
         boolean success = projectService.add(project);
         return success;
     }
+
     @Override
     public boolean deleteById(UUID id) {
         return projectService.deleteById(id);
     }
+
+    @Override
+    public boolean update(Dto dto) {
+        Project project = projectMapper.projectDtoToProjectForUpdate((ProjectDto) dto);
+        boolean success = projectService.add(project);
+        return success;
+    }
+
 }

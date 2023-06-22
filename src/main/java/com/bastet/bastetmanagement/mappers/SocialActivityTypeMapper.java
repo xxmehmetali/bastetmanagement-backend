@@ -1,6 +1,7 @@
 package com.bastet.bastetmanagement.mappers;
 
 import com.bastet.bastetmanagement.dtos.basedtos.ApplicantDto;
+import com.bastet.bastetmanagement.dtos.basedtos.SocialActivityDto;
 import com.bastet.bastetmanagement.dtos.basedtos.SocialActivityTypeDto;
 import com.bastet.bastetmanagement.dtos.selectdtos.CorporationSelectElementDto;
 import com.bastet.bastetmanagement.dtos.selectdtos.SocialActivitySelectElementDto;
@@ -8,6 +9,7 @@ import com.bastet.bastetmanagement.dtos.selectdtos.SocialActivityTypeSelectEleme
 import com.bastet.bastetmanagement.dtos.simplifieddtos.SocialActivityTypeSimplifiedDto;
 import com.bastet.bastetmanagement.models.Applicant;
 import com.bastet.bastetmanagement.models.Corporation;
+import com.bastet.bastetmanagement.models.SocialActivity;
 import com.bastet.bastetmanagement.models.SocialActivityType;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
@@ -24,6 +26,16 @@ public interface SocialActivityTypeMapper {
 
     @Named("socialActivityTypeDtoToSocialActivityTypeIdStatic")
     SocialActivityType socialActivityTypeDtoToSocialActivityTypeIdStatic(SocialActivityTypeDto socialActivityTypeDto);
+
+    @Named("socialActivityTypeDtoToSocialActivityTypeForUpdate")
+    SocialActivityType socialActivityTypeDtoToSocialActivityTypeForUpdate(SocialActivityTypeDto socialActivityTypeDto);
+
+    @Named("socialActivityTypeDtoToSocialActivityTypeOnlyId")
+    default SocialActivityType socialActivityTypeDtoToSocialActivityTypeOnlyId(SocialActivityTypeDto socialActivityTypeDto){
+        SocialActivityType socialActivityType = new SocialActivityType();
+        socialActivityType.setId( socialActivityTypeDto.getId() );
+        return socialActivityType;
+    }
 
     SocialActivityTypeSimplifiedDto socialActivityTypeToSocialActivityTypeSimplifiedDto(SocialActivityType socialActivityType);
     SocialActivityType socialActivityTypeSimplifiedDtoToSocialActivityType(SocialActivityTypeSimplifiedDto socialActivityTypeSimplifiedDto);

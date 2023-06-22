@@ -13,7 +13,7 @@ import java.util.List;
 import java.util.UUID;
 
 @Entity
-@Table(name="Occupations")
+@Table(name = "Occupations")
 @Getter
 @Setter
 @AllArgsConstructor
@@ -21,8 +21,8 @@ import java.util.UUID;
 @EntityListeners(AuditingEntityListener.class)
 public class Occupation {
     @Id
-    @Column(name="id")
-    @Type(type="org.hibernate.type.UUIDCharType")
+    @Column(name = "id")
+    @Type(type = "org.hibernate.type.UUIDCharType")
     private UUID id = UUID.randomUUID();
 
     @Column(name = "occupation")
@@ -42,5 +42,13 @@ public class Occupation {
     @Column(name = "updatedAt")
     @LastModifiedDate
     private Date updatedAt;
+
+    @PreRemove
+    public void onDeleteSetNull() {
+        employees.stream()
+                .forEach(employee -> employee.setOccupation(null));
+
+    }
+
 
 }
