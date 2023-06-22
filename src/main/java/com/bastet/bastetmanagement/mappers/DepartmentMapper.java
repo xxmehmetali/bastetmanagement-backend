@@ -32,6 +32,12 @@ public interface DepartmentMapper {
     @Named("departmentDtoToDepartmentIdStatic")
     Department departmentDtoToDepartmentIdStatic(DepartmentDto departmentDto);
 
+    @Mappings({
+            @Mapping(source = "departmentResponsible", target = "departmentResponsible", qualifiedByName = "employeeDtoToEmployeeOnlyId")
+    })
+    @Named("departmentDtoToDepartmentForUpdate")
+    Department departmentDtoToDepartmentForUpdate(DepartmentDto departmentDto);
+
     @Named("departmentDtoToDepartmentOnlyId")
     default Department departmentDtoToDepartmentOnlyId(DepartmentDto departmentDto) {
         Department department = new Department();

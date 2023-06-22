@@ -21,6 +21,10 @@ public class ExpenseDto extends Dto {
 
     private String voucherNo;
 
+    private CurrencyDto expenseCurrencyType;
+
+    private SocialActivityDto socialActivity;
+
     private ExpenseTypeDto expenseType;
 
     private Double expenseAmount;

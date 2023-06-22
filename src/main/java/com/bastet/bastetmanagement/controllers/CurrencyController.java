@@ -2,19 +2,10 @@ package com.bastet.bastetmanagement.controllers;
 
 
 import com.bastet.bastetmanagement.core.constants.ResultConstants;
-import com.bastet.bastetmanagement.core.customexceptions.ModelNotFoundException;
 import com.bastet.bastetmanagement.core.utilities.results.baseresults.Result;
-import com.bastet.bastetmanagement.daos.CurrencyDao;
-import com.bastet.bastetmanagement.dtos.basedtos.BranchDto;
-import com.bastet.bastetmanagement.dtos.basedtos.ContextDto;
 import com.bastet.bastetmanagement.dtos.basedtos.CurrencyDto;
 import com.bastet.bastetmanagement.dtos.selectdtos.CurrencySelectElementDto;
-import com.bastet.bastetmanagement.dtos.basedtos.CvDto;
-import com.bastet.bastetmanagement.dtos.simplifieddtos.CurrencySimplifiedDto;
 import com.bastet.bastetmanagement.facades.currency.CurrencyFacade;
-import com.bastet.bastetmanagement.models.Applicant;
-import com.bastet.bastetmanagement.models.Branch;
-import com.bastet.bastetmanagement.models.Context;
 import com.bastet.bastetmanagement.models.Currency;
 import org.springframework.data.domain.Pageable;
 import org.springframework.web.bind.annotation.*;
@@ -30,30 +21,30 @@ public class CurrencyController extends BaseController {
     private CurrencyFacade currencyFacade;
 
     @GetMapping("/findById/{id}")
-    public Result findById(@PathVariable("id")UUID id){
+    public Result findById(@PathVariable("id") UUID id) {
         return wrapSuccessDataResultWithMessage(currencyFacade.findById(id), ResultConstants.foundMessage(Currency.class));
     }
 
-    /** TO BE RETURNED
-     *
-     * */
+    /**
+     * TO BE RETURNED
+     */
     @GetMapping("/search")
-    public Result findByCurrencySymbol(@RequestParam("currencySymbol") String currencySymbol){
+    public Result findByCurrencySymbol(@RequestParam("currencySymbol") String currencySymbol) {
         return null;
     }
 
     @GetMapping("/simplified/findById/{id}")
-    public Result findByIdSimplified(@PathVariable("id") UUID id){
+    public Result findByIdSimplified(@PathVariable("id") UUID id) {
         return wrapSuccessDataResultWithMessage(currencyFacade.findByIdSimplified(id), ResultConstants.foundMessage(Currency.class));
     }
 
     @GetMapping("/findAll")
-    public Result findAllPaged(Pageable pageable){
+    public Result findAllPaged(Pageable pageable) {
         return wrapSuccessDataResultWithMessage(currencyFacade.findAllPaged(pageable), ResultConstants.dataListedMessage(Currency.class));
     }
 
     @GetMapping("/simplified/findAll")
-    public Result findAllPagedSimplified(Pageable pageable){
+    public Result findAllPagedSimplified(Pageable pageable) {
         return wrapSuccessDataResultWithMessage(currencyFacade.findAllPagedSimplified(pageable), ResultConstants.dataListedMessage(Currency.class));
     }
 
@@ -63,15 +54,22 @@ public class CurrencyController extends BaseController {
         return wrapSuccessDataResultWithMessage(currencySelectElementDtos, ResultConstants.dataListedMessageForSelection(Currency.class));
     }
 
-    @PostMapping(value = "/add",consumes = "application/json")
-    public Result add(@RequestBody CurrencyDto currencyDto){
+    @PostMapping(value = "/add", consumes = "application/json")
+    public Result add(@RequestBody CurrencyDto currencyDto) {
         boolean success = currencyFacade.add(currencyDto);
         return wrapResultWithMessage(success, ResultConstants.addedMessage(Currency.class));
     }
+
     @DeleteMapping("/deleteById")
-    public Result deleteById(@RequestParam("id")  UUID id) {
+    public Result deleteById(@RequestParam("id") UUID id) {
         boolean success = currencyFacade.deleteById(id);
         return wrapResultWithMessage(success, ResultConstants.deletedMessage(Currency.class));
+    }
+
+    @PostMapping(value = "/update", consumes = "application/json")
+    public Result update(@RequestBody CurrencyDto currencyDto) {
+        boolean success = currencyFacade.update(currencyDto);
+        return wrapResultWithMessage(success, ResultConstants.updatedMessage(Currency.class));
     }
 
 }

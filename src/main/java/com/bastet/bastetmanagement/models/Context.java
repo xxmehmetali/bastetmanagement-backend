@@ -12,6 +12,7 @@ import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 import javax.persistence.*;
 import java.util.Date;
 import java.util.List;
+import java.util.Optional;
 import java.util.UUID;
 
 @Entity
@@ -23,8 +24,8 @@ import java.util.UUID;
 @EntityListeners(AuditingEntityListener.class)
 public class Context {
     @Id
-    @Column(name="id")
-    @Type(type="org.hibernate.type.UUIDCharType")
+    @Column(name = "id")
+    @Type(type = "org.hibernate.type.UUIDCharType")
     private UUID id = UUID.randomUUID();
 
     @Column(name = "name", length = 512)
@@ -33,7 +34,6 @@ public class Context {
     @Column(name = "description", length = 1024)
     private String description;
 
-    //NOT FINISHED "FK IMPL"
     @ManyToOne
     @JoinColumn(name = "project")
     @JsonBackReference
@@ -50,4 +50,15 @@ public class Context {
     @Column(name = "updatedAt")
     @LastModifiedDate
     private Date updatedAt;
+
+    @PreRemove
+    public void onDeleteSetNull() {
+        project.getContexts()
+                .stream()
+                .forEach(context -> context.setProject(null));
+
+        tasks.stream()
+                .forEach(task -> task.setContext(null));
+
+    }
 }

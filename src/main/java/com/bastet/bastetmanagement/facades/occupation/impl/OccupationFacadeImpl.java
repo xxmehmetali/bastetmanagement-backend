@@ -44,13 +44,14 @@ public class OccupationFacadeImpl implements OccupationFacade {
     public Page<OccupationDto> findAllPaged(Pageable pageable) {
         return occupationService.findAllPaged(pageable).map(occupation -> occupationMapper.occupationToOccupationDto(occupation));
     }
+
     @Override
     public Page<OccupationSimplifiedDto> findAllPagedSimplified(Pageable pageable) {
         return occupationService.findAllPaged(pageable).map(occupation -> occupationMapper.occupationToOccupationSimplifiedDto(occupation));
     }
 
     @Override
-    public List<OccupationSelectElementDto> findAllForSelectElement(){
+    public List<OccupationSelectElementDto> findAllForSelectElement() {
         List<Occupation> occupations = occupationService.findAll();
         return occupations.stream()
                 .map(occupation -> {
@@ -70,4 +71,12 @@ public class OccupationFacadeImpl implements OccupationFacade {
     public boolean deleteById(UUID id) {
         return occupationService.deleteById(id);
     }
+
+    @Override
+    public boolean update(Dto dto) {
+        Occupation occupation = occupationMapper.occupationDtoToOccupationForUpdate((OccupationDto) dto);
+        boolean success = occupationService.add(occupation);
+        return success;
+    }
+
 }

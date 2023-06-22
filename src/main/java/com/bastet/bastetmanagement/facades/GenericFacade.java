@@ -2,6 +2,7 @@ package com.bastet.bastetmanagement.facades;
 
 import com.bastet.bastetmanagement.dtos.Dto;
 import com.bastet.bastetmanagement.dtos.basedtos.ApplicantDto;
+import com.bastet.bastetmanagement.dtos.basedtos.EmployeeDto;
 import com.bastet.bastetmanagement.dtos.selectdtos.CorporationSelectElementDto;
 import com.bastet.bastetmanagement.models.Model;
 import org.springframework.data.domain.Page;
@@ -23,5 +24,7 @@ public interface GenericFacade<T> {
 
     boolean add(Dto dto);
     boolean deleteById(UUID id);
+
+    boolean update(Dto dto);
 
 }

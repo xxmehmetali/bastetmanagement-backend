@@ -45,4 +45,10 @@ public class ExpenseType {
     @LastModifiedDate
     private Date updatedAt;
 
+    @PreRemove
+    public void onDeleteSetNull(){
+        expenses.stream()
+                .forEach(expense -> expense.setExpenseCurrencyType(null));
+    }
+
 }

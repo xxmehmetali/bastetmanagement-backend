@@ -24,8 +24,8 @@ import java.util.UUID;
 @EntityListeners(AuditingEntityListener.class)
 public class Department {
     @Id
-    @Column(name="id")
-    @Type(type="org.hibernate.type.UUIDCharType")
+    @Column(name = "id")
+    @Type(type = "org.hibernate.type.UUIDCharType")
     private UUID id = UUID.randomUUID();
 
     @Column(name = "name")
@@ -34,10 +34,15 @@ public class Department {
     @Column(name = "description")
     private String description;
 
+
+    //YANLIŞ KONFİGURE EDİLMİŞ. KONTROL ET
     @JoinColumn(name = "departmentResponsible", referencedColumnName = "id")
     @OneToOne()
     @JsonManagedReference
     private Employee departmentResponsible;
+
+    @OneToMany
+    List<Employee> employees;
 
     @Column(name = "createdAt")
     @CreatedDate
@@ -46,5 +51,12 @@ public class Department {
     @Column(name = "updatedAt")
     @LastModifiedDate
     private Date updatedAt;
+
+    @PreRemove
+    public void onDeleteSetNull() {
+        departmentResponsible.setDepartment(null);
+        employees.stream()
+                .forEach(employee -> employee.setDepartment(null));
+    }
 
 }

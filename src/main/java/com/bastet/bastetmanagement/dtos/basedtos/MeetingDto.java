@@ -1,5 +1,6 @@
 package com.bastet.bastetmanagement.dtos.basedtos;
 
+import com.bastet.bastetmanagement.core.enums.MeetingType;
 import com.bastet.bastetmanagement.dtos.Dto;
 import lombok.*;
 
@@ -23,6 +24,12 @@ public class MeetingDto extends Dto {
     private Date beginHour;
 
     private Date endHour;
+
+    private String topic;
+
+    private String description;
+
+    private MeetingType meetingType;
 
 //    private List<EmployeeDto> attendants;
 

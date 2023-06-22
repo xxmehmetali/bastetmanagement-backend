@@ -61,8 +61,16 @@ public class ExpenseTypeFacadeImpl implements ExpenseTypeFacade {
         boolean success = expenseTypeService.add(expenseType);
         return success;
     }
+
     @Override
     public boolean deleteById(UUID id) {
         return expenseTypeService.deleteById(id);
+    }
+
+    @Override
+    public boolean update(Dto dto) {
+        ExpenseType expenseType = expenseTypeMapper.expenseTypeDtoToExpenseTypeForUpdate((ExpenseTypeDto) dto);
+        boolean success = expenseTypeService.add(expenseType);
+        return success;
     }
 }

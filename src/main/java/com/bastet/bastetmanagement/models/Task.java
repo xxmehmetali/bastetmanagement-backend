@@ -36,7 +36,6 @@ public class Task{
     @Column(name = "tags")
     private String tags;
 
-    //KEY RELATIONS
     @Column(name = "taskStatus")
     @Enumerated(EnumType.STRING)
     private TaskStatus taskStatus;

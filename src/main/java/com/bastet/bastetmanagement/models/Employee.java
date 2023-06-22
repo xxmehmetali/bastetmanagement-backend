@@ -26,8 +26,8 @@ import java.util.UUID;
 @EntityListeners(AuditingEntityListener.class)
 public class Employee {
     @Id
-    @Column(name="id")
-    @Type(type="org.hibernate.type.UUIDCharType")
+    @Column(name = "id")
+    @Type(type = "org.hibernate.type.UUIDCharType")
     private UUID id = UUID.randomUUID();
 
     @Column(name = "name")
@@ -61,6 +61,9 @@ public class Employee {
     @ManyToOne
     private Currency salaryCurrency;
 
+    @OneToMany
+    private List<ApplicantMeeting> applicantMeetings;
+
     @Column(name = "startDate")
     private Date startDate;
 
@@ -85,14 +88,18 @@ public class Employee {
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "spendedBy")
     private List<Expense> expenses;
 
-    @JsonIgnore
     @OneToMany(fetch = FetchType.LAZY)
     private List<Dayoff> dayoffs;
-    //NOT FINISHED
 
     @ManyToMany(mappedBy = "attendants")
     @JsonIgnore
     private List<Meeting> meetings;
+
+    @OneToOne
+    private User user;
+
+    @OneToMany
+    private List<Task> tasks;
 
     @Column(name = "createdAt", updatable = false)
     @CreatedDate
@@ -101,6 +108,26 @@ public class Employee {
     @Column(name = "updatedAt")
     @LastModifiedDate
     private Date updatedAt;
+
+    @PreRemove
+    public void onDeleteSetNull() {
+        tasks.stream()
+                .forEach(task -> {
+                    task.setAssignedTo(null);
+                    task.setAssignedFrom(null);
+                    task.setReviewer(null);
+                });
+        dayoffs.stream()
+                .forEach(dayoff -> dayoff.setEmployee(null));
+        meetings.stream()
+                .forEach(meeting -> meeting.setMeetingOwner(null));
+        applicantMeetings.stream()
+                .forEach(applicantMeeting -> applicantMeeting.setMeetingOwner(null));
+        expenses.stream()
+                .forEach(expense -> expense.setSpendedBy(null));
+
+        user.setEmployee(null);
+    }
 
 
 }

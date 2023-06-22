@@ -4,6 +4,7 @@ package com.bastet.bastetmanagement.facades.applicant.impl;
 import com.bastet.bastetmanagement.core.enums.Gender;
 import com.bastet.bastetmanagement.dtos.Dto;
 import com.bastet.bastetmanagement.dtos.basedtos.ApplicantDto;
+import com.bastet.bastetmanagement.dtos.basedtos.EmployeeDto;
 import com.bastet.bastetmanagement.dtos.selectdtos.ApplicantSelectElementDto;
 import com.bastet.bastetmanagement.dtos.selectdtos.CorporationSelectElementDto;
 import com.bastet.bastetmanagement.dtos.simplifieddtos.ApplicantSimplifiedDto;
@@ -76,4 +77,10 @@ public class ApplicantFacadeImpl implements ApplicantFacade {
         return applicantService.deleteById(id);
     }
 
+    @Override
+    public boolean update(Dto dto) {
+        Applicant applicant = applicantMapper.applicantDtoToApplicantForUpdate((ApplicantDto) dto);
+        boolean success = applicantService.add(applicant);
+        return success;
+    }
 }

@@ -66,4 +66,12 @@ public class SocialActivityFacadeImpl implements SocialActivityFacade {
     public boolean deleteById(UUID id) {
         return socialActivityService.deleteById(id);
     }
+
+    @Override
+    public boolean update(Dto dto) {
+        SocialActivity socialActivity = socialActivityMapper.socialActivityDtoToSocialActivityForUpdate((SocialActivityDto) dto);
+        boolean success = socialActivityService.add(socialActivity);
+        return success;
+    }
+
 }

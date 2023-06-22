@@ -63,4 +63,12 @@ public class TaskFacadeImpl implements TaskFacade {
     public boolean deleteById(UUID id) {
         return taskService.deleteById(id);
     }
+
+    @Override
+    public boolean update(Dto dto) {
+        Task task = taskMapper.taskDtoToTaskForUpdate((TaskDto) dto);
+        boolean success = taskService.add(task);
+        return success;
+    }
+
 }

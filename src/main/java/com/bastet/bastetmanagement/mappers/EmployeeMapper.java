@@ -12,6 +12,8 @@ import jdk.jfr.Name;
 import org.mapstruct.*;
 
 import java.util.List;
+import java.util.Objects;
+import java.util.stream.Collectors;
 
 @Mapper(
         componentModel = "spring",
@@ -40,6 +42,15 @@ public interface EmployeeMapper {
         Employee employee = new Employee();
         employee.setId( employeeDto.getId() );
         return employee;
+    }
+
+    @Named("employeeDtoListToEmployeeListOnlyId")
+    default List<Employee> employeeDtoListToEmployeeListOnlyId(List<EmployeeDto> employeeDtoList){
+        if (Objects.isNull(employeeDtoList)) return null;
+
+        return employeeDtoList.stream()
+                .map(employeeDto -> employeeDtoToEmployeeOnlyId(employeeDto))
+                .collect(Collectors.toList());
     }
 
     @Named("employeeDtoToEmployeeIdStatic")

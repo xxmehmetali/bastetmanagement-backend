@@ -24,6 +24,16 @@ public interface ExpenseTypeMapper {
     @Named("expenseTypeDtoToExpenseTypeIdStatic")
     ExpenseType expenseTypeDtoToExpenseTypeIdStatic(ExpenseTypeDto expenseTypeDto);
 
+    @Named("expenseTypeDtoToExpenseTypeOnlyId")
+    default ExpenseType expenseTypeDtoToExpenseTypeOnlyId(ExpenseTypeDto expenseTypeDto){
+        ExpenseType expenseType = new ExpenseType();
+        expenseType.setId( expenseTypeDto.getId() );
+        return expenseType;
+    }
+
+    @Named("expenseTypeDtoToExpenseTypeForUpdate")
+    ExpenseType expenseTypeDtoToExpenseTypeForUpdate(ExpenseTypeDto expenseTypeDto);
+
     ExpenseTypeSimplifiedDto expenseTypeToExpenseTypeSimplifiedDto(ExpenseType expenseType);
     ExpenseType expenseTypeSimplifiedDtoToExpenseType(ExpenseTypeSimplifiedDto expenseTypeSimplifiedDto);
     //list versions

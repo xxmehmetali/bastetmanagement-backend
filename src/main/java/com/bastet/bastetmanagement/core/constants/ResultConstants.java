@@ -36,7 +36,7 @@ public final class ResultConstants {
         return String.format(DELETED_MESSAGE, clazz.getSimpleName());
     }
     public static String updatedMessage(Class clazz) {
-        return String.format(DELETED_MESSAGE, clazz.getSimpleName());
+        return String.format(UPDATED_MESSAGE, clazz.getSimpleName());
     }
     public static String dataListedMessage(Class clazz) {
         return String.format(DATA_LISTED, clazz.getSimpleName());

@@ -33,6 +33,9 @@ public interface OccupationMapper {
         return occupation;
     }
 
+    @Named("occupationDtoToOccupationForUpdate")
+    Occupation occupationDtoToOccupationForUpdate(OccupationDto occupationDto);
+
     OccupationSimplifiedDto occupationToOccupationSimplifiedDto(Occupation occupation);
     Occupation occupationSimplifiedDtoToOccupation(OccupationSimplifiedDto occupationSimplifiedDto);
     //list versions

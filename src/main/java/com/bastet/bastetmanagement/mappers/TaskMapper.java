@@ -40,6 +40,15 @@ public interface TaskMapper {
     })
      Task taskDtoToTask(TaskDto taskDto);
 
+    @Mappings({
+            @Mapping(source = "assignedFrom", target = "assignedFrom", qualifiedByName = "employeeDtoToEmployeeOnlyId"),
+            @Mapping(source = "assignedTo", target = "assignedTo", qualifiedByName = "employeeDtoToEmployeeOnlyId"),
+            @Mapping(source = "reviewer", target = "reviewer", qualifiedByName = "employeeDtoToEmployeeOnlyId"),
+            @Mapping(source = "context", target = "context", qualifiedByName = "contextDtoToContextOnlyId")
+    })
+    @Named("taskDtoToTaskForUpdate")
+    Task taskDtoToTaskForUpdate(TaskDto taskDto);
+
     @Named("taskDtoToTaskIdStatic")
     Task taskDtoToTaskIdStatic(TaskDto taskDto);
 

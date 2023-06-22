@@ -12,6 +12,4 @@ import org.springframework.data.domain.Pageable;
 import java.util.UUID;
 
 public interface ApplicantFacade extends GenericFacade<Dto> {
-    boolean deleteById(UUID id);
-
 }

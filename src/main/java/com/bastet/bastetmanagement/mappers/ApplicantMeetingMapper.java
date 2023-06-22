@@ -44,6 +44,14 @@ public interface ApplicantMeetingMapper {
     @Mapping(target = "applicantFullName", expression = "java(applicant.getName() + ' ' + applicant.getSurname() + ' ' + '-' + ' ' + applicant.getPhoneNumber())")
     ApplicantMeetingSelectElementDto applicantToApplicantMeetingSelectElementDto(Applicant applicant);
 
+    @Mappings({
+            @Mapping(source = "meetingOwner", target = "meetingOwner", qualifiedByName = "employeeDtoToEmployeeOnlyId"),
+            @Mapping(source = "meetingPlatform", target = "meetingPlatform", qualifiedByName = "meetingPlatformDtoToMeetingPlatformOnlyId"),
+            @Mapping(source = "applicant", target = "applicant", qualifiedByName = "applicantDtoToApplicantOnlyId")
+    })
+    @Named("applicantMeetingDtoToApplicantMeetingForUpdate")
+    ApplicantMeeting applicantMeetingDtoToApplicantMeetingForUpdate(ApplicantMeetingDto applicantMeetingDto);
+
     ApplicantMeetingSimplifiedDto applicantMeetingToApplicantMeetingSimplifiedDto(ApplicantMeeting applicantMeeting);
 
     ApplicantMeeting applicantMeetingSimplifiedDtoToApplicantMeeting(ApplicantMeetingSimplifiedDto applicantMeetingSimplifiedDto);

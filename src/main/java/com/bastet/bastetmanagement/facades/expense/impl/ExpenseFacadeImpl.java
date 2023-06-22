@@ -68,4 +68,11 @@ public class ExpenseFacadeImpl implements ExpenseFacade {
     public boolean deleteById(UUID id) {
         return expenseService.deleteById(id);
     }
+
+    @Override
+    public boolean update(Dto dto) {
+        Expense expense = expenseMapper.expenseDtoToExpenseForUpdate((ExpenseDto) dto);
+        boolean success = expenseService.add(expense);
+        return success;
+    }
 }

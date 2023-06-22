@@ -1,15 +1,18 @@
 package com.bastet.bastetmanagement.mappers;
 
 import com.bastet.bastetmanagement.dtos.basedtos.ApplicantDto;
+import com.bastet.bastetmanagement.dtos.basedtos.ApplicantMeetingDto;
 import com.bastet.bastetmanagement.dtos.basedtos.BranchDto;
 import com.bastet.bastetmanagement.dtos.selectdtos.BranchSelectElementDto;
 import com.bastet.bastetmanagement.dtos.selectdtos.CorporationSelectElementDto;
 import com.bastet.bastetmanagement.dtos.simplifieddtos.BranchSimplifiedDto;
 import com.bastet.bastetmanagement.models.Applicant;
+import com.bastet.bastetmanagement.models.ApplicantMeeting;
 import com.bastet.bastetmanagement.models.Branch;
 import com.bastet.bastetmanagement.models.Corporation;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
+import org.mapstruct.Mappings;
 import org.mapstruct.Named;
 
 import java.util.List;
@@ -29,6 +32,12 @@ public interface BranchMapper {
 
     @Named("branchDtoToBranchIdStatic")
     Branch branchDtoToBranchIdStatic(BranchDto branchDto);
+
+    @Mappings({
+            @Mapping(source = "corporation", target = "corporation", qualifiedByName = "corporationDtoToCorporationOnlyId")
+    })
+    @Named("branchDtoToBranchForUpdate")
+    Branch branchDtoToBranchForUpdate(BranchDto branchDto);
 
     @Named("branchDtoToBranchOnlyId")
     default Branch branchDtoToBranchOnlyId(BranchDto branchDto) {

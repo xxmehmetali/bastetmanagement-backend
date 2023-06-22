@@ -43,4 +43,10 @@ public class SocialActivityType {
     @Column(name = "updatedAt")
     @LastModifiedDate
     private Date updatedAt;
+
+    @PreRemove
+    public void onDeleteSetNull(){
+        socialActivities.stream()
+                .forEach(socialActivity -> socialActivity.setSocialActivityType(null));
+    }
 }

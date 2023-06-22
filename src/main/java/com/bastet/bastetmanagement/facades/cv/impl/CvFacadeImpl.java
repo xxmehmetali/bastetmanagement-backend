@@ -73,8 +73,17 @@ public class CvFacadeImpl implements CvFacade {
         boolean success = cvService.add(cv);
         return success;
     }
+
     @Override
     public boolean deleteById(UUID id) {
         return cvService.deleteById(id);
     }
+
+    @Override
+    public boolean update(Dto dto) {
+        Cv cv = cvMapper.cvDtoToCvForUpdate((CvDto) dto);
+        boolean success = cvService.add(cv);
+        return success;
+    }
+
 }

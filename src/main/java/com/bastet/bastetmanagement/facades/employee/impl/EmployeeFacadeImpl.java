@@ -2,6 +2,7 @@ package com.bastet.bastetmanagement.facades.employee.impl;
 
 
 import com.bastet.bastetmanagement.core.customexceptions.CustomBindingException;
+import com.bastet.bastetmanagement.core.utilities.results.baseresults.Result;
 import com.bastet.bastetmanagement.dtos.Dto;
 import com.bastet.bastetmanagement.dtos.basedtos.EmployeeDto;
 import com.bastet.bastetmanagement.dtos.selectdtos.EmployeeSelectElementDto;
@@ -80,9 +81,10 @@ public class EmployeeFacadeImpl implements EmployeeFacade {
     }
 
     @Override
-    public void update(EmployeeDto employeeDto) {
-        Employee employee = employeeMapper.employeeDtoToEmployeeForUpdate(employeeDto);
-        employeeService.add(employee);
+    public boolean update(Dto dto) {
+        Employee employee = employeeMapper.employeeDtoToEmployeeForUpdate((EmployeeDto) dto);
+        boolean success = employeeService.add(employee);
+        return success;
     }
     @Override
     public boolean deleteById(UUID id) {

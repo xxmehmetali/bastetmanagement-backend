@@ -59,4 +59,11 @@ public class UserFacadeImpl implements UserFacade {
     public boolean deleteById(UUID id) {
         return false;
     }
+
+    @Override
+    public boolean update(Dto dto) {
+
+        // IMPLEMENT LOGIC - ENCRYPT PASSWORD
+        return false;
+    }
 }

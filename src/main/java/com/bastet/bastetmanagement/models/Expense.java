@@ -50,17 +50,24 @@ public class Expense {
     @JoinColumn(name = "expenseType")
     private ExpenseType expenseType;
 
+    @OneToOne
+    @JsonIgnore
+    private SocialActivity socialActivity;
+
     @Column(name = "spentDateTime")
     private Date spentDateTime;
 
     @Column(name = "createdAt")
-    @JsonIgnore
     @CreatedDate
     private Date createdAt;
 
     @Column(name = "updatedAt")
-    @JsonIgnore
     @LastModifiedDate
     private Date updatedAt;
+
+    @PreRemove
+    public void onDeleteSetNull(){
+        socialActivity.setExpense(null);
+    }
 
 }

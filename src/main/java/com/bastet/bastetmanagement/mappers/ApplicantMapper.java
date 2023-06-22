@@ -31,6 +31,12 @@ public interface ApplicantMapper {
     @Mapping(source = "CV", target = "CV", qualifiedByName = "cvDtoToCvIdStatic")
     Applicant applicantDtoToApplicant(ApplicantDto applicantDto);
 
+    @Mappings({
+            @Mapping(source = "CV", target = "CV", qualifiedByName = "cvDtoToCvOnlyId"),
+    })
+    @Named("applicantDtoToApplicantForUpdate")
+    Applicant applicantDtoToApplicantForUpdate(ApplicantDto applicantDto);
+
     @Named("applicantDtoToApplicantOnlyId")
     default Applicant applicantDtoToApplicantOnlyId(ApplicantDto applicantDto){
         Applicant applicant = new Applicant();
